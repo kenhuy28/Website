@@ -53,7 +53,8 @@
             </div>
             <div class="button">
                 <input type="submit" value="Lưu" class="button_add_admin" />
-                <a href="trademark_index.php"><input type="button" value="Quay lại" class="button_add_admin" /></a>
+                <a href="trademark_admin_index.php"><input type="button" value="Quay lại"
+                        class="button_add_admin" /></a>
             </div>
         </form>
     </div>

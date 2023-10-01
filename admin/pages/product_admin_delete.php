@@ -48,7 +48,7 @@
             </div>
             <div class="button">
                 <input type="button" value="Xóa" class="button_add_admin delete_display_alert" />
-                <a href="product_index.php"><input type="button" value="Quay lại" class="button_add_admin" /></a>
+                <a href="product_admin_index.php"><input type="button" value="Quay lại" class="button_add_admin" /></a>
             </div>
             <div class="alert_delete">
                 <div class="notification">

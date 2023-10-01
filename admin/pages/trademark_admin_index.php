@@ -2,7 +2,7 @@
 <div class="body" style="margin-top: 15px">
     <div class="table_header">
         <div class="add_admin">
-            <a href="trademark_create.php">
+            <a href="trademark_admin_create.php">
                 <i class="fa-solid fa-user-plus"></i>
                 <div class="add_title">
                     Thêm thương hiệu
@@ -36,8 +36,8 @@
                     Logo hiển thị
                 </td>
                 <td>
-                    <a href="trademark_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="trademark_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="trademark_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="trademark_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
                 </td>
             </tr>
             <tr>
@@ -55,8 +55,8 @@
                     Logo hiển thị
                 </td>
                 <td>
-                    <a href="trademark_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="trademark_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="trademark_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="trademark_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
                 </td>
             </tr>
             <tr>
@@ -74,8 +74,8 @@
                     Logo hiển thị
                 </td>
                 <td>
-                    <a href="trademark_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="trademark_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="trademark_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="trademark_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
                 </td>
             </tr>
             <tr>
@@ -93,8 +93,8 @@
                     Logo hiển thị
                 </td>
                 <td>
-                    <a href="trademark_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="trademark_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="trademark_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="trademark_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
                 </td>
             </tr>
             <tr>
@@ -112,8 +112,8 @@
                     Logo hiển thị
                 </td>
                 <td>
-                    <a href="trademark_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="trademark_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="trademark_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="trademark_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
                 </td>
             </tr>
             <tr>
@@ -131,8 +131,8 @@
                     Logo hiển thị
                 </td>
                 <td>
-                    <a href="trademark_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="trademark_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="trademark_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="trademark_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
                 </td>
             </tr>
             <tr>
@@ -150,8 +150,8 @@
                     Logo hiển thị
                 </td>
                 <td>
-                    <a href="trademark_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="trademark_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="trademark_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="trademark_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
                 </td>
             </tr>
 

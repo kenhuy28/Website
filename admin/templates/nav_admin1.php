@@ -3,17 +3,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="~/assets/img/logo/header_logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/grid.css">
-    <link rel="stylesheet" href="../assets/css/responsive.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/grid.css">
+    <link rel="stylesheet" href="../../assets/css/responsive.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="../assets/font/fontawesome-free-6.1.2-web/css/all.css" />
+    <link rel="stylesheet" href="../../assets/font/fontawesome-free-6.1.2-web/css/all.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,600;0,700;0,800;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
+    <style>
+        .right {
+            overflow-y: auto;
+        }
+    </style>
 </head>
 <div class="app">
     <div class="grid">
@@ -121,7 +126,7 @@
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href=" ">
+                    <a href="warehouse_index.php">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-store"></i>
                         </div>

@@ -46,8 +46,8 @@
 
         </div>
         <div class="button">
-            <a href="product_edit.php"><input type="submit" value="Chỉnh sửa" class="button_add_admin" /></a>
-            <a href="product_index.php"><input type="button" value="Quay lại" class="button_add_admin" /></a>
+            <a href="product_admin_edit.php"><input type="submit" value="Chỉnh sửa" class="button_add_admin" /></a>
+            <a href="product_admin_index.php"><input type="button" value="Quay lại" class="button_add_admin" /></a>
         </div>
 
     </div>
