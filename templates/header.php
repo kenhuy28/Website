@@ -4,12 +4,12 @@
     <title>Phụ kiện thú cưng</title>
     <link rel="icon" href="./assets/img/logo/header_logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/main2.css">
-    <link rel="stylesheet" href="./assets/css/grid.css">
-    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="https://www.8ivlvi8.site/base.css">
+    <link rel="stylesheet" href="https://www.8ivlvi8.site/main2.css">
+    <link rel="stylesheet" href="https://www.8ivlvi8.site/grid.css">
+    <link rel="stylesheet" href="https://www.8ivlvi8.site/responsive.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="./assets/font/fontawesome-free-6.1.2-web/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -94,7 +94,7 @@
                         Giới thiệu
                     </li>
                     <li>
-                        Sản phẩm
+                        <a href="/WebLinhKienThuCung/pages/san_pham.php">Sản phẩm</a>
                     </li>
                     <li>
                         Blog
