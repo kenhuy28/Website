@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href="trademark_index.php">
+                    <a href="trademark_admin_index.php">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-trademark"></i>
                         </div>
@@ -132,7 +132,7 @@
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href="../pages/product_index.php">
+                    <a href="../pages/product_admin_index.php">
                         <div class="nav_li_icon">
                             <i class="fa-brands fa-dropbox"></i>
                         </div>

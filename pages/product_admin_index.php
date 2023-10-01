@@ -10,7 +10,7 @@
             </a>
         </div>
         <div class="add_admin">
-            <a href="product_create.php">
+            <a href="product_admin_create.php">
                 <i class="fa-solid fa-user-plus"></i>
                 <div class="add_title">
                     Thêm sản phẩm
@@ -48,9 +48,9 @@
                     <img src="https://webkit.org/demos/srcset/image-src.png" alt="" style="width: 70px; height: 70px;">
                 </td>
                 <td>
-                    <a href="product_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="product_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
-                    <a href="product_details.php"><i class="fa-solid fa-circle-info detail"></i></a>
+                    <a href="product_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="product_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="product_admin_details.php"><i class="fa-solid fa-circle-info detail"></i></a>
                 </td>
             </tr>
             <tr>
@@ -67,9 +67,9 @@
                     <img src="https://webkit.org/demos/srcset/image-src.png" alt="" style="width: 70px; height: 70px;">
                 </td>
                 <td>
-                    <a href="product_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="product_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
-                    <a href="product_details.php"><i class="fa-solid fa-circle-info detail"></i></a>
+                    <a href="product_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="product_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="product_admin_details.php"><i class="fa-solid fa-circle-info detail"></i></a>
                 </td>
             </tr>
             <tr>
@@ -86,9 +86,9 @@
                     <img src="https://webkit.org/demos/srcset/image-src.png" alt="" style="width: 70px; height: 70px;">
                 </td>
                 <td>
-                    <a href="product_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="product_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
-                    <a href="product_details.php"><i class="fa-solid fa-circle-info detail"></i></a>
+                    <a href="product_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="product_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="product_admin_details.php"><i class="fa-solid fa-circle-info detail"></i></a>
                 </td>
             </tr>
             <tr>
@@ -105,9 +105,9 @@
                     <img src="https://webkit.org/demos/srcset/image-src.png" alt="" style="width: 70px; height: 70px;">
                 </td>
                 <td>
-                    <a href="product_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="product_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
-                    <a href="product_details.php"><i class="fa-solid fa-circle-info detail"></i></a>
+                    <a href="product_admin_edit.php"><i class="fa-solid fa-pen-to-square edit"></i></a>
+                    <a href="product_admin_delete.php"> <i class="fa-solid fa-xmark remove"></i></a>
+                    <a href="product_admin_details.php"><i class="fa-solid fa-circle-info detail"></i></a>
                 </td>
             </tr>
         </tbody>
