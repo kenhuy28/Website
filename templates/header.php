@@ -81,7 +81,7 @@
                     </div> -->
                     <!-- giỏ hàng -->
                     <div class="h" id="cart">
-                        <?php  include 'cart_partial.php' ?> 
+                        <?php include 'cart_partial.php' ?>
                     </div>
                 </div>
             </div>
@@ -108,3 +108,4 @@
                 </ul>
             </div>
         </div>
+        <div class="body" style="margin-top: 150px">

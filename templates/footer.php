@@ -1,3 +1,4 @@
+</div>
 <div class="footer">
     <div class="footter_row">
         <h1>Shop</h1>
