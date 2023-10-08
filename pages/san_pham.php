@@ -55,25 +55,25 @@
                         "<div class='product_item'>
                     <img src='https://webkit.org/demos/srcset/image-src.png' alt=''>
                     <div class='product_thuonghieu'>
-                        <h5>@item.TENTH</h5>
+                        <h5>Tên thương hiệu</h5>
                     </div>
                     <div class='product_name'>
-                        <h5>@item.TENSP</h5>
+                        <h5>Tên sản phẩm</h5>
                     </div>
                     <div class='product_price'>
-                        <h5> @String.Format('{0:0,0}', item.DONGIABAN) VNĐ</h5>
-                    </div>
-                    @if (item.SOLUONG != 0)
-                    {
-                    <button id='1' class='button_product' onclick='window.location.href='@Url.Action('
+                        <h5> 1000000 VNĐ</h5>
+                    </div>" .
+                        // @if (item.SOLUONG != 0)
+                        // { 
+                        "<button id='1' class='button_product' onclick='window.location.href='@Url.Action('
                         ThemGiohang', 'GioHang' , new { @iMASP=item.MASP, @iGIAMGIA=item.GIAMGIA,
-                        @strURL=Request.Url.ToString() })''>Thêm vào giỏ hàng</button>
-                    }
-                    else
-                    {
-                    <button class='button_product'>Hàng tạm thời hết</button>
-                    }
-                    <a class='xem_icon'' href=''>
+                        @strURL=Request.Url.ToString() })''>Thêm vào giỏ hàng</button>"
+                        // }
+                        // else
+                        // {
+                        // <button class='button_product'>Hàng tạm thời hết</button>
+                        // }
+                        . "<a class='xem_icon'' href=''>
                         <i class='fa-regular fa-eye'></i>
                     </a>
                 </div>"
