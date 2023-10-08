@@ -1,15 +1,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="~/assets/img/logo/header_logo.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="../../assets/img/logo/header_logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://www.8ivlvi8.site/base.css">
     <link rel="stylesheet" href="https://www.8ivlvi8.site/grid.css">
     <link rel="stylesheet" href="https://www.8ivlvi8.site/responsive.css">
-    <!-- <link rel="stylesheet" href="../../assets/css/main.css"> -->
     <link rel="stylesheet" href="https://www.8ivlvi8.site/main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -26,7 +25,7 @@
         <div class="left">
             <div class="nav">
                 <div class="nav_logo">
-                    <a href="#"> <img src="../assets/img/logo/logopaddy.png" alt="logo"
+                    <a href="#"> <img src="../../assets/img/logo/logopaddy.png" alt="logo"
                             style="background: #244cbb;"></a>
                 </div>
             </div>
@@ -185,12 +184,11 @@
         <div class="right">
             <div class="header">
                 <div class="header_left">
-                    hiển thị cho admin đăng nhập
                 </div>
                 <div class="header_right">
-                    <span class="header_right_hello">Xin chào @ad.HOTEN</span>
+                    <span class="header_right_hello">Xin chào @HOTEN</span>
                     <div class="header_right_img">
-                        <img src="../assets/img/ad_user/thuc-an-hat-meo-con-royal-canin-kitten-36-paddy-1.png" alt="">
+                        <img src="../../assets/img/ad_user/thuc-an-hat-meo-con-royal-canin-kitten-36-paddy-1.png" alt="">
                     </div>
                     <div class="header_right_img_expand">
                         <ul>
@@ -199,7 +197,7 @@
                             </li>
                             <li>
                                 <i class="fa-solid fa-envelope"></i>
-                                <div>@ad.EMAIL</div>
+                                <div>@EMAIL</div>
                             </li>
                             <li>
                                 <i class="fa-solid fa-lock"></i><a href="#">Đổi mật khẩu</a>
@@ -212,3 +210,4 @@
                     </div>
                 </div>
             </div>
+            <div class="body">

