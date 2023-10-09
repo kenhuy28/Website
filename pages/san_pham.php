@@ -53,7 +53,7 @@
                 <?php for ($i = 0; $i < 5; $i++)
                     echo
                         "<div class='product_item'>
-                    <img src='https://webkit.org/demos/srcset/image-src.png' alt=''>
+                    <img src='https://webkit.org/demos/srcset/image-src.png' style=\"width:90%\" alt=''>
                     <div class='product_thuonghieu'>
                         <h5>Tên thương hiệu</h5>
                     </div>
