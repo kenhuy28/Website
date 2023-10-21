@@ -1,3 +1,5 @@
+<?php include './includes/config.php' ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,14 +63,16 @@
                     </div>
 
                     <!-- nếu chưa login -->
-                    <div class="h" id="login_user">
-                        <div class="name_icon">
-                            <i class="fa-regular fa-user"></i>
+                    <a href="/WebLinhKienThuCung/pages/login.php" class="h" id="login_user">
+                        <div>
+                            <div class="name_icon">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <h5>
+                                Đăng nhập
+                            </h5>
                         </div>
-                        <h5>
-                            Đăng nhập
-                        </h5>
-                    </div>
+                    </a>
                     <!-- nếu đã login
                     <div class="h" id="profile_user">
                         <div class="name_icon">
@@ -88,7 +92,7 @@
             <div class="nav">
                 <ul>
                     <li>
-                        Trang chủ
+                        <a href="/WebLinhKienThuCung">Trang chủ</a>
                     </li>
                     <li>
                         Giới thiệu
