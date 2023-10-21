@@ -1,4 +1,4 @@
-<?php include './includes/config.php' ?>
+<?php include $_SESSION['path'] . '/includes/config.php' ?>
 
 <head>
     <meta charset="UTF-8">
