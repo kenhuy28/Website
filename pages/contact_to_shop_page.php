@@ -2,18 +2,7 @@
 <?php include '../templates/header.php' ?>
 <div class="liehHe">
     <div class="liehHe_left">
-        <h5>Thông tin liên hệ</h5>
-        <ul>
-            <li>
-                Quản lý: nhóm 11
-            </li>
-            <li>
-                Địa chỉ: 2 Đ. Nguyễn Đình Chiểu, Vĩnh Thọ, Nha Trang, Khánh Hòa 650000
-            </li>
-            <li>
-                Email: Nam552000@gmail.com
-            </li>
-        </ul>
+ 
         <h5>Liên hệ Shop</h5>
         <form action="" class="create_admin_form">
             <div class="form_field">

@@ -107,7 +107,7 @@
                 </div>
             </div>
             <div class="product_item">
-                <img src="assest/img/img_product/12-1682483525450_1066x.webp" alt="">
+                <img src="../assets/img/img_product/sanpham.png" alt="">
                 <div class="product_thuonghieu">
                     <h5>Paddy</h5>
                 </div>

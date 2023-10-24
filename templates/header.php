@@ -49,8 +49,7 @@ include $rootPath . '/includes/config.php';
             <div class="header_row1">
                 <div class="header_row1_left">
                     <div class="logo">
-                        <img src="./assets/img/logo/logopaddy.png" alt="">
-
+                        <img src="<?php echo $rootPath . "/assets/img/logo/logopaddy.png"; ?>" alt="">
                     </div>
                 </div>
                 <div class="header_row_right">
@@ -62,17 +61,17 @@ include $rootPath . '/includes/config.php';
                     </form>
                     <div class="hotline">
                         <h5 class="name_icon">Hotline</h5>
-                        <h5 class="hotline_sdt" style="font-weight: 600;">0374 41 41 42</h5>
+                        <h5 class="hotline_sdt" style="font-weight: 600;">0347 69 33 33</h5>
                     </div>
-                    <div class="h">
+                    <!-- <div class="h">
                         <div class="name_icon">
                             <i class="fa-regular fa-heart"></i>
                         </div>
                         <h5>Wishlist</h5>
-                    </div>
+                    </div> -->
 
                     <!-- nếu chưa login -->
-                    <a href="<?php echo $rootPath . "/pages/login.php"; ?> " class="h" id="login_user">
+                    <a href="<?php echo $rootPath . "/pages/login.php"; ?>" class="h" id="login_user">
                         <div>
                             <div class="name_icon">
                                 <i class="fa-regular fa-user"></i>
@@ -94,30 +93,33 @@ include $rootPath . '/includes/config.php';
                     </div> -->
                     <!-- giỏ hàng -->
                     <div class="h" id="cart">
-                        <?php include 'cart_partial.php' ?>
+                        <a href="<?php echo $rootPath . "/pages/cart.php"; ?>">
+                            <div class="name_icon catalog">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <div class="dem_hang">
+                                    <p>3</p>
+                                </div>
+                            </div>
+                            <h5>Giỏ Hàng</h5>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="nav">
                 <ul>
                     <li>
-                        <a href="<?php echo $rootPath; ?> ">Trang chủ</a>
+                        <a href="<?php echo $rootPath; ?>">Trang chủ</a>
                     </li>
                     <li>
-                        Giới thiệu
+                        <a href=" <?php echo $rootPath . "/pages/contact_to_shop_page.php"; ?>">Liên hệ</a>
                     </li>
                     <li>
-                        <a href=" <?php echo $rootPath . "/pages/san_pham.php"; ?>">Sản phẩm</a>
+                        <a href=" <?php echo $rootPath . "/pages/product_page.php"; ?>">Sản phẩm</a>
                     </li>
                     <li>
-                        Blog
+                        <a href=" <?php echo $rootPath . "/pages/brand.php"; ?>">Thương hiệu</a>
                     </li>
-                    <li>
-                        Liên hệ
-                    </li>
-                    <li>
-                        Thương hiệu
-                    </li>
+
                     <li>
                         <a href=" <?php echo $rootPath . "/pages/bt_nhom.php"; ?>"> Bài tập nhóm</a>
                     </li>

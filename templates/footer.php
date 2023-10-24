@@ -10,25 +10,13 @@
                 Danh Cho Mèo
             </li>
             <li>
-                Thương Hiệu
+                <a href=" <?php echo $rootPath . "/pages/brand.php"; ?>">Thương hiệu</a>
             </li>
-            <li>
-                Blog
-            </li>
-            <li>
-                Bộ Sưu tập
-            </li>
-        </ul>
+       </ul>
     </div>
     <div class="footter_row">
         <h1>Paddy Pet Shop</h1>
         <ul>
-            <li>
-                Giới Thiệu
-            </li>
-            <li>
-                Thành Viên Paddier
-            </li>
             <li>
                 Điều Khoản Sử Dụng
             </li>
@@ -67,7 +55,7 @@
                 116 Nguyễn Văn Thủ, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh, Việt Nam
             </li>
             <li>
-                <i class="fa-solid fa-phone"></i> Hotline: 0374414142
+                <i class="fa-solid fa-phone"></i> Hotline: 0347693333
             </li>
             <li>
                 <i class="fa-solid fa-envelope"></i> Email: marketing@paddy.vn
@@ -118,15 +106,15 @@
         <div class="hotline-phone-ring-circle"></div>
         <div class="hotline-phone-ring-circle-fill"></div>
         <div class="hotline-phone-ring-img-circle">
-            <a href="tel:0867566932" class="pps-btn-img">
+            <a href="tel:0347693333" class="pps-btn-img">
                 <img src="https://nguyenhung.net/wp-content/uploads/2019/05/icon-call-nh.png" alt="Gọi điện thoại"
                     width="50">
             </a>
         </div>
     </div>
     <div class="hotline-bar">
-        <a href="tel:0867566932">
-            <span class="text-hotline">0867566932</span>
+        <a href="tel:0347693333">
+            <span class="text-hotline">0347 69 33 33</span>
         </a>
     </div>
 </div>

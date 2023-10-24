@@ -42,7 +42,7 @@ include $rootPath . '/includes/config.php';
             </div>
             <ul class="nav_ul">
                 <li class="nav_li">
-                    <a href="#">
+                    <a href="<?php echo  $rootPath;?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-house"></i>
                         </div>
@@ -52,28 +52,17 @@ include $rootPath . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href=" ">
-                        <div class="nav_li_icon">
-                            <i class="fa-solid fa-users"></i>
-                        </div>
-                        <div class="nav_li_title">
-                            Trang người dùng
-                        </div>
-
-                    </a>
-                </li>
-                <li class="nav_li">
-                    <a href=" ">
+                    <a href="<?php echo  $rootPath . "/pages/Admin_DsAdmin.php";?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-blender-phone"></i>
                         </div>
                         <div class="nav_li_title">
-                            Quản trị viên
+                            Quản lý nhân viên
                         </div>
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href=" ">
+                    <a href="<?php echo  $rootPath . "/pages/DonHang_Index.php";?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-truck-fast"></i>
                         </div>
@@ -83,7 +72,7 @@ include $rootPath . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href="trademark_admin_index.php">
+                    <a href="<?php echo  $rootPath . "/pages/trademark_index.php";?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-trademark"></i>
                         </div>
@@ -93,7 +82,7 @@ include $rootPath . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href=" ">
+                    <a href="<?php echo  $rootPath . "/pages/customer_index.php";?>">
                         <div class="nav_li_icon">
                             <i class="fa-brands fa-dashcube"></i>
                         </div>
@@ -104,7 +93,7 @@ include $rootPath . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href=" ">
+                    <a href="<?php echo  $rootPath . "/pages/type_index.php";?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-bookmark"></i>
                         </div>
@@ -115,29 +104,7 @@ include $rootPath . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href=" ">
-                        <div class="nav_li_icon">
-                            <i class="fa-solid fa-brush"></i>
-                        </div>
-                        <div class="nav_li_title">
-                            Màu sắc
-                        </div>
-
-                    </a>
-                </li>
-                <li class="nav_li">
-                    <a href=" ">
-                        <div class="nav_li_icon">
-                            <i class="fa-solid fa-maximize"></i>
-                        </div>
-                        <div class="nav_li_title">
-                            Kích thước
-                        </div>
-
-                    </a>
-                </li>
-                <li class="nav_li">
-                    <a href="warehouse_index.php">
+                    <a href="<?php echo  $rootPath . "/pages/warehouse_index.php";?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-store"></i>
                         </div>
@@ -148,7 +115,7 @@ include $rootPath . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href="../pages/product_admin_index.php">
+                    <a href="<?php echo  $rootPath . "/pages/product_index.php";?>">
                         <div class="nav_li_icon">
                             <i class="fa-brands fa-dropbox"></i>
                         </div>
@@ -159,29 +126,7 @@ include $rootPath . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href="#">
-                        <div class="nav_li_icon">
-                            <i class="fa-solid fa-image"></i>
-                        </div>
-                        <div class="nav_li_title">
-                            Hình ảnh mô tả
-                        </div>
-
-                    </a>
-                </li>
-                <li class="nav_li">
-                    <a href=" ">
-                        <div class="nav_li_icon">
-                            <i class="fa-solid fa-sitemap"></i>
-                        </div>
-                        <div class="nav_li_title">
-                            Phân quyền
-                        </div>
-
-                    </a>
-                </li>
-                <li class="nav_li">
-                    <a href=" ">
+                    <a href="<?php echo  $rootPath . "/pages/statistics_index.php";?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-bug"></i>
                         </div>
@@ -199,7 +144,7 @@ include $rootPath . '/includes/config.php';
                 <div class="header_right">
                     <span class="header_right_hello">Xin chào @HOTEN</span>
                     <div class="header_right_img">
-                        <img src="../../assets/img/ad_user/thuc-an-hat-meo-con-royal-canin-kitten-36-paddy-1.png"
+                        <img src="<?php echo  $rootPath . "/assets/img/header_logo.png";?>"
                             alt="">
                     </div>
                     <div class="header_right_img_expand">

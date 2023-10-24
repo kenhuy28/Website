@@ -86,15 +86,8 @@
             <div>Tổng số tiền:</div>
             <div>480.000 VNĐ</div>
         </div>
-        <div>
-            <?php  include "cart_coupon.php" ?> 
-        </div>
-        <div class="cart_checkcout_title">
-            <div>Tổng :</div>
-            <div>480.000 VNĐ</div>
-        </div>
-        <a href="@Url.Action(" DatHang", "GioHang" )"><button>Đặt Hàng</button></a>
-        <button>Tiếp Tục Mua Sắm</button>
+        <a href="<?php  echo $rootPath . "/pages/cart_order.php"; ?> "><button>Đặt Hàng</button></a>
+        <a href="<?php  echo $rootPath . "/pages/product_page.php"; ?> "><button>Tiếp Tục Mua Sắm</button></a>
         <button onclick="window.location.href = '@Url.Action(" XoaTatcaGiohang", "GioHang" )'">Xóa Tất Cả Sản
             Phẩm</button>
     </div>

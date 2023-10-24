@@ -40,7 +40,8 @@
             </div>
             <div class="button">
                 <input type="submit" value="Đặt hàng" class="button_add_admin" style="width: 200px;" />
-                <input type="button" value="Quay trở lại giỏ hàng" class="button_add_admin" style="width: 200px; " />
+                
+                <a href="./cart.php"> <input type="button" value="Quay trở lại giỏ hàng" class="button_add_admin" style="width: 200px; " /></a>
             </div>
         </form>
     </div>
