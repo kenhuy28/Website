@@ -1,3 +1,14 @@
+<?php
+$fileName = basename($_SERVER['SCRIPT_FILENAME']);
+// echo $fileName;
+$rootPath = ".";
+if ($fileName != "index.php") {
+    $rootPath = "../";
+}
+// echo $rootPath;
+include $rootPath . '/includes/config.php';
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -188,7 +199,8 @@
                 <div class="header_right">
                     <span class="header_right_hello">Xin chào @HOTEN</span>
                     <div class="header_right_img">
-                        <img src="../../assets/img/ad_user/thuc-an-hat-meo-con-royal-canin-kitten-36-paddy-1.png" alt="">
+                        <img src="../../assets/img/ad_user/thuc-an-hat-meo-con-royal-canin-kitten-36-paddy-1.png"
+                            alt="">
                     </div>
                     <div class="header_right_img_expand">
                         <ul>

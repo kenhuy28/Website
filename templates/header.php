@@ -1,4 +1,13 @@
-<?php include $_SESSION['path'] . '/includes/config.php' ?>
+<?php
+$fileName = basename($_SERVER['SCRIPT_FILENAME']);
+echo $fileName;
+$rootPath = ".";
+if ($fileName != "index.php") {
+    $rootPath = "../";
+}
+echo $rootPath;
+include $rootPath . '/includes/config.php';
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -63,7 +72,7 @@
                     </div>
 
                     <!-- nếu chưa login -->
-                    <a href="/WebLinhKienThuCung/pages/login.php" class="h" id="login_user">
+                    <a href="<?php echo $rootPath . "/pages/login.php"; ?> " class="h" id="login_user">
                         <div>
                             <div class="name_icon">
                                 <i class="fa-regular fa-user"></i>
@@ -92,13 +101,13 @@
             <div class="nav">
                 <ul>
                     <li>
-                        <a href="/WebLinhKienThuCung">Trang chủ</a>
+                        <a href="<?php echo $rootPath; ?> ">Trang chủ</a>
                     </li>
                     <li>
                         Giới thiệu
                     </li>
                     <li>
-                        <a href="/WebLinhKienThuCung/pages/san_pham.php">Sản phẩm</a>
+                        <a href=" <?php echo $rootPath . "/pages/san_pham.php"; ?>">Sản phẩm</a>
                     </li>
                     <li>
                         Blog
@@ -108,6 +117,9 @@
                     </li>
                     <li>
                         Thương hiệu
+                    </li>
+                    <li>
+                        Bài tập nhóm
                     </li>
                 </ul>
             </div>

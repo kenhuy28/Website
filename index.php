@@ -1,5 +1,7 @@
 <!--Home page-->
+
 <?php include './templates/header.php' ?>
+
 <div class="banner">
   <div class="swiper-container">
     <div class="swiper-wrapper">
