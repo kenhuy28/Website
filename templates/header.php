@@ -3,7 +3,7 @@ $fileName = basename($_SERVER['SCRIPT_FILENAME']);
 echo $fileName;
 $rootPath = ".";
 if ($fileName != "index.php") {
-    $rootPath = "../";
+    $rootPath = "..";
 }
 echo $rootPath;
 include $rootPath . '/includes/config.php';
