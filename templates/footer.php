@@ -192,4 +192,4 @@
 </script>
 
 
-<script src="https://www.8ivlvi8.site/app.js"></script>
+<script src="<?php echo $rootPath . "assets/js/app.js" ?>"></script>

@@ -15,10 +15,10 @@ include $rootPath . '/includes/config.php';
     <title>Phụ kiện thú cưng</title>
     <link rel="icon" href="./assets/img/logo/header_logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="https://www.8ivlvi8.site/base.css">
-    <link rel="stylesheet" href="https://www.8ivlvi8.site/main2.css">
-    <link rel="stylesheet" href="https://www.8ivlvi8.site/grid.css">
-    <link rel="stylesheet" href="https://www.8ivlvi8.site/responsive.css">
+    <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/base.css" ?> ">
+    <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/main2.css" ?>">
+    <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/grid.css" ?>">
+    <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/responsive.css" ?>">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -119,7 +119,7 @@ include $rootPath . '/includes/config.php';
                         Thương hiệu
                     </li>
                     <li>
-                        Bài tập nhóm
+                        <a href=" <?php echo $rootPath . "/pages/bt_nhom.php"; ?>"> Bài tập nhóm</a>
                     </li>
                 </ul>
             </div>
