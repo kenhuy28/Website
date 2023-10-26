@@ -6,7 +6,7 @@ use qlpkthucung;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2023 at 03:34 PM
+-- Generation Time: Oct 26, 2023 at 04:36 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -180,7 +180,7 @@ CREATE TABLE `khanh_hang` (
   `matKhau` char(80) NOT NULL,
   `email` varchar(50) NOT NULL,
   `ngaySinh` date NOT NULL,
-  `avatar` varchar(255) NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `khoiPhucMatKhau` varchar(255) DEFAULT NULL,
   `maXa` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -248,7 +248,6 @@ CREATE TABLE `nhan_vien` (
   `maNhanVien` varchar(6) NOT NULL,
   `ho` varchar(50) NOT NULL,
   `ten` varchar(10) NOT NULL,
-  'hinhAnh' varchar(255) NOT NULL,
   `ngaySinh` date DEFAULT NULL,
   `diaChiCuThe` varchar(255) NOT NULL,
   `dienThoai` varchar(10) NOT NULL,
