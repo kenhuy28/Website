@@ -6,7 +6,7 @@ use qlpkthucung;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2023 at 04:57 PM
+-- Generation Time: Oct 28, 2023 at 05:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -70,9 +70,8 @@ CREATE TABLE `chi_tiet_phieu_nhap` (
 --
 
 INSERT INTO `chi_tiet_phieu_nhap` (`maPhieuNhap`, `maSanPham`, `soLuong`, `donGia`) VALUES
-('PN0001', 'SP0003', 9, 60000),
+('PN0001', 'SP0002', 9, 10000),
 ('PN0001', 'SP0004', 6, 30000),
-('PN0001', 'SP0009', 9, 10000),
 ('PN0002', 'SP0005', 3, 20000),
 ('PN0002', 'SP0006', 11, 10000);
 
@@ -127,7 +126,7 @@ CREATE TABLE `giam_gia` (
 
 INSERT INTO `giam_gia` (`maGiamGia`, `maSanPham`, `loaiGiamGia`, `giaTriGiam`, `ngayBatDau`, `ngayKetThuc`) VALUES
 ('GG0001', 'SP0001', b'00', 5, '2023-11-07', '2023-11-15'),
-('GG0002', 'SP0003', b'00', 5, '2023-11-09', '2023-11-12');
+('GG0002', 'SP0006', b'00', 5, '2023-11-09', '2023-11-12');
 
 -- --------------------------------------------------------
 
@@ -323,15 +322,13 @@ CREATE TABLE `san_pham` (
 --
 
 INSERT INTO `san_pham` (`maSanPham`, `tenSanPham`, `donGiaMua`, `donGiaBan`, `maThuongHieu`, `maLoai`, `soLuong`, `hinhAnh`, `moTa`) VALUES
-('SP0001', 'Pate Cho Mèo Con Dạng Kem Nekko Kitten Mousse 70g', 100000, 140000, 'THH002', 'LSP002', 92, 'pate-kit-cat-sua-de-bo-sung-canxi-cho-meo-lon-85g-paddy-2_1066x.png', 'Pate Tươi Cho Mèo Hỗn Hợp cho Chó Mèo Biếng Ăn được làm từ hỗn hợp cá biển và gan gà tươi nguyên chất.'),
+('SP0001', 'Pate Cho Mèo Con Dạng Kem Nekko Kitten Mousse 70g', 100000, 140000, 'THH002', 'LSP002', 92, 'pate_cho_meo_con_dang_kem_nekko_kitten_mousse_70g.png', 'Pate Tươi Cho Mèo Hỗn Hợp cho Chó Mèo Biếng Ăn được làm từ hỗn hợp cá biển và gan gà tươi nguyên chất.'),
 ('SP0002', 'Hạt Chó Trên 6 Tháng ANF 6Free Hữu Cơ', 70000, 80000, 'THH004', 'LSP001', 76, 'hat-cho-anf-6free.png', 'Dùng cho mèo trưởng thành từ 1 năm tuổi trở lên.'),
-('SP0003', 'Hạt Chó Trên 6 Tháng ANF 6Free Hữu Cơ', 60000, 75000, 'THH006', 'LSP007', 0, '1_7ee6dfab-63fe-4317-a0b3-37d951d024c3.png', 'Là một chế độ ăn sống, đảm bảo dinh dưỡng và hấp thụ tốt hơn.\r\n- Raw hoàn chỉnh cho Mèo bao gồm 86% thịt cơ, 6% xương sống, 3% gan và 5% các cơ quan khác để đạt được sự cân bằng dinh dưỡng tối ưu.\r\n- Nguồn nguyên liệu tươi ngon tiêu'),
+('SP0003', 'Thịt Tươi Hi Raw CAT Food Cho MÈO Ăn Sống (Ship Now 2h Tp.HCM)', 60000, 75000, 'THH006', 'LSP006', 0, 'thit_tuoi_hi_raw_cat_food_cho_meo_an_song.png', ' THÔNG TIN SẢN PHẨM\r\n- Là một chế độ ăn sống, đảm bảo dinh dưỡng và hấp thụ tốt hơn.\r\n- Raw hoàn chỉnh cho Mèo bao gồm 86% thịt cơ, 6% xương sống, 3% gan và 5% các cơ quan khác để đạt được sự cân bằng dinh dưỡng tối ưu.'),
 ('SP0004', 'Pate Lon Whiskas Cho Mèo Trưởng Thành 400g', 30000, 38000, 'THH003', 'LSP007', 9, 'pate-lon-whiskas-cho-meo-truong-thanh-400g-paddy-1.png', ' Đảm bảo khẩu vị thơm ngon mỗi bữa ăn.\r\nCung cấp đủ vitamin và taurine, giúp đôi mắt của mèo luôn sáng tinh anh và khỏe mạnh.\r\n- Bổ sung dưỡng chất đạm, Vitamin và khoáng chất từ cá tươi tốt cho hệ phát triển tối ưu, giúp mèo có cơ thể năng động và tràn đ'),
 ('SP0005', 'Pate Kit Cat Sữa Dê Bổ Sung Canxi Cho Mèo (Lon 85g)', 20000, 26500, 'THH002', 'LSP007', 0, 'hat-pedigree-cho-truong-thanh-vi-bo-rau-cu-paddy-1.png', '1. Đặc điểm nổi bật:\r\n- Hoàn toàn từ thịt trắng, thịt được xé nhỏ\r\n- 12 công thức là 12 hương vị'),
 ('SP0006', 'Pate Mèo Ciao 6 Vị Thơm Ngon 60g', 10000, 14000, 'THH006', 'LSP007', 18, 'pate-meo-ciao-60g.png', 'Thức Ăn Dinh Dưỡng Cho Mèo Pate Gà Mực Cua Cá Ngừ Cá Cơm Cá Hồi Ciao Gói 60g'),
-('SP0007', 'Hạt Cho Chó Nutrience Subzero Fraser Valley Dog', 100000, 150000, 'THH005', 'LSP001', 0, 'hat-nutrience-infusion-small-adult-cho-lon-giong-nho-paddy-1_1066x.png', 'Nutrience Subzero Fraser Valley cho Chó có hạt thịt tươi thơm ngon, sử dụng các nguồn nguyên liệu tự nhiên tươi sống của Canada như thịt gà Canada thả vườn, gà tây, cá hồi, cá trích, cá tuyết, gan gà, tim gà, gan gà tây, tim gà tây, gan cá tuyết và hạt th'),
-('SP0008', 'Thịt Tươi Hi Raw CAT Food Cho MÈO Ăn Sống (Ship Now 2h Tp.HCM)', 60000, 75000, 'THH006', 'LSP006', 0, '2_11614cfa-01e2-441d-ad75-1aa82f3305e7_1066x.png', ' THÔNG TIN SẢN PHẨM\r\n- Là một chế độ ăn sống, đảm bảo dinh dưỡng và hấp thụ tốt hơn.\r\n- Raw hoàn chỉnh cho Mèo bao gồm 86% thịt cơ, 6% xương sống, 3% gan và 5% các cơ quan khác để đạt được sự cân bằng dinh dưỡng tối ưu.'),
-('SP0009', 'Pate Mèo Ciao 6 Vị Thơm Ngon 60g', 10000, 14000, 'THH002', 'LSP007', 30, '2_11614cfa-01e2-441d-ad75-1aa82f3305e7_1066x.png', 'Thức Ăn Dinh Dưỡng Cho Mèo Pate Gà Mực Cua Cá Ngừ Cá Cơm Cá Hồi Ciao Gói 60g');
+('SP0007', 'Hạt Cho Chó Nutrience Subzero Fraser Valley Dog', 100000, 150000, 'THH005', 'LSP001', 0, 'hat-nutrience-infusion-small-adult-cho-lon-giong-nho-paddy-1_1066x.png', 'Nutrience Subzero Fraser Valley cho Chó có hạt thịt tươi thơm ngon, sử dụng các nguồn nguyên liệu tự nhiên tươi sống của Canada như thịt gà Canada thả vườn, gà tây, cá hồi, cá trích, cá tuyết, gan gà, tim gà, gan gà tây, tim gà tây, gan cá tuyết và hạt th');
 
 -- --------------------------------------------------------
 
@@ -350,13 +347,13 @@ CREATE TABLE `thuong_hieu` (
 --
 
 INSERT INTO `thuong_hieu` (`maThuongHieu`, `tenThuongHieu`, `logo`) VALUES
-('THH001', 'Nexgard', 'nexgard_logo_534x.png'),
+('THH001', 'Nexgard', 'nexgard_logo.png'),
 ('THH002', 'Whiskas', 'whiskas-logo.png'),
 ('THH003', 'ANF', 'anf-logo.png'),
 ('THH004', 'Nutrience', 'nutrience-logo.png'),
 ('THH005', 'Pedigree', 'pedigree-logo.png'),
 ('THH006', 'Monge', 'monge-logo.png'),
-('THH007', 'Royal Canin', 'royal-canin-logo_590d97d6-36b0-4e84-a8c0-8c5125fe7964 (1).png');
+('THH007', 'Royal Canin', 'royal-canin-logo.png');
 
 -- --------------------------------------------------------
 
