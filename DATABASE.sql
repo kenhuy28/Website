@@ -6,7 +6,7 @@ use qlpkthucung;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2023 at 03:34 PM
+-- Generation Time: Oct 26, 2023 at 06:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -87,13 +87,13 @@ CREATE TABLE `don_dat_hang` (
 --
 
 INSERT INTO `don_dat_hang` (`maDonHang`, `maKhachHang`, `ngayDat`, `ngayGiao`, `tinhTrang`, `daThanhToan`, `tongTien`, `maNhanVien`) VALUES
-('DH0001', 'KH0001', '2023-06-06 23:27:49', NULL, b'01', b'0', 280000, ''),
-('DH0002', 'KH0001', '2023-06-07 00:33:12', NULL, b'01', b'0', 280000, ''),
-('DH0003', 'KH0002', '2023-06-07 00:54:50', NULL, b'01', b'0', 140000, ''),
-('DH0004', 'KH0002', '2023-06-07 02:13:41', NULL, b'01', b'0', 133000, ''),
-('DH0005', 'KH0002', '2023-06-07 13:35:53', NULL, b'01', b'0', 280000, ''),
-('DH0006', 'KH0002', '2023-06-07 13:56:40', NULL, b'01', b'0', 293000, ''),
-('DH0007', 'KH0002', '2023-06-13 08:03:54', NULL, b'00', b'0', 38000, '');
+('DH0001', 'KH0001', '2023-06-06 23:27:49', NULL, b'01', b'0', 280000, 'AD0001'),
+('DH0002', 'KH0001', '2023-06-07 00:33:12', NULL, b'01', b'0', 280000, 'AD0001'),
+('DH0003', 'KH0002', '2023-06-07 00:54:50', NULL, b'01', b'0', 140000, 'AD0002'),
+('DH0004', 'KH0002', '2023-06-07 02:13:41', NULL, b'01', b'0', 133000, 'AD0002'),
+('DH0005', 'KH0002', '2023-06-07 13:35:53', NULL, b'01', b'0', 280000, 'AD0003'),
+('DH0006', 'KH0002', '2023-06-07 13:56:40', NULL, b'01', b'0', 293000, 'AD0003'),
+('DH0007', 'KH0002', '2023-06-13 08:03:54', NULL, b'00', b'0', 38000, 'AD0004');
 
 -- --------------------------------------------------------
 
@@ -167,10 +167,10 @@ INSERT INTO `huyen` (`maHuyen`, `tenHuyen`, `maTinh`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khanh_hang`
+-- Table structure for table `khach_hang`
 --
 
-CREATE TABLE `khanh_hang` (
+CREATE TABLE `khach_hang` (
   `maKhachHang` varchar(6) NOT NULL,
   `hoKhachHang` varchar(50) NOT NULL,
   `tenKhachHang` varchar(10) NOT NULL,
@@ -180,16 +180,16 @@ CREATE TABLE `khanh_hang` (
   `matKhau` char(80) NOT NULL,
   `email` varchar(50) NOT NULL,
   `ngaySinh` date NOT NULL,
-  `avatar` varchar(255) NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `khoiPhucMatKhau` varchar(255) DEFAULT NULL,
   `maXa` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `khanh_hang`
+-- Dumping data for table `khach_hang`
 --
 
-INSERT INTO `khanh_hang` (`maKhachHang`, `hoKhachHang`, `tenKhachHang`, `dienThoai`, `diaChiCuThe`, `tenNguoiDung`, `matKhau`, `email`, `ngaySinh`, `avatar`, `khoiPhucMatKhau`, `maXa`) VALUES
+INSERT INTO `khach_hang` (`maKhachHang`, `hoKhachHang`, `tenKhachHang`, `dienThoai`, `diaChiCuThe`, `tenNguoiDung`, `matKhau`, `email`, `ngaySinh`, `avatar`, `khoiPhucMatKhau`, `maXa`) VALUES
 ('KH0001', 'Võ Thanh', 'Hào', '0358932774', '171/Nguyễn Văn Chiểu', 'thanhhao', 'qpalqpal', 'hao@gmail.com', '2002-01-01', 'thanhhao.png', NULL, 'X00007'),
 ('KH0002', 'Trần Cao', 'Phong', '0514684932', '171/Nguyễn Văn Chiểu', 'caophong', 'qpalqpal', 'phong@gmail.com', '2002-01-01', 'caophong.png', NULL, 'X00012'),
 ('KH0003', 'Lê Bảo', 'Khoa', '0867984654', '171/Nguyễn Văn Chiểu', 'baokhoa', 'qpalqpal', 'khoa@gmail.com', '2003-01-30', 'baokhoa.png', NULL, 'X00008');
@@ -484,7 +484,8 @@ ALTER TABLE `chi_tiet_phieu_nhap`
 --
 ALTER TABLE `don_dat_hang`
   ADD PRIMARY KEY (`maDonHang`),
-  ADD KEY `maKhachHang` (`maKhachHang`);
+  ADD KEY `maKhachHang` (`maKhachHang`),
+  ADD KEY `maNhanVien` (`maNhanVien`);
 
 --
 -- Indexes for table `giam_gia`
@@ -501,9 +502,9 @@ ALTER TABLE `huyen`
   ADD KEY `maTinh` (`maTinh`);
 
 --
--- Indexes for table `khanh_hang`
+-- Indexes for table `khach_hang`
 --
-ALTER TABLE `khanh_hang`
+ALTER TABLE `khach_hang`
   ADD PRIMARY KEY (`maKhachHang`),
   ADD KEY `maXa` (`maXa`);
 
@@ -583,7 +584,8 @@ ALTER TABLE `chi_tiet_phieu_nhap`
 -- Constraints for table `don_dat_hang`
 --
 ALTER TABLE `don_dat_hang`
-  ADD CONSTRAINT `don_dat_hang_ibfk_1` FOREIGN KEY (`maKhachHang`) REFERENCES `khanh_hang` (`maKhachHang`);
+  ADD CONSTRAINT `don_dat_hang_ibfk_1` FOREIGN KEY (`maKhachHang`) REFERENCES `khach_hang` (`maKhachHang`),
+  ADD CONSTRAINT `don_dat_hang_ibfk_2` FOREIGN KEY (`maNhanVien`) REFERENCES `nhan_vien` (`maNhanVien`);
 
 --
 -- Constraints for table `giam_gia`
@@ -598,10 +600,10 @@ ALTER TABLE `huyen`
   ADD CONSTRAINT `huyen_ibfk_1` FOREIGN KEY (`maTinh`) REFERENCES `tinh` (`maTinh`);
 
 --
--- Constraints for table `khanh_hang`
+-- Constraints for table `khach_hang`
 --
-ALTER TABLE `khanh_hang`
-  ADD CONSTRAINT `khanh_hang_ibfk_1` FOREIGN KEY (`maXa`) REFERENCES `xa` (`maXa`);
+ALTER TABLE `khach_hang`
+  ADD CONSTRAINT `khach_hang_ibfk_1` FOREIGN KEY (`maXa`) REFERENCES `xa` (`maXa`);
 
 --
 -- Constraints for table `nhan_vien`
