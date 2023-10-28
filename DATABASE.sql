@@ -248,7 +248,6 @@ CREATE TABLE `nhan_vien` (
   `maNhanVien` varchar(6) NOT NULL,
   `ho` varchar(50) NOT NULL,
   `ten` varchar(10) NOT NULL,
-  'hinhAnh' varchar(255) NOT NULL,
   `ngaySinh` date DEFAULT NULL,
   `diaChiCuThe` varchar(255) NOT NULL,
   `dienThoai` varchar(10) NOT NULL,
