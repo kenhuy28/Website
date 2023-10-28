@@ -6,7 +6,7 @@ use qlpkthucung;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2023 at 04:43 PM
+-- Generation Time: Oct 28, 2023 at 04:57 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -350,13 +350,13 @@ CREATE TABLE `thuong_hieu` (
 --
 
 INSERT INTO `thuong_hieu` (`maThuongHieu`, `tenThuongHieu`, `logo`) VALUES
-('THH001', 'Nexgard', 'nexgard_logo.png'),
+('THH001', 'Nexgard', 'nexgard_logo_534x.png'),
 ('THH002', 'Whiskas', 'whiskas-logo.png'),
 ('THH003', 'ANF', 'anf-logo.png'),
 ('THH004', 'Nutrience', 'nutrience-logo.png'),
 ('THH005', 'Pedigree', 'pedigree-logo.png'),
 ('THH006', 'Monge', 'monge-logo.png'),
-('THH007', 'Royal Canin', 'royal-canin-logo.png');
+('THH007', 'Royal Canin', 'royal-canin-logo_590d97d6-36b0-4e84-a8c0-8c5125fe7964 (1).png');
 
 -- --------------------------------------------------------
 
