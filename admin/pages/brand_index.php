@@ -6,7 +6,7 @@ include '../templates/nav_admin1.php';
 <div class="body" style="margin-top: 15px">
     <div class="table_header">
         <div class="add_admin">
-            <a href="trademark_admin_create.php">
+            <a href="brand_create.php">
                 <i class="fa-solid fa-user-plus"></i>
                 <div class="add_title">
                     Thêm thương hiệu
@@ -26,7 +26,8 @@ include '../templates/nav_admin1.php';
         <tbody>
             <?php
             // Calculate the total number of pages.
-            $rowOfPage = 5;
+            $rowOfPage = 10;
+
             $totalRows = $dbh->query('SELECT COUNT(*) FROM thuong_hieu')->fetchColumn();
             $totalPages = ceil($totalRows / $rowOfPage);
 

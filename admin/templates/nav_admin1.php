@@ -76,7 +76,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/trademark_index.php"; ?>">
+                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/brand_index.php"; ?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-trademark"></i>
                         </div>
