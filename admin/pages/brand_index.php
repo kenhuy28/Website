@@ -50,8 +50,8 @@ include '../templates/nav_admin1.php';
                                 <img src=\"" . $_SESSION['rootPath'] . "/../assets/img/thuong_hieu/" . $row->logo . "\"style=\"width: 231px; height: 74px; \"
                             </td>
                             <td>
-                                <a href=\"trademark_admin_edit.php\"><i class=\"fa-solid fa-pen-to-square edit\"></i></a>
-                                <a href=\"trademark_admin_delete.php\"> <i class=\"fa-solid fa-xmark remove\"></i></a>
+                                <a href=\"brand_edit.php?id=" . $row->maThuongHieu . "\"><i class=\"fa-solid fa-pen-to-square edit\"></i></a>
+                                <a href=\"brand_delete.php?id=" . $row->maThuongHieu . "\"> <i class=\"fa-solid fa-xmark remove\"></i></a>
                             </td>
                         </tr>";
                 }
