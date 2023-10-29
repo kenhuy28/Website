@@ -2,6 +2,7 @@
 // session_start();
 include '../templates/nav_admin1.php';
 ?>
+
 <div class="body" style="margin-top: 15px">
     <div class="table_header">
         <div class="add_admin">
@@ -24,7 +25,17 @@ include '../templates/nav_admin1.php';
         </thead>
         <tbody>
             <?php
-            $query = "SELECT * FROM thuong_hieu";
+            // Calculate the total number of pages.
+            $rowOfPage = 5;
+            $totalRows = $dbh->query('SELECT COUNT(*) FROM thuong_hieu')->fetchColumn();
+            $totalPages = ceil($totalRows / $rowOfPage);
+
+            // Determine the current page number.
+            $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+
+            // Get the rows for the current page.
+            
+            $query = "SELECT * FROM thuong_hieu LIMIT " . $rowOfPage . " OFFSET " . ($currentPage - 1) * $rowOfPage;
             $statement = $dbh->prepare($query);
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_OBJ);
@@ -52,11 +63,38 @@ include '../templates/nav_admin1.php';
 
         </tbody>
     </table>
-    <style>
-        .pagination {
-            display: inline-block;
-            margin: auto;
+    <div align="center" style="margin-top:10px" class="menu-wrapper">
+        <ul class="pagination menu">
+            <li>
+                <a href="?page=1">&laquo;</a>
+            </li>
+            <?php
+            for ($i = 1; $i <= $totalPages; $i++) {
+                if ($i != $currentPage) {
+                    echo "<li><a href=\"?page=" . $i . "\">" . $i . "</a></li>";
+                } else {
+                    echo "<li><a class=\"active\" href=\"?page=" . $i . "\">" . $i . "</a></li>";
+                }
 
+            }
+            echo "<li>
+            <a href=\"?page=$totalPages\">&raquo;</a>
+        </li>";
+            ?>
+
+        </ul>
+    </div>
+
+    <style>
+        .menu-wrapper {
+
+            height: auto;
+            width: 100%;
+        }
+
+        .menu {
+            margin: 0;
+            padding: 0 0 0 20px;
         }
 
         .pagination a {
@@ -75,22 +113,19 @@ include '../templates/nav_admin1.php';
             border: 1px solid #244cbb;
         }
 
+        .menu li {
+            display: inline-block;
+            margin: 5px;
+        }
+
         .pagination a:hover:not(.active) {
             background-color: #ddd;
         }
+
+        ul {
+            list-style-type: none;
+        }
     </style>
-    <div align="center">
-        <ul class="page pagination">
-            <a href="#">&laquo;</a>
-            <a href="#">1</a>
-            <a href="#" class="active">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">7</a>
-            <a href="#">&raquo;</a>
-        </ul>
-    </div>
+
 </div>
 <?php include '../templates/nav_admin2.php' ?>
