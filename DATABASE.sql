@@ -6,7 +6,7 @@ use qlpkthucung;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2023 at 06:37 PM
+-- Generation Time: Oct 28, 2023 at 05:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -65,6 +65,16 @@ CREATE TABLE `chi_tiet_phieu_nhap` (
   `donGia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `chi_tiet_phieu_nhap`
+--
+
+INSERT INTO `chi_tiet_phieu_nhap` (`maPhieuNhap`, `maSanPham`, `soLuong`, `donGia`) VALUES
+('PN0001', 'SP0002', 9, 10000),
+('PN0001', 'SP0004', 6, 30000),
+('PN0002', 'SP0005', 3, 20000),
+('PN0002', 'SP0006', 11, 10000);
+
 -- --------------------------------------------------------
 
 --
@@ -116,7 +126,7 @@ CREATE TABLE `giam_gia` (
 
 INSERT INTO `giam_gia` (`maGiamGia`, `maSanPham`, `loaiGiamGia`, `giaTriGiam`, `ngayBatDau`, `ngayKetThuc`) VALUES
 ('GG0001', 'SP0001', b'00', 5, '2023-11-07', '2023-11-15'),
-('GG0002', 'SP0003', b'00', 5, '2023-11-09', '2023-11-12');
+('GG0002', 'SP0006', b'00', 5, '2023-11-09', '2023-11-12');
 
 -- --------------------------------------------------------
 
@@ -248,7 +258,7 @@ CREATE TABLE `nhan_vien` (
   `maNhanVien` varchar(6) NOT NULL,
   `ho` varchar(50) NOT NULL,
   `ten` varchar(10) NOT NULL,
-  `ngaySinh` date DEFAULT NULL,
+  `ngaySinh` date NOT NULL,
   `diaChiCuThe` varchar(255) NOT NULL,
   `dienThoai` varchar(10) NOT NULL,
   `maLoai` varchar(6) NOT NULL,
@@ -256,7 +266,7 @@ CREATE TABLE `nhan_vien` (
   `matKhau` char(80) NOT NULL,
   `avatar` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `maXa` varchar(6) DEFAULT NULL
+  `maXa` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -264,10 +274,10 @@ CREATE TABLE `nhan_vien` (
 --
 
 INSERT INTO `nhan_vien` (`maNhanVien`, `ho`, `ten`, `ngaySinh`, `diaChiCuThe`, `dienThoai`, `maLoai`, `tenNguoiDung`, `matKhau`, `avatar`, `email`, `maXa`) VALUES
-('AD0001', 'Nguyễn Hữu', 'Lực', NULL, 'Khánh Hòa', '0856202788', 'LTK001', 'huuluc', 'qpalqpal', 'huuluc.png', 'huuluc@gmail.com', NULL),
-('AD0002', 'Ngô Tuấn', 'Lam', NULL, 'Phú Yên', '0347693333', 'LTK001', 'tuanlam', 'qpalqpal', 'tuanlam.png', 'tuanlam@gmail.com', NULL),
-('AD0003', 'Nguyễn Lê', 'Tâm', NULL, 'Khánh Hòa', '0924494119', 'LTK001', 'letam', 'qpalqpal', 'letam.png', 'letam@gmail.com', NULL),
-('AD0004', 'Phạm Phương', 'Nam', NULL, 'Đăk Lăk', '0867566932', 'LTK001', 'nam5520', 'qpalqpal', 'nam5520.png', 'nam5520000@gmail.com', NULL);
+('AD0001', 'Nguyễn Hữu', 'Lực', '2002-10-09', 'Khánh Hòa', '0856202788', 'LTK001', 'huuluc', 'qpalqpal', 'huuluc.png', 'huuluc@gmail.com', 'X00018'),
+('AD0002', 'Ngô Tuấn', 'Lam', '2002-10-22', 'Phú Yên', '0347693333', 'LTK002', 'tuanlam', 'qpalqpal', 'tuanlam.png', 'tuanlam@gmail.com', 'X00018'),
+('AD0003', 'Nguyễn Lê', 'Tâm', '2002-05-10', 'Khánh Hòa', '0924494119', 'LTK002', 'letam', 'qpalqpal', 'letam.png', 'letam@gmail.com', 'X00018'),
+('AD0004', 'Phạm Phương', 'Nam', '2000-10-11', 'Đăk Lăk', '0867566932', 'LTK003', 'nam5520', 'qpalqpal', 'nam5520.png', 'nam5520000@gmail.com', 'X00018');
 
 -- --------------------------------------------------------
 
@@ -280,6 +290,14 @@ CREATE TABLE `phieu_nhap` (
   `ngayNhap` date NOT NULL,
   `maNhanVien` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `phieu_nhap`
+--
+
+INSERT INTO `phieu_nhap` (`maPhieuNhap`, `ngayNhap`, `maNhanVien`) VALUES
+('PN0001', '2023-06-09', 'AD0004'),
+('PN0002', '2023-08-09', 'AD0004');
 
 -- --------------------------------------------------------
 
@@ -304,15 +322,13 @@ CREATE TABLE `san_pham` (
 --
 
 INSERT INTO `san_pham` (`maSanPham`, `tenSanPham`, `donGiaMua`, `donGiaBan`, `maThuongHieu`, `maLoai`, `soLuong`, `hinhAnh`, `moTa`) VALUES
-('SP0001', 'Pate Cho Mèo Con Dạng Kem Nekko Kitten Mousse 70g', 100000, 140000, 'THH002', 'LSP002', 92, 'pate-kit-cat-sua-de-bo-sung-canxi-cho-meo-lon-85g-paddy-2_1066x.png', 'Pate Tươi Cho Mèo Hỗn Hợp cho Chó Mèo Biếng Ăn được làm từ hỗn hợp cá biển và gan gà tươi nguyên chất.'),
+('SP0001', 'Pate Cho Mèo Con Dạng Kem Nekko Kitten Mousse 70g', 100000, 140000, 'THH002', 'LSP002', 92, 'pate_cho_meo_con_dang_kem_nekko_kitten_mousse_70g.png', 'Pate Tươi Cho Mèo Hỗn Hợp cho Chó Mèo Biếng Ăn được làm từ hỗn hợp cá biển và gan gà tươi nguyên chất.'),
 ('SP0002', 'Hạt Chó Trên 6 Tháng ANF 6Free Hữu Cơ', 70000, 80000, 'THH004', 'LSP001', 76, 'hat-cho-anf-6free.png', 'Dùng cho mèo trưởng thành từ 1 năm tuổi trở lên.'),
-('SP0003', 'Hạt Chó Trên 6 Tháng ANF 6Free Hữu Cơ', 60000, 75000, 'THH006', 'LSP007', 0, '1_7ee6dfab-63fe-4317-a0b3-37d951d024c3.png', 'Là một chế độ ăn sống, đảm bảo dinh dưỡng và hấp thụ tốt hơn.\r\n- Raw hoàn chỉnh cho Mèo bao gồm 86% thịt cơ, 6% xương sống, 3% gan và 5% các cơ quan khác để đạt được sự cân bằng dinh dưỡng tối ưu.\r\n- Nguồn nguyên liệu tươi ngon tiêu'),
+('SP0003', 'Thịt Tươi Hi Raw CAT Food Cho MÈO Ăn Sống (Ship Now 2h Tp.HCM)', 60000, 75000, 'THH006', 'LSP006', 0, 'thit_tuoi_hi_raw_cat_food_cho_meo_an_song.png', ' THÔNG TIN SẢN PHẨM\r\n- Là một chế độ ăn sống, đảm bảo dinh dưỡng và hấp thụ tốt hơn.\r\n- Raw hoàn chỉnh cho Mèo bao gồm 86% thịt cơ, 6% xương sống, 3% gan và 5% các cơ quan khác để đạt được sự cân bằng dinh dưỡng tối ưu.'),
 ('SP0004', 'Pate Lon Whiskas Cho Mèo Trưởng Thành 400g', 30000, 38000, 'THH003', 'LSP007', 9, 'pate-lon-whiskas-cho-meo-truong-thanh-400g-paddy-1.png', ' Đảm bảo khẩu vị thơm ngon mỗi bữa ăn.\r\nCung cấp đủ vitamin và taurine, giúp đôi mắt của mèo luôn sáng tinh anh và khỏe mạnh.\r\n- Bổ sung dưỡng chất đạm, Vitamin và khoáng chất từ cá tươi tốt cho hệ phát triển tối ưu, giúp mèo có cơ thể năng động và tràn đ'),
-('SP0005', 'Pate Kit Cat Sữa Dê Bổ Sung Canxi Cho Mèo (Lon 85g)', 20000, 26500, 'THH002', 'LSP007', 0, 'hat-pedigree-cho-truong-thanh-vi-bo-rau-cu-paddy-1.png', '1. Đặc điểm nổi bật:\r\n\r\n- Hoàn toàn từ thịt trắng, thịt được xé nhỏ\r\n- 12 công thức là 12 hương vị'),
+('SP0005', 'Pate Kit Cat Sữa Dê Bổ Sung Canxi Cho Mèo (Lon 85g)', 20000, 26500, 'THH002', 'LSP007', 0, 'hat-pedigree-cho-truong-thanh-vi-bo-rau-cu-paddy-1.png', '1. Đặc điểm nổi bật:\r\n- Hoàn toàn từ thịt trắng, thịt được xé nhỏ\r\n- 12 công thức là 12 hương vị'),
 ('SP0006', 'Pate Mèo Ciao 6 Vị Thơm Ngon 60g', 10000, 14000, 'THH006', 'LSP007', 18, 'pate-meo-ciao-60g.png', 'Thức Ăn Dinh Dưỡng Cho Mèo Pate Gà Mực Cua Cá Ngừ Cá Cơm Cá Hồi Ciao Gói 60g'),
-('SP0007', 'Hạt Cho Chó Nutrience Subzero Fraser Valley Dog', 100000, 150000, 'THH005', 'LSP001', 0, 'hat-nutrience-infusion-small-adult-cho-lon-giong-nho-paddy-1_1066x.png', 'Nutrience Subzero Fraser Valley cho Chó có hạt thịt tươi thơm ngon, sử dụng các nguồn nguyên liệu tự nhiên tươi sống của Canada như thịt gà Canada thả vườn, gà tây, cá hồi, cá trích, cá tuyết, gan gà, tim gà, gan gà tây, tim gà tây, gan cá tuyết và hạt th'),
-('SP0008', 'Thịt Tươi Hi Raw CAT Food Cho MÈO Ăn Sống (Ship Now 2h Tp.HCM)', 60000, 75000, 'THH006', 'LSP006', 0, '2_11614cfa-01e2-441d-ad75-1aa82f3305e7_1066x.png', ' THÔNG TIN SẢN PHẨM\r\n- Là một chế độ ăn sống, đảm bảo dinh dưỡng và hấp thụ tốt hơn.\r\n- Raw hoàn chỉnh cho Mèo bao gồm 86% thịt cơ, 6% xương sống, 3% gan và 5% các cơ quan khác để đạt được sự cân bằng dinh dưỡng tối ưu.'),
-('SP0009', 'Pate Mèo Ciao 6 Vị Thơm Ngon 60g', 10000, 14000, 'THH002', 'LSP007', 30, '2_11614cfa-01e2-441d-ad75-1aa82f3305e7_1066x.png', 'Thức Ăn Dinh Dưỡng Cho Mèo Pate Gà Mực Cua Cá Ngừ Cá Cơm Cá Hồi Ciao Gói 60g');
+('SP0007', 'Hạt Cho Chó Nutrience Subzero Fraser Valley Dog', 100000, 150000, 'THH005', 'LSP001', 0, 'hat-nutrience-infusion-small-adult-cho-lon-giong-nho-paddy-1_1066x.png', 'Nutrience Subzero Fraser Valley cho Chó có hạt thịt tươi thơm ngon, sử dụng các nguồn nguyên liệu tự nhiên tươi sống của Canada như thịt gà Canada thả vườn, gà tây, cá hồi, cá trích, cá tuyết, gan gà, tim gà, gan gà tây, tim gà tây, gan cá tuyết và hạt th');
 
 -- --------------------------------------------------------
 
