@@ -28,6 +28,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
     <link
         href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,600;0,700;0,800;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         .right {
             overflow-y: auto;
