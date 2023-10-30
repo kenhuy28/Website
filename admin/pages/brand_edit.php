@@ -80,6 +80,7 @@ if (isset($_POST["save"])) {
         </form>
     </div>
 </div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Mong muốn của chúng ta
@@ -90,17 +91,22 @@ if (isset($_POST["save"])) {
             rules: [
                 Validator.isRequired('#thuonghieu', 'Vui lòng nhập tên thương hiệu!'),
             ],
+            onSubmit: function (data) {
+                // Call API
+                //console.log(data);
+            }
         });
     });
+
     const img_thuonghieu = document.querySelector("#img_thuonghieu");
     const custom_file_img_display = document.querySelector("#custom-file-img-display");
-    //     img_thuonghieu.onchange = function (e) {
-    //         const file = e.target.files[0];
-    //         const reader = new FileReader();
-    //         reader.onload = (e) => {
-    //             custom_file_img_display.src = e.target.result;
-    //         };
-    //         reader.readAsDataURL(file);
-    //     };
-    // </script>
+    img_thuonghieu.onchange = function (e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            custom_file_img_display.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    };
+</script>
 <?php include '../templates/nav_admin2.php' ?>
