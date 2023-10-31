@@ -2,7 +2,7 @@
 //tạo mã phiếu tự động
 $maPhieu = "PN";
 
-$query = "SELECT COUNT(*) FROM `phieu_nhap`";
+$query = "SELECT MAX(CAST(SUBSTRING(`maPhieuNhap`, 3) AS SIGNED)) AS max_id FROM `phieu_nhap`";
 $statement = $dbh->prepare($query);
 $statement->execute();
 
