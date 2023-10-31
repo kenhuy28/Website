@@ -157,7 +157,7 @@
             </div>
         </div> -->
 
-<script>
+<!-- <script>
     const $ = document.querySelector.bind(document);
     const login_user = $("#profile_user");
     const login_flex = $("#login_flex");
@@ -177,7 +177,7 @@
     };
 
 
-</script>
+</script> -->
 
 
-<script src="<?php echo $rootPath . "assets/js/app.js" ?>"></script>
+<script src="../assets/js/app.js"></script>
