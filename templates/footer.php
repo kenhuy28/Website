@@ -155,29 +155,7 @@
                 <a href="@Url.Action("dangxuat", "Users")"><input type="submit" value="Đổi mật khẩu" class="button_add_admin" /></a>
                 <a href="@Url.Action("dangxuat", "Users")"><input type="submit" value="Đăng xuất" class="button_add_admin" /></a>
             </div>
-        </div> -->
-
-<script>
-    const $ = document.querySelector.bind(document);
-    const login_user = $("#profile_user");
-    const login_flex = $("#login_flex");
-    const exit_login_flex = $("#exit_login_flex");
-    const login_flex_right = $("#login_flex_right");
-    var isLogin_flex = false;
-    login_user.onclick = () => {
-        isLogin_flex = true;
-        login_flex.style.display = "block";
-        login_flex_right.style.right = "0";
-
-    };
-    exit_login_flex.onclick = () => {
-        isLogin_flex = false;
-        login_flex.style.display = "none";
-        login_flex_right.style.right = "-360px";
-    };
+        </div> 
+-->
 
 
-</script>
-
-
-<script src="<?php echo $rootPath . "assets/js/app.js" ?>"></script>
