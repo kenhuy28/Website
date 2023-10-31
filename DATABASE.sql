@@ -6,7 +6,7 @@ use qlpkthucung;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2023 at 05:28 PM
+-- Generation Time: Oct 29, 2023 at 04:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -127,6 +127,29 @@ CREATE TABLE `giam_gia` (
 INSERT INTO `giam_gia` (`maGiamGia`, `maSanPham`, `loaiGiamGia`, `giaTriGiam`, `ngayBatDau`, `ngayKetThuc`) VALUES
 ('GG0001', 'SP0001', b'00', 5, '2023-11-07', '2023-11-15'),
 ('GG0002', 'SP0006', b'00', 5, '2023-11-09', '2023-11-12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gio_hang`
+--
+
+CREATE TABLE `gio_hang` (
+  `maKhachHang` varchar(6) NOT NULL,
+  `maSanPham` varchar(6) NOT NULL,
+  `soLuong` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `gio_hang`
+--
+
+INSERT INTO `gio_hang` (`maKhachHang`, `maSanPham`, `soLuong`) VALUES
+('KH0001', 'SP0002', 3),
+('KH0001', 'SP0004', 4),
+('KH0001', 'SP0006', 3),
+('KH0002', 'SP0003', 4),
+('KH0002', 'SP0005', 1);
 
 -- --------------------------------------------------------
 
@@ -511,6 +534,13 @@ ALTER TABLE `giam_gia`
   ADD KEY `maSanPham` (`maSanPham`);
 
 --
+-- Indexes for table `gio_hang`
+--
+ALTER TABLE `gio_hang`
+  ADD PRIMARY KEY (`maKhachHang`,`maSanPham`),
+  ADD KEY `maSanPham` (`maSanPham`);
+
+--
 -- Indexes for table `huyen`
 --
 ALTER TABLE `huyen`
@@ -608,6 +638,13 @@ ALTER TABLE `don_dat_hang`
 --
 ALTER TABLE `giam_gia`
   ADD CONSTRAINT `giam_gia_ibfk_1` FOREIGN KEY (`maSanPham`) REFERENCES `san_pham` (`maSanPham`);
+
+--
+-- Constraints for table `gio_hang`
+--
+ALTER TABLE `gio_hang`
+  ADD CONSTRAINT `gio_hang_ibfk_1` FOREIGN KEY (`maKhachHang`) REFERENCES `khach_hang` (`maKhachHang`),
+  ADD CONSTRAINT `gio_hang_ibfk_2` FOREIGN KEY (`maSanPham`) REFERENCES `san_pham` (`maSanPham`);
 
 --
 -- Constraints for table `huyen`
