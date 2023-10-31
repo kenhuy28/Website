@@ -13,8 +13,7 @@ include $rootPath . '/includes/config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phụ kiện thú cưng</title>
-    <link rel="icon" href="./assets/img/logo/header_logo.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="icon" href="../assets/img/logo/header_logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/base.css" ?> ">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/main2.css" ?>">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/grid.css" ?>">

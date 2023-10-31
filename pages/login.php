@@ -3,7 +3,7 @@
 <div class="login_flex_right_title">
     <h6>Đăng Nhập</h6>
 </div>
-<form action="" class="create_admin_form">
+<form action="login.php" class="create_admin_form" id="form-2">
     <div class="form_field">
         <label for="" class="name_form_field">Tài khoản : </label>
         <input type="text" class="textfile" name="tendn" id="taikhoan">
@@ -22,4 +22,22 @@
     </a>
 </form>
 </div>
+<script src="../assets/js/app.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mong muốn của chúng ta
+            Validator({
+                form: '#form-2',
+                formGroupSelector: '.form_field',
+                errorSelector: '.error_message',
+                rules: [
+                    Validator.isRequired('#taikhoan', 'Vui lòng nhập tên thương hiệu!'),
+                ],
+                onSubmit: function (data) {
+                    // Call API
+                    //console.log(data);
+                }
+            });
+        });
+    </script>
 <?php include '../templates/footer.php' ?>
