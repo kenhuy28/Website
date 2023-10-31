@@ -1,13 +1,7 @@
 <?php
 include '../templates/nav_admin1.php';
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-$brand_id = $_GET['id'];
-
-$statement = $dbh->prepare("SELECT * FROM `thuong_hieu` WHERE `maThuongHieu` = '" . $brand_id . "'");
-$statement->execute();
-$statement->setFetchMode(PDO::FETCH_OBJ);
-$result = $statement->fetch();
+//lấy dữ liệu thương hiệu
+include '../includes/get_brand_data_from_id.php';
 
 if (isset($_POST["save"])) {
     echo "nhấn";

@@ -1,29 +1,9 @@
 <?php
 include '../templates/nav_admin1.php';
-$brand_id = $_GET['id'];
-
-$statement = $dbh->prepare("SELECT * FROM `thuong_hieu` WHERE `maThuongHieu` = '" . $brand_id . "'");
-$statement->execute();
-$statement->setFetchMode(PDO::FETCH_OBJ);
-$result = $statement->fetch();
-if (isset($_POST["delete"])) {
-    $statement = $dbh->prepare("SELECT * FROM `san_pham` WHERE `maThuongHieu` = '" . $brand_id . "'");
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $result = $statement->fetch();
-
-    if ($statement->rowCount() == 0) {
-        $statement = $dbh->prepare("DELETE FROM `thương_hieu` WHERE `maThuongHieu` = '" . $brand_id . "'");
-        $statement->execute();
-
-    } else {
-        echo "<script>
-            alert(\"Thuong hiệu đang có sản phẩm kinh doanh\");
-        </script>";
-
-    }
-    echo '<script>window.location.href = "brand_index.php";</script>';
-}
+//lấy dữ liệu từ id
+include '../includes/get_brand_data_from_id.php';
+//xử lý xóa thương hiệu
+include '../includes/delete_brand_from_id.php';
 ?>
 <div class="body" style="margin-top: 15px">
     <div class="detail_admin">
