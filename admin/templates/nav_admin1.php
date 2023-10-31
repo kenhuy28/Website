@@ -72,7 +72,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                             <i class="fa-solid fa-truck-fast"></i>
                         </div>
                         <div class="nav_li_title">
-                            Đơn đạt hàng
+                            Đơn đặt hàng
                         </div>
                     </a>
                 </li>
@@ -114,7 +114,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                             <i class="fa-solid fa-store"></i>
                         </div>
                         <div class="nav_li_title">
-                            Kho sản phẩm
+                            Nhập kho
                         </div>
 
                     </a>
