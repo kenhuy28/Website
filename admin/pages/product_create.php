@@ -1,4 +1,7 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php
+include '../templates/nav_admin1.php';
+include '../includes/get_new_product_id.php'
+    ?>
 <style>
     input,
     select,
@@ -17,7 +20,7 @@
         <form action="" method="post">
             <div class="form_field">
                 <label for="" class="name_form_field">Mã sản phẩm : </label>
-                <input type="text" class="textfile" readonly value="@ViewBag.sanpham" name="MASP">
+                <input type="text" class="textfile" readonly value="<?php echo $maSanPham ?>" name="MASP">
             </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Tên sản phẩm : </label>
@@ -38,10 +41,7 @@
                 <label for="" class="name_form_field">Thương hiệu : </label>
                 <select class="textfile" name="MATH" id="thuonghieu">
                     <option value="">Chọn thương hiệu</option>
-                    @foreach (var item in ViewBag.ThuongHieu)
-                    {
-                    <option value="@item.MATH">@item.TENTH</option>
-                    }
+                    <?php include '../includes/show_brand_in_option.php' ?>
                 </select>
                 <span class="error_message"></span>
             </div>
@@ -49,10 +49,7 @@
                 <label for="" class="name_form_field">Loại : </label>
                 <select class="textfile" name="MALOAI" id="loai">
                     <option value="">Chọn loại</option>
-                    @foreach (var item in ViewBag.Loai)
-                    {
-                    <option value="@item.MALOAI">@item.TENLOAI</option>
-                    }
+                    <?php include '../includes/show_type_in_option.php' ?>
                 </select>
                 <span class="error_message"></span>
             </div>

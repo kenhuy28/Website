@@ -75,7 +75,8 @@ include '../includes/get_product_data_from_id.php';
 
             <div class="button">
                 <input type="submit" value="Cập nhật" class="button_add_admin" />
-                <a href="product_admin_index.php"><input type="button" value="Quay lại" class="button_add_admin" /></a>
+                <a href="javascript:history.go(-1);"><input type="button" value="Quay lại"
+                        class="button_add_admin" /></a>
             </div>
 
         </form>
