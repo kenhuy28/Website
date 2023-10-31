@@ -25,7 +25,7 @@ include '../includes/get_new_type_id.php';
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Tên loại: </label>
-            <input type="text" class="textfile" id="mausac" name="tenLoai">
+            <input type="text" class="textfile" id="tenloai" name="tenLoai">
             <span class="error_message"></span>
         </div>
         <div class="button">
@@ -42,7 +42,7 @@ include '../includes/get_new_type_id.php';
             formGroupSelector: '.form_field',
             errorSelector: '.error_message',
             rules: [
-                Validator.isRequired('#mausac', 'Vui lòng nhập tên màu sắc!'),
+                Validator.isRequired('#tenloai', 'Vui lòng nhập tên loại!'),
             ],
             onSubmit: function (data) {
                 // Call API

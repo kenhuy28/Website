@@ -18,14 +18,14 @@ include '../includes/get_type_data_from_id.php';
 <div class="create_admin">
     <h1 class="Title_Admin_create_form">Chỉnh sửa loại sản phẩm</h1>
     <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
-    <form action="../includes/edit_type.php" method="post">
+    <form action="../includes/edit_type.php" method="post" id="form">
         <div class="form_field">
             <label for="" class="name_form_field">Mã loại: </label>
             <input type="text" class="textfile" readonly value="<?php echo $result->maLoai ?>" name="maLoai">
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Tên loại: </label>
-            <input type="text" class="textfile" id="mausac" value="<?php echo $result->tenLoai ?>" name="tenLoai">
+            <input type="text" class="textfile" id="tenloai" value="<?php echo $result->tenLoai ?>" name="tenLoai">
             <span class="error_message"></span>
         </div>
         <div class="button">
