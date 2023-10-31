@@ -6,13 +6,13 @@
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="assest/img/banner/banner (1).png" alt="Hình ảnh 1">
+        <img src="assets/img/banner/banner (1).png" alt="Hình ảnh 1">
       </div>
       <div class="swiper-slide">
-        <img src="assest/img/banner/banner (2).png" alt="Hình ảnh 2">
+        <img src="assets/img/banner/banner (2).png" alt="Hình ảnh 2">
       </div>
       <div class="swiper-slide">
-        <img src="assest/img/banner/banner (3).png" alt="Hình ảnh 3">
+        <img src="assets/img/banner/banner (3).png" alt="Hình ảnh 3">
       </div>
       <div class="swiper-pagination">
         <div class="swiper-pagination_page">
@@ -60,8 +60,8 @@
 <div class="MuaThucCung">
   <h6>Mua sắm theo giống thú cưng</h6>
   <div class="img_thucung">
-    <img src="assest/img/banner/dog_banner_1370x.png" alt="">
-    <img src="assest/img/banner/cat_banner_1370x.png" alt="">
+    <img src="assets/img/banner/dog_banner_1370x.png" alt="">
+    <img src="assets/img/banner/cat_banner_1370x.png" alt="">
   </div>
 </div>
 <div class="boSuutap">

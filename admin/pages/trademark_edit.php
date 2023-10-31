@@ -17,31 +17,18 @@
         <form action="" method="post">
             <div class="form_field">
                 <label for="" class="name_form_field">Mã thương hiệu : </label>
-                <input type="text" class="textfile" readonly value="@Model.MATH" name="MATH">
+                <input type="text" class="textfile" readonly name="MATH">
             </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Tên thương hiệu : </label>
-                <input type="text" class="textfile" id="thuonghieu" name="TENTH" value="@Model.TENTH">
+                <input type="text" class="textfile" id="thuonghieu" name="TENTH">
                 <span class="error_message"></span>
-            </div>
-            <div class="form_field">
-                <label for="" class="name_form_field">Tình trạng hiển thị : </label>
-                <div class="check_anhien">
-                    <div class="show_anhien_radio">
-                        <input type="radio" name="ANHIEN" value="True" checked class="check_anhien_radio">
-                        <label>Hiển thị logo</label>
-                    </div>
-                    <div class="show_anhien_radio">
-                        <input type="radio" name="ANHIEN" value="False" class="check_anhien_radio">
-                        <label>Ẩn logo</label>
-                    </div>
-                </div>
             </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Logo : </label>
                 <div class="custom-file">
                     <div class="form_field">
-                        <input value="@Model.LOGO" type="file" class="custom-file-input" id="img_thuonghieu"
+                        <input type="file" class="custom-file-input" id="img_thuonghieu"
                             name="fileUpload">
                         <span class="error_message"></span>
                     </div>
