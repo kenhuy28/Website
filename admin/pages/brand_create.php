@@ -1,4 +1,8 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php
+include '../templates/nav_admin1.php';
+include '../includes/get_new_brand_id.php';
+
+?>
 <style>
     input,
     select,
@@ -17,7 +21,7 @@
         <form active="" method="post">
             <div class="form_field">
                 <label for="" class="name_form_field">Mã thương hiệu : </label>
-                <input type="text" class="textfile" readonly value="@ViewBag.MaThuongHieu" name="MATH">
+                <input type="text" class="textfile" readonly value="<?php echo $maThuongHieu ?>" name="MATH">
             </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Tên thương hiệu : </label>
