@@ -18,7 +18,7 @@ include '../includes/get_new_type_id.php';
 <div class="create_admin">
     <h1 class="Title_Admin_create_form">Thêm màu sắc</h1>
     <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
-    <form action="../includes/create_type.php" method="post">
+    <form action="../includes/create_type.php" method="post" id="form-3">
         <div class="form_field">
             <label for="" class="name_form_field">Mã loai: </label>
             <input type="text" class="textfile" readonly value="<?php echo $maLoai ?>" name="maLoai">
@@ -34,7 +34,7 @@ include '../includes/get_new_type_id.php';
         </div>
     </form>
 </div>
-<!-- <script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         // Mong muốn của chúng ta
         Validator({
@@ -57,5 +57,5 @@ include '../includes/get_new_type_id.php';
     alert_delete_btn.onclick = () => {
         alert_delete.style.display = "block";
     };
-</script> -->
+</script>
 <?php include '../templates/nav_admin2.php' ?>

@@ -3,7 +3,7 @@ include '../templates/nav_admin1.php';
 //lấy dữ liệu thương hiệu
 include '../includes/get_brand_data_from_id.php';
 
-if (isset($_POST["save"])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "nhấn";
     // $brand_name = $_POST["TENTH"];
     // echo isset($_FILES["image"]) != null;
