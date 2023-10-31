@@ -96,14 +96,14 @@ if (isset($_POST["save"])) {
                 Validator.isRequired('#tenTH', 'Vui lòng nhập tên thương hiệu!'),
             ],
             onSubmit: function (data) {
-                // console.log(data);
-                $.ajax({
-                    method: "POST",
-                    url: "../includes/edit_brand.php",
-                    data: { brand_id: data.maTH, brand_name: data.tenTH, save: data.save, },
-                }).done(function (response) {
-                    alert("test");
-                });
+                console.log(data);
+                // $.ajax({
+                //     method: "POST",
+                //     url: "../includes/edit_brand.php",
+                //     data: { brand_id: data.maTH, brand_name: data.tenTH, save: data.save, },
+                // }).done(function (response) {
+                //     alert("test");
+                // });
             }
         });
     });

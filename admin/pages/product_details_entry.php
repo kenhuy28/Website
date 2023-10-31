@@ -20,6 +20,10 @@ $result = $statement->fetch();
         h3 {
             font-size: 20px;
         }
+
+        table {
+            border-collapse: collapse;
+        }
     </style>
     <h1 align="center" class="Title_Admin_create_form">CHI TIẾT PHIẾU NHẬP</h1>
 
@@ -39,59 +43,16 @@ $result = $statement->fetch();
             <th>Giá Nhập</th>
         </tr>
         <tr>
-            <?php
-            // Calculate the total number of pages.
-            $rowOfPage = 10;
-
-            $totalRows = $dbh->query("SELECT COUNT(*) FROM `chi_tiet_phieu_nhap` WHERE chi_tiet_phieu_nhap.`maPhieuNhap` = '" . $entry_id . "'")->fetchColumn();
-            $totalPages = ceil($totalRows / $rowOfPage);
-
-            // Determine the current page number.
-            $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-
-            // Get the rows for the current page.
-            
-            $query = $query . " LIMIT " . $rowOfPage . " OFFSET " . ($currentPage - 1) * $rowOfPage;
-            $statement = $dbh->prepare($query);
-            $statement->execute();
-            $statement->setFetchMode(PDO::FETCH_OBJ);
-            $result = $statement->fetchAll();
-            if ($result) {
-                foreach ($result as $row) {
-                    echo "<tr>
-                            <td>" . $row->tenSanPham . "</td>
-                            <td>" . $row->soLuong . "</td>
-                            <td>" . $row->donGia . "</td>
-                        </tr>";
-                }
-            } else {
-                echo "<tr>
-                <td colspan=\"4\">Không có dữ liệu</td>
-                </tr>";
-            }
-            ?>
+            <!-- hiển thị chi tiết nhập kho -->
+            <?php include '../includes/show_details_entry_table.php' ?>
         </tr>
 
     </table>
 
     <div align="center" style="margin-top:10px" class="menu-wrapper">
         <ul class="pagination menu">
-            <?php
-            echo "<li>
-             <a href=\"?id=" . $entry_id . "&page=1\">&laquo;</a>
-         </li>";
-            for ($i = 1; $i <= $totalPages; $i++) {
-                if ($i != $currentPage) {
-                    echo "<li><a href=\"?id=" . $entry_id . "&page=" . $i . "\">" . $i . "</a></li>";
-                } else {
-                    echo "<li><a class=\"active\" href=\"?id=" . $entry_id . "&page=" . $i . "\">" . $i . "</a></li>";
-                }
-
-            }
-            echo "<li>
-            <a href=\"?id=" . $entry_id . "&page=$totalPages\">&raquo;</a>
-        </li>";
-            ?>
+            <!-- phân trang -->
+            <?php include '../includes/paging_product_details_entry.php' ?>
 
         </ul>
     </div>
