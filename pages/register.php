@@ -6,11 +6,11 @@ $conn = mysqli_connect('localhost', 'root', '', 'qlpkthucung');
 mysqli_set_charset($conn, 'UTF8');
 
 $maKhachHanh = "KH";
-$query = "SELECT COUNT(*) FROM `phieu_nhap`";
+$query = "SELECT COUNT(*) FROM `khach_hang`";
 $statement = $dbh->prepare($query);
 $statement->execute();
 // Sử dụng fetchColumn
-$count = $statement->fetchColumn() + 2;
+$count = $statement->fetchColumn() + 1;
 if ($count <= 9) {
     $maKhachHanh .= "000" . $count;
 } else if ($count <= 99) {
@@ -20,6 +20,7 @@ if ($count <= 9) {
 } else {
     $maKhachHanh .= "" . $count;
 }
+
 if (!empty($_POST['hoKhachHang'])) {
     $hoKhachHang = $_POST['hoKhachHang'];
 } else
@@ -52,13 +53,18 @@ if (!empty($_POST['ngaySinh'])) {
     $ngaySinh = $_POST['ngaySinh'];
 } else
     $ngaySinh = "";
-$fileUpLoad = "123.jpg";
+if (!empty($_GET["tinh"])) {
+    $tinh = $_POST["tinh"];
+} else
+    $tinh = "";
+$fileUpLoad = $tendn . ".jpg";
 $khoiPhuc = "123456";
 $maXa = "X00011";
 if (isset($_POST["submit"])) {
 
     $sql_themKhachHang = "INSERT INTO khach_hang VALUES ('$maKhachHanh','$hoKhachHang','$tenKhachHang','$dienThoai','$diaChi','$tendn','$matKhau','$email','$ngaySinh','$fileUpLoad','$khoiPhuc','$maXa');";
     $rerult_themKhachHang = mysqli_query($conn, $sql_themKhachHang);
+    echo $tinh;
 }
 ?>
 
