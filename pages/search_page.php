@@ -1,6 +1,15 @@
 <!--Chức năng tìm kiếm-->
 
-<?php include '../templates/header.php' ?>
+<?php include '../templates/header.php';
+    require_once('../includes/config.php');
+    $sql = "SELECT * FROM thuong_hieu";
+    $stmt = $dbh->query($sql);
+    $thuongHieu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $SearchString = $_GET['SearchString'];
+    echo $SearchString;
+    
+?>
+
 <h2 style="text-align: center;">Danh Sách Tìm Kiếm</h2>
 <div class="timKiem_page">
 
@@ -33,26 +42,13 @@
         <div class="catalog_timKiem">
             <h6>THƯƠNG HIỆU</h6>
             <ul>
-                <li>
-                    <a href="">
-                        Absolute Holistic
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Absolute Holistic
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Absolute Holistic
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Absolute Holistic
-                    </a>
-                </li>
+            <?php foreach ($thuongHieu as $row) { 
+                echo " <li>
+                <a href=''>
+                ".$row['tenThuongHieu']."
+                </a>
+            </li>";
+            } ?>
             </ul>
         </div>
     </div>
@@ -61,7 +57,7 @@
             <div class="grid">
                 <div class="row">
                     <div class="product_item product_item_timkiem">
-                        <img src="assest/img/img_product/12-1682483525450_1066x.webp" alt="">
+                        <img src="../assets/img/img_product/sanpham.png" alt="">
                         <div class="product_thuonghieu">
                             <h5>Paddy</h5>
                         </div>
@@ -76,55 +72,6 @@
                             <i class="fa-regular fa-eye"></i>
                         </div>
                     </div>
-                    <div class="product_item product_item_timkiem">
-                        <img src="assest/img/img_product/12-1682483525450_1066x.webp" alt="">
-                        <div class="product_thuonghieu">
-                            <h5>Paddy</h5>
-                        </div>
-                        <div class="product_name">
-                            <h5>Bát Ăn Cho Chó Mèo Bằng Nhựa Hình Mèo May Mắn</h5>
-                        </div>
-                        <div class="product_price">
-                            <h5>55.000đ</h5>
-                        </div>
-                        <button class="button_product">Thêm vào giỏ hàng</button>
-                        <div class="xem_icon">
-                            <i class="fa-regular fa-eye"></i>
-                        </div>
-                    </div>
-                    <div class="product_item product_item_timkiem">
-                        <img src="assest/img/img_product/12-1682483525450_1066x.webp" alt="">
-                        <div class="product_thuonghieu">
-                            <h5>Paddy</h5>
-                        </div>
-                        <div class="product_name">
-                            <h5>Bát Ăn Cho Chó Mèo Bằng Nhựa Hình Mèo May Mắn</h5>
-                        </div>
-                        <div class="product_price">
-                            <h5>55.000đ</h5>
-                        </div>
-                        <button class="button_product">Thêm vào giỏ hàng</button>
-                        <div class="xem_icon">
-                            <i class="fa-regular fa-eye"></i>
-                        </div>
-                    </div>
-                    <div class="product_item product_item_timkiem">
-                        <img src="assest/img/img_product/12-1682483525450_1066x.webp" alt="">
-                        <div class="product_thuonghieu">
-                            <h5>Paddy</h5>
-                        </div>
-                        <div class="product_name">
-                            <h5>Bát Ăn Cho Chó Mèo Bằng Nhựa Hình Mèo May Mắn</h5>
-                        </div>
-                        <div class="product_price">
-                            <h5>55.000đ</h5>
-                        </div>
-                        <button class="button_product">Thêm vào giỏ hàng</button>
-                        <div class="xem_icon">
-                            <i class="fa-regular fa-eye"></i>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
