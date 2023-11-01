@@ -1,6 +1,149 @@
 <?php include '../templates/header.php' ?>
-<h6 >Trang Chủ > Giỏ Hàng Của Bạn</h6>
+<?php $_SESSION["maKhachHang"] = "KH0001"; ?>
+<?php
+$statement = $dbh->prepare(
+    "SELECT 
+        gio_hang.soLuong, 
+        san_pham.maSanPham, 
+        san_pham.tenSanPham, 
+        san_pham.donGiaBan, 
+        san_pham.hinhAnh, 
+        thuong_hieu.tenThuongHieu, 
+        IFNULL(giam_gia.loaiGiamGia, 0) AS loaiGiamGia, 
+        IFNULL(
+            CASE 
+                WHEN giam_gia.ngayBatDau <= CURDATE() AND giam_gia.ngayKetThuc >= CURDATE() THEN giam_gia.giaTriGiam 
+                ELSE 0 
+            END, 
+            0
+        ) AS giaTriGiam 
+    FROM gio_hang 
+    JOIN san_pham ON gio_hang.maSanPham = san_pham.maSanPham 
+    JOIN thuong_hieu ON thuong_hieu.maThuongHieu = san_pham.maThuongHieu 
+    LEFT JOIN giam_gia ON san_pham.maSanPham = giam_gia.maSanPham 
+    WHERE gio_hang.maKhachHang = '" . $_SESSION["maKhachHang"] . "'"
+);
+$statement->execute();
+$statement->setFetchMode(PDO::FETCH_OBJ);
+?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<script>
+
+    function botSanPham(element) {
+
+        var maSanPham = element.getAttribute("maSanPham");
+        var quantityElement = document.querySelector('.soLuong' + maSanPham);
+        var currentQuantity = parseInt(quantityElement.textContent);
+
+        if (currentQuantity > 1) {
+            updateProductQuantity(maSanPham, -1); // Giảm số lượng sản phẩm dùng ajax
+            quantityElement.textContent = currentQuantity - 1;  // Cập nhật trên giao diện
+            updateThanhTien(maSanPham); // Cập nhật thành tiền
+        } else {
+            var confirmation = confirm("Bạn có chắc muốn xóa?");// Nếu số lượng sản phẩm về 0, hỏi xem có muốn xóa không 
+            if (confirmation)
+                delete_Product(maSanPham); // Xóa
+        }
+    }
+
+    function themSanPham(element) {
+        var maSanPham = element.getAttribute("maSanPham");
+        updateProductQuantity(maSanPham, 1); // Tăng số lượng sản phẩm dùng ajax
+        var quantityElement = document.querySelector('.soLuong' + maSanPham);
+        var currentQuantity = parseInt(quantityElement.textContent);
+
+        if (!isNaN(currentQuantity)) {
+            quantityElement.textContent = currentQuantity + 1;  // Cập nhật trên giao diện
+            updateThanhTien(maSanPham); // Cập nhật tổng tiền
+        }
+    }
+
+
+    // Hàm tính lại Thành tiền cho một sản phẩm cụ thể
+    function updateThanhTien(maSanPham) {
+        const donGiaBanElement = document.querySelector('.donGiaBan' + maSanPham);
+        const soLuongElement = document.querySelector('.soLuong' + maSanPham);
+        const giamGiaElement = document.querySelector('.giamGia' + maSanPham);
+        const thanhTienElement = document.querySelector('.thanhTien' + maSanPham);
+        const donGiaBan = parseFloat(donGiaBanElement.textContent);
+        const soLuong = parseInt(soLuongElement.textContent);
+        const giamGia = giamGiaElement.textContent;
+
+        let thanhTien = donGiaBan * soLuong; // Tính giá trị Thành tiền dựa trên số lượng, đơn giá và giảm giá
+        if (giamGia.endsWith('%')) {
+            const giamGiaPhanTram = parseFloat(giamGia);
+            thanhTien -= (thanhTien * (giamGiaPhanTram / 100));
+        } else {
+            const giamGiaSoTien = parseFloat(giamGia);
+            thanhTien -= giamGiaSoTien * soLuong;
+        }
+
+        // Hiển thị giá trị Thành tiền mới
+        thanhTienElement.textContent = thanhTien.toFixed(0); // Định dạng Thành tiền về số nguyên
+        updateTotalPrice();
+    }
+
+    // Thực hiện Ajax request để cập nhật số lượng sản phẩm
+    function updateProductQuantity(maSanPham, quantityChange) {
+        jQuery.ajax({
+            type: 'POST',
+            url: '<?php echo $rootPath . "/includes/update_product_quantity.php"; ?>', // Đường dẫn đến file xử lý cập nhật số lượng sản phẩm
+            data: { maSanPham: maSanPham, maKhachHang: '<?php echo $_SESSION['maKhachHang']; ?>', quantityChange: quantityChange }
+        });
+    }
+
+    function deleteProduct(element) {
+        var maSanPham = element.getAttribute("maSanPham");
+        var confirmation = confirm("Bạn có chắc muốn xóa?");
+        if (confirmation)
+            delete_Product(maSanPham); // Giảm số lượng sản phẩm
+    }
+
+    // Thực hiện Ajax request để xóa sản phẩm khỏi giỏ hàng
+    function delete_Product(maSanPham) {
+        jQuery.ajax({
+            type: 'POST',
+            url: '<?php echo $rootPath . "/includes/delete_product.php"; ?>', // Đường dẫn đến file xử lý xóa sản phẩm
+            data: { maSanPham: maSanPham, maKhachHang: '<?php echo $_SESSION['maKhachHang']; ?>' },
+            success: function (response) {
+                // Xóa sản phẩm khỏi giao diện sau khi thành công
+                var productElement = document.querySelector('.soLuong' + maSanPham).closest('.body_table_item');
+                productElement.remove();
+                updateTotalPrice();// Cập nhật tổng tiền sau khi xóa sản phẩm
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lặp qua tất cả sản phẩm để tính và hiển thị Thành tiền khi trang được load
+        const maSanPhamElements = document.querySelectorAll('.body_table_item');
+        maSanPhamElements.forEach(function (element) {
+            const maSanPham = element.querySelector('.soLuong').getAttribute("maSanPham");
+            updateThanhTien(maSanPham);
+        });
+        updateTotalPrice();// Gọi hàm tính tổng tiền ban đầu
+    });
+
+    function updateTotalPrice() {
+        const maSanPhamElements = document.querySelectorAll('.body_table_item');
+        let totalPrice = 0;
+
+        maSanPhamElements.forEach(function (element) {
+            const maSanPham = element.querySelector('.soLuong').getAttribute("maSanPham");
+            const thanhTienElement = document.querySelector('.thanhTien' + maSanPham);
+            const thanhTien = parseFloat(thanhTienElement.textContent.replace(" VNĐ", "").replace(/\./g, ""));
+            totalPrice += thanhTien;
+        });
+
+        // Cập nhật tổng tiền lên giao diện
+        const totalPriceElement = document.getElementById('totalPrice');
+        totalPriceElement.textContent = totalPrice.toLocaleString() + " VNĐ";
+    }
+
+</script>
+
+<h6>Trang Chủ > Giỏ Hàng Của Bạn</h6>
 <div class="cart_title">GIỎ HÀNG CỦA BẠN</div>
 <div class="yellow_space"></div>
 <div class="cart">
@@ -27,75 +170,50 @@
         </div>
         <div class="body_table">
             <?php
-            //foreach ($variable as $key => $value) {
-            # code...
-            ?>
-            <div class="body_table_item">
-                <div class="body_table_title body_table_title_sanpham" style="width: 37%;">
-                    <img src="../assets/img/sanpham/hat-cho-anf-6free.png" alt="" style="height: 120px; width: 90px;">
-                    <div class="decription_product">
-                        <div>
-                            <a href="" class="title_product_cart" style="color: black">
-                                Hạt Chó Trên 6 Tháng ANF 6Free Hữu Cơ
-                            </a>
+            while ($row = $statement->fetch()) {
+                echo '<div class="body_table_item">
+                        <div class="body_table_title body_table_title_sanpham" style="width: 37%;">
+                            <img src="' . $rootPath . '/assets/img/sanpham/' . trim($row->hinhAnh) . '" alt="" style="height: 120px; width: 90px;">
+                            <div class="decription_product">
+                                <div>
+                                    <a href="" class="title_product_cart" style="color: black">' . $row->tenSanPham . '</a>   
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <a href="" class="th_product_cart" style="color: #0b84ee; font-weight: 700; ">' . $row->tenThuongHieu . '</a>
+                                </div>
+                            </div>
                         </div>
-                        <div style="margin-top: 10px;">
-                            <a href="" class="th_product_cart" style="color: #0b84ee; font-weight: 700; ">
-                                ANF
-                            </a>
+                        <div class="body_table_title donGiaBan' . $row->maSanPham . '" style="width: 15%; font-weight: 700;">' . $row->donGiaBan . '</div>
+                        <div class="body_table_title" style="width: 15%">
+                            <div class="body_table_title_soluong">
+                                <div onclick="botSanPham(this)" maSanPham="' . $row->maSanPham . '">
+                                    <i class="fa-solid fa-minus"></i>
+                                </div>
+                                <div class="soLuong soLuong' . $row->maSanPham . '" maSanPham="' . $row->maSanPham . '">' . $row->soLuong . '</div>
+                                <div onclick="themSanPham(this)" maSanPham="' . $row->maSanPham . '">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                            </div>
                         </div>
-
-                    </div>
-                </div>
-                <div class="body_table_title" style="width: 15%; font-weight: 700;">
-                    80.000 VNĐ
-                </div>
-                <div class="body_table_title " style="width: 15%">
-                    <div class="body_table_title_soluong">
-                        <div onclick="window.location.href='@Url.Action(" botSanPhamGiohang", "GioHang" , new {
-                            @iMASP=item.iMASP, @strURL=Request.Url.ToString() })'">
-                            <i class="fa-solid fa-minus"></i>
+                        <div class="body_table_title giamGia' . $row->maSanPham . '" style="width: 15%">' . $row->giaTriGiam . (($row->loaiGiamGia == 0) ? (" %") : (" VNĐ")) . '</div>
+                        <div class="body_table_title thanhTien' . $row->maSanPham . '" style="width: 10%; font-weight: 700; "> </div>
+                        <div class="body_table_title" style="min-width: 5%;">
+                            <i class="fa-solid fa-x" maSanPham=' . $row->maSanPham . ' onclick="deleteProduct(this)"></i>
                         </div>
-                        <div>
-                            6
-                        </div>
-                        <div onclick="window.location.href='@Url.Action(" ThemGiohang", "GioHang" , new {
-                            @iMASP=item.iMASP, @strURL=Request.Url.ToString() })'">
-                            <i class="fa-solid fa-plus"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="body_table_title" style="width: 15%">
-                    10 %
-                </div>
-                <div class="body_table_title" style="width: 10%; font-weight: 700; ">
-                    480.000 VNĐ
-                </div>
-                <div class="body_table_title" style="min-width: 5%;" onclick="window.location.href='@Url.Action("
-                    XoaGiohang", "GioHang" , new { @iMASP=item.iMASP })'">
-                    <i class="fa-solid fa-x"></i>
-                </div>
-            </div>
-
-
+                    </div>';
+            } ?>
         </div>
     </div>
     <div class="cart_checkcout" style="width: 350px;">
         <h6 style="margin-top: 0">TỔNG SỐ TIỀN</h6>
         <div class="cart_checkcout_title">
-            <div>Tổng số tiền:</div>
-            <div>480.000 VNĐ</div>
+            <div class="total-price">
+                <span id="totalPrice">0</span>
+            </div>
         </div>
-        <a href="<?php  echo $rootPath . "/pages/cart_order.php"; ?> "><button>Đặt Hàng</button></a>
-        <a href="<?php  echo $rootPath . "/pages/product_page.php"; ?> "><button>Tiếp Tục Mua Sắm</button></a>
-        <button onclick="window.location.href = '@Url.Action(" XoaTatcaGiohang", "GioHang" )'">Xóa Tất Cả Sản
-            Phẩm</button>
+        <a href="<?php echo $rootPath . "/pages/cart_order.php"; ?> "><button>Đặt Hàng</button></a>
+        <a href="<?php echo $rootPath . "/pages/product_page.php"; ?> "><button>Tiếp Tục Mua Sắm</button></a>
+        <button onclick="xoaTatCaSanPham()">Xóa Tất Cả Sản Phẩm</button>
     </div>
-
 </div>
-<textarea name="" id="" rows="5" class="note_cart" placeholder="Ghi chú khi mua hàng......."></textarea>
-
-
-
-
 <?php include '../templates/footer.php' ?>
