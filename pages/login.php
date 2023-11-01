@@ -1,46 +1,37 @@
 <!--login-->
-<?php include '../templates/header.php';
-$conn = mysqli_connect('localhost', 'root', '', 'qlpkthucung');
-mysqli_set_charset($conn, 'UTF8');
-$sql = "SELECT *
-        FROM khach_hang
-        ";
-$rerult = mysqli_query($conn, $sql);
-
-if (isset($_POST["dangNhap"])) {
-    $check = 1;
-    if ($_POST['tendn'] == NULL) {
-        echo 'Vui lòng nhập tài khoản <br>';
-        $check = 2;
+<?php
+ob_start();
+include '../templates/header.php';
+require_once('../includes/config.php');
+$warning = "";
+if (isset($_POST['tendn'])) {
+    $username = trim($_POST['tendn']);
+} else {
+    $username = "";
+}
+if (isset($_POST['tendn'])) {
+    $password = trim($_POST['matkhau']);
+} else {
+    $password = "";
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $sql = "SELECT * FROM khach_hang WHERE tenNguoiDung = '$username' AND matKhau = '$password'";
+    $stmt = $dbh->query($sql);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($result != false) {
+        $_SESSION['taiKhoan'] = $result;
+        header("Location: product_page.php");
+        exit();
     } else {
-        $username = $_POST['tendn'];
-    }
-    if ($_POST['matkhau'] == NULL) {
-        echo 'Vui lòng nhập mật khẩu';
-        $check = 2;
-    } else {
-        $password = $_POST['matkhau'];
-    }
-
-    while ($row = mysqli_fetch_array($rerult)) {
-        if ($_POST['tendn'] == $row[5] && $_POST['matkhau'] == $row[6]) {
-            echo '<script>window.location.href = "../index.php?";</script>';
-            $_SESSION['maKhachHang'] = $row[0];
-            $check = 2;
-        }
-    }
-    if ($check == 1) {
-        echo 'Thông tin không chính xác. Vui lòng đăng nhập lại';
+        $warning = "Tài khoản hoặc mật khẩu không đúng!";
     }
 }
-
-
+ob_end_flush();
 ?>
-
 <div class="login_flex_right_title">
     <h6>Đăng Nhập</h6>
 </div>
-<form action="" class="create_admin_form">
+<form action="login.php" class="create_admin_form" id="form-2" method="POST">
     <div class="form_field">
         <label for="taikhoan" class="name_form_field">Tài khoản : </label>
         <input type="text" class="textfile" name="tendn" id="taikhoan" value="<?php if ($username != "")
@@ -60,10 +51,11 @@ if (isset($_POST["dangNhap"])) {
                 echo $warning; ?>
         </span>
     </div>
-    <input type="submit" value="Đăng Nhập" class="button_add_admin" style="width: 150px" />
+    <button type="submit" class="button_add_admin" class="form-submit"  style="width: 150px">Đăng nhập</button>
+    <!-- <input  value="Đăng Nhập"  style="width: 150px" /> -->
     <a href="" class="qmk" style="display: block; margin-left: 10px; color: black">Quên
         mật khẩu?</a>
-    <a href="./register.php" style="text-decoration: none; color:black">
+    <a href="" style="text-decoration: none; color:black">
         <input type="button" value="Tạo Tài Khoản" class="button_add_admin" style="width: 150px; margin-bottom: 50px" />
     </a>
 </form>
