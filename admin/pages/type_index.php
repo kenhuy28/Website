@@ -1,7 +1,7 @@
 <?php include '../templates/nav_admin1.php' ?>
 <div class="table_header">
     <div class="add_admin">
-        <a href="@Url.Action(" Create","Loai")">
+        <a href="type_create.php">
             <i class="fa-solid fa-user-plus"></i>
             <div class="add_title">
                 Thêm loại
@@ -18,52 +18,13 @@
         </tr>
     </thead>
     <tbody>
-        <!-- @foreach (var item in Model)
-        { -->
-        <tr style="height: 50px;">
-            <td>
-                MALOAI
-            </td>
-            <td>
-                TENLOAI
-            </td>
-
-            <td>
-                <a href="@Url.Action(" Edit","Loai", new { id=item.MALOAI })"><i
-                        class="fa-solid fa-pen-to-square edit"></i></a>
-                <a href="@Url.Action(" Delete","Loai", new { id=item.MALOAI })"> <i
-                        class="fa-solid fa-xmark remove"></i></a>
-            </td>
-        </tr>
-        <tr style="height: 50px;">
-            <td>
-                MALOAI
-            </td>
-            <td>
-                TENLOAI
-            </td>
-
-            <td>
-                <a href="@Url.Action(" Edit","Loai", new { id=item.MALOAI })"><i
-                        class="fa-solid fa-pen-to-square edit"></i></a>
-                <a href="@Url.Action(" Delete","Loai", new { id=item.MALOAI })"> <i
-                        class="fa-solid fa-xmark remove"></i></a>
-            </td>
-        </tr>
-        <!-- } -->
-
-
+        <?php include '../includes/show_type_table.php' ?>
     </tbody>
 </table>
-<!-- <ul class="page">
-    @if (Model.PageCount > 1)
-    {
-        for (int i = 1; i <= Model.PageCount; i++)
-        {
-            <li>
-                <a href="@Url.Action("Index", new { page = i })" class="@((i == Model.PageNumber) ? "page_button page_button_active" : "page_button")">@i</a>
-            </li>
-        }
-    }
-</ul> -->
+<div align="center" style="margin-top:10px" class="menu-wrapper">
+    <ul class="pagination menu">
+        <?php include '../includes/pagination.php'; ?>
+
+    </ul>
+</div>
 <?php include '../templates/nav_admin2.php' ?>

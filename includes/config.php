@@ -10,6 +10,6 @@ try {
 } catch (PDOException $e) {
     exit("Error: " . $e->getMessage());
 }
-session_start();
-$_SESSION['path'] = "/WebLinhKienThuCung";
+// session_start();
+// $_SESSION['path'] = "/WebLinhKienThuCung";
 ?>

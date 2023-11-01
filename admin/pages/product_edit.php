@@ -1,4 +1,8 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php
+include '../templates/nav_admin1.php';
+include '../includes/get_product_data_from_id.php';
+
+?>
 <style>
     input,
     select,
@@ -12,68 +16,47 @@
 </style>
 <div class="body" style="margin-top: 10px">
     <div class="create_admin">
-        <label class="Title_Admin_create_form">Thêm tài khoản quản trị viên</label>
+        <label class="Title_Admin_create_form">Thêm sản phẩm</label>
         <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
 
         <form action="" method="post">
             <div>
                 <label for="" class="name_form_field">Mã sản phẩm: </label>
-                <input type="text" class="textfile" readonly value="SP00001" name="MASP">
+                <input type="text" class="textfile" readonly value="<?php echo $result->maSanPham ?>" name="MASP">
             </div>
             <div>
                 <label for="" class="name_form_field">Tên sản phẩm: </label>
-                <input type="text" class="textfile" id="fullname" name="TENSP" value="">
-                <span class="error_message"></span>
-            </div>
-            <div>
-                <label for="" class="name_form_field">Đơn giá mua: </label>
-                <input type="number" class="textfile" id="giamua" name="DONGIAMUA" value="">
+                <input type="text" class="textfile" id="fullname" name="TENSP"
+                    value="<?php echo $result->tenSanPham ?>">
                 <span class="error_message"></span>
             </div>
             <div>
                 <label for="" class="name_form_field">Đơn giá bán: </label>
-                <input type="number" class="textfile" id="giaban" name="DONGIABAN" value="">
+                <input type="number" class="textfile" id="giaban" name="DONGIABAN"
+                    value="<?php echo $result->donGiaBan; ?>" name="donGiaBan">
                 <span class="error_message"></span>
             </div>
+
             <div>
                 <label for="" class="name_form_field">Thương hiệu: </label>
                 <select class="textfile" name="MATH" id="thuonghieu">
 
-                    <option value="@item.MATH" selected>@item.TENTH</option>
-                    <option value="@item.MATH">@item.TENTH</option>
-
+                    <?php include '../includes/show_brand_in_option.php' ?>
                 </select>
                 <span class="error_message"></span>
             </div>
             <div>
                 <label for="" class="name_form_field">Loại: </label>
                 <select class="textfile" name="MALOAI">
-                    <option value="">Chọn loại</option>
-
-                    <option value="@item.MALOAI" selected>@item.TENLOAI</option>
-                    <option value="@item.MALOAI">@item.TENLOAI</option>
+                    <?php include '../includes/show_type_in_option.php' ?>
 
                 </select>
-                <span class="error_message"></span>
-            </div>
-            <div>
-                <label for="" class="name_form_field">Màu sắc: </label>
-                <select class="textfile" name="MAMAUSAC">
-                    <option value="">Chọn màu sắc</option>
-                    <option value="@item.MAMAUSAC" selected>@item.TENMAUSAC</option>
-                    <option value="@item.MAMAUSAC">@item.TENMAUSAC</option>
-
-                </select>
-                <span class="error_message"></span>
-            </div>
-            <div>
-                <label for="" class="name_form_field">Số lượng: </label>
-                <input type="number" class="textfile" id="soluong" name="SOLUONG" value="200">
                 <span class="error_message"></span>
             </div>
             <div>
                 <label for="" class="name_form_field">Mô tả: </label>
-                <textarea class="textfile_address" cols="2" id="address" name="MOTA">Mô tả</textarea>
+                <textarea class="textfile_address" cols="2" id="address"
+                    name="MOTA"><?php echo $result->moTa ?></textarea>
                 <span class="error_message"></span>
             </div>
             <div>
@@ -84,13 +67,16 @@
                         <span class="error_message"></span>
                     </div>
                     <div class="custom-file-img">
-                        <img src="https://webkit.org/demos/srcset/image-src.png" alt="" id="custom-file-img-display">
+                        <img src="<?php echo $_SESSION['rootPath'] . '/../assets/img/sanpham/' . $result->hinhAnh ?>"
+                            alt="" id="custom-file-img-display">
                     </div>
                 </div>
             </div>
+
             <div class="button">
                 <input type="submit" value="Cập nhật" class="button_add_admin" />
-                <a href="product_admin_index.php"><input type="button" value="Quay lại" class="button_add_admin" /></a>
+                <a href="javascript:history.go(-1);"><input type="button" value="Quay lại"
+                        class="button_add_admin" /></a>
             </div>
 
         </form>
