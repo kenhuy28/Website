@@ -2,7 +2,7 @@
 //tạo mã thương hiệu tự động
 $maThuongHieu = "THH";
 
-$query = "SELECT COUNT(*) FROM `phieu_nhap`";
+$query = "SELECT MAX(CAST(SUBSTRING(`maThuongHieu`, 4) AS SIGNED)) AS max_id FROM `thuong_hieu`";
 $statement = $dbh->prepare($query);
 $statement->execute();
 
