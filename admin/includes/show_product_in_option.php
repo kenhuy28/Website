@@ -5,7 +5,7 @@ $statement = $dbh->prepare($query);
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_OBJ);
 $result = $statement->fetchAll();
-echo $result;
+
 foreach ($result as $row) {
     echo "<option value=\"" . $row->maSanPham . "\">" . $row->tenSanPham . "</option>";
 }
