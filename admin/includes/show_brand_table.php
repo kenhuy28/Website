@@ -10,7 +10,7 @@ $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
 // Get the rows for the current page.
 
-$query = "SELECT * FROM thuong_hieu LIMIT " . $rowOfPage . " OFFSET " . ($currentPage - 1) * $rowOfPage;
+$query = "SELECT * FROM thuong_hieu ORDER BY maThuongHieu ASC LIMIT " . $rowOfPage . " OFFSET " . ($currentPage - 1) * $rowOfPage;
 $statement = $dbh->prepare($query);
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_OBJ);
