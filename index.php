@@ -96,7 +96,22 @@ $sql1 = "
   </div>
   <div class="boSuuTap_body">
     <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+        style="width: 200px; height: 200px;">
+      <h6>Pate Cho Miu</h6>
+    </a>
+    <a href="#">
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+        style="width: 200px; height: 200px;">
+      <h6>Pate Cho Miu</h6>
+    </a>
+    <a href="#">
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+        style="width: 200px; height: 200px;">
+      <h6>Pate Cho Miu</h6>
+    </a>
+    <a href="#">
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
         style="width: 200px; height: 200px;">
       <h6>Pate Cho Miu</h6>
     </a>
@@ -106,41 +121,26 @@ $sql1 = "
       <h6>Pate Cho Miu</h6>
     </a>
     <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
-        style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
-    </a>
-    <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
-        style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
-    </a>
-    <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
-        style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
-    </a>
-    <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
         style="width: 200px; height: 200px;">
       <h6>Pate Cho Miu</h6>
     </a>
   </div>
   <div class="boSuuTap_body">
     <a href="#">
-      <img src="assest/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
+      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
       <h6 style="color: #f6c518;">Pate Cho Miu</h6>
     </a>
     <a href="#">
-      <img src="assest/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
+      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
       <h6 style="color: #f6c518;">Pate Cho Miu</h6>
     </a>
     <a href="#">
-      <img src="assest/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
+      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
       <h6 style="color: #f6c518;">Pate Cho Miu</h6>
     </a>
     <a href="#">
-      <img src="assest/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
+      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
       <h6 style="color: #f6c518;">Pate Cho Miu</h6>
     </a>
   </div>
@@ -155,7 +155,7 @@ $sql1 = "
 
       <?php foreach ($result2 as $row) {
         echo "<div class=\"product_item\">
-         <img src='assest/img/img_product/".$row['hinhAnh']."' alt=\"\" height=\"350px\">
+         <img src='assets/img/sanpham/".$row['hinhAnh']."' alt=\"\" height=\"350px\">
          <div class=\"product_thuonghieu\">
            <h5>".$row['tenThuongHieu']."</h5>
          </div>
@@ -201,7 +201,7 @@ $sql1 = "
     <?php foreach ($result1 as $row) {
       echo "
       <a href='' style='margin-left: 50px'>
-        <img src='../assets/img/banner/".$row['logo']."' alt='' style='width: 100%; height: 80px;'>
+        <img src='assets/img/thuong_hieu/".$row['logo']."' alt='' style='width: 100%; height: 80px;'>
         <h6>
           ".$row['tenThuongHieu']."
         </h6>
