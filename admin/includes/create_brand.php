@@ -23,14 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $statement = $dbh->prepare("INSERT INTO `thuong_hieu`(`maThuongHieu`, `tenThuongHieu`, `logo`) VALUES ('" . $brand_id . "','" . $brand_name . "','" . $file_name . "')");
         $statement->execute();
 
-        //     echo '<script>
-        //     alert("Thêm thông tin thành công");
-        //     window.location.href = "../pages/brand_index.php?";
-        // </script>';
+        echo '<script>
+            alert("Thêm thông tin thành công");
+            window.location.href = "../pages/brand_index.php?";
+        </script>';
     } catch (Exception $e) {
         echo 'Có lỗi trong quá trình thêm thông tin' . $e->getMessage();
+        echo "<script>alert(\"Lỗi\")</script>";
     }
-} else {
-    echo "<script>alert(\"Lỗi\")</script>";
 }
 ?>

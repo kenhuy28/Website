@@ -18,7 +18,7 @@ include '../includes/get_new_brand_id.php';
     <div class="create_admin">
         <h1 class="Title_Admin_create_form">Thêm thương hiệu</h1>
         <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
-        <form active="../includes/edit_brand.php" method="post" id="form-2" enctype="multipart/form-data">
+        <form action="../includes/create_brand.php" method="post" id="form-2" enctype="multipart/form-data">
             <div class="form_field">
                 <label for="" class="name_form_field">Mã thương hiệu : </label>
                 <input type="text" class="textfile" readonly value="<?php echo $maThuongHieu ?>" name="MATH">
@@ -32,8 +32,7 @@ include '../includes/get_new_brand_id.php';
                 <label for="" class="name_form_field">Logo : </label>
                 <div class="custom-file">
                     <div class="form_field">
-                        <input type="file" class="custom-file-input" id="img_thuonghieu" name="fileUpload"
-                            accept="image/*">
+                        <input type="file" class="custom-file-input" id="img_thuonghieu" name="image" accept="image/*">
                         <span class="error_message"></span>
                     </div>
                     <div class="custom-file-img" style="width: 237px;">
@@ -68,6 +67,7 @@ include '../includes/get_new_brand_id.php';
                 }
             });
         });
+
         const img_thuonghieu = document.querySelector("#img_thuonghieu");
         const custom_file_img_display = document.querySelector("#custom-file-img-display");
         img_thuonghieu.onchange = function (e) {
