@@ -52,6 +52,7 @@ include '../includes/get_new_id_entry.php';
                 </tr>
             </tbody>
         </table>
+        <div style="margin-top:10px"><span id="error" style="font-size:20px; color: red;"></span></div>
         <table align="center">
             <tr>
                 <td colspan="2"><button type="button" id="addRow">Thêm Dòng</button></td>
@@ -87,6 +88,8 @@ include '../includes/get_new_id_entry.php';
         });
         // Save button click event
         $("#save").click(function () {
+
+            var valid = true;
             // Get all tr
             var trs = $("#productTable tbody tr");
 
@@ -112,34 +115,59 @@ include '../includes/get_new_id_entry.php';
                 // Get the donGia
                 var donGia = $(trs[i]).find("input[name='donGia']").val();
 
+                if (maSanPham == "") {
+                    $('#error').text("Vui lòng điền đầy đủ sản phẩm");
+                    valid = false;
+                    break;
+                } else {
+                    $('#error').text("");
+                }
+                if (soLuong == "") {
+                    $('#error').text("Vui lòng điền đầy đủ số lượng");
+                    valid = false;
+                    break;
+                } else {
+                    $('#error').text("");
+                }
+                if (donGia == "") {
+                    $('#error').text("Vui lòng điền đầy đủ đơn giá nhập");
+                    valid = false;
+                    break;
+                } else {
+                    $('#error').text("");
+                }
+
                 // Add the values to the corresponding arrays
                 maSanPhams.push(maSanPham);
                 soLuongs.push(soLuong);
                 donGias.push(donGia);
             }
 
-            // Create a new array to store the values
-            var values = { maPhieuNK, ngayNK, maSanPhams, soLuongs, donGias };
+            if (valid == true) {
+                // Create a new array to store the values
+                var values = { maPhieuNK, ngayNK, maSanPhams, soLuongs, donGias };
+                // Prevent the page from reloading
+                event.preventDefault();
 
-            console.log(values);
-            // Prevent the page from reloading
-            event.preventDefault();
-
-            // Create an AJAX request
-            $.ajax({
-                url: "../includes/entry_product.php",
-                type: "POST",
-                data: { maPhieuNK: maPhieuNK, ngayNK: ngayNK, maSanPhams: maSanPhams, soLuongs: soLuongs, donGias: donGias },
-                success: function (response) {
-                    // Do something with the response
-                    console.log(response);
-                },
-                error: function (error) {
-                    // Handle the error
-                    console.log(error);
-
-                },
-            });
+                // Create an AJAX request
+                $.ajax({
+                    url: "../includes/entry_product.php",
+                    type: "POST",
+                    data: { maPhieuNK: maPhieuNK, ngayNK: ngayNK, maSanPhams: maSanPhams, soLuongs: soLuongs, donGias: donGias },
+                    success: function (response) {
+                        // Do something with the response
+                        console.log(response);
+                        alert("Nhập sản phẩm thành công");
+                        window.location.href = "../pages/warehouse_index.php";
+                    },
+                    error: function (error) {
+                        // Handle the error
+                        console.log(error);
+                        // Throw an error to the AJAX function
+                        throw new Error('Có lỗi khi tạo phiếu nhập hàng');
+                    },
+                });
+            } else { event.preventDefault(); }
         });
     });
 </script>
