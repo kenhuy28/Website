@@ -24,6 +24,7 @@
             <tr>
                 <th style="width: 65px;">Mã phiếu nhập</th>
                 <th style="width: 65px;">Ngày nhập kho</th>
+                <th style="width: 65px;">Nhân viên nhập</th>
                 <th style="width: 50px;">Chi tiết</th>
             </tr>
         </thead>

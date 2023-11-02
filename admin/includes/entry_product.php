@@ -21,6 +21,9 @@ try {
             for ($i = 0; $i < sizeof($maSanPhams); $i++) {
                 $statement = $dbh->prepare("INSERT INTO `chi_tiet_phieu_nhap`(`maPhieuNhap`, `maSanPham`, `soLuong`, `donGia`) VALUES ('" . $maPhieuNK . "','" . $maSanPhams[$i] . "','" . $soLuongs[$i] . "','" . $donGias[$i] . "')");
                 $statement->execute();
+                //cập nhật giá bán và số lượng ở bản sản phẩm
+                $statement = $dbh->prepare("UPDATE san_pham SET donGiaMua = '" . $donGias[$i] . "', soLuong = soLuong + " . $soLuongs[$i] . " WHERE maSanPham= '" . $maSanPhams[$i] . "'");
+                $statement->execute();
             }
         } catch (Exception $e) {
             echo 'Có lỗi khi tạo phiếu nhập hàng: ';

@@ -10,7 +10,7 @@ $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
 // Get the rows for the current page.
 
-$query = "SELECT * FROM phieu_nhap ORDER BY maPhieuNhap ASC LIMIT " . $rowOfPage . " OFFSET " . ($currentPage - 1) * $rowOfPage;
+$query = "SELECT phieu_nhap.*, CONCAT(ho, ' ', ten) as hoten FROM phieu_nhap join nhan_vien on nhan_vien.maNhanVien = phieu_nhap.maNhanVien ORDER BY maPhieuNhap ASC LIMIT " . $rowOfPage . " OFFSET " . ($currentPage - 1) * $rowOfPage;
 $statement = $dbh->prepare($query);
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_OBJ);
@@ -20,6 +20,7 @@ if ($result) {
         echo "<tr>
                             <td>" . $row->maPhieuNhap . "</td>
                             <td>" . $row->ngayNhap . "</td>
+                            <td>" . $row->hoten . "</td>
                             <td>
                                 <a href=\"product_details_entry.php?id=" . $row->maPhieuNhap . "\"><i class=\"fa-solid fa-circle-info detail\"></i></a>
                             </td>
