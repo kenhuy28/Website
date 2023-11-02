@@ -37,7 +37,7 @@ include $rootPath . '/includes/config.php';
             color: #FFFFFF;
         }
     </style>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
@@ -51,7 +51,7 @@ include $rootPath . '/includes/config.php';
                     </div>
                 </div>
                 <div class="header_row_right">
-                    <form action=" " class="search">
+                    <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET" id="form-2">
                         <input type="text" placeholder="Tìm kiếm sản phẩm" name="SearchString">
                         <button class="search_icon" style="border: none">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -69,6 +69,9 @@ include $rootPath . '/includes/config.php';
                     </div> -->
 
                     <!-- nếu chưa login -->
+                    <?php 
+                        
+                    ?>
                     <a href="<?php echo $rootPath . "/pages/login.php"; ?>" class="h" id="login_user">
                         <div>
                             <div class="name_icon">

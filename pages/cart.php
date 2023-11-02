@@ -1,5 +1,5 @@
 <?php include '../templates/header.php' ?>
-<?php $_SESSION["maKhachHang"] = "KH0001"; ?>
+<?php $maKhachHang = $_SESSION['taiKhoan']['maKhachHang']; ?>
 <?php
 $statement = $dbh->prepare(
     "SELECT 
@@ -21,7 +21,7 @@ $statement = $dbh->prepare(
     JOIN san_pham ON gio_hang.maSanPham = san_pham.maSanPham 
     JOIN thuong_hieu ON thuong_hieu.maThuongHieu = san_pham.maThuongHieu 
     LEFT JOIN giam_gia ON san_pham.maSanPham = giam_gia.maSanPham 
-    WHERE gio_hang.maKhachHang = '" . $_SESSION["maKhachHang"] . "'"
+    WHERE gio_hang.maKhachHang = '" . $maKhachHang . "'"
 );
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_OBJ);
@@ -138,7 +138,11 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
 
         // Cập nhật tổng tiền lên giao diện
         const totalPriceElement = document.getElementById('totalPrice');
-        totalPriceElement.textContent = totalPrice.toLocaleString() + " VNĐ";
+        totalPriceElement.textContent = totalPrice.toLocaleString();
+
+        // Tìm thẻ span bằng ID
+        var thanhTienInput = document.getElementById("thanhTienInput");
+        thanhTienInput.value = totalPrice.toLocaleString();
     }
 
 </script>
@@ -205,13 +209,18 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         </div>
     </div>
     <div class="cart_checkcout" style="width: 350px;">
-        <h6 style="margin-top: 0">TỔNG SỐ TIỀN</h6>
-        <div class="cart_checkcout_title">
-            <div class="total-price">
-                <span id="totalPrice">0</span>
+        <form action="cart_order.php" method="post">
+            <h6 style="margin-top: 0">TỔNG SỐ TIỀN</h6>
+            <div class="cart_checkcout_title">
+                <div class="total-price">
+                    <span id="totalPrice">0</span> VNĐ
+                </div>
             </div>
-        </div>
-        <a href="<?php echo $rootPath . "/pages/cart_order.php"; ?> "><button>Đặt Hàng</button></a>
+            <div hidden>
+                <input type="text" id="thanhTienInput" name="thanhTienInput" value="0">
+            </div>
+            <button type="submit">Đặt Hàng</button>
+        </form>
         <a href="<?php echo $rootPath . "/pages/product_page.php"; ?> "><button>Tiếp Tục Mua Sắm</button></a>
         <button onclick="xoaTatCaSanPham()">Xóa Tất Cả Sản Phẩm</button>
     </div>
