@@ -1,19 +1,19 @@
 <?php
 //tạo mã thương hiệu tự động
-$maThuongHieu = "THH";
+$maLoai = "LSP";
 
-$query = "SELECT MAX(CAST(SUBSTRING(`maThuongHieu`, 4) AS SIGNED)) AS max_id FROM `thuong_hieu`";
+$query = "SELECT MAX(CAST(SUBSTRING(`maLoai`, 4) AS SIGNED)) AS max_id FROM loai_san_pham;";
 $statement = $dbh->prepare($query);
 $statement->execute();
 
 // Sử dụng fetchColumn
 $count = $statement->fetchColumn() + 1;
 if ($count <= 9) {
-    $maThuongHieu .= "00" . $count;
+    $maLoai .= "00" . $count;
 } else if ($count <= 99) {
-    $maThuongHieu .= "0" . $count;
+    $maLoai .= "0" . $count;
 } else {
-    $maThuongHieu .= "" . $count;
+    $maLoai .= "" . $count;
 }
 
 ?>

@@ -33,7 +33,11 @@ include '../includes/get_new_brand_id.php';
                 <div class="custom-file">
                     <div class="form_field">
                         <input type="file" class="custom-file-input" id="img_thuonghieu" name="fileUpload">
-                        id="custom-file-img-display" style="width: 231px; ">
+                        <span class="error_message"></span>
+                    </div>
+                    <div class="custom-file-img" style="width: 237px;">
+                        <img src="https://webkit.org/demos/srcset/image-src.png" alt="Logo thương hiệu"
+                            id="custom-file-img-display" style="width: 231px; ">
                     </div>
                 </div>
             </div>

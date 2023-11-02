@@ -11,7 +11,7 @@
             </a>
         </div>
         <div class="add_admin">
-            <a href="enter_product.php">
+            <a href="entry.php">
                 <i class="fa-solid fa-user-plus"></i>
                 <div class="add_title">
                     Thêm sản phẩm vào kho

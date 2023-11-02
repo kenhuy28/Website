@@ -1,6 +1,30 @@
 <!--Home page-->
 
-<?php include './templates/header.php' ?>
+<?php include './templates/header.php';
+require_once('includes/config.php');
+$sql1 = "
+  SELECT th.maThuongHieu, th.tenThuongHieu,th.logo, SUM(ctdh.soLuong) AS soLuongBan
+  FROM chi_tiet_don_dat_hang AS ctdh
+  INNER JOIN san_pham AS sp ON ctdh.maSanPham = sp.maSanPham
+  INNER JOIN thuong_hieu AS th ON sp.maThuongHieu = th.maThuongHieu
+  GROUP BY th.maThuongHieu, th.tenThuongHieu
+  ORDER BY soLuongBan DESC
+  LIMIT 7
+  ";
+  $stmt = $dbh->query($sql1);
+  $result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $sql2 = "
+  SELECT th.tenThuongHieu,sp.maSanPham,sp.tenSanPham, sp.donGiaBan,sp.hinhAnh, SUM(ctdh.soLuong) AS soLuongBan
+  FROM chi_tiet_don_dat_hang AS ctdh
+  INNER JOIN san_pham AS sp ON ctdh.maSanPham = sp.maSanPham
+  INNER JOIN thuong_hieu AS th ON sp.maThuongHieu = th.maThuongHieu
+  GROUP BY th.maThuongHieu, th.tenThuongHieu
+  ORDER BY soLuongBan DESC
+  LIMIT 7
+  ";
+  $stmt = $dbh->query($sql2);
+  $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 
 <div class="banner">
   <div class="swiper-container">
@@ -72,7 +96,22 @@
   </div>
   <div class="boSuuTap_body">
     <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+        style="width: 200px; height: 200px;">
+      <h6>Pate Cho Miu</h6>
+    </a>
+    <a href="#">
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+        style="width: 200px; height: 200px;">
+      <h6>Pate Cho Miu</h6>
+    </a>
+    <a href="#">
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+        style="width: 200px; height: 200px;">
+      <h6>Pate Cho Miu</h6>
+    </a>
+    <a href="#">
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
         style="width: 200px; height: 200px;">
       <h6>Pate Cho Miu</h6>
     </a>
@@ -82,41 +121,26 @@
       <h6>Pate Cho Miu</h6>
     </a>
     <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
-        style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
-    </a>
-    <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
-        style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
-    </a>
-    <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
-        style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
-    </a>
-    <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
         style="width: 200px; height: 200px;">
       <h6>Pate Cho Miu</h6>
     </a>
   </div>
   <div class="boSuuTap_body">
     <a href="#">
-      <img src="assest/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
+      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
       <h6 style="color: #f6c518;">Pate Cho Miu</h6>
     </a>
     <a href="#">
-      <img src="assest/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
+      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
       <h6 style="color: #f6c518;">Pate Cho Miu</h6>
     </a>
     <a href="#">
-      <img src="assest/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
+      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
       <h6 style="color: #f6c518;">Pate Cho Miu</h6>
     </a>
     <a href="#">
-      <img src="assest/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
+      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
       <h6 style="color: #f6c518;">Pate Cho Miu</h6>
     </a>
   </div>
@@ -129,17 +153,17 @@
     <div class="boSuuTap_body">
 
 
-      <?php for ($i = 0; $i < 4; $i++) {
+      <?php foreach ($result2 as $row) {
         echo "<div class=\"product_item\">
-         <img src=\"assest/img/img_product/12-1682483525450_1066x.webp\" alt=\"\" height=\"350px\">
+         <img src='assets/img/sanpham/".$row['hinhAnh']."' alt=\"\" height=\"350px\">
          <div class=\"product_thuonghieu\">
-           <h5>Paddy</h5>
+           <h5>".$row['tenThuongHieu']."</h5>
          </div>
          <div class=\"product_name\">
-           <h5>Bát Ăn Cho Chó Mèo Bằng Nhựa Hình Mèo May Mắn</h5>
+           <h5>".$row['tenSanPham']."</h5>
          </div>
          <div class=\"product_price\">
-           <h5>55.000đ</h5>
+           <h5>".$row['donGiaBan']."</h5>
          </div>
          <button class=\"button_product\">Thêm vào giỏ hàng</button>
          <div class=\"xem_icon\">
@@ -173,15 +197,19 @@
       <h6>1000+ Thương Hiệu Boss Thích</h6>
       <a href="">Xem tất cả</a>
     </div>
-
-    <div class="thuongHieu">
-      <a href="">
-        <img src="../assets/img/banner/nutrience_logo_534x.png" alt="" style="width: 100%; height: 80px;">
+    <div class='thuongHieu'>
+    <?php foreach ($result1 as $row) {
+      echo "
+      <a href='' style='margin-left: 50px'>
+        <img src='assets/img/thuong_hieu/".$row['logo']."' alt='' style='width: 100%; height: 80px;'>
         <h6>
-          Nutrience
+          ".$row['tenThuongHieu']."
         </h6>
       </a>
+    ";
+    } ?>
     </div>
+    
   </div>
 </div>
 </div>

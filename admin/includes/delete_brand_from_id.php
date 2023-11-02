@@ -6,8 +6,7 @@ if (isset($_POST["delete"])) {
     $result = $statement->fetch();
 
     if ($statement->rowCount() == 0) {
-        $statement = $dbh->prepare("DELETE FROM `thương_hieu` WHERE `maThuongHieu` = '" . $brand_id . "'");
-        $statement->execute();
+        $statement = $dbh->prepare("DELETE FROM `thuong_hieu` WHERE `maThuongHieu` = '" . $brand_id . "'");
 
     } else {
         echo "<script>
@@ -15,6 +14,7 @@ if (isset($_POST["delete"])) {
         </script>";
 
     }
+    $statement->execute();
     echo '<script>window.location.href = "brand_index.php";</script>';
 }
 ?>

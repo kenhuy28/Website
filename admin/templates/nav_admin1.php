@@ -72,7 +72,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                             <i class="fa-solid fa-truck-fast"></i>
                         </div>
                         <div class="nav_li_title">
-                            Đơn đạt hàng
+                            Đơn đặt hàng
                         </div>
                     </a>
                 </li>
@@ -114,7 +114,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                             <i class="fa-solid fa-store"></i>
                         </div>
                         <div class="nav_li_title">
-                            Kho sản phẩm
+                            Nhập kho
                         </div>
 
                     </a>
@@ -149,7 +149,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                 <div class="header_right">
                     <span class="header_right_hello">Xin chào @HOTEN</span>
                     <div class="header_right_img">
-                        <img src="<?php echo $_SESSION['rootPath'] . "/assets/img/header_logo.png"; ?>" alt="">
+                        <img src="<?php echo $_SESSION['rootPath'] . "/../assets/img/logo/header_logo.png"; ?>" alt="">
                     </div>
                     <div class="header_right_img_expand">
                         <ul>

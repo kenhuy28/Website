@@ -11,7 +11,7 @@ $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
 // Get the rows for the current page.
 
-$query = $query . " LIMIT " . $rowOfPage . " OFFSET " . ($currentPage - 1) * $rowOfPage;
+$query = $query . "ORDER BY chi_tiet_phieu_nhap.`maPhieuNhap` ASC LIMIT " . $rowOfPage . " OFFSET " . ($currentPage - 1) * $rowOfPage;
 $statement = $dbh->prepare($query);
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_OBJ);
