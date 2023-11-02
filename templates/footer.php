@@ -12,7 +12,7 @@
             <li>
                 <a href=" <?php echo $rootPath . "/pages/brand.php"; ?>">Thương hiệu</a>
             </li>
-       </ul>
+        </ul>
     </div>
     <div class="footter_row">
         <h1>Paddy Pet Shop</h1>
@@ -120,44 +120,58 @@
 </div>
 </div>
 <!-- nếu đã login -->
-<!-- <div class="login_flex" id="login_flex">
-            <div class="login_flex_right" id="login_flex_right">
-                <div class="login_flex_right_title" style="margin: 10px 0 30px 0;">
-                    <h6>Thông tin tài khoản</h6>
-                    <div id="exit_login_flex">
-                        <i class="fa-solid fa-x"></i>
-                    </div>
-                </div>
-                <div style="display: flex; justify-content: center;align-items: center; border-radius: 50%;">
-                    @if (kh.HINHANH != null)
-                    {
-                        <img src="./assets/img/khach_hang/@kh.HINHANH" alt="" style="width: 150px; height: 150px; text-align: center;">
-                    }
-                    else
-                    {
-                        <img src="./assets/img/banner/Default_pfp.svg.png" alt="" style="width: 150px; height: 150px; text-align: center;">
-                    }
-
-                </div>
-                <div class="thonTinKhac">
-                    <h5><span>Tên: </span>@kh.HOTENKH</h5>
-                </div>
-                <div class="thonTinKhac">
-                    <h5><span>Số điện thoại: </span>@kh.DIENTHOAI</h5>
-                </div>
-                <div class="thonTinKhac">
-                    <h5><span>Địa chỉ: </span>@Session["DiaChi"]</h5>
-                </div>
-                <div class="thonTinKhac" style="margin: 0 0 40px 0;">
-                    <h5><span>Email: </span>@kh.EMAIL</h5>
-                </div>
-                <a href="@Url.Action("dangxuat", "Users")"><input type="submit" value="Chỉnh sửa thông tin" class="button_add_admin" /></a>
-                <a href="@Url.Action("dangxuat", "Users")"><input type="submit" value="Đổi mật khẩu" class="button_add_admin" /></a>
-                <a href="@Url.Action("dangxuat", "Users")"><input type="submit" value="Đăng xuất" class="button_add_admin" /></a>
+<div class="login_flex" id="login_flex">
+    <div class="login_flex_right" id="login_flex_right">
+        <div class="login_flex_right_title" style="margin: 10px 0 30px 0;">
+            <h6>Thông tin tài khoản</h6>
+            <div id="exit_login_flex">
+                <i class="fa-solid fa-x"></i>
             </div>
-        </div> -->
+        </div>
+        <div style="display: flex; justify-content: center;align-items: center; border-radius: 50%;">
 
-<!-- <script>
+            <img src="<?php if (empty($_SESSION["taiKhoan"]["avatar"]) || $_SESSION["taiKhoan"]["avatar"] == null)
+                echo '../assets/img/banner/Default_pfp.svg.png';
+            else
+                echo $_SESSION["taiKhoan"]["avatar"] ?>" alt=""
+                    style="width: 150px; height: 150px; text-align: center;">
+
+            </div>
+            <div class="thonTinKhac">
+                <h5><span>Tên: </span>
+                <?php echo $_SESSION["taiKhoan"]["hoKhachHang"] . ' ' . $_SESSION["taiKhoan"]["tenKhachHang"] ?>
+            </h5>
+        </div>
+        <div class="thonTinKhac">
+            <h5><span>Số điện thoại: </span>
+                <?php echo $_SESSION["taiKhoan"]["dienThoai"] ?>
+            </h5>
+        </div>
+        <div class="thonTinKhac">
+            <h5><span>Địa chỉ: </span>
+                <?php
+                // SELECT xa.tenXa, huyen.tenHuyen, tinh.tenTinh FROM xa JOIN huyen ON xa.maHuyen = huyen.maHuyen JOIN tinh ON huyen.maTinh=tinh.maTinh WHERE xa.maXa = "X04036"
+                $get_diachi = "SELECT xa.tenXa, huyen.tenHuyen, tinh.tenTinh FROM xa JOIN huyen ON xa.maHuyen = huyen.maHuyen JOIN tinh ON huyen.maTinh=tinh.maTinh WHERE xa.maXa = '{$_SESSION["taiKhoan"]["maXa"]}'";
+                $statement = $dbh->prepare($get_diachi);
+                $statement->execute();
+                $diachis = $statement->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($diachis as $diachi)
+                    echo $_SESSION["taiKhoan"]["diaChiCuThe"] . ', ' . $diachi['tenXa'] . ', ' . $diachi['tenHuyen'] . ', ' . $diachi['tenTinh']; ?>
+            </h5>
+        </div>
+        <div class="thonTinKhac" style="margin: 0 0 40px 0;">
+            <h5><span>Email: </span><?php echo $_SESSION["taiKhoan"]["email"] ?></h5>
+        </div>
+        <a href="@Url.Action(" dangxuat", "Users" )"><input type="submit" value="Chỉnh sửa thông tin"
+                class="button_add_admin" /></a>
+        <a href="@Url.Action(" dangxuat", "Users" )"><input type="submit" value="Đổi mật khẩu"
+                class="button_add_admin" /></a>
+        <a href="@Url.Action(" dangxuat", "Users" )"><input type="submit" value="Đăng xuất"
+                class="button_add_admin" /></a>
+    </div>
+</div>
+
+<script>
     const $ = document.querySelector.bind(document);
     const login_user = $("#profile_user");
     const login_flex = $("#login_flex");
@@ -177,7 +191,7 @@
     };
 
 
-</script> -->
+</script>
 
 
 <script src="../assets/js/app.js"></script>
