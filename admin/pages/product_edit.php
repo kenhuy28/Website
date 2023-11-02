@@ -19,7 +19,7 @@ include '../includes/get_product_data_from_id.php';
         <label class="Title_Admin_create_form">Thêm sản phẩm</label>
         <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
 
-        <form action="" method="post">
+        <form action="" method="post" id="form">
             <div>
                 <label for="" class="name_form_field">Mã sản phẩm: </label>
                 <input type="text" class="textfile" readonly value="<?php echo $result->maSanPham ?>" name="MASP">
@@ -53,9 +53,9 @@ include '../includes/get_product_data_from_id.php';
                 </select>
                 <span class="error_message"></span>
             </div>
-            <div>
+            <div style="margin-bottom: 10px;">
                 <label for="" class="name_form_field">Mô tả: </label>
-                <textarea class="textfile_address" cols="2" id="address"
+                <textarea class="" form="form" cols="60" id="address" rows="4"
                     name="MOTA"><?php echo $result->moTa ?></textarea>
                 <span class="error_message"></span>
             </div>
@@ -90,13 +90,8 @@ include '../includes/get_product_data_from_id.php';
                 errorSelector: '.error_message',
                 rules: [
                     Validator.isRequired('#fullname', 'Vui lòng nhập tên sản phẩm!'),
-                    Validator.isRequired('#giamua', 'Vui lòng nhập giá mua!'),
                     Validator.isRequired('#giaban', 'Vui lòng nhập giá bán!'),
-                    Validator.isRequired('#soluong', 'Vui lòng nhập số lượng!'),
-                    Validator.isLessZero('#giamua', 'Vui lòng nhập giá mua lớn hơn hoặc bằng không'),
                     Validator.isLessZero('#giaban', 'Vui lòng nhập giá bán lớn hơn hoặc bằng không'),
-                    Validator.isLessZero('#soluong', 'Vui lòng nhập số lượng lớn hơn không'),
-                    Validator.isRong('#thuonghieu', 'Vui lòng chọn thương hiệu')
                 ],
                 onSubmit: function (data) {
                     // Call API

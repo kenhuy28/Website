@@ -66,7 +66,7 @@ include '../includes/get_product_data_from_id.php';
 
         </div>
         <div class="button">
-            <a href="product_admin_edit.php"><input type="submit" value="Chỉnh sửa" class="button_add_admin" /></a>
+            <?php echo "<a href='product_edit.php?id=" . $product_id . "'><input type=\"submit\" value=\"Chỉnh sửa\" class=\"button_add_admin\" /></a>" ?>
             <a href="javascript:history.go(-1);"><input type="button" value="Quay lại" class="button_add_admin" /></a>
         </div>
 
