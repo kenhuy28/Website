@@ -3,11 +3,6 @@ include '../templates/nav_admin1.php';
 //lấy dữ liệu thương hiệu
 include '../includes/get_brand_data_from_id.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo "nhấn";
-} else {
-    echo "chưa yêu cầu";
-}
 ?>
 <style>
     input,
@@ -24,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="create_admin">
         <h1 class="Title_Admin_create_form">Chỉnh sửa thương hiệu</h1>
         <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
-        <form action="" method="post" enctype="multipart/form-data" id="form-2">
+        <form action="../includes/edit_brand.php" method="post" enctype="multipart/form-data" id="form-2">
             <div class="form_field">
                 <label class="name_form_field">Mã thương hiệu : </label>
                 <input type="text" name="maTH" class="textfile" value="<?php echo $result->maThuongHieu; ?>" readonly>
