@@ -53,8 +53,8 @@ while ($row = $get_giohang->fetch()) {
 
 // xóa giỏ hàng sau khi đặt
 $delete_giohang = "DELETE FROM gio_hang WHERE gio_hang.maKhachHang = '$maKhachHang'";
-$delete_giohang = $dbh->prepare($insert_chddh);
-$delete_giohang->execute();
+$delete = $dbh->prepare($delete_giohang);
+$delete->execute();
 
 // đặt xong về trang báo đặt thành công
 header("Location: ../pages/cart_confirm_order.php");
