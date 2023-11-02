@@ -25,8 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $warning = "Tài khoản hoặc mật khẩu không đúng!";
     }
-} else {
-    echo "chưa yêu cầu";
 }
 ob_end_flush();
 ?>

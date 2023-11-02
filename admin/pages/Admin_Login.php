@@ -1,4 +1,4 @@
-<?php include '../templates/nav_admin1.php' ?>
+
 <!DOCTYPE html>
 
 <html>
@@ -7,15 +7,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập tài khoản quản trị viên</title>
-    <link rel="icon" href="~/assest/img/logo/header_logo.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="../../assets/img/logo/header_logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
-    <link rel="stylesheet" href="~/assest/css/base.css">
-    <link rel="stylesheet" href="~/assest/css/grid.css">
-    <link rel="stylesheet" href="~/assest/css/responsive.css">
-    <link rel="stylesheet" href="~/assest/css/main.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/grid.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="~/assest/font/fontawesome-free-6.1.2-web/css/all.css" />
+    <link rel="stylesheet" href="../../assets/font/fontawesome-free-6.1.2-web/css/all.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -24,26 +24,55 @@
 </head>
 
 <body>
+<?php
+ob_start();
+require_once('../includes/config.php');
+$warning = "";
+if (isset($_POST['tendn'])) {
+    $username = trim($_POST['tendn']);
+} else {
+    $username = "";
+}
+if (isset($_POST['matkhau'])) {
+    $password = trim($_POST['matkhau']);
+} else {
+    $password = "";
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $username !== '' && $password !== '') {
+    $md5password = md5($password);
+    $sql = "SELECT * FROM nhan_vien WHERE tenNguoiDung = '$username' AND matKhau = '$md5password'";
+    $stmt = $dbh->query($sql);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($result != false) {
+        $_SESSION['admin'] = $result;
+        header("Location: ../index.php");
+        exit();
+    } else {
+        $warning = "Tài khoản hoặc mật khẩu không đúng!";
+    }
+}
+ob_end_flush();
+?>
     <div class="app">
         <div class="loginadmin">
             <div class="backGround">
-                <img src="../../assest/img/bacgroundloginadmin/backgroundLoginadmin.png" alt="">
+                <img src="../assets/img/bacgroundloginadmin/backgroundLoginadmin.png" alt="">
             </div>
             <div class="login">
                 <div class="login1">
                     <h1>Đăng nhập tài khoản admin</h1>
-                    <form action="" Method="POST">
+                    <form action="Admin_Login.php" Method="POST" id="form-1">
                         <div class="form_field">
-                            <label for="" class="name_form_field">Tài khoản : </label>
+                            <label for="taikhoan" class="name_form_field">Tài khoản : </label>
                             <input type="text" class="textfile" name="tendn" id="taikhoan">
                             <span class="error_message"></span>
                         </div>
                         <div class="form_field">
-                            <label for="" class="name_form_field">Mật khẩu : </label>
+                            <label for="matkhau" class="name_form_field">Mật khẩu : </label>
                             <input type="password" class="textfile" id="matkhau" name="matkhau">
                             <span class="error_message"></span>
                         </div>
-                        <h4 class="error_message">@ViewBag.Thongbao</h4>
+                        <h4 class="error_message"><?php echo $warning?></h4>
                         <div class="button">
                             <input type="submit" value="Đăng nhập" class="button_add_admin" />
                         </div>
@@ -52,7 +81,7 @@
             </div>
         </div>
     </div>
-    <!-- <script src="~/assest/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Mong muốn của chúng ta
@@ -70,8 +99,7 @@
                 }
             });
         });
-    </script> -->
+    </script>
 </body>
 
 </html>
-<?php include '../templates/nav_admin2.php' ?>

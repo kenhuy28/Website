@@ -1,36 +1,40 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php
+include '../templates/nav_admin1.php';
+include '../includes/get_new_type_id.php';
+?>
 
+<style>
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+    label {
+        font-size: 20px;
+    }
+</style>
 
 <div class="create_admin">
     <h1 class="Title_Admin_create_form">Thêm màu sắc</h1>
     <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
-    <!-- @using (Html.BeginForm("Create", "Loai", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "form-3", @class = "create_admin_form" }))
-    {
-        @Html.AntiForgeryToken() -->
-    <form action="">
+    <form action="../includes/create_type.php" method="post" id="form-3">
         <div class="form_field">
-            <label for="" class="name_form_field">Mã loai : </label>
-            <input type="text" class="textfile" readonly value="@MaLoai" name="MALOAI">
+            <label for="" class="name_form_field">Mã loai: </label>
+            <input type="text" class="textfile" readonly value="<?php echo $maLoai ?>" name="maLoai">
         </div>
         <div class="form_field">
-            <label for="" class="name_form_field">Tên loại : </label>
-            <input type="text" class="textfile" id="mausac" name="TENLOAI">
+            <label for="" class="name_form_field">Tên loại: </label>
+            <input type="text" class="textfile" id="tenloai" name="tenLoai">
             <span class="error_message"></span>
         </div>
         <div class="button">
-            <input type="button" value="Thêm" class="button_add_admin delete_display_alert" />
-            <a href="@Url.Action(" Index","Loai")"><input type="button" value="Quay lại" class="button_add_admin" /></a>
-        </div>
-        <div class="alert_delete">
-            <div class="notification">
-                <h1 class="notification_title">Đã thêm màu sắc!</h1>
-                <a href="@Url.Action(" Index","Loai")"><input type="submit" value="Ok"
-                        class="alert_delete_btn delete_conform" /></a>
-            </div>
+            <input type="submit" value="Thêm" name="add" class="button_add_admin delete_display_alert" />
+            <a href="javascript:history.go(-1);"><input type="button" value="Quay lại" class="button_add_admin" /></a>
         </div>
     </form>
 </div>
-<!-- <script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         // Mong muốn của chúng ta
         Validator({
@@ -38,7 +42,7 @@
             formGroupSelector: '.form_field',
             errorSelector: '.error_message',
             rules: [
-                Validator.isRequired('#mausac', 'Vui lòng nhập tên màu sắc!'),
+                Validator.isRequired('#tenloai', 'Vui lòng nhập tên loại!'),
             ],
             onSubmit: function (data) {
                 // Call API
@@ -53,5 +57,5 @@
     alert_delete_btn.onclick = () => {
         alert_delete.style.display = "block";
     };
-</script> -->
+</script>
 <?php include '../templates/nav_admin2.php' ?>
