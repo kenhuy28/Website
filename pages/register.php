@@ -8,54 +8,84 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
 ?>
 
 <h6>Trang chủ > Đăng ký </h6>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    fetch('https://vn-public-apis.fpo.vn/provinces/getAll?limit=-1')
-        .then(response => response.json())
-        .then(data => {
-            let provinces = data.data.data;
-            provinces.map(value => document.getElementById('provinces').innerHTML += `<option value='${value.code}'>${value.name}</option>`);
-        })
-        .catch(error => {
-            console.error('Lỗi khi gọi API:', error);
+    $(document).ready(function () {
+        function getDistricts(selectedProvince) {
+            jQuery.ajax({
+                url: '../includes/get_register.php',
+                type: 'POST',
+                data: { province_id: selectedProvince },
+                success: function (data) {
+                    $('#districts').html(data);
+                    $('#wards').html('<option value="">Chọn Xã</option>');
+                    $('#maXaInput').val('');
+                }
+            });
+        }
+        function getWards(selectedDistrict) {
+            jQuery.ajax({
+                url: '../includes/get_register.php',
+                type: 'POST',
+                data: { district_id: selectedDistrict },
+                success: function (data) {
+                    $('#wards').html(data);
+                    // var selectedWard = $('#wards').val();
+                    // $('#maXaInput').val(selectedWard);
+                }
+            });
+        }
+        $('#provinces').change(function () {
+            var selectedProvince = $(this).val();
+            getDistricts(selectedProvince);
+        });
+        $('#districts').change(function () {
+            var selectedDistrict = $(this).val();
+            getWards(selectedDistrict);
+        });
+        $('#wards').change(function () {
+            // Cập nhật giá trị của #maXaInput khi bạn thay đổi xã.
+            var selectedWard = $(this).val();
+            $('#maXaInput').val(selectedWard);
         });
 
-    function fetchDistricts(provincesID) {
-        fetch(`https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode=${provincesID}&limit=-1`)
-            .then(response => response.json())
-            .then(data => {
-                let districts = data.data.data;
-                if (districts !== undefined) {
-                    districts.map(value => document.getElementById('districts').innerHTML += `<option value='${value.code}'>${value.name}</option>`);
+        function getUsername(userName) {
+            jQuery.ajax({
+                url: '../includes/get_register.php',
+                type: 'POST',
+                data: { userName: userName },
+                success: function (data) {
+                    $('#userName_message').html(data);
                 }
-            })
-            .catch(error => {
-                console.error('Lỗi khi gọi API:', error);
             });
-    }
+        }
+        $('#userName').change(function () {
+            // cập nhật giá trị của #maXaInput khi thay đổi xã để gửi đi
+            var userName = $(this).val();
+            getUsername(userName);
+        });
 
-    function fetchWards(districtsID) {
-        fetch(`https://vn-public-apis.fpo.vn/wards/getByDistrict?districtCode=${districtsID}&limit=-1`)
-            .then(response => response.json())
-            .then(data => {
-                let wards = data.data.data;
-                if (wards !== undefined) {
-                    wards.map(value => document.getElementById('wards').innerHTML += `<option value='${value.code}'>${value.name}</option>`);
-                }
-            })
-            .catch(error => {
-                console.error('Lỗi khi gọi API:', error);
-            });
-    }
+        // Lắng nghe sự kiện khi người dùng nhập vào trường "Tên đăng nhập".
+        $('#userName').change(function () {
+            var userNameMessage = $('#userName_message').text();
+            // kiểm tra nếu tên đăng nhập đã tồn tại thì không cho bấm đăng ký  
+            if (userNameMessage == "Tên người dùng dã được sử dụng")
+                $('#registerButton').prop('disabled', false);
+            else
+                $('#registerButton').prop('disabled', true);
+        });
+        // xử lý khi nhập tiếng việt có dấu
+        $('#userName').on('input', function () {
+            var userNameValue = $('#userName').val();
+            userNameValue = userNameValue.replace(/[^A-Za-z0-9_]/g, '');
+            $('#userName').val(userNameValue);
+        });
+    });
 
-    function getProvinces(event) {
-        fetchDistricts(event.target.value);
-    }
-
-    function getDistricts(event) {
-        fetchWards(event.target.value);
-    }
 
 </script>
+
 <div class="create_admin">
     <h1 class="Title_Admin_create_form">Tạo tài khoản </h1>
     <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
@@ -88,7 +118,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         <div class="form_field">
             <label for="" class="name_form_field">Tên đăng nhập: </label>
             <input type="text" class="textfile" id="userName" name="tendn" style="width: 400px;" required>
-            <span class="error_message"></span>
+            <span class="error_message" id="userName_message"></span>
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Mật khẩu: </label>
@@ -98,10 +128,10 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         <div style="display: flex; justify-content: space-between; width: 400px;">
             <div class="form_field">
                 <label for="" class="name_form_field">Tỉnh: </label>
-                <select id='provinces' class="textfile" name="tinh" style="width: 195px;">
+                <select id='provinces' class="textfile" name="provinces" style="width: 195px;">
                     <option value="" disabled selected>Chọn tỉnh/Thành phố</option>
                     <?php
-                    while ($row = $statement->fetch())  
+                    while ($row = $statement->fetch())
                         echo "<option value='{$row->maTinh}'>{$row->tenTinh}</option>";
                     ?>
                 </select>
@@ -109,8 +139,8 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
             </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Huyện: </label>
-                <select id='districts' class="textfile" name="huyen" style="width: 195px;" id="Huyen">
-                    <option value="">Chọn Huyện</option>
+                <select id='districts' class="textfile" name="districts" style="width: 195px;">
+                    <option disabled selected value="">Chọn Huyện</option>
                 </select>
                 <span class="error_message"></span>
             </div>
@@ -118,13 +148,14 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         <div style="display: flex; justify-content: space-between; width: 400px;">
             <div class="form_field">
                 <label for="" class="name_form_field">Xã: </label>
-                <select id="wards" class="textfile" name="maXa" style="width: 195px;" id="Xa">
+                <select required id="wards" class="textfile" style="width: 195px;">
                     <option value="">Chọn Xã</option>
                 </select>
+                <input hidden type="text" name="maXa" id="maXaInput">
                 <span class="error_message"></span>
             </div>
             <div class="form_field">
-                <label for="" class="name_form_field">Chi tiết: </label>
+                <label for="" class="name_form_field">Địa chỉ cụ thể: </label>
                 <input type="diaChi" class="textfile" id="diaChi" name="diaChi" style="width: 195px;" required>
             </div>
         </div>
@@ -143,7 +174,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
             </div>
         </div> -->
         <div class="button">
-            <input type="submit" name="submit" value="Đăng ký" class="button_add_admin" />
+            <input disabled type="submit" name="submit" id="registerButton" value="Đăng ký" class="button_add_admin" />
         </div>
     </form>
 </div>
