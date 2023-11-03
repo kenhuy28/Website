@@ -135,7 +135,6 @@
             else
                 echo $_SESSION["taiKhoan"]["avatar"] ?>" alt=""
                     style="width: 150px; height: 150px; text-align: center;">
-
             </div>
             <div class="thonTinKhac">
                 <h5><span>Tên: </span>
@@ -160,38 +159,45 @@
             </h5>
         </div>
         <div class="thonTinKhac" style="margin: 0 0 40px 0;">
-            <h5><span>Email: </span><?php echo $_SESSION["taiKhoan"]["email"] ?></h5>
+            <h5><span>Email: </span>
+                <?php echo $_SESSION["taiKhoan"]["email"] ?>
+            </h5>
         </div>
-        <a href="@Url.Action(" dangxuat", "Users" )"><input type="submit" value="Chỉnh sửa thông tin"
-                class="button_add_admin" /></a>
-        <a href="@Url.Action(" dangxuat", "Users" )"><input type="submit" value="Đổi mật khẩu"
-                class="button_add_admin" /></a>
-        <a href="@Url.Action(" dangxuat", "Users" )"><input type="submit" value="Đăng xuất"
-                class="button_add_admin" /></a>
+        <form action="<?php echo $rootPath . "/pages/edit_info.php" ?>" method="post">
+            <input hidden type="text" name="editInfo" value="1">
+            <input type="submit" value="Chỉnh sửa thông tin" class="button_add_admin" />
+        </form>
+
+        <a href="<?php echo $rootPath . "/pages/change_password_page.php" ?>">
+            <input type="button" value="Đổi mật khẩu" class="button_add_admin" /></a>
+        <form action="<?php echo $rootPath . "/includes/logout.php" ?>">
+            <input type="submit" value="Đăng xuất" class="button_add_admin" />
+        </form>
     </div>
 </div>
+<?php if (!empty($_SESSION["taiKhoan"]) && !isset($_POST['editInfo'])) {
+    echo '
+    <script>
+        const $ = document.querySelector.bind(document);
+        const login_user = $("#profile_user");
+        const login_flex = $("#login_flex");
+        const exit_login_flex = $("#exit_login_flex");
+        const login_flex_right = $("#login_flex_right");
+        var isLogin_flex = false;
+        login_user.onclick = () => {
+            isLogin_flex = true;
+            login_flex.style.display = "block";
+            login_flex_right.style.right = "0";
 
-<script>
-    const $ = document.querySelector.bind(document);
-    const login_user = $("#profile_user");
-    const login_flex = $("#login_flex");
-    const exit_login_flex = $("#exit_login_flex");
-    const login_flex_right = $("#login_flex_right");
-    var isLogin_flex = false;
-    login_user.onclick = () => {
-        isLogin_flex = true;
-        login_flex.style.display = "block";
-        login_flex_right.style.right = "0";
-
-    };
-    exit_login_flex.onclick = () => {
-        isLogin_flex = false;
-        login_flex.style.display = "none";
-        login_flex_right.style.right = "-360px";
-    };
+        };
+        exit_login_flex.onclick = () => {
+            isLogin_flex = false;
+            login_flex.style.display = "none";
+            login_flex_right.style.right = "-360px";
+        };
+    </script>';
+} ?>
 
 
-</script>
 
-
-<script src="../assets/js/app.js"></script>
+<script src="<?php echo $rootPath ?>/assets/js/app.js"></script>

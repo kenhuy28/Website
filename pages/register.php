@@ -31,8 +31,8 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
                 data: { district_id: selectedDistrict },
                 success: function (data) {
                     $('#wards').html(data);
-                    // var selectedWard = $('#wards').val();
-                    // $('#maXaInput').val(selectedWard);
+                    var selectedWard = $('#wards').val();
+                    $('#maXaInput').val(selectedWard);
                 }
             });
         }
