@@ -16,10 +16,10 @@ include '../includes/get_product_data_from_id.php';
 </style>
 <div class="body" style="margin-top: 10px">
     <div class="create_admin">
-        <label class="Title_Admin_create_form">Thêm sản phẩm</label>
+        <label class="Title_Admin_create_form">Sửa thông tin sản phẩm</label>
         <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
 
-        <form action="" method="post" id="form">
+        <form action="../includes/edit_product.php" method="post" id="form-1">
             <div>
                 <label for="" class="name_form_field">Mã sản phẩm: </label>
                 <input type="text" class="textfile" readonly value="<?php echo $result->maSanPham ?>" name="MASP">
@@ -55,20 +55,20 @@ include '../includes/get_product_data_from_id.php';
             </div>
             <div style="margin-bottom: 10px;">
                 <label for="" class="name_form_field">Mô tả: </label>
-                <textarea class="" form="form" cols="60" id="address" rows="4"
+                <textarea class="" form="form-1" cols="60" id="address" rows="4"
                     name="MOTA"><?php echo $result->moTa ?></textarea>
                 <span class="error_message"></span>
             </div>
-            <div>
-                <label for="" class="name_form_field">Ảnh đại diện: </label>
+            <div class="form_field">
+                <label class="name_form_field">Ảnh sản phẩm: </label>
                 <div class="custom-file">
-                    <div>
-                        <input type="file" class="custom-file-input" id="img_profile_admin" name="fileUpload" value="">
+                    <div class="form_field">
+                        <input type="file" class="custom-file-input" id="img_product" name="image" accept="image/*">
                         <span class="error_message"></span>
                     </div>
                     <div class="custom-file-img">
-                        <img src="<?php echo $_SESSION['rootPath'] . '/../assets/img/sanpham/' . $result->hinhAnh ?>"
-                            alt="" id="custom-file-img-display">
+                        <img src="<?php echo $_SESSION['rootPath'] . "/../assets/img/sanpham/" . $result->hinhAnh; ?>"
+                            alt="Logo sản phẩm" id="custom-file-img-display">
                     </div>
                 </div>
             </div>
@@ -78,27 +78,19 @@ include '../includes/get_product_data_from_id.php';
                 <a href="javascript:history.go(-1);"><input type="button" value="Quay lại"
                         class="button_add_admin" /></a>
             </div>
-
         </form>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mong muốn của chúng ta
-            Validator({
-                form: '#form-1',
-                formGroupSelector: '.form_field',
-                errorSelector: '.error_message',
-                rules: [
-                    Validator.isRequired('#fullname', 'Vui lòng nhập tên sản phẩm!'),
-                    Validator.isRequired('#giaban', 'Vui lòng nhập giá bán!'),
-                    Validator.isLessZero('#giaban', 'Vui lòng nhập giá bán lớn hơn hoặc bằng không'),
-                ],
-                onSubmit: function (data) {
-                    // Call API
-                    //console.log(data);
-                }
-            });
-        });
+        const img_thuonghieu = document.querySelector("#img_product");
+        const custom_file_img_display = document.querySelector("#custom-file-img-display");
+        img_thuonghieu.onchange = function (e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                custom_file_img_display.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        };
     </script>
 </div>
 <?php include '../templates/nav_admin2.php' ?>

@@ -28,10 +28,7 @@ include '../includes/get_brand_data_from_id.php';
                 <label class="name_form_field">Tên thương hiệu : </label>
                 <input type="text" class="textfile" id="tenTH" name="TENTH"
                     value="<?php echo $result->tenThuongHieu; ?>">
-                <span class="error_message">
-                    <!-- <?php if (!empty($error))
-                        echo $error; ?> -->
-                </span>
+                <span class="error_message"></span>
             </div>
 
             <div class="form_field">
