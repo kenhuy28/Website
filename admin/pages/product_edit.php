@@ -19,7 +19,7 @@ include '../includes/get_product_data_from_id.php';
         <label class="Title_Admin_create_form">Sửa thông tin sản phẩm</label>
         <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
 
-        <form action="../includes/edit_product.php" method="post" id="form-1">
+        <form action="../includes/edit_product.php" method="post" enctype="multipart/form-data" id="form-1">
             <div>
                 <label for="" class="name_form_field">Mã sản phẩm: </label>
                 <input type="text" class="textfile" readonly value="<?php echo $result->maSanPham ?>" name="MASP">

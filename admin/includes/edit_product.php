@@ -9,8 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $brand_id = $_POST["MATH"];
         $type_id = $_POST["MALOAI"];
         $desciption = $_POST["MOTA"];
-        echo $desciption;
-        echo $_POST[$_FILES['image']];
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
             //lấy file hình
             $errors = array();
@@ -35,10 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $statement = $dbh->prepare("UPDATE san_pham SET tenSanPham = '" . $product_name . "', donGiaBan = " . $price_buy . ", maThuongHieu = '" . $brand_id . "', maLoai = '" . $type_id . "', moTa = '" . $desciption . "' WHERE maSanPham = '" . $product_id . "'");
             $statement->execute();
         }
-        //     echo '<script>
-        //     alert("Cập nhật thông tin thành công");
-        //     window.location.href = "../pages/product_index.php?";
-        // </script>';
+            echo '<script>
+            alert("Cập nhật thông tin thành công");
+            window.location.href = "../pages/product_index.php?";
+        </script>';
     } catch (Exception $e) {
         echo 'Có lỗi trong quá trình cập nhật thông tin' . $e->getMessage();
     }
