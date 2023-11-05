@@ -2,7 +2,13 @@
 <!-- SELECT concat(khach_hang.hoKhachHang,' ',khach_hang.tenKhachHang) AS hoTenKhachHang, khach_hang.dienThoai, khach_hang.ngaySinh,khach_hang.email, concat(khach_hang.diaChiCuThe,", ",xa.tenXa,", ",huyen.tenHuyen,", ",tinh.tenTinh) AS diaChi FROM khach_hang JOIN xa on khach_hang.maXa=xa.maXa JOIN huyen on huyen.maHuyen=xa.maHuyen JOIN tinh on tinh.maTinh=huyen.maTinh -->
 
 <?php
-$query = 'SELECT concat(khach_hang.hoKhachHang," ",khach_hang.tenKhachHang) AS hoTenKhachHang, khach_hang.dienThoai, khach_hang.ngaySinh, khach_hang.email, concat(khach_hang.diaChiCuThe,", ",xa.tenXa,", ",huyen.tenHuyen,", ",tinh.tenTinh) AS diaChi FROM khach_hang JOIN xa on khach_hang.maXa=xa.maXa JOIN huyen on huyen.maHuyen=xa.maHuyen JOIN tinh on tinh.maTinh=huyen.maTinh';
+$rowOfPage = 10;
+$totalRows = $dbh->query('SELECT COUNT(*) FROM khach_hang')->fetchColumn();
+$totalPages = ceil($totalRows / $rowOfPage);
+$currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+
+$query = 'SELECT concat(khach_hang.hoKhachHang," ",khach_hang.tenKhachHang) AS hoTenKhachHang, khach_hang.dienThoai, khach_hang.ngaySinh, khach_hang.email, concat(khach_hang.diaChiCuThe,", ",xa.tenXa,", ",huyen.tenHuyen,", ",tinh.tenTinh) AS diaChi FROM khach_hang JOIN xa on khach_hang.maXa=xa.maXa JOIN huyen on huyen.maHuyen=xa.maHuyen JOIN tinh on tinh.maTinh=huyen.maTinh' .
+    " LIMIT $rowOfPage  OFFSET " . (($currentPage - 1) * $rowOfPage);
 $query_extend = '';
 $where_conditions = [];
 if (!empty($_POST['tenKH']))
@@ -35,6 +41,12 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         padding-bottom: -15px;
         border-collapse: collapse;
 
+    }
+
+    .table_dskhadmin {
+        width: 100%;
+        margin-top: 25px;
+        border-collapse: collapse;
     }
 </style>
 <h1 class="Title_Admin_create_form">Tìm khách hàng</h1>
@@ -73,22 +85,21 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         </form>
     </div>
     <br><br>
-    <table class="table_dsadmin">
+    <table class="table_dskhadmin">
         <thead>
-            <tr>
-                <th style="width: 120px;">Họ tên</th>
-                <th style="width: 80px;">Số điện thoại</th>
-                <th style="width: 90px;">Ngày sinh</th>
-                <th style="width: 150px;">Email</th>
-                <th style="width: 150px;">Địa chỉ</th>
-                <!-- <th style="width: 80px;">Chức năng</th> -->
+            <tr style="height: 40px;">
+                <th style="width: 15%;">Họ tên</th>
+                <th style="width: 10%;">Số điện thoại</th>
+                <th style="width: 10%;">Ngày sinh</th>
+                <th style="width: 20%;">Email</th>
+                <th style="width: 45%;">Địa chỉ</th>
             </tr>
         </thead>
         <tbody>
             <?php
                     while ($row = $statement->fetch())
                         echo '
-                            <tr>
+                            <tr style="height: 35px;">
                             <td>'
                             . $row->hoTenKhachHang . '
                             </td>
@@ -108,18 +119,5 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
                     ?>
     </tbody>
 </table>
-<!-- @*<div align="center">@Html.PagedListPager(Model, page => Url.Action("DSAdmin", new { page = page }))</div>*@ -->
-<!-- hiện số trang -->
-<!-- <ul class="page">
-    @if (Model.PageCount > 1)
-    {
-        for (int i = 1; i <= Model.PageCount; i++)
-        {
-            <li>
-                <a href="@Url.Action("Index", new { page = i })" class="@((i == Model.PageNumber) ? "page_button page_button_active" : "page_button")">@i</a>
-            </li>
-        }
-    }
-</ul> -->
-
+<?php include '../includes/pagination.php' ?>
 <?php include '../templates/nav_admin2.php' ?>
