@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($file_size > 2097152) {
                 $errors[] = 'File size should be 2MB';
             }
-            echo $fileName;
             if (empty($errors) == true) {
                 move_uploaded_file($file_tmp, $_SESSION['rootPath'] . "/../assets/img/sanpham/" . $file_name);
             } else {
@@ -33,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $statement = $dbh->prepare("UPDATE san_pham SET tenSanPham = '" . $product_name . "', donGiaBan = " . $price_buy . ", maThuongHieu = '" . $brand_id . "', maLoai = '" . $type_id . "', moTa = '" . $desciption . "' WHERE maSanPham = '" . $product_id . "'");
             $statement->execute();
         }
-            echo '<script>
+        echo '<script>
             alert("Cập nhật thông tin thành công");
             window.location.href = "../pages/product_index.php?";
         </script>';
