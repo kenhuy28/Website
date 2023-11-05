@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-if (isset($_POST["add"])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $maLoai = $_POST["maLoai"];
     $tenLoai = $_POST["tenLoai"];
 

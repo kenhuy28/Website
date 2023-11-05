@@ -11,7 +11,7 @@
             </a>
         </div>
         <div class="add_admin">
-            <a href="enter_product.php">
+            <a href="entry.php">
                 <i class="fa-solid fa-user-plus"></i>
                 <div class="add_title">
                     Thêm sản phẩm vào kho
@@ -24,6 +24,7 @@
             <tr>
                 <th style="width: 65px;">Mã phiếu nhập</th>
                 <th style="width: 65px;">Ngày nhập kho</th>
+                <th style="width: 65px;">Nhân viên nhập</th>
                 <th style="width: 50px;">Chi tiết</th>
             </tr>
         </thead>

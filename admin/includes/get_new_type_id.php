@@ -2,7 +2,7 @@
 //tạo mã thương hiệu tự động
 $maLoai = "LSP";
 
-$query = "SELECT COUNT(*) FROM `loai_san_pham`";
+$query = "SELECT MAX(CAST(SUBSTRING(`maLoai`, 4) AS SIGNED)) AS max_id FROM loai_san_pham;";
 $statement = $dbh->prepare($query);
 $statement->execute();
 

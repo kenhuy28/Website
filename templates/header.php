@@ -14,13 +14,11 @@ include $rootPath . '/includes/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phụ kiện thú cưng</title>
     <link rel="icon" href="./assets/img/logo/header_logo.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/base.css" ?> ">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/main2.css" ?>">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/grid.css" ?>">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/responsive.css" ?>">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -39,7 +37,7 @@ include $rootPath . '/includes/config.php';
             color: #FFFFFF;
         }
     </style>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
@@ -53,7 +51,7 @@ include $rootPath . '/includes/config.php';
                     </div>
                 </div>
                 <div class="header_row_right">
-                    <form action=" " class="search">
+                    <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET" id="form-2">
                         <input type="text" placeholder="Tìm kiếm sản phẩm" name="SearchString">
                         <button class="search_icon" style="border: none">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -71,6 +69,9 @@ include $rootPath . '/includes/config.php';
                     </div> -->
 
                     <!-- nếu chưa login -->
+                    <?php 
+                        
+                    ?>
                     <a href="<?php echo $rootPath . "/pages/login.php"; ?>" class="h" id="login_user">
                         <div>
                             <div class="name_icon">
