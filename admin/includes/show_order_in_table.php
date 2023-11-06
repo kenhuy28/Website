@@ -1,35 +1,4 @@
-<script>
-    function Huy(idDH) {
-        jQuery.ajax({
-            type: 'POST',
-            url: '../includes/process_order.php',
-            data: { maDonHang: idDH, nutBam: 'cancel' }
-        }).done(function response(data) {
-            console.log("111");
-        });
-    }
-
-    function XacNhan(idDH) {
-        jQuery.ajax({
-            type: 'POST',
-            url: '../includes/process_order.php',
-            data: { maDonHang: idDH, nutBam: 'submit' }
-        });
-    }
-
-    function Giao(idDH) {
-        jQuery.ajax({
-            type: 'POST',
-            url: '../includes/process_order.php',
-            data: { maDonHang: idDH, nutBam: 'derived' }
-        });
-    }
-</script>
-
 <?php
-if (isset($_POST["cancel"])) {
-    echo "1111";
-}
 // Calculate the total number of pages.
 $rowOfPage = 10;
 
@@ -88,7 +57,7 @@ if ($result) {
                             <td>" . $tinhTrang . "</td>
                             <td><p>" . $row->tenNhanVien . "</p></td>
                             <td>
-                                <a><i class=\"fa-solid fa-circle-info detail\"></i></a>
+                                <a href=\"Order_Details.php?id=" . $row->maDonHang . "\" ><i class=\"fa-solid fa-circle-info detail\"></i></a>
                             </td>
                             <td>" . $btn . "</td>
                         </tr>";
