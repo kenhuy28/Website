@@ -42,8 +42,8 @@
         $sql = "SELECT * FROM nhan_vien WHERE tenNguoiDung = '$username' AND matKhau = '$md5password'";
         $stmt = $dbh->query($sql);
         $result = $stmt->fetch(PDO::FETCH_OBJ);
-        if ($result != false) {
-            echo "<script>alert(\"11\");</script>";
+        if ($stmt->rowCount() > 0) {
+            //echo "<script>alert(\"11\");</script>";
             $_SESSION['admin'] = $result;
             header("Location: ../index.php");
             exit();
