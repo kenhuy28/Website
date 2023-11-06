@@ -87,7 +87,7 @@ include $rootPath . '/includes/config.php';
                                 </a>';
                     } else {
                         // nếu đã login
-                    
+                        
                         echo '<div class="h" id="profile_user">
                                 <div class="name_icon">
                                     <i class="fa-regular fa-user"></i>
