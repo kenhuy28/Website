@@ -55,7 +55,8 @@ include $rootPath . '/includes/config.php';
                     </div>
                 </div>
                 <div class="header_row_right">
-                    <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET">
+                    <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET"
+                        id="form-2">
                         <input type="text" placeholder="Tìm kiếm sản phẩm" name="SearchString">
                         <button class="search_icon" style="border: none">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -71,34 +72,36 @@ include $rootPath . '/includes/config.php';
                         </div>
                         <h5>Wishlist</h5>
                     </div> -->
-
-                    <!-- nếu chưa login -->
-                    <?php 
-                        if (isset($_SESSION['taiKhoan'])) {
-                            $user = $_SESSION['taiKhoan']['tenNguoiDung'];
-                            $user_id = $_SESSION['taiKhoan']['maKhachHang'];
-                            echo " <div class='h' id='profile_user'>
-                            <div class='name_icon'>
-                                <i class='fa-regular fa-user'></i>
-                            </div>
-                            <h5>
-                                $user
-                            </h5>
-                        </div>";
-                        } else {
-                            echo "<a href='".$rootPath."/pages/login.php' class='h' id='login_user'>
-                            <div>
-                                <div class='name_icon'>
-                                    <i class='fa-regular fa-user'></i>
-                                </div>
-                                <h5>
-                                    Đăng nhập
-                                </h5>
-                            </div>
-                        </a>";
-                        }
-                    ?>
+                    <?php
+                    // nếu chưa login
+                    if (empty($_SESSION["taiKhoan"])) {
+                        echo '<a href="' . $rootPath . '/pages/login.php" class="h" id="login_user">
+                                    <div>
+                                        <div class="name_icon">
+                                            <i class="fa-regular fa-user"></i>
+                                        </div>
+                                        <h5>
+                                            Đăng nhập
+                                        </h5>
+                                    </div>
+                                </a>';
+                    } else {
+                        // nếu đã login
                     
+                        echo '<div class="h" id="profile_user">
+                                <div class="name_icon">
+                                    <i class="fa-regular fa-user"></i>
+                                </div>
+
+                                <h5>' .
+                            $_SESSION["taiKhoan"]["hoKhachHang"] . " " . $_SESSION["taiKhoan"]["tenKhachHang"] .
+                                '</h5>
+                            </div>';
+                    }
+                    ?>
+
+
+                    <!-- giỏ hàng -->
                     <div class="h" id="cart">
                         <a href="<?php echo $rootPath . "/pages/cart.php"; ?>">
                             <div class="name_icon catalog">
