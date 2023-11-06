@@ -42,7 +42,11 @@ include $rootPath . '/includes/config.php';
 </head>
 
 <div class="app">
+<div id="notifacation_all">
+    <h6>Thêm sản phẩm thành công</h6>
+</div>
     <div class="gird">
+   
         <div class="header">
             <div class="header_row1">
                 <div class="header_row1_left">
@@ -51,7 +55,7 @@ include $rootPath . '/includes/config.php';
                     </div>
                 </div>
                 <div class="header_row_right">
-                    <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET" id="form-2">
+                    <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET">
                         <input type="text" placeholder="Tìm kiếm sản phẩm" name="SearchString">
                         <button class="search_icon" style="border: none">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -70,35 +74,37 @@ include $rootPath . '/includes/config.php';
 
                     <!-- nếu chưa login -->
                     <?php 
-                        
-                    ?>
-                    <a href="<?php echo $rootPath . "/pages/login.php"; ?>" class="h" id="login_user">
-                        <div>
-                            <div class="name_icon">
-                                <i class="fa-regular fa-user"></i>
+                        if (isset($_SESSION['taiKhoan'])) {
+                            $user = $_SESSION['taiKhoan']['tenNguoiDung'];
+                            $user_id = $_SESSION['taiKhoan']['maKhachHang'];
+                            echo " <div class='h' id='profile_user'>
+                            <div class='name_icon'>
+                                <i class='fa-regular fa-user'></i>
                             </div>
                             <h5>
-                                Đăng nhập
+                                $user
                             </h5>
-                        </div>
-                    </a>
-                    <!-- nếu đã login
-                    <div class="h" id="profile_user">
-                        <div class="name_icon">
-                            <i class="fa-regular fa-user"></i>
-                        </div>
-
-                        <h5>
-                             tên user 
-                        </h5>
-                    </div> -->
-                    <!-- giỏ hàng -->
+                        </div>";
+                        } else {
+                            echo "<a href='".$rootPath."/pages/login.php' class='h' id='login_user'>
+                            <div>
+                                <div class='name_icon'>
+                                    <i class='fa-regular fa-user'></i>
+                                </div>
+                                <h5>
+                                    Đăng nhập
+                                </h5>
+                            </div>
+                        </a>";
+                        }
+                    ?>
+                    
                     <div class="h" id="cart">
                         <a href="<?php echo $rootPath . "/pages/cart.php"; ?>">
                             <div class="name_icon catalog">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <div class="dem_hang">
-                                    <p>3</p>
+                                    <p id="count_cart">0</p>
                                 </div>
                             </div>
                             <h5>Giỏ Hàng</h5>
@@ -128,3 +134,4 @@ include $rootPath . '/includes/config.php';
             </div>
         </div>
         <div class="body" style="margin-top: 150px">
+       
