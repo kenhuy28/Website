@@ -1,6 +1,5 @@
 <?php
 include '../templates/nav_admin1.php';
-include '../includes/process_order.php';
 ?>
 
 
@@ -9,9 +8,10 @@ include '../includes/process_order.php';
         text-align: center;
     }
 
-    button {
+    input {
         color: white;
         border-radius: 5px;
+        font-size: 185x;
     }
 
     .btn-danger {

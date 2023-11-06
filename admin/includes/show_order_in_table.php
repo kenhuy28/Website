@@ -1,3 +1,31 @@
+<script>
+    function Huy(idDH) {
+        jQuery.ajax({
+            type: 'POST',
+            url: '../includes/process_order.php',
+            data: { maDonHang: idDH, nutBam: 'cancel' }
+        }).done(function response(data) {
+            console.log("111");
+        });
+    }
+
+    function XacNhan(idDH) {
+        jQuery.ajax({
+            type: 'POST',
+            url: '../includes/process_order.php',
+            data: { maDonHang: idDH, nutBam: 'submit' }
+        });
+    }
+
+    function Giao(idDH) {
+        jQuery.ajax({
+            type: 'POST',
+            url: '../includes/process_order.php',
+            data: { maDonHang: idDH, nutBam: 'derived' }
+        });
+    }
+</script>
+
 <?php
 if (isset($_POST["cancel"])) {
     echo "1111";
@@ -26,31 +54,28 @@ if ($result) {
     foreach ($result as $row) {
         $tinhTrang = "";
         $btn = "";
-        $btnHuy = "<button type=\"button\" class=\"btn-danger\" style=\"margin-left: 10px;\" onclick=\"$.ajax({
-            url: '../includes/process_order.php',
-            data: {id: '" . $row->maDonHang . "'},
-            success: function(data) {
-              
-            },
-            error: function(error) {
-              // Xử lý lỗi
-              alert(\"Có lỗi xảy ra\");
-            }
-          });\">Hủy</button>";
-        $btnXacNhan = "<button type=\"button\" class=\"btn-success\">Xác nhận</button>";
-        $btnGiao = "<button type=\"button\" class=\"btn-primary\" >Đã giao</button>";
+        $btnHuy = "<form action='../includes/process_order.php?id=" . $row->maDonHang . "&nut=huy' method='post'>
+            <input class=\"btn-danger\" type='submit' value=\"Hủy đơn\" >
+        </form>";
+
+        $btnXacNhan = "<form action='../includes/process_order.php?id=" . $row->maDonHang . "&nut=xacNhan' method='post'>
+        <input class=\"btn-success\" type='submit' value=\"Xác nhận\" >
+    </form>";
+        $btnGiao = "<form action='../includes/process_order.php?id=" . $row->maDonHang . "&nut=giao' method='post'>
+        <input class=\"btn-primary\" type='submit' value=\"Đã giao\" >
+    </form>";
 
         if ($row->tinhTrang == 0) {
             $tinhTrang = "<p style=\"color:red;\">Đơn hàng bị hủy</p>";
         } else if ($row->tinhTrang == 1) {
             $tinhTrang = "<p style=\"color:blue;\">Đã giao</p>";
         } else if ($row->tinhTrang == 2) {
-            $tinhTrang = "<p style=\"color:green;\">Đã xác nhận</p>";
-            $btn = $btnGiao . '<br>' . $btnHuy;
+            $tinhTrang = "<p style=\"color:green;\">Đã xác nhận (Đang giao)</p>";
+            $btn = $btnGiao;
 
         } else {
             $tinhTrang = "<p>Chưa xác nhận</p>";
-            $btn = $btnXacNhan . ' ' . $btnHuy;
+            $btn = $btnXacNhan . $btnHuy;
         }
 
 
