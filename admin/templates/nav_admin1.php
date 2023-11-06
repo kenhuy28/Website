@@ -112,7 +112,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/warehouse_index.php"; ?>">
+                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/entry_index.php"; ?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-store"></i>
                         </div>
@@ -168,7 +168,8 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                             </li>
 
                             <li class="header_right_img_expand_logout">
-                                <a href="<?php echo $_SESSION['rootPath'] . "/includes/log_out.php"; ?>" style="color: white;">Đăng xuất</a>
+                                <a href="<?php echo $_SESSION['rootPath'] . "/includes/log_out.php"; ?>"
+                                    style="color: white;">Đăng xuất</a>
                             </li>
                         </ul>
                     </div>

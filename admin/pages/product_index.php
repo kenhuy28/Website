@@ -1,14 +1,6 @@
 <?php include '../templates/nav_admin1.php' ?>
 <div class="body" style="margin-top: 15px">
     <div class="table_header">
-        <div class="search">
-            <a href="#">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <div class="search_title">
-                    Tìm kiếm nhanh
-                </div>
-            </a>
-        </div>
         <div class="add_admin">
             <a href="product_create.php">
                 <i class="fa-solid fa-user-plus"></i>
