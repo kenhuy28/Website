@@ -131,7 +131,7 @@
         <div style="display: flex; justify-content: center;align-items: center; border-radius: 50%;">
 
             <img src="<?php if (empty($_SESSION["taiKhoan"]["avatar"]) || $_SESSION["taiKhoan"]["avatar"] == null)
-                echo '../assets/img/banner/Default_pfp.svg.png';
+                echo $rootPath .'/assets/img/banner/Default_pfp.svg.png';
             else
                 echo $_SESSION["taiKhoan"]["avatar"] ?>" alt=""
                     style="width: 150px; height: 150px; text-align: center;">
