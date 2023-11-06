@@ -2,6 +2,7 @@
 $fileName = basename($_SERVER['SCRIPT_FILENAME']);
 // echo $fileName . "</br>";
 session_start();
+ob_start();
 $_SESSION['rootPath'] = ".";
 // $_SESSION['rootPath'] = ".";
 if ($fileName != "index.php") {
@@ -29,6 +30,8 @@ include $_SESSION['rootPath'] . '/includes/config.php';
         href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,600;0,700;0,800;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <style>
         .right {
             overflow-y: auto;
@@ -67,7 +70,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
-                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/DonHang_Index.php"; ?>">
+                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/Order_Index.php"; ?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-truck-fast"></i>
                         </div>
@@ -165,7 +168,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                             </li>
 
                             <li class="header_right_img_expand_logout">
-                                <a href=" " style="color: white;">Đăng xuất</a>
+                                <a href="<?php echo $_SESSION['rootPath'] . "/includes/log_out.php"; ?>" style="color: white;">Đăng xuất</a>
                             </li>
                         </ul>
                     </div>

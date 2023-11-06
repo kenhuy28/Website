@@ -55,7 +55,7 @@ ob_end_flush();
     <!-- <input  value="Đăng Nhập"  style="width: 150px" /> -->
     <a href="" class="qmk" style="display: block; margin-left: 10px; color: black">Quên
         mật khẩu?</a>
-    <a href="" style="text-decoration: none; color:black">
+    <a href="register.php" style="text-decoration: none; color:black">
         <input type="button" value="Tạo Tài Khoản" class="button_add_admin" style="width: 150px; margin-bottom: 50px" />
     </a>
 </form>

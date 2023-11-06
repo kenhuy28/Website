@@ -3,28 +3,6 @@ include '../templates/nav_admin1.php';
 //lấy dữ liệu thương hiệu
 include '../includes/get_brand_data_from_id.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo "nhấn";
-    // $brand_name = $_POST["TENTH"];
-    // echo isset($_FILES["image"]) != null;
-    // if (isset($_FILES["image"]) != null) {
-    //     $file_name = $_FILES['image']['name'];
-    //     $file_size = $_FILES['image']['size'];
-    //     $file_tmp = $_FILES['image']['tmp_name'];
-    //     $file_type = $_FILES['image']['type'];
-    //     $file_ext = @strtolower(end(explode('.', $_FILES['image']['name'])));
-    //     move_uploaded_file($file_tmp, $_SESSION['rootPath'] . "/../assets/img/thuong_hieu/" . $file_name);
-
-    //     $statement = $dbh->prepare("UPDATE `thuong_hieu` SET `tenThuongHieu`='" . $brand_name . "',`logo`='" . $file_name . "' WHERE `maThuongHieu` = '" . $brand_id . "'");
-
-    // } else {
-    //     $statement = $dbh->prepare("UPDATE `thuong_hieu` SET `tenThuongHieu`='" . $brand_name . "' WHERE `maThuongHieu` = '" . $brand_id . "'");
-    // }
-    // $statement->execute();
-    // echo '<script>window.location.href = "brand_index.php?";</script>';
-} else {
-    echo "test";
-}
 ?>
 <style>
     input,
@@ -41,8 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="create_admin">
         <h1 class="Title_Admin_create_form">Chỉnh sửa thương hiệu</h1>
         <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
-        <form action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $brand_id; ?>" method="post"
-            enctype="multipart/form-data" id="form-2">
+        <form action="../includes/edit_brand.php" method="post" enctype="multipart/form-data" id="form-2">
             <div class="form_field">
                 <label class="name_form_field">Mã thương hiệu : </label>
                 <input type="text" name="maTH" class="textfile" value="<?php echo $result->maThuongHieu; ?>" readonly>
@@ -51,10 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="name_form_field">Tên thương hiệu : </label>
                 <input type="text" class="textfile" id="tenTH" name="TENTH"
                     value="<?php echo $result->tenThuongHieu; ?>">
-                <span class="error_message">
-                    <!-- <?php if (!empty($error))
-                        echo $error; ?> -->
-                </span>
+                <span class="error_message"></span>
             </div>
 
             <div class="form_field">

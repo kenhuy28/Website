@@ -1185,7 +1185,7 @@ input:focus {
 .liehHe_left {
     margin-right: 60px;
 }
-..article-title {
+.article-title {
     font-size: 18px;
     margin: 20px 0;
     text-transform: uppercase;
@@ -1288,3 +1288,22 @@ input:focus {
         .thonTinKhac h5 span {
             font-weight: 700;
         }
+#notifacation_all{
+    position: fixed;
+    bottom: -50px;
+    left: 10px;
+    width: 250px;
+    height: 50px;
+    font-size: 25px;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #d5cfcf;
+    color: green;
+    z-index: 1000;
+    transition: linear 0.4s;
+    box-shadow: 0 0 10px rgba(244, 244, 244, 0.5);
+}

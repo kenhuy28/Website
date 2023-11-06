@@ -3,7 +3,7 @@
 // Calculate the total number of pages.
 $rowOfPage = 10;
 
-$totalRows = $dbh->query("SELECT COUNT(*) FROM `chi_tiet_phieu_nhap` WHERE chi_tiet_phieu_nhap.`maPhieuNhap` = '" . $entry_id . "'")->fetchColumn();
+$totalRows = $dbh->query("SELECT COUNT(*) FROM `chi_tiet_phieu_nhap` WHERE chi_tiet_phieu_nhap.`maPhieuNhap` = '" . $id . "'")->fetchColumn();
 $totalPages = ceil($totalRows / $rowOfPage);
 
 // Determine the current page number.
