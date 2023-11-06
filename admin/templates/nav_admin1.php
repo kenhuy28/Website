@@ -150,14 +150,18 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                 <div class="header_left">
                 </div>
                 <div class="header_right">
-                    <span class="header_right_hello">Xin chào @HOTEN</span>
+                    <span class="header_right_hello">Xin chào
+                        <?php echo $_SESSION['admin']->ho . ' ' . $_SESSION['admin']->ten; ?>
+                    </span>
                     <div class="header_right_img">
                         <img src="<?php echo $_SESSION['rootPath'] . "/../assets/img/logo/header_logo.png"; ?>" alt="">
                     </div>
                     <div class="header_right_img_expand">
                         <ul>
                             <li>
-                                <i class="fa-solid fa-user"></i><a href="#">Xem thông tin cá nhân</a>
+                                <i class="fa-solid fa-user"></i><a
+                                    href="<?php $_SESSION['rootPath'] . "/admin/pages/Admin_Details.php" ?>">Xem thông
+                                    tin cá nhân</a>
                             </li>
                             <li>
                                 <i class="fa-solid fa-envelope"></i>
@@ -168,7 +172,8 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                             </li>
 
                             <li class="header_right_img_expand_logout">
-                                <a href="<?php echo $_SESSION['rootPath'] . "/includes/log_out.php"; ?>" style="color: white;">Đăng xuất</a>
+                                <a href="<?php echo $_SESSION['rootPath'] . "/includes/log_out.php"; ?>"
+                                    style="color: white;">Đăng xuất</a>
                             </li>
                         </ul>
                     </div>
