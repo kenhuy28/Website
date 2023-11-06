@@ -1,31 +1,58 @@
 <!--peoduct detail-->
-<?php include '../templates/header.php' ?>
-<div class="chiTietSanPham">
-    <div class="chiTietSanPham_left">
-        <img src="../assets/img/img_product/12-1682483525450_1066x.webp" alt="" width="700px" height="700px
-                    ">
-        <div class="chiTietSanPham_giamgia">Giảm giá</div>
-    </div>
-    <div class="chiTietSanPham_right">
-        <h4>Áo Cho Chó Mèo Sơ Mi Trái Cây</h6>
-            <p>Thương hiệu: Paddy</p>
-            <div class="gia">
-                <h6>60.000₫</h6>
-                <h6>50.000₫</h6>
-            </div>
-            <h5>Số lượng còn: 32 sản phẩm</h5>
-            <button class="button_product_chiTiet">Thêm vào giỏ hàng</button>
-            <div class="chiTietSanPham_right_mota">
-                <span>Mô tả: </span>
-                Áo Sơ Mi Trái Cây Mùa Hè Cho Chó Mèo
-                - Áo được thiết kế với màu sắc họa tiết tự nhiên, sành điệu và đẳng cấp làm tôn lên cá tính của Boss nhà
-                bạn.
-                - Áo mặc cực kỳ thoáng mát ,vừa thời trang vừa tốt cho sức khoẻ.
-                - Chất liệu thoáng mát cực kì phù hợp để các boss diện trong mùa hè.
-                - Chất liệu vải mềm mại, đảm bảo thun co giãn không nhão, không xù, không nhăn giúp thú cưng của bạn cảm
-                thấy thoải mái khi mặc.
-                - Không gây kích ứng da.
+<?php include '../templates/header.php';
 
-            </div>
-    </div>
-    <?php include '../templates/footer.php' ?>
+$query = "SELECT maSanPham, tenSanPham, donGiaBan, maLoai, soLuong, hinhAnh, moTa, tenThuongHieu FROM san_pham JOIN thuong_hieu on san_pham.maThuongHieu = thuong_hieu.maThuongHieu WHERE maSanPham= 'sp0001'";
+$statement = $dbh->prepare($query);
+$statement->execute();
+$statement->setFetchMode(PDO::FETCH_OBJ);
+if (isset($_POST["submit"])) {
+    $them_giohang = "INSERT INTO";
+}
+?>
+
+<div class="chiTietSanPham">
+    <?php
+    while ($row = $statement->fetch()) {
+        if ($row->soLuong != 0) {
+            $button = '<input type="submit" name="submit" class="button_product_chiTiet" style="font-size:20px; color:red; font-weight:bold;"
+            value="THÊM VÀO GIỎ HÀNG">';
+        } else {
+            $button = '<input type="submit" name="submit" style="font-size:20px; color:red; font-weight:bold;" value="HẾT HÀNG" disabled>';
+        }
+        echo '
+
+        <div class="chiTietSanPham_left">
+            <img src="../assets/img/sanpham/' . $row->hinhAnh . ' " style="height:500px; width:500px;">
+            <div class="chiTietSanPham_giamgia">Giảm giá</div>
+        </div>
+        <div class="chiTietSanPham_right">
+            <h4>' . $row->tenSanPham . '</h6>
+                <p>Tên thương hiệu:
+                    ' . $row->tenThuongHieu . '
+                </p>
+                <div>
+                    <h1 style="color:red;">
+                        ' . $row->donGiaBan . '
+                    </h1>
+                </div>
+                <div>
+                    <h3>
+                        Số lượng còn: ' . $row->soLuong . '
+
+                    </h3>
+                </div>
+                <form acction=""  method="POST">
+                ' . $button . '
+                </form>
+                <div class="chiTietSanPham_right_mota">
+                    <span>Mô tả: </span>
+                    ' . $row->moTa . '
+                </div>
+        </div>';
+    }
+    ?>
+    <style>
+        .submit
+    </style>
+</div>
+<?php include '../templates/footer.php' ?>
