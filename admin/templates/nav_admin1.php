@@ -2,6 +2,7 @@
 $fileName = basename($_SERVER['SCRIPT_FILENAME']);
 // echo $fileName . "</br>";
 session_start();
+ob_start();
 $_SESSION['rootPath'] = ".";
 // $_SESSION['rootPath'] = ".";
 if ($fileName != "index.php") {
@@ -167,7 +168,7 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                             </li>
 
                             <li class="header_right_img_expand_logout">
-                                <a href=" " style="color: white;">Đăng xuất</a>
+                                <a href="<?php echo $_SESSION['rootPath'] . "/includes/log_out.php"; ?>" style="color: white;">Đăng xuất</a>
                             </li>
                         </ul>
                     </div>

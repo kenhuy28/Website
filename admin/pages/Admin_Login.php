@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -24,35 +23,36 @@
 </head>
 
 <body>
-<?php
-ob_start();
-require_once('../includes/config.php');
-$warning = "";
-if (isset($_POST['tendn'])) {
-    $username = trim($_POST['tendn']);
-} else {
-    $username = "";
-}
-if (isset($_POST['matkhau'])) {
-    $password = trim($_POST['matkhau']);
-} else {
-    $password = "";
-}
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $username !== '' && $password !== '') {
-    $md5password = md5($password);
-    $sql = "SELECT * FROM nhan_vien WHERE tenNguoiDung = '$username' AND matKhau = '$md5password'";
-    $stmt = $dbh->query($sql);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($result != false) {
-        $_SESSION['admin'] = $result;
-        header("Location: ../index.php");
-        exit();
+    <?php
+    ob_start();
+    require_once('../includes/config.php');
+    $warning = "";
+    if (isset($_POST['tendn'])) {
+        $username = trim($_POST['tendn']);
     } else {
-        $warning = "Tài khoản hoặc mật khẩu không đúng!";
+        $username = "";
     }
-}
-ob_end_flush();
-?>
+    if (isset($_POST['matkhau'])) {
+        $password = trim($_POST['matkhau']);
+    } else {
+        $password = "";
+    }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $username !== '' && $password !== '') {
+        $md5password = md5($password);
+        $sql = "SELECT * FROM nhan_vien WHERE tenNguoiDung = '$username' AND matKhau = '$md5password'";
+        $stmt = $dbh->query($sql);
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        if ($result != false) {
+            echo "<script>alert(\"11\");</script>";
+            $_SESSION['admin'] = $result;
+            header("Location: ../index.php");
+            exit();
+        } else {
+            $warning = "Tài khoản hoặc mật khẩu không đúng!";
+        }
+    }
+    ob_end_flush();
+    ?>
     <div class="app">
         <div class="loginadmin">
             <div class="backGround">
@@ -72,7 +72,9 @@ ob_end_flush();
                             <input type="password" class="textfile" id="matkhau" name="matkhau">
                             <span class="error_message"></span>
                         </div>
-                        <h4 class="error_message"><?php echo $warning?></h4>
+                        <h4 class="error_message">
+                            <?php echo $warning ?>
+                        </h4>
                         <div class="button">
                             <input type="submit" value="Đăng nhập" class="button_add_admin" />
                         </div>
