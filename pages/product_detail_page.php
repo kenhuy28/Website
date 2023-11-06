@@ -6,8 +6,8 @@ $statement = $dbh->prepare($query);
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_OBJ);
 if (isset($_POST["submit"])) {
-    $them_giohang = "INSERT INTO";
 }
+
 ?>
 
 <div class="chiTietSanPham">
@@ -19,6 +19,8 @@ if (isset($_POST["submit"])) {
         } else {
             $button = '<input type="submit" name="submit" style="font-size:20px; color:red; font-weight:bold;" value="HẾT HÀNG" disabled>';
         }
+        $maSanPham = $row->maSanPham;
+        $soLuong = $row->soLuong;
         echo '
 
         <div class="chiTietSanPham_left">
