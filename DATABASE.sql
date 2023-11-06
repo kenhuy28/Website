@@ -87,7 +87,6 @@ CREATE TABLE `don_dat_hang` (
   `ngayDat` datetime NOT NULL,
   `ngayGiao` datetime DEFAULT NULL,
   `tinhTrang` bit(2) NOT NULL,
-  `daThanhToan` bit(1) NOT NULL,
   `tongTien` int(11) NOT NULL,
   `maNhanVien` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -96,14 +95,14 @@ CREATE TABLE `don_dat_hang` (
 -- Dumping data for table `don_dat_hang`
 --
 
-INSERT INTO `don_dat_hang` (`maDonHang`, `maKhachHang`, `ngayDat`, `ngayGiao`, `tinhTrang`, `daThanhToan`, `tongTien`, `maNhanVien`) VALUES
-('DH0001', 'KH0001', '2023-06-06 23:27:49', NULL, b'01', b'0', 280000, 'AD0001'),
-('DH0002', 'KH0001', '2023-06-07 00:33:12', NULL, b'01', b'0', 280000, 'AD0001'),
-('DH0003', 'KH0002', '2023-06-07 00:54:50', NULL, b'01', b'0', 140000, 'AD0002'),
-('DH0004', 'KH0002', '2023-06-07 02:13:41', NULL, b'01', b'0', 133000, 'AD0002'),
-('DH0005', 'KH0002', '2023-06-07 13:35:53', NULL, b'01', b'0', 280000, 'AD0003'),
-('DH0006', 'KH0002', '2023-06-07 13:56:40', NULL, b'01', b'0', 293000, 'AD0003'),
-('DH0007', 'KH0002', '2023-06-13 08:03:54', NULL, b'00', b'0', 38000, 'AD0004');
+INSERT INTO `don_dat_hang` (`maDonHang`, `maKhachHang`, `ngayDat`, `ngayGiao`, `tinhTrang`, `tongTien`, `maNhanVien`) VALUES
+('DH0002', 'KH0001', '2023-06-07 00:33:12', NULL, b'01', 280000, 'AD0001'),
+('DH0001', 'KH0001', '2023-06-06 23:27:49', NULL, b'01', 280000, 'AD0001'),
+('DH0003', 'KH0002', '2023-06-07 00:54:50', NULL, b'01', 140000, 'AD0002'),
+('DH0004', 'KH0002', '2023-06-07 02:13:41', NULL, b'01', 133000, 'AD0002'),
+('DH0005', 'KH0002', '2023-06-07 13:35:53', NULL, b'01', 280000, 'AD0003'),
+('DH0006', 'KH0002', '2023-06-07 13:56:40', NULL, b'01', 293000, 'AD0003'),
+('DH0007', 'KH0002', '2023-06-13 08:03:54', NULL, b'00', 38000, 'AD0004');
 
 -- --------------------------------------------------------
 

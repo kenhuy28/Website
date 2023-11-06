@@ -10,9 +10,10 @@ $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
 // Get the rows for the current page.
 
-$query = "SELECT don_dat_hang.*, CONCAT(khach_hang.hoKhachHang, ' ', khach_hang.tenKhachHang) AS tenKhachHang, CONCAT(nhan_vien.ho, ' ', nhan_vien.ten) AS tenNhanVien FROM don_dat_hang 
+$query = "SELECT don_dat_hang.*, CONCAT(khach_hang.hoKhachHang, ' ', khach_hang.tenKhachHang) AS tenKhachHang, 
+CONCAT(nhan_vien.ho, ' ', nhan_vien.ten) AS tenNhanVien FROM don_dat_hang 
 JOIN khach_hang ON khach_hang.maKhachHang = don_dat_hang.maKhachHang
-JOIN nhan_vien ON nhan_vien.maNhanVien = don_dat_hang.maNhanVien
+LEFT JOIN nhan_vien ON nhan_vien.maNhanVien = don_dat_hang.maNhanVien
 ORDER BY tinhTrang DESC, ngayDat ASC, maDonHang ASC 
 LIMIT " . $rowOfPage . " OFFSET " . ($currentPage - 1) * $rowOfPage;
 $statement = $dbh->prepare($query);
