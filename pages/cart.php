@@ -89,7 +89,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         jQuery.ajax({
             type: 'POST',
             url: '<?php echo $rootPath . "/includes/update_product_quantity.php"; ?>', // Đường dẫn đến file xử lý cập nhật số lượng sản phẩm
-            data: { maSanPham: maSanPham, maKhachHang: '<?php echo $_SESSION['maKhachHang']; ?>', quantityChange: quantityChange }
+            data: { maSanPham: maSanPham, maKhachHang: '<?php echo $maKhachHang; ?>', quantityChange: quantityChange }
         });
     }
 
@@ -105,7 +105,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         jQuery.ajax({
             type: 'POST',
             url: '<?php echo $rootPath . "/includes/delete_product.php"; ?>', // Đường dẫn đến file xử lý xóa sản phẩm
-            data: { maSanPham: maSanPham, maKhachHang: '<?php echo $_SESSION['maKhachHang']; ?>' },
+            data: { maSanPham: maSanPham, maKhachHang: '<?php echo $maKhachHang; ?>' },
             success: function (response) {
                 // Xóa sản phẩm khỏi giao diện sau khi thành công
                 var productElement = document.querySelector('.soLuong' + maSanPham).closest('.body_table_item');
