@@ -166,10 +166,14 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                             </li>
                             <li>
                                 <i class="fa-solid fa-envelope"></i>
-                                <div><?php echo $_SESSION['admin']->email  ?> </div>
+                                <div>
+                                    <?php echo $_SESSION['admin']->email ?>
+                                </div>
                             </li>
                             <li>
-                                <i class="fa-solid fa-lock"></i><a href="#">Đổi mật khẩu</a>
+                                <i class="fa-solid fa-lock"></i><a
+                                    href="<?php echo $_SESSION['rootPath'] . "/pages/Admin_ChangePass.php" ?>">Đổi mật
+                                    khẩu</a>
                             </li>
 
                             <li class="header_right_img_expand_logout">
