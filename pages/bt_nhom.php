@@ -3,7 +3,7 @@
 
 </style>
 <div style="display:flex; justify-content:center; align-items:center; min-height: 400px">
-    <a href="<?php echo $rootPath . "/btNhom/NguyenHuuLuc/" ?>" style="width: 25%;">
+    <a href="<?php echo $rootPath . "/NguyenHuuLuc/" ?>" style="width: 25%;">
         <div align="center">
             <img src=" <?php echo $rootPath . "/assets/img/thanh_vien/huuluc.jpg" ?>" width="80%">
 
