@@ -35,7 +35,7 @@ require_once('../includes/ajax_add_product.php');
 <h6>Trang chủ > Sản phẩm </h6>
 <h4>Tất cả sản phẩm</h4>
 <form class="product_search" action="product_search_page.php" method="POST" enctype="multipart/form-data">
-    <button class="icon_search" type="submit" style = "width: 40px; height: 40px;">
+    <button class="icon_search" type="submit" style="width: 40px; height: 40px;">
         <i class="fa-solid fa-filter"></i>
     </button>
     <div class="product_search_item search_search">
@@ -73,7 +73,7 @@ require_once('../includes/ajax_add_product.php');
         </div>
         <div class="product_search_item_list">
             <ul>
-            <?php foreach ($thuongHieu as $row) {
+                <?php foreach ($thuongHieu as $row) {
                     echo " <li>
                     <input type='checkbox' name='TH[]' value='" . $row['maThuongHieu'] . "'>" . $row['tenThuongHieu'] . "
                     </li>";
@@ -97,7 +97,7 @@ require_once('../includes/ajax_add_product.php');
                   <h5>" . $row->tenThuongHieu . "</h5>
               </div>
               <div class='product_name'>
-                  <h5>" . $row->tenSanPham . "</h5>
+                  <a href='./product_detail_page.php?maSanPham=" . $row->maSanPham . "'><h5>" . $row->tenSanPham . "</h5></a>
               </div>";
                 if (giamGia($row->maSanPham, $giamGia, $row->donGiaBan) != null) {
                     echo "<div class='product_price' style='display: flex'>
@@ -124,5 +124,6 @@ require_once('../includes/ajax_add_product.php');
     </div>
     <?php include '../includes/product_pagination.php' ?>
 </div>
+
 </div>
 <?php include '../templates/footer.php' ?>
