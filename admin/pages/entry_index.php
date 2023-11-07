@@ -2,14 +2,6 @@
 
 <div class="body" style="margin-top: 15px">
     <div class="table_header">
-        <div class="search">
-            <a href="@Url.Action(" Search","Admin")">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <div class="search_title">
-                    Tìm kiếm nhanh
-                </div>
-            </a>
-        </div>
         <div class="add_admin">
             <a href="entry.php">
                 <i class="fa-solid fa-user-plus"></i>

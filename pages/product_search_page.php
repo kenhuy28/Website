@@ -3,6 +3,29 @@
 require_once('../includes/config.php');
 require_once('../includes/check_giam_gia.php');
 
+
+if (isset($_POST['LSP'])) {
+    $LSP = $_POST['LSP'];
+} else {
+    $LSP = array(); // Mảng rỗng nếu không có checkbox nào được chọn
+}
+if (isset($_POST['TH'])) {
+    $TH = $_POST['TH'];
+} else {
+    $TH = array(); // Mảng rỗng nếu không có checkbox nào được chọn
+}
+if (isset($_POST['giaDau'])) {
+    $giaDau = $_POST['giaDau'];
+} else {
+    $giaDau = 0; // Mảng rỗng nếu không có checkbox nào được chọn
+}
+
+if (isset($_POST['giaCuoi'])) {
+    $giaCuoi = $_POST['giaCuoi'];
+} else {
+    $giaCuoi = 0; // Mảng rỗng nếu không có checkbox nào được chọn
+}
+
 $sql = "SELECT * FROM thuong_hieu";
 $stmt = $dbh->query($sql);
 $thuongHieu = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -15,27 +38,54 @@ $sql = "SELECT * FROM giam_gia";
 $stmt = $dbh->query($sql);
 $giamGia = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-
-$rowOfPage = 10;
-$totalRows = $dbh->query("SELECT COUNT(*) FROM san_pham")->fetchColumn();
-$totalPages = ceil($totalRows / $rowOfPage);
-$currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-
-
 // Lấy giá trị từ ô tìm kiếm
 $sql = "SELECT p.*,b.tenThuongHieu FROM san_pham p
                  JOIN thuong_hieu b ON p.maThuongHieu = b.maThuongHieu
                  JOIN loai_san_pham c ON c.maLoai = p.maLoai
-                " . " LIMIT $rowOfPage  OFFSET " . (($currentPage - 1) * $rowOfPage);
+                ";
 $stmt = $dbh->query($sql);
-$sanPham = $stmt->fetchAll(PDO::FETCH_OBJ);
+$conditions = [];
+$i=0;
+if (!empty($LSP)) {
+    $list = implode("' ,'", $LSP);
+    $conditions[$i++] = "p.maLoai IN ('$list')";
+    // echo $list;
+}
+
+if (!empty($TH)) {
+    $list = implode("','", $TH);
+    $conditions[$i++] = "p.maThuongHieu IN ('$list')";
+    // echo $list;
+}
+if ($giaDau > 0) {
+    $conditions[$i++] = "p.donGiaBan >= '$giaDau'";
+}
+
+if ($giaCuoi > 0) {
+    $conditions[$i++] = "p.donGiaBan <= '$giaCuoi'";
+}
+
+if (!empty($conditions)) {
+    $whereClause = implode(" AND ", $conditions);
+    // echo $whereClause;
+    $filteredSql = "SELECT p.*,b.tenThuongHieu FROM san_pham p
+    JOIN thuong_hieu b ON p.maThuongHieu = b.maThuongHieu
+    JOIN loai_san_pham c ON c.maLoai = p.maLoai
+    WHERE {$whereClause}";
+    //echo $filteredSql;
+    $filteredStmt = $dbh->query($filteredSql);
+    //echo $filteredStmt->rowCount();
+    $sanPham = $filteredStmt->fetchAll(PDO::FETCH_OBJ);
+} else {
+    $sanPham = $stmt->fetchAll(PDO::FETCH_OBJ);
+}
 require_once('../includes/ajax_add_product.php');
 ?>
 
 <h6>Trang chủ > Sản phẩm </h6>
 <h4>Tất cả sản phẩm</h4>
 <form class="product_search" action="product_search_page.php" method="POST" enctype="multipart/form-data">
-    <button class="icon_search" type="submit" style = "width: 40px; height: 40px;">
+    <button class="icon_search" type="submit" style="width: 40px; height: 40px;">
         <i class="fa-solid fa-filter"></i>
     </button>
     <div class="product_search_item search_search">
@@ -45,6 +95,7 @@ require_once('../includes/ajax_add_product.php');
         </div>
         <div class="product_search_item_list">
             <ul>
+
                 <?php foreach ($loaiSanPham as $row) {
                     echo " <li>
                     <input type='checkbox' name='LSP[]' value='" . $row['maLoai'] . "'>" . $row['tenLoai'] . "
@@ -60,9 +111,9 @@ require_once('../includes/ajax_add_product.php');
         </div>
         <div class="product_search_item_list search_search_search" style="height: 150px;">
             <div class="input_saerch" style="display: flex;  justify-content: space-around; align-items: center">
-                <input type="text" class="textfile" style="width: 70px;" name='giaDau'>
+                <input type="text" class="textfile" style="width: 70px;" name="giaDau">
                 <h5 style="margin:0"> đến </h5>
-                <input type="text" class="textfile" style="width: 70px;" name='giaCuoi'>
+                <input type="text" class="textfile" style="width: 70px;" name="giaCuoi">
             </div>
         </div>
     </div>
@@ -73,7 +124,7 @@ require_once('../includes/ajax_add_product.php');
         </div>
         <div class="product_search_item_list">
             <ul>
-            <?php foreach ($thuongHieu as $row) {
+                <?php foreach ($thuongHieu as $row) {
                     echo " <li>
                     <input type='checkbox' name='TH[]' value='" . $row['maThuongHieu'] . "'>" . $row['tenThuongHieu'] . "
                     </li>";
@@ -122,7 +173,6 @@ require_once('../includes/ajax_add_product.php');
 
         </div>
     </div>
-    <?php include '../includes/product_pagination.php' ?>
 </div>
 </div>
 <?php include '../templates/footer.php' ?>

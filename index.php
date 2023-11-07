@@ -2,6 +2,8 @@
 
 <?php include './templates/header.php';
 require_once('includes/config.php');
+require_once('includes/check_giam_gia.php');
+
 $sql1 = "
   SELECT th.maThuongHieu, th.tenThuongHieu,th.logo, SUM(ctdh.soLuong) AS soLuongBan
   FROM chi_tiet_don_dat_hang AS ctdh
@@ -11,10 +13,10 @@ $sql1 = "
   ORDER BY soLuongBan DESC
   LIMIT 7
   ";
-  $stmt = $dbh->query($sql1);
-  $result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  $sql2 = "
-  SELECT th.tenThuongHieu,sp.maSanPham,sp.tenSanPham, sp.donGiaBan,sp.hinhAnh, SUM(ctdh.soLuong) AS soLuongBan
+$stmt = $dbh->query($sql1);
+$result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$sql2 = "
+  SELECT th.tenThuongHieu,sp.*, SUM(ctdh.soLuong) AS soLuongBan
   FROM chi_tiet_don_dat_hang AS ctdh
   INNER JOIN san_pham AS sp ON ctdh.maSanPham = sp.maSanPham
   INNER JOIN thuong_hieu AS th ON sp.maThuongHieu = th.maThuongHieu
@@ -22,8 +24,13 @@ $sql1 = "
   ORDER BY soLuongBan DESC
   LIMIT 7
   ";
-  $stmt = $dbh->query($sql2);
-  $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $dbh->query($sql2);
+$result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM giam_gia";
+$stmt = $dbh->query($sql);
+$giamGia = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+require_once('includes/ajax_add_product.php');
 ?>
 
 <div class="banner">
@@ -155,21 +162,31 @@ $sql1 = "
 
       <?php foreach ($result2 as $row) {
         echo "<div class=\"product_item\">
-         <img src='assets/img/sanpham/".$row['hinhAnh']."' alt=\"\" height=\"350px\">
+         <img src='assets/img/sanpham/" . $row['hinhAnh'] . "' alt=\"\" height=\"350px\">
          <div class=\"product_thuonghieu\">
-           <h5>".$row['tenThuongHieu']."</h5>
+           <h5>" . $row['tenThuongHieu'] . "</h5>
          </div>
          <div class=\"product_name\">
-           <h5>".$row['tenSanPham']."</h5>
-         </div>
-         <div class=\"product_price\">
-           <h5>".$row['donGiaBan']."</h5>
-         </div>
-         <button class=\"button_product\">Thêm vào giỏ hàng</button>
-         <div class=\"xem_icon\">
-           <i class=\"fa-regular fa-eye\"></i>
-         </div>
-       </div>";
+           <h5>" . $row['tenSanPham'] . "</h5>
+         </div>";
+        if (giamGia($row['maSanPham'], $giamGia, $row['donGiaBan']) != null) {
+          echo "<div class='product_price' style='display: flex'>
+  <h5 style='text-decoration: line-through; width: 70px'>" . number_format($row['donGiaBan']) . "đ   </h5>     
+  <h5 style='color: red;'>   " . number_format(giamGia($row['maSanPham'], $giamGia, $row['donGiaBan'])) . "đ</h5>
+</div>";
+        } else {
+          echo "<div class='product_price'>
+      <h5>" . number_format($$row['donGiaBan']) . "đ</h5>
+  </div>";
+        }
+        echo ($row['soLuong'] == 0)
+          ? "<button class='button_product' productid='" . $productId . "'>Hết hàng</button>"
+          : "<button class='button_product' productid='" . $productId . "'  onclick='addToCart(this)'>Thêm vào giỏ hàng</button>";
+        echo "
+          <a class='xem_icon'>
+              <i class='fa-regular fa-eye'></i>
+          </a>
+          </div>";
       } ?>
       <!-- <div class="product_item">
         <img src="assest/img/img_product/12-1682483525450_1066x.webp" alt="">
@@ -198,18 +215,18 @@ $sql1 = "
       <a href="">Xem tất cả</a>
     </div>
     <div class='thuongHieu'>
-    <?php foreach ($result1 as $row) {
-      echo "
+      <?php foreach ($result1 as $row) {
+        echo "
       <a href='' style='margin-left: 50px'>
-        <img src='assets/img/thuong_hieu/".$row['logo']."' alt='' style='width: 100%; height: 80px;'>
+        <img src='assets/img/thuong_hieu/" . $row['logo'] . "' alt='' style='width: 100%; height: 80px;'>
         <h6>
-          ".$row['tenThuongHieu']."
+          " . $row['tenThuongHieu'] . "
         </h6>
       </a>
     ";
-    } ?>
+      } ?>
     </div>
-    
+
   </div>
 </div>
 </div>
