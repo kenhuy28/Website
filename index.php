@@ -26,6 +26,7 @@ $sql2 = "
   ";
 $stmt = $dbh->query($sql2);
 $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 $sql = "SELECT * FROM giam_gia";
 $stmt = $dbh->query($sql);
 $giamGia = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -161,6 +162,7 @@ require_once('includes/ajax_add_product.php');
 
 
       <?php foreach ($result2 as $row) {
+          $productId = $row['maSanPham'];
         echo "<div class=\"product_item\">
          <img src='assets/img/sanpham/" . $row['hinhAnh'] . "' alt=\"\" height=\"350px\">
          <div class=\"product_thuonghieu\">
