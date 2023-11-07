@@ -34,4 +34,26 @@ include '../templates/header.php';
 </ul>
 <br>
 <h2>Bài tập mảng</h2>
+<ul>
+    <li>
+        <a href="bt1Array.php">
+            <p class="bt">Một số thao tác trên mảng số nguyên</p>
+        </a>
+    </li>
+    <li>
+        <a href="tinhTienDien.php">
+            <p class="bt">Tính tiền điện</p>
+        </a>
+    </li>
+    <li>
+        <a href="phepTinh.php">
+            <p class="bt">Thực hiện phép tính</p>
+        </a>
+    </li>
+    <li>
+        <a href="nhapThongtin.php">
+            <p class="bt">Nhập thông tin</p>
+        </a>
+    </li>
+</ul>
 <?php include '../templates/footer.php' ?>
