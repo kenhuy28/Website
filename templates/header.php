@@ -106,7 +106,7 @@ include $rootPath . '/includes/config.php';
                         <a href="<?php echo $rootPath . "/pages/cart.php"; ?>">
                             <div class="name_icon catalog">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <div class="dem_hang">
+                                <div <?php echo (empty($_SESSION['taiKhoan']) ? 'hidden' : "")  ?>  class="dem_hang">
                                     <p id="count_cart"><?php echo (empty($_SESSION['gioHang']) ? '0' : $_SESSION['gioHang'])?></p>
                                 </div>
                             </div>
