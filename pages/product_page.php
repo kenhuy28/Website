@@ -97,7 +97,7 @@ require_once('../includes/ajax_add_product.php');
                   <h5>" . $row->tenThuongHieu . "</h5>
               </div>
               <div class='product_name'>
-                  <a href='./product_detail_page.php?maSanPham=" . $row->maSanPham . "'><h5>" . $row->tenSanPham . "</h5></a>
+                  <a href='./product_detail_page.php?maSanPham=" . $row->maSanPham . "'><h5 style='color:black;'>" . $row->tenSanPham . "</h5></a>
               </div>";
                 if (giamGia($row->maSanPham, $giamGia, $row->donGiaBan) != null) {
                     echo "<div class='product_price' style='display: flex'>
