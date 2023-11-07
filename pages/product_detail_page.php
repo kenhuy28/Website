@@ -1,7 +1,7 @@
 <!--peoduct detail-->
 <?php include '../templates/header.php';
-$product_id = $_POST['maSanPham'];
-$query = "SELECT maSanPham, tenSanPham, donGiaBan, maLoai, soLuong, hinhAnh, moTa, tenThuongHieu FROM san_pham JOIN thuong_hieu on san_pham.maThuongHieu = thuong_hieu.maThuongHieu WHERE maSanPham= 'sp0001'";
+$product_id = "sp0001";
+$query = "SELECT maSanPham, tenSanPham, donGiaBan, maLoai, soLuong, hinhAnh, moTa, tenThuongHieu FROM san_pham JOIN thuong_hieu on san_pham.maThuongHieu = thuong_hieu.maThuongHieu WHERE maSanPham= '$product_id'";
 $statement = $dbh->prepare($query);
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_OBJ);
@@ -54,16 +54,13 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
     }
 </script>
 <div class="chiTietSanPham">
-
     <?php
-
     while ($row = $statement->fetch()) {
         $maSanPham = $row->maSanPham;
         if ($row->soLuong != 0) {
-            $button = '<input type="submit" productid=' . $maSanPham . ' onclick="addToCart(this)" name="submit" class="button_product_chiTiet" style="font-size:20px; color:red; font-weight:bold;"
-            value="THÊM VÀO GIỎ HÀNG">';
+            $button = '<button name="submit" style="font-size:20px; color:red; font-weight:bold;" productid="' . $maSanPham . '"  onclick="addToCart(this)">Thêm vào giỏ hàng</button>';
         } else {
-            $button = '<input type="submit" name="submit" style="font-size:20px; color:red; font-weight:bold;" value="HẾT HÀNG" disabled>';
+            $button = '<button name="submit" style="font-size:20px; color:red; font-weight:bold;" value="HẾT HÀNG" disabled>HẾT HÀNG</button>';
         }
 
         echo '
@@ -88,9 +85,10 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
 
                     </h3>
                 </div>
-
+                
+                <div>
                 ' . $button . '
-
+                </div>
                 <div class="chiTietSanPham_right_mota">
                     <span>Mô tả: </span>
                     ' . $row->moTa . '
