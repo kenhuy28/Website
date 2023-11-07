@@ -55,7 +55,7 @@ include $rootPath . '/includes/config.php';
                     </div>
                 </div>
                 <div class="header_row_right">
-                    <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET"
+                    <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET" enctype="multipart/form-data"
                         id="form-2">
                         <input type="text" placeholder="Tìm kiếm sản phẩm" name="SearchString">
                         <button class="search_icon" style="border: none">
@@ -107,7 +107,7 @@ include $rootPath . '/includes/config.php';
                             <div class="name_icon catalog">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <div class="dem_hang">
-                                    <p id="count_cart">0</p>
+                                    <p id="count_cart"><?php echo (empty($_SESSION['gioHang']) ? '0' : $_SESSION['gioHang'])?></p>
                                 </div>
                             </div>
                             <h5>Giỏ Hàng</h5>

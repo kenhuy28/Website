@@ -464,7 +464,7 @@ input:focus {
     background-color: #f6f3f3;
     z-index: 1000;
     padding: 30px;
-    transition: linear 0.4s;
+    transition: linear 1s;
 }
 
 .login_flex_right_title {
