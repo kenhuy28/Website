@@ -11,14 +11,15 @@ $stmt = $dbh->query($sql);
 $thuongHieu = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $sql = "SELECT * FROM loai_san_pham";
 $stmt = $dbh->query($sql);
-$SearchString = $_GET['SearchString'];
+
 $loaiSanPham = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $sql = "SELECT * FROM giam_gia";
 $stmt = $dbh->query($sql);
 $giamGia = $stmt->fetchAll(PDO::FETCH_OBJ);
 
+$SearchString = $_GET['SearchString'];
 
-$rowOfPage = 10;
+$rowOfPage = 9;
 $totalRows = $dbh->query("SELECT COUNT(*) FROM san_pham p
 JOIN thuong_hieu b ON p.maThuongHieu = b.maThuongHieu
 JOIN loai_san_pham c ON c.maLoai = p.maLoai
@@ -34,61 +35,10 @@ $sql = "SELECT p.*,b.tenThuongHieu FROM san_pham p
                  WHERE p.tenSanPham LIKE '%$SearchString%' OR b.tenThuongHieu LIKE '%$SearchString%' OR c.tenLoai LIKE '%$SearchString%'" . " LIMIT $rowOfPage  OFFSET " . (($currentPage - 1) * $rowOfPage);
 $stmt = $dbh->query($sql);
 $sanPham = $stmt->fetchAll(PDO::FETCH_ASSOC);
+require_once('../includes/ajax_add_product.php');
 ?>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function addToCart(element) {
-        var maSanPham = element.getAttribute("productid");
-        <?php
-        if (empty($_SESSION["taiKhoan"])) {
-            echo "var userID = null;";
-        } else {
-            echo "var userID = '" . $_SESSION["taiKhoan"]['maKhachHang'] . "';";
-        }
-        ?>
-        excuteToCart(maSanPham, userID);
-    }
-    function excuteToCart(maSanPham, nguoiDung) {
-        jQuery.ajax({
-            url: '<?php echo $rootPath . "/includes/update_cart.php"; ?>', // Đường dẫn đến tệp xử lý PHP trên máy chủ
-            type: 'POST',
-            data: { maSanPham: maSanPham, nguoiDung: nguoiDung }, // Gửi ID sản phẩm lên máy chủ
-            dataType: 'json',
-            success: function (response) {
-                var TB = document.querySelector('#notifacation_all');
-                TB.style.bottom = "30px";
-                TB.querySelector('h6').innerText = "Đã thêm vào giỏ";
-                setTimeout(function () {
-                    TB.style.bottom = "-50px";
-                }, 2000);
-                console.log(response);
-                updateGioHang(maSanPham, nguoiDung);
-            },
-            error: function (xhr, status, error) {
-                // Xử lý lỗi (nếu có)
-                console.log(error);
-            }
-        });
-    }
-    function updateGioHang(maSanPham, nguoiDung) {
-        jQuery.ajax({
-            url: '<?php echo $rootPath . "/includes/count_gio_hang.php"; ?>', // Đường dẫn đến tệp xử lý PHP trên máy chủ
-            type: 'POST',
-            data: { maSanPham: maSanPham, nguoiDung: nguoiDung }, // Gửi ID sản phẩm lên máy chủ
-            dataType: 'json',
-            success: function (response) {
-                var count = document.querySelector('#count_cart');
-                count.textContent = response['soLuongTG'];
-                console.log(response);
-            },
-            error: function (xhr, status, error) {
-                // Xử lý lỗi (nếu có)
-                console.log(error);
-            }
-        });
-    }
-</script>
+
 <h2 style="text-align: center;">Danh Sách Tìm Kiếm</h2>
 <div class="timKiem_page">
 

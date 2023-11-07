@@ -6,5 +6,6 @@ $query = "SELECT COUNT(*) as soLuongTG FROM gio_hang WHERE maKhachHang = '$nguoi
 $statement = $dbh->prepare($query);
 $success = $statement->execute();
 $response = $statement->fetch(PDO::FETCH_ASSOC);
+$_SESSION['gioHang'] = $response['soLuongTG'];
 echo json_encode($response);
 ?>

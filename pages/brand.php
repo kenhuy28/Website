@@ -12,7 +12,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($result as $row) {
                 echo "<div class='thuongHieu' style='margin: 10px;'>
                 <a href=''>
-                    <img src='../assets/img/banner/".$row['logo']."' alt='' style='width: 100%; height: 80px;'>
+                    <img src='../assets/img/thuong_hieu/".$row['logo']."' alt='' style='width: 100%; height: 80px;'>
                     <h6>
                     ".$row['tenThuongHieu']."
                     </h6>
