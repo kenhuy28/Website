@@ -1,7 +1,7 @@
 <!--peoduct detail-->
 <?php include '../templates/header.php';
 $product_id = $_POST['maSanPham'];
-$query = "SELECT maSanPham, tenSanPham, donGiaBan, maLoai, soLuong, hinhAnh, moTa, tenThuongHieu FROM san_pham JOIN thuong_hieu on san_pham.maThuongHieu = thuong_hieu.maThuongHieu WHERE maSanPham= '$product_id'";
+$query = "SELECT maSanPham, tenSanPham, donGiaBan, maLoai, soLuong, hinhAnh, moTa, tenThuongHieu FROM san_pham JOIN thuong_hieu on san_pham.maThuongHieu = thuong_hieu.maThuongHieu WHERE maSanPham= 'sp0001'";
 $statement = $dbh->prepare($query);
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_OBJ);
@@ -59,7 +59,6 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
 
     while ($row = $statement->fetch()) {
         $maSanPham = $row->maSanPham;
-        $soLuong = $row->soLuong;
         if ($row->soLuong != 0) {
             $button = '<input type="submit" productid=' . $maSanPham . ' onclick="addToCart(this)" name="submit" class="button_product_chiTiet" style="font-size:20px; color:red; font-weight:bold;"
             value="THÊM VÀO GIỎ HÀNG">';
