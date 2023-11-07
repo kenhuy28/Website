@@ -1,47 +1,153 @@
-<?php include '../templates/nav_admin1.php' ?>
-<div class="detail_admin">
-    <h1 class="Title_Admin_create_form">Thông tin tài khoản</h1>
-    <div class="detai_admin_form">
-        <div class="detail_admin_left">
-            <img src="~/assest/img/ad_user/@Model.AVATAR" alt="">
+<?php include '../templates/nav_admin1.php';
+$get_tinh = "SELECT `maTinh`, `tenTinh` FROM `tinh`";
+$statement = $dbh->prepare($get_tinh);
+$statement->execute();
+$statement->setFetchMode(PDO::FETCH_OBJ);
+?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function getDistricts(selectedProvince) {
+            jQuery.ajax({
+                url: '../../includes/get_register.php',
+                type: 'POST',
+                data: { province_id: selectedProvince },
+                success: function (data) {
+                    $('#districts').html(data);
+                    $('#wards').html('<option value="">Chọn Xã</option>');
+                    $('#maXaInput').val('');
+                }
+            });
+        }
+        function getWards(selectedDistrict) {
+            jQuery.ajax({
+                url: '../../includes/get_register.php',
+                type: 'POST',
+                data: { district_id: selectedDistrict },
+                success: function (data) {
+                    $('#wards').html(data);
+                    // var selectedWard = $('#wards').val();
+                    // $('#maXaInput').val(selectedWard);
+                }
+            });
+        }
+        $('#provinces').change(function () {
+            var selectedProvince = $(this).val();
+            getDistricts(selectedProvince);
+        });
+        $('#districts').change(function () {
+            var selectedDistrict = $(this).val();
+            getWards(selectedDistrict);
+        });
+        $('#wards').change(function () {
+            // Cập nhật giá trị của #maXaInput khi bạn thay đổi xã.
+            var selectedWard = $(this).val();
+            $('#maXaInput').val(selectedWard);
+        });
+    });
+</script>
+
+<style>
+    .textfield {
+        display: block;
+        min-width: 450px;
+        height: 34px;
+        margin-bottom: 6px;
+        border-radius: 10px;
+        border: 1px solid rgb(0, 0, 0, 0.3);
+        text-indent: 5px;
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form_field {
+        padding: 3px;
+        min-height: 50px;
+        font-size: 150%;
+    }
+</style>
+<div class="create_admin">
+    <h1 class="Title_Admin_create_form">Sửa thông tin tài khoản quản trị viên</h1>
+    <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
+    <form action="../includes/edit_info_admin.php" method="post" enctype="multipart/form-data">
+        <div class="form_field">
+            <label for="" class="name_form_field">Mã Admin: </label>
+            <input type="text" class="textfield" disabled value="<?php echo $_SESSION['admin']->maNhanVien ?>">
         </div>
-        <div class="detail_admin_right">
-            <table class="Table_Details_Admin">
-                <tr>
-                    <td>Mã Admin: </td>
-                    <td>@Model.MAADMIN</td>
-                </tr>
-                <tr>
-                    <td>Họ tên Admin:</td>
-                    <td>@Model.HOTEN</td>
-                </tr>
-                <tr>
-                    <td>Địa chỉ:</td>
-                    <td>@Model.DIACHI</td>
-                </tr>
-                <tr>
-                    <td>Số điện thoại :</td>
-                    <td>@Model.DIENTHOAI</td>
-                </tr>
-                <tr>
-                    <td>Email :</td>
-                    <td>@Model.EMAIL</td>
-                </tr>
-                <tr>
-                    <td>Loại tài khoản :</td>
-                    <td>@Model.LOAITKADMIN.TENLOAI</td>
-                </tr>
-            </table>
-
+        <div class="form_field">
+            <label for="" class="name_form_field">Họ: </label>
+            <input required type="text" class="textfield" id="fullname" name="ho"
+                value="<?php echo $_SESSION['admin']->ho ?>">
+            <span class="error_message"></span>
         </div>
-
-    </div>
-    <div class="button">
-        <a href="@Url.Action(" Edit","Admin",new {id=Model.MAADMIN})"><input type="submit" value="Chỉnh sửa"
-                class="button_add_admin" /></a>
-        <a href="@Url.Action(" DSAdmin","Admin")"><input type="button" value="Quay lại" class="button_add_admin" /></a>
-    </div>
-
+        <div class="form_field">
+            <label for="" class="name_form_field">Tên: </label>
+            <input required type="text" class="textfield" id="fullname" name="ten"
+                value="<?php echo $_SESSION['admin']->ten ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Ngày sinh: </label>
+            <input type="date" class="textfile" id="birthDay" name="ngaySinh" style="width: 400px;" required
+                value="<?php echo $_SESSION['admin']->ngaySinh ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Số điện thoại : </label>
+            <input required type="text" class="textfield" id="phoneNumber" name="dienThoai"
+                value="<?php echo $_SESSION['admin']->dienThoai ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Email : </label>
+            <input type="text" class="textfield" id="email" name="email"
+                value="<?php echo $_SESSION['admin']->email ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Tỉnh: </label>
+            <select id='provinces' class="textfield" name="provinces" style="width: 195px;">
+                <option value="" disabled selected>Chọn tỉnh/Thành phố</option>
+                <?php
+                while ($row = $statement->fetch())
+                    echo "<option value='{$row->maTinh}'>{$row->tenTinh}</option>";
+                ?>
+            </select>
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Huyện: </label>
+            <select id='districts' class="textfield" name="districts" style="width: 195px;">
+                <option disabled selected value="">Chọn Huyện</option>
+            </select>
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Xã: </label>
+            <select required id="wards" class="textfield" style="width: 195px;">
+                <option value="">Chọn Xã</option>
+            </select>
+            <input hidden type="text" name="maXa" id="maXaInput">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Địa chỉ cụ thể: </label>
+            <input type="diaChi" class="textfield" id="diaChi" name="diaChi" style="width: 195px;" required
+                value="<?php echo $_SESSION['admin']->diaChiCuThe ?>">
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Ảnh đại diện : </label>
+            <div class="custom-file">
+                <div class="form_field">
+                    <input type="file" class="custom-file-input" id="img_profile_admin" name="image" accept=".png, .jpg, .jpeg">
+                    <span class="error_message"></span>
+                </div>
+            </div>
+        </div>
+        <div class="button">
+            <input type="submit" value="Cập nhật" class="button_add_admin" />
+        </div>
+    </form>
 </div>
 
 <?php include '../templates/nav_admin2.php' ?>

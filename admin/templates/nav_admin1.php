@@ -154,18 +154,19 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                         <?php echo $_SESSION['admin']->ho . ' ' . $_SESSION['admin']->ten; ?>
                     </span>
                     <div class="header_right_img">
-                        <img src="<?php echo $_SESSION['rootPath'] . "/../assets/img/logo/header_logo.png"; ?>" alt="">
+                        <img src="<?php echo $_SESSION['rootPath'] . "/../assets/img/ad_user/" . $_SESSION['admin']->avatar; ?>"
+                            alt="">
                     </div>
                     <div class="header_right_img_expand">
                         <ul>
                             <li>
                                 <i class="fa-solid fa-user"></i><a
-                                    href="<?php $_SESSION['rootPath'] . "/admin/pages/Admin_Details.php" ?>">Xem thông
+                                    href="<?php echo $_SESSION['rootPath'] . "/pages/Admin_Details.php" ?>">Xem thông
                                     tin cá nhân</a>
                             </li>
                             <li>
                                 <i class="fa-solid fa-envelope"></i>
-                                <div>@EMAIL</div>
+                                <div><?php echo $_SESSION['admin']->email  ?> </div>
                             </li>
                             <li>
                                 <i class="fa-solid fa-lock"></i><a href="#">Đổi mật khẩu</a>
