@@ -136,5 +136,5 @@ include $rootPath . '/includes/config.php';
                 </ul>
             </div>
         </div>
-        <div class="body" style="margin-top: 150px">
+        <div class="body" style="margin-top: 150px; min-width: 700px;">
        

@@ -134,7 +134,7 @@
                 echo $rootPath .'/assets/img/banner/Default_pfp.svg.png';
             else
                 echo $_SESSION["taiKhoan"]["avatar"] ?>" alt=""
-                    style="width: 150px; height: 150px; text-align: center;">
+                    style="width: 100px; height: 100px; text-align: center;">
             </div>
             <div class="thonTinKhac">
                 <h5><span>Tên: </span>
@@ -170,6 +170,8 @@
 
         <a href="<?php echo $rootPath . "/pages/change_password_page.php" ?>">
             <input type="button" value="Đổi mật khẩu" class="button_add_admin" /></a>
+            <a href="<?php echo $rootPath . "/pages/buy_history_page.php" ?>">
+            <input type="button" value="Lịch sử mua hàng" class="button_add_admin" /></a>
         <form action="<?php echo $rootPath . "/includes/logout.php" ?>">
             <input type="submit" value="Đăng xuất" class="button_add_admin" />
         </form>

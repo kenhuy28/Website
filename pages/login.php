@@ -60,7 +60,7 @@ ob_end_flush();
     </a>
 </form>
 </div>
-
+<script src="<?php echo $rootPath ?>/assets/js/app.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Mong muốn của chúng ta
