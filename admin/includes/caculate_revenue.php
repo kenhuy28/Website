@@ -9,7 +9,7 @@ if (empty($_POST["baoCao"])) {
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_OBJ);
     $result = $statement->fetch();
-    if ($result) {
+    if ($result->doanhThu) {
         echo $result->doanhThu . "Đ";
     } else {
         echo "Không có dữ liệu</td>
