@@ -56,6 +56,7 @@ if (!empty($_POST["chieuDai"]) && !empty($_POST["chieuRong"])) {
             print "Hello " . $_POST["Name"];
 
         ?>
+        <button type="button" onclick="window.history.go(-1);">Quay lại</button>
 </body>
 
 </html>

@@ -73,5 +73,6 @@ $img = 'imgNamAmLich/' . layImg($nam);
 
         </table>
     </form>
+    <button type="button" onclick="window.history.go(-1);">Quay lại</button>
 </body>
 <?php include '../templates/footer.php' ?>
