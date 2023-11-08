@@ -41,18 +41,23 @@ include '../templates/header.php';
         </a>
     </li>
     <li>
-        <a href="tinhTienDien.php">
-            <p class="bt">Tính tiền điện</p>
+        <a href="mang_nam_nhuan.php">
+            <p class="bt">Tìm năm nhuận</p>
         </a>
     </li>
     <li>
-        <a href="phepTinh.php">
-            <p class="bt">Thực hiện phép tính</p>
+        <a href="mang_nam_am_lich.php">
+            <p class="bt">Tính năm âm lịch</p>
         </a>
     </li>
     <li>
-        <a href="nhapThongtin.php">
-            <p class="bt">Nhập thông tin</p>
+        <a href="tong_day_so.php">
+            <p class="bt">Nhập và tính trên dãy số</p>
+        </a>
+    </li>
+    <li>
+        <a href="mang_phat_sinh_tinh_toan.php">
+            <p class="bt">Phát sinh mảng và tính toán</p>
         </a>
     </li>
 </ul>
