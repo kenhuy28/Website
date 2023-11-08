@@ -1,5 +1,10 @@
 <?php include '../templates/header.php' ?>
-<?php $maKhachHang = $_SESSION['taiKhoan']['maKhachHang']; ?>
+<?php
+if (empty($_SESSION['taiKhoan']))
+    echo '<script>
+            window.location.href = "../pages/login.php";
+        </script>';
+$maKhachHang = $_SESSION['taiKhoan']['maKhachHang']; ?>
 <?php
 $statement = $dbh->prepare(
     "SELECT 
@@ -97,7 +102,8 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         var maSanPham = element.getAttribute("maSanPham");
         var confirmation = confirm("Bạn có chắc muốn xóa?");
         if (confirmation)
-            delete_Product(maSanPham); // Giảm số lượng sản phẩm
+            delete_Product(maSanPham); // xóa sản phẩm khỏi giỏ
+        updateCountCart();
     }
 
     // Thực hiện Ajax request để xóa sản phẩm khỏi giỏ hàng
@@ -144,7 +150,6 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         var thanhTienInput = document.getElementById("thanhTienInput");
         thanhTienInput.value = totalPrice.toLocaleString();
     }
-
 </script>
 
 <h6>Trang Chủ > Giỏ Hàng Của Bạn</h6>
