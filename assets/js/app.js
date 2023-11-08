@@ -53,6 +53,7 @@ function Validator(options) {
         // Khi submit form
         formElement.onsubmit = function (e) {
             e.preventDefault();
+
             var isFormValid = true;
 
             // Lặp qua từng rules và validate
@@ -69,6 +70,7 @@ function Validator(options) {
                 if (typeof options.onSubmit === 'function') {
                     var enableInputs = formElement.querySelectorAll('[name]');
                     var formValues = Array.from(enableInputs).reduce(function (values, input) {
+
                         switch (input.type) {
                             case 'radio':
                                 values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
@@ -86,15 +88,12 @@ function Validator(options) {
                             case 'file':
                                 values[input.name] = input.files;
                                 break;
-                            case 'button':
-                                values[input.name] = 'button';
-                                break;
                             default:
                                 values[input.name] = input.value;
                         }
+
                         return values;
                     }, {});
-                    //console.log(formValues);
                     options.onSubmit(formValues);
                     formElement.submit();
                 }

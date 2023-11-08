@@ -66,7 +66,7 @@ if (empty($_SESSION["taiKhoan"])) {
             <ul>
                 <?php foreach ($thuongHieu as $row) {
                     echo " <li>
-                <a href=''>
+                <a href='search_page.php?'>
                 " . $row['tenThuongHieu'] . "
                 </a>
             </li>";

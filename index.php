@@ -30,8 +30,11 @@ $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $sql = "SELECT * FROM giam_gia";
 $stmt = $dbh->query($sql);
 $giamGia = $stmt->fetchAll(PDO::FETCH_OBJ);
-
-require_once('includes/ajax_add_product.php');
+if (empty($_SESSION["taiKhoan"])) {
+  require_once('includes/login_required.php');
+} else {
+  require_once('includes/ajax_add_product.php');
+}
 ?>
 
 <div class="banner">
