@@ -35,13 +35,13 @@ ob_end_flush();
     <div class="form_field">
         <label for="taikhoan" class="name_form_field">Tài khoản : </label>
         <input type="text" class="textfile" name="tendn" id="taikhoan" value="<?php if ($username != "")
-                echo $username; ?>" >
+            echo $username; ?>">
         <span class="error_message"></span>
     </div>
     <div class="form_field">
         <label for="matkhau" class="name_form_field">Mật khẩu : </label>
         <input type="password" class="textfile" id="matkhau" name="matkhau" value="<?php if ($password != "")
-                echo $password; ?>">
+            echo $password; ?>">
         <span class="error_message">
         </span>
     </div>
@@ -51,7 +51,7 @@ ob_end_flush();
                 echo $warning; ?>
         </span>
     </div>
-    <button type="submit" class="button_add_admin" class="form-submit"  style="width: 150px">Đăng nhập</button>
+    <button type="submit" class="button_add_admin" class="form-submit" style="width: 150px">Đăng nhập</button>
     <!-- <input  value="Đăng Nhập"  style="width: 150px" /> -->
     <a href="" class="qmk" style="display: block; margin-left: 10px; color: black">Quên
         mật khẩu?</a>
@@ -60,7 +60,7 @@ ob_end_flush();
     </a>
 </form>
 </div>
-
+<script src="<?php echo $rootPath ?>/assets/js/app.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Mong muốn của chúng ta

@@ -1,31 +1,68 @@
 <!--peoduct detail-->
-<?php include '../templates/header.php' ?>
-<div class="chiTietSanPham">
-    <div class="chiTietSanPham_left">
-        <img src="../assets/img/img_product/12-1682483525450_1066x.webp" alt="" width="700px" height="700px
-                    ">
-        <div class="chiTietSanPham_giamgia">Giảm giá</div>
-    </div>
-    <div class="chiTietSanPham_right">
-        <h4>Áo Cho Chó Mèo Sơ Mi Trái Cây</h6>
-            <p>Thương hiệu: Paddy</p>
-            <div class="gia">
-                <h6>60.000₫</h6>
-                <h6>50.000₫</h6>
-            </div>
-            <h5>Số lượng còn: 32 sản phẩm</h5>
-            <button class="button_product_chiTiet">Thêm vào giỏ hàng</button>
-            <div class="chiTietSanPham_right_mota">
-                <span>Mô tả: </span>
-                Áo Sơ Mi Trái Cây Mùa Hè Cho Chó Mèo
-                - Áo được thiết kế với màu sắc họa tiết tự nhiên, sành điệu và đẳng cấp làm tôn lên cá tính của Boss nhà
-                bạn.
-                - Áo mặc cực kỳ thoáng mát ,vừa thời trang vừa tốt cho sức khoẻ.
-                - Chất liệu thoáng mát cực kì phù hợp để các boss diện trong mùa hè.
-                - Chất liệu vải mềm mại, đảm bảo thun co giãn không nhão, không xù, không nhăn giúp thú cưng của bạn cảm
-                thấy thoải mái khi mặc.
-                - Không gây kích ứng da.
+<?php include '../templates/header.php';
+require_once('../includes/check_giam_gia.php');
+$product_id = $_GET['maSanPham'];
+$query = "SELECT  maSanPham,tenSanPham, donGiaBan, maLoai, soLuong, hinhAnh, moTa, tenThuongHieu FROM san_pham JOIN thuong_hieu ON san_pham.maThuongHieu = thuong_hieu.maThuongHieu  WHERE san_pham.maSanPham= '$product_id';";
+$stmt = $dbh->prepare($query);
+$stmt->execute();
+$sanPham = $stmt->fetch(PDO::FETCH_OBJ);
+require_once('../includes/ajax_add_product.php');
 
-            </div>
-    </div>
-    <?php include '../templates/footer.php' ?>
+$sql = "SELECT * FROM giam_gia";
+$stmt = $dbh->query($sql);
+$giamGia = $stmt->fetchAll(PDO::FETCH_OBJ);
+?>
+
+<div class="chiTietSanPham">
+    <?php
+    if ($sanPham->soLuong != 0) {
+        $button = '<button name="submit" style="font-size:20px; color:red; font-weight:bold;" productid="' . $sanPham->maSanPham . '"  onclick="addToCart(this)">Thêm vào giỏ hàng</button>';
+    } else {
+        $button = '<button name="submit" style="font-size:20px; color:red; font-weight:bold;" value="HẾT HÀNG" disabled>HẾT HÀNG</button>';
+    }
+    $dongiahienthi = "";
+    if (giamGia($sanPham->maSanPham, $giamGia, $sanPham->donGiaBan) != null) {
+        $dongiahienthi = "<div class='product_price' style='display: flex'>
+    <h5 style='text-decoration: line-through; width: 70px'>" . number_format($sanPham->donGiaBan) . "đ   </h5>     
+    <h5 style='color: red;'>   " . number_format(giamGia($sanPham->maSanPham, $giamGia, $sanPham->donGiaBan)) . "đ</h5>
+    </div>";
+    } else {
+        $dongiahienthi = "<div class='product_price'>
+    <h5>" . number_format($sanPham->donGiaBan) . "đ</h5>
+    </div>";
+    }
+    echo '
+        <div class="chiTietSanPham_left">
+            <img src="../assets/img/sanpham/' . $sanPham->hinhAnh . ' " style="height:500px; width:500px;">
+            <div class="chiTietSanPham_giamgia">Giảm giá</div>
+        </div>
+        <div class="chiTietSanPham_right">
+            <h4>' . $sanPham->tenSanPham . '</h6>
+                <p>Tên thương hiệu:
+                    ' . $sanPham->tenThuongHieu . '
+                </p>
+                <div>
+                    
+                    <h1 style="color:red;">
+                    ' . $dongiahienthi . '
+                    </h1>
+                </div>
+                <div>
+                    <h3>
+                        Số lượng còn: ' . $sanPham->soLuong . '
+
+                    </h3>
+                </div>
+                
+                <div>
+                ' . $button . '
+                </div>
+                <div class="chiTietSanPham_right_mota">
+                    <span>Mô tả: </span>
+                    ' . $sanPham->moTa . '
+                </div>
+        </div>';
+
+    ?>
+</div>
+<?php include '../templates/footer.php' ?>

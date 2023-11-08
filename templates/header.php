@@ -56,7 +56,7 @@ include $rootPath . '/includes/config.php';
                 </div>
                 <div class="header_row_right">
                     <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET" enctype="multipart/form-data"
-                        id="form-2">
+                        >
                         <input type="text" placeholder="Tìm kiếm sản phẩm" name="SearchString">
                         <button class="search_icon" style="border: none">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -136,5 +136,5 @@ include $rootPath . '/includes/config.php';
                 </ul>
             </div>
         </div>
-        <div class="body" style="margin-top: 150px">
+        <div class="body" style="margin-top: 150px; min-width: 700px;">
        

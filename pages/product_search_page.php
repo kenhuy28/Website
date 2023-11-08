@@ -79,7 +79,11 @@ if (!empty($conditions)) {
 } else {
     $sanPham = $stmt->fetchAll(PDO::FETCH_OBJ);
 }
-require_once('../includes/ajax_add_product.php');
+if (empty($_SESSION["taiKhoan"])) {
+    require_once('../includes/login_required.php');
+} else {
+    require_once('../includes/ajax_add_product.php');
+}
 ?>
 
 <h6>Trang chủ > Sản phẩm </h6>
