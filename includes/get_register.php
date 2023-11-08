@@ -38,4 +38,14 @@ if (isset($_POST['userName'])) {
   if ($tontai->tontai) 
     echo "Tên người dùng dã được sử dụng";
 }
+
+if (isset($_POST['userNameAdmin'])) {
+  $query = "SELECT COUNT(*) AS tontai FROM `nhan_vien` WHERE tenNguoiDung = '{$_POST['userNameAdmin']}'";
+  $statement = $dbh->prepare($query);
+  $statement->execute();
+  $tontai = $statement->fetch(PDO::FETCH_OBJ);
+
+  if ($tontai->tontai) 
+    echo "Tên người dùng dã được sử dụng";
+}
 ?>

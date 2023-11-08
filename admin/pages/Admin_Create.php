@@ -1,120 +1,201 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php include '../templates/nav_admin1.php';
+$get_tinh = "SELECT `maTinh`, `tenTinh` FROM `tinh`";
+$statement = $dbh->prepare($get_tinh);
+$statement->execute();
+$statement->setFetchMode(PDO::FETCH_OBJ);
+
+$get_loaiTK = "SELECT * FROM loai_tai_khoan";
+$statement1 = $dbh->prepare($get_loaiTK);
+$statement1->execute();
+$statement1->setFetchMode(PDO::FETCH_OBJ);
+?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function getDistricts(selectedProvince) {
+            jQuery.ajax({
+                url: '../../includes/get_register.php',
+                type: 'POST',
+                data: { province_id: selectedProvince },
+                success: function (data) {
+                    $('#districts').html(data);
+                    $('#wards').html('<option value="">Chọn Xã</option>');
+                    $('#maXaInput').val('');
+                }
+            });
+        }
+        function getWards(selectedDistrict) {
+            jQuery.ajax({
+                url: '../../includes/get_register.php',
+                type: 'POST',
+                data: { district_id: selectedDistrict },
+                success: function (data) {
+                    $('#wards').html(data);
+                    // var selectedWard = $('#wards').val();
+                    // $('#maXaInput').val(selectedWard);
+                }
+            });
+        }
+        $('#provinces').change(function () {
+            var selectedProvince = $(this).val();
+            getDistricts(selectedProvince);
+        });
+        $('#districts').change(function () {
+            var selectedDistrict = $(this).val();
+            getWards(selectedDistrict);
+        });
+        $('#wards').change(function () {
+            // Cập nhật giá trị của #maXaInput khi bạn thay đổi xã.
+            var selectedWard = $(this).val();
+            $('#maXaInput').val(selectedWard);
+        });
+        function getUsername(userName) {
+            jQuery.ajax({
+                url: '../../includes/get_register.php',
+                type: 'POST',
+                data: { userNameAdmin: userName },
+                success: function (data) {
+                    $('#userName_message').html(data);
+                }
+            });
+        }
+        $('#userName').change(function () {
+            // cập nhật giá trị của #maXaInput khi thay đổi xã để gửi đi
+            var userName = $(this).val();
+            getUsername(userName);
+        });
+
+        // Lắng nghe sự kiện khi người dùng nhập vào trường "Tên đăng nhập".
+        $('#userName').change(function () {
+            var userNameMessage = $('#userName_message').text();
+            // kiểm tra nếu tên đăng nhập đã tồn tại thì không cho bấm đăng ký  
+            if (userNameMessage == "Tên người dùng dã được sử dụng")
+                $('#registerButton').prop('disabled', false);
+            else
+                $('#registerButton').prop('disabled', true);
+        });
+        // xử lý khi nhập tiếng việt có dấu
+        $('#userName').on('input', function () {
+            var userNameValue = $('#userName').val();
+            userNameValue = userNameValue.replace(/[^A-Za-z0-9_]/g, '');
+            $('#userName').val(userNameValue);
+        });
+    });
+</script>
+
+<style>
+    .textfield {
+        display: block;
+        min-width: 450px;
+        height: 34px;
+        margin-bottom: 6px;
+        border-radius: 10px;
+        border: 1px solid rgb(0, 0, 0, 0.3);
+        text-indent: 5px;
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form_field {
+        padding: 3px;
+        min-height: 50px;
+        font-size: 150%;
+    }
+</style>
 <div class="create_admin">
-    <h1 class="Title_Admin_create_form">Thêm tài khoản quản trị viên</h1>
+    <h1 class="Title_Admin_create_form">Tạo tài khoản quản trị viên</h1>
     <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
-    <form action="" Method="POST">
+    <form action="../includes/create_admin.php" method="post" enctype="multipart/form-data">
         <div class="form_field">
-            <label for="" class="name_form_field">Mã Admin : </label>
-            <input type="text" class="textfile" readonly value="@ViewBag.MAADMIN" name="MAADMIN">
+            <label for="" class="name_form_field">Tên đăng nhập: </label>
+            <input type="text" class="textfile" id="userName" name="tendn" style="width: 400px;" required>
+            <span class="error_message" id="userName_message"></span>
         </div>
         <div class="form_field">
-            <label for="" class="name_form_field">Họ tên Admin : </label>
-            <input type="text" class="textfile" id="fullname" name="HOTEN">
+            <label for="" class="name_form_field">Mật khẩu: </label>
+            <input type="password" class="textfile" id="password" name="matKhau" style="width: 400px;" required>
             <span class="error_message"></span>
         </div>
         <div class="form_field">
-            <label for="" class="name_form_field">Địa chỉ : </label>
-            <textarea class="textfile_address" cols="2" id="address" name="DIACHI"></textarea>
+            <label for="" class="name_form_field">Loại Nhân viên: </label>
+            <select id='loaiNhanVien' class="textfield" name="loaiNhanVien" style="width: 195px;">
+                <option value="" disabled selected>Chọn loại</option>
+                <?php
+                while ($row = $statement1->fetch())
+                    echo "<option value='{$row->maLoai}'>{$row->tenLoai}</option>";
+                ?>
+            </select>
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Họ: </label>
+            <input required type="text" class="textfield" id="fullname" name="ho">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Tên: </label>
+            <input required type="text" class="textfield" id="fullname" name="ten">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Ngày sinh: </label>
+            <input type="date" class="textfile" id="birthDay" name="ngaySinh" style="width: 400px;" required>
             <span class="error_message"></span>
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Số điện thoại : </label>
-            <input type="text" class="textfile" id="phoneNumber" name="DIENTHOAI">
+            <input required type="text" class="textfield" id="phoneNumber" name="dienThoai">
             <span class="error_message"></span>
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Email : </label>
-            <input type="text" class="textfile" id="email" name="EMAIL">
+            <input required type="text" class="textfield" id="email" name="email">
             <span class="error_message"></span>
         </div>
         <div class="form_field">
-            <label for="" class="name_form_field">Loại tài khoản : </label>
-            <select class="textfile" name="MALOAI">
-                @foreach (var item in Model)
-                {
-                <option value="@item.MALOAI">@item.TENLOAI</option>
-                }
+            <label for="" class="name_form_field">Tỉnh: </label>
+            <select id='provinces' class="textfield" name="provinces" style="width: 195px;">
+                <option value="" disabled selected>Chọn tỉnh/Thành phố</option>
+                <?php
+                while ($row = $statement->fetch())
+                    echo "<option value='{$row->maTinh}'>{$row->tenTinh}</option>";
+                ?>
             </select>
-
-        </div>
-        <div class="form_field">
-            <label for="" class="name_form_field">Tên đăng nhập : </label>
-            <input type="text" class="textfile" id="userName" name="TENDN">
             <span class="error_message"></span>
         </div>
         <div class="form_field">
-            <label for="" class="name_form_field">Mật khẩu : </label>
-            <input type="password" class="textfile" id="password" name="MATKHAU">
+            <label for="" class="name_form_field">Huyện: </label>
+            <select id='districts' class="textfield" name="districts" style="width: 195px;">
+                <option disabled selected value="">Chọn Huyện</option>
+            </select>
             <span class="error_message"></span>
         </div>
         <div class="form_field">
-            <label for="" class="name_form_field">Xác nhận lại mật khẩu : </label>
-            <input type="password" class="textfile" id="password_confirmation">
+            <label for="" class="name_form_field">Xã: </label>
+            <select required id="wards" class="textfield" style="width: 195px;">
+                <option value="">Chọn Xã</option>
+            </select>
+            <input hidden type="text" name="maXa" id="maXaInput">
             <span class="error_message"></span>
         </div>
-
+        <div class="form_field">
+            <label for="" class="name_form_field">Địa chỉ cụ thể: </label>
+            <input type="diaChi" class="textfield" id="diaChi" name="diaChi" style="width: 195px;" required>
+        </div>
         <div class="form_field">
             <label for="" class="name_form_field">Ảnh đại diện : </label>
             <div class="custom-file">
                 <div class="form_field">
-                    <input type="file" class="custom-file-input" id="img_profile_admin" name="fileUpload">
+                    <input required type="file" class="custom-file-input" id="img_profile_admin" name="image"
+                        accept=".png, .jpg, .jpeg">
                     <span class="error_message"></span>
-                </div>
-                <div class="custom-file-img">
-                    <img src="" alt="" id="custom-file-img-display">
                 </div>
             </div>
         </div>
         <div class="button">
-            <input type="submit" value="Thêm" class="button_add_admin" />
-            <a href=""><input type="button" value="Quay lại" class="button_add_admin" /></a>
+            <input disabled id="registerButton" type="submit" value="Thêm mới" class="button_add_admin" />
         </div>
     </form>
 </div>
 
-<!-- <script>
-    var dsUserName = @Html.Raw(Json.Encode(ViewBag.dsUserName));
-
-    document.addEventListener('DOMContentLoaded', function () {
-        // Mong muốn của chúng ta
-        Validator({
-            form: '#form-1',
-            formGroupSelector: '.form_field',
-            errorSelector: '.error_message',
-            rules: [
-                Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ!'),
-                Validator.isRequired('#address', 'Vui lòng nhập địa chỉ!'),
-                Validator.isRequired('#phoneNumber', 'Vui lòng nhập số điện thoại!'),
-                Validator.isRequired('#email', 'Vui lòng nhập Email!'),
-                Validator.isRequired('#userName', 'Vui lòng nhập tài khoản!'),
-                Validator.isRequired('#password', 'Vui lòng nhập mật khẩu!'),
-                Validator.isRequired('#password_confirmation', 'Vui lòng nhập lại mật khẩu xác nhận!'),
-                Validator.isRequired('#img_profile_admin', 'Vui lòng chọn hình ảnh đại diện!'),
-                Validator.isEmail('#email'),
-                Validator.minLength('#password', @ViewBag.minPassword),
-                Validator.maxLength('#password', @ViewBag.maxPassword),
-                Validator.isRequired('#password_confirmation'),
-                Validator.isConfirmed('#password_confirmation', function () {
-                    return document.querySelector('#form-1 #password').value;
-                }, 'Mật khẩu nhập lại không chính xác'),
-                Validator.isExistUserLogin('#userName', dsUserName),
-                
-            ],
-            onSubmit: function (data) {
-                // Call API
-                //console.log(data);
-            }
-        });
-    });
-    const img_avatar_register_admin = document.querySelector("#img_profile_admin");
-    const custom_file_img_display = document.querySelector("#custom-file-img-display");
-    img_avatar_register_admin.onchange = function (e) {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            custom_file_img_display.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    };
-</script> -->
 <?php include '../templates/nav_admin2.php' ?>

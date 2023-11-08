@@ -10,6 +10,7 @@ $diaChiCuThe = $_POST['diaChi'];
 $email = $_POST['email'];
 $ngaySinh = $_POST['ngaySinh'];
 $maXa = $_POST["maXa"];
+var_dump($_FILES['image']);
 
 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
   //lấy file hình
@@ -41,6 +42,6 @@ $result = $stmt->fetch(PDO::FETCH_OBJ);
 $_SESSION['admin'] = $result;
 
 // edit xong về trang index
-header("Location: ../");
+// header("Location: ../");
 
 ?>
