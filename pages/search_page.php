@@ -35,7 +35,11 @@ $sql = "SELECT p.*,b.tenThuongHieu FROM san_pham p
                  WHERE p.tenSanPham LIKE '%$SearchString%' OR b.tenThuongHieu LIKE '%$SearchString%' OR c.tenLoai LIKE '%$SearchString%'" . " LIMIT $rowOfPage  OFFSET " . (($currentPage - 1) * $rowOfPage);
 $stmt = $dbh->query($sql);
 $sanPham = $stmt->fetchAll(PDO::FETCH_ASSOC);
-require_once('../includes/ajax_add_product.php');
+if (empty($_SESSION["taiKhoan"])) {
+    require_once('../includes/login_required.php');
+} else {
+    require_once('../includes/ajax_add_product.php');
+}
 ?>
 
 
@@ -62,7 +66,7 @@ require_once('../includes/ajax_add_product.php');
             <ul>
                 <?php foreach ($thuongHieu as $row) {
                     echo " <li>
-                <a href=''>
+                <a href='search_page.php?'>
                 " . $row['tenThuongHieu'] . "
                 </a>
             </li>";

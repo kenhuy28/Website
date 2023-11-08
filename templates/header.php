@@ -41,12 +41,30 @@ include $rootPath . '/includes/config.php';
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
+<script>
+    function updateCountCart() {
+        jQuery.ajax({
+            url: '<?php echo $rootPath . "/includes/update_count_cart.php"; ?>', // Đường dẫn đến tệp xử lý PHP trên máy chủ
+            type: 'POST',
+            data: { maKhachHang: '<?php echo $_SESSION["taiKhoan"]["maKhachHang"] ?>' },
+            success: function (response) {
+                var count = document.querySelector('#count_cart');
+                count.textContent = response;
+                console.log(response);
+            }
+        });
+    }
+    $(document).ready(function () {
+        updateCountCart();
+    });
+</script>
+
 <div class="app">
-<div id="notifacation_all">
-    <h6>Thêm sản phẩm thành công</h6>
-</div>
+    <div id="notifacation_all">
+        <h6>Thêm sản phẩm thành công</h6>
+    </div>
     <div class="gird">
-   
+
         <div class="header">
             <div class="header_row1">
                 <div class="header_row1_left">
@@ -55,8 +73,8 @@ include $rootPath . '/includes/config.php';
                     </div>
                 </div>
                 <div class="header_row_right">
-                    <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET" enctype="multipart/form-data"
-                        id="form-2">
+                    <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET"
+                        enctype="multipart/form-data">
                         <input type="text" placeholder="Tìm kiếm sản phẩm" name="SearchString">
                         <button class="search_icon" style="border: none">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -87,7 +105,7 @@ include $rootPath . '/includes/config.php';
                                 </a>';
                     } else {
                         // nếu đã login
-                        
+                    
                         echo '<div class="h" id="profile_user">
                                 <div class="name_icon">
                                     <i class="fa-regular fa-user"></i>
@@ -95,7 +113,7 @@ include $rootPath . '/includes/config.php';
 
                                 <h5>' .
                             $_SESSION["taiKhoan"]["hoKhachHang"] . " " . $_SESSION["taiKhoan"]["tenKhachHang"] .
-                                '</h5>
+                            '</h5>
                             </div>';
                     }
                     ?>
@@ -106,8 +124,10 @@ include $rootPath . '/includes/config.php';
                         <a href="<?php echo $rootPath . "/pages/cart.php"; ?>">
                             <div class="name_icon catalog">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <div class="dem_hang">
-                                    <p id="count_cart"><?php echo (empty($_SESSION['gioHang']) ? '0' : $_SESSION['gioHang'])?></p>
+                                <div <?php echo (empty($_SESSION['taiKhoan']) ? 'hidden' : "") ?> class="dem_hang">
+                                    <p id="count_cart">
+                                        <?php echo (empty($_SESSION['gioHang']) ? '0' : $_SESSION['gioHang']) ?>
+                                    </p>
                                 </div>
                             </div>
                             <h5>Giỏ Hàng</h5>
@@ -136,5 +156,4 @@ include $rootPath . '/includes/config.php';
                 </ul>
             </div>
         </div>
-        <div class="body" style="margin-top: 150px">
-       
+        <div class="body" style="margin-top: 150px; min-width: 700px;">
