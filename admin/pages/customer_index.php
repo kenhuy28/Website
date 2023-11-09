@@ -1,4 +1,7 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php include '../templates/nav_admin1.php';
+include '../includes/check_permisson.php';
+check($nv->maLoai, 'KH');
+?>
 <!-- SELECT concat(khach_hang.hoKhachHang,' ',khach_hang.tenKhachHang) AS hoTenKhachHang, khach_hang.dienThoai, khach_hang.ngaySinh,khach_hang.email, concat(khach_hang.diaChiCuThe,", ",xa.tenXa,", ",huyen.tenHuyen,", ",tinh.tenTinh) AS diaChi FROM khach_hang JOIN xa on khach_hang.maXa=xa.maXa JOIN huyen on huyen.maHuyen=xa.maHuyen JOIN tinh on tinh.maTinh=huyen.maTinh -->
 
 <?php
@@ -7,8 +10,7 @@ $totalRows = $dbh->query('SELECT COUNT(*) FROM khach_hang')->fetchColumn();
 $totalPages = ceil($totalRows / $rowOfPage);
 $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
-$query = 'SELECT concat(khach_hang.hoKhachHang," ",khach_hang.tenKhachHang) AS hoTenKhachHang, khach_hang.dienThoai, khach_hang.ngaySinh, khach_hang.email, concat(khach_hang.diaChiCuThe,", ",xa.tenXa,", ",huyen.tenHuyen,", ",tinh.tenTinh) AS diaChi FROM khach_hang JOIN xa on khach_hang.maXa=xa.maXa JOIN huyen on huyen.maHuyen=xa.maHuyen JOIN tinh on tinh.maTinh=huyen.maTinh' .
-    " LIMIT $rowOfPage  OFFSET " . (($currentPage - 1) * $rowOfPage);
+$query = 'SELECT concat(khach_hang.hoKhachHang," ",khach_hang.tenKhachHang) AS hoTenKhachHang, khach_hang.dienThoai, khach_hang.ngaySinh, khach_hang.email, concat(khach_hang.diaChiCuThe,", ",xa.tenXa,", ",huyen.tenHuyen,", ",tinh.tenTinh) AS diaChi FROM khach_hang JOIN xa on khach_hang.maXa=xa.maXa JOIN huyen on huyen.maHuyen=xa.maHuyen JOIN tinh on tinh.maTinh=huyen.maTinh';
 $query_extend = '';
 $where_conditions = [];
 if (!empty($_POST['tenKH']))
@@ -19,7 +21,7 @@ if (!empty($_POST['email']))
     $where_conditions[] = "khach_hang.email = '{$_POST["email"]}'";
 if (!empty($where_conditions))
     $query_extend = " WHERE " . implode(" OR ", $where_conditions);
-$query .= $query_extend;
+$query .= $query_extend . " LIMIT $rowOfPage  OFFSET " . (($currentPage - 1) * $rowOfPage);
 
 $statement = $dbh->prepare($query);
 $statement->execute();

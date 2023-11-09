@@ -1,4 +1,7 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php include '../templates/nav_admin1.php';
+include '../includes/check_permisson.php';
+check($nv->maLoai,'NK');
+?>
 
 <div class="body" style="margin-top: 15px">
     <div class="table_header">

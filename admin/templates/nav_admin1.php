@@ -134,6 +134,16 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
+                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/discount.php"; ?>">
+                        <div class="nav_li_icon">
+                            <i class="fa-solid fa-percent"></i>
+                        </div>
+                        <div class="nav_li_title">
+                            Giảm giá
+                        </div>
+                    </a>
+                </li>
+                <li class="nav_li">
                     <a href="<?php echo $_SESSION['rootPath'] . "/pages/statistics_index.php"; ?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-bug"></i>

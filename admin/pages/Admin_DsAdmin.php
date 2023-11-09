@@ -1,15 +1,22 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php include '../templates/nav_admin1.php';
+
+include '../includes/check_permisson.php';
+check($nv->maLoai,'NV');
+
+$query = "SELECT maNhanVien, ho,ten,diaChiCuThe,dienThoai,tenLoai, tenNguoiDung, avatar, email FROM nhan_vien JOIN loai_tai_khoan ON nhan_vien.maLoai = loai_tai_khoan.maLoai;";
+$stmt = $dbh->prepare($query);
+$stmt->execute();
+$nhanVien = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+$query_tenloai = "SELECT maLoai, tenLoai FROM loai_tai_khoan";
+$statement = $dbh->prepare($query_tenloai);
+$statement->execute();
+$loaitaikhoan = $statement->fetchAll(PDO::FETCH_OBJ);
+?>
 <div class="table_header">
-    <div class="search">
-        <a href="@Url.Action("Search","Admin")">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <div class="search_title">
-                Tìm kiếm nhanh
-            </div>
-        </a>
-    </div>
+
     <div class="add_admin">
-        <a href="@Url.Action("Create","Admin")">
+        <a href="./Admin_Create.php">
             <i class="fa-solid fa-user-plus"></i>
             <div class="add_title">
                 Thêm Admin
@@ -20,8 +27,8 @@
 <table class="table_dsadmin">
     <thead>
         <tr>
-            <th style="width: 65px;">Mã Admin</th>
-            <th style="width: 120px;">Họ tên Admin</th>
+            <th style="width: 65px;">Mã Nhân Viên</th>
+            <th style="width: 120px;">Họ tên</th>
             <th style="width: 150px;">Địa chỉ</th>
             <th style="width: 80px;">Số điện thoại</th>
             <th style="width: 90px;">Loại tài khoản</th>
@@ -32,82 +39,47 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
+        <?php
+
+        foreach ($nhanVien as $row) {
+            echo '
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MAADMIN)
+                ' . $row->maNhanVien . '
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.HOTEN)
+                ' . $row->ho . " " . $row->ten . '
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DIACHI)
+                ' . $row->diaChiCuThe . '
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DIENTHOAI)
+                ' . $row->dienThoai . '
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LOAITKADMIN.TENLOAI)
+                ' . $row->tenLoai . '
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TENDN)
+                ' . $row->tenNguoiDung . '
                 </td>
                 <td>
-                    <img src="@Url.Content("~/assest/img/ad_user/" + item.AVATAR)" alt="" style="width: 70px; height: 70px;">
+                    <img src="../../assets/img/ad_user/' . $row->avatar . '" alt="" style="width: 70px; height: 70px;">
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EMAIL)
+                ' . $row->email . '
                 </td>
                 <td>
-                    <a href="@Url.Action("Edit","Admin", new { id = item.MAADMIN })"><i class="fa-solid fa-pen-to-square edit"></i></a>
-                    <a href="@Url.Action("Delete","Admin", new { id = item.MAADMIN })"> <i class="fa-solid fa-xmark remove"></i></a>
-                    <a href="@Url.Action("Detail","Admin", new { id = item.MAADMIN })"><i class="fa-solid fa-circle-info detail"></i></a>
+                        <a href="./Admin_editPQ.php?maNhanVien=' . $row->maNhanVien . '" ><i class="fa-solid fa-pen-to-square edit"></i></a>
+                        <a href="./Admin_deleteAD.php?maNhanVien=' . $row->maNhanVien . '"><i class="fa-solid fa-xmark remove"></i></a>
+                        <a href="./Admin_delete.php?maNhanVien=' . $row->maNhanVien . '" ><i class="fa-solid fa-xmark remove"></i></a>
+                        <a href="./Admin_DetailsDs.php?maNhanVien=' . $row->maNhanVien . '"><i class="fa-solid fa-circle-info detail"></i></a>
                 </td>
             </tr>
+            ';
         }
-
-
+        ?>
     </tbody>
+
+
 </table>
-@*<div align="center">@Html.PagedListPager(Model, page => Url.Action("DSAdmin", new { page = page }))</div>*@
-
-<ul class="page">
-    @if (Model.PageCount > 1)
-    {
-        for (int i = 1; i <= Model.PageCount; i++)
-        {
-            <li>
-                <a href="@Url.Action("DSAdmin", new { page = i })" class="@((i == Model.PageNumber) ? "page_button page_button_active" : "page_button")">@i</a>
-            </li>
-        }
-    }
-</ul>
-@*
-
-    <div class="page">
-         <div class="page_previous_button">
-             <i class="fa-solid fa-angles-left"></i>
-         </div>
-         <div class="page_button page_button_active">
-             1
-         </div>
-         <div class="page_button">
-             2
-         </div>
-         <div class="page_button">
-             3
-         </div>
-         <div class="page_button">
-             4
-         </div>
-         <div class="page_button">
-             5
-         </div>
-         <div class="page_behind_button">
-             <i class="fa-solid fa-angles-right"></i>
-         </div>
-     </div>
-*@ 
-
 <?php include '../templates/nav_admin2.php' ?>

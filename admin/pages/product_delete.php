@@ -50,14 +50,14 @@ include '../includes/delete_product_from_id.php';
 
             </div>
             <div class="button">
-                <input type="button" value="Xóa" class="button_add_admin delete_display_alert"  />
+                <input type="button" value="Xóa" class="button_add_admin delete_display_alert" />
                 <a href="javascript:history.go(-1);"><input type="button" value="Quay lại"
                         class="button_add_admin" /></a>
             </div>
             <div class="alert_delete">
                 <div class="notification" style="width:20%">
                     <h1 class="notification_title">Xác nhận xóa sản phẩm này!</h1>
-                    <input type="submit" value="Xóa" class="alert_delete_btn delete_conform" name="delete"/>
+                    <input type="submit" value="Xóa" class="alert_delete_btn delete_conform" name="delete" />
                     <input type="button" value="Không" class="alert_delete_btn delete_cancel" />
                 </div>
             </div>

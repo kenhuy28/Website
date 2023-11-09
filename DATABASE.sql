@@ -110,10 +110,11 @@ INSERT INTO `don_dat_hang` (`maDonHang`, `maKhachHang`, `ngayDat`, `ngayGiao`, `
 -- Table structure for table `giam_gia`
 --
 
+
 CREATE TABLE `giam_gia` (
   `maGiamGia` varchar(6) NOT NULL,
   `maSanPham` varchar(6) NOT NULL,
-  `loaiGiamGia` bit(2) NOT NULL,
+  `maLoai` bit(2) NOT NULL,
   `giaTriGiam` int(11) NOT NULL,
   `ngayBatDau` date NOT NULL,
   `ngayKetThuc` date NOT NULL
@@ -123,10 +124,20 @@ CREATE TABLE `giam_gia` (
 -- Dumping data for table `giam_gia`
 --
 
-INSERT INTO `giam_gia` (`maGiamGia`, `maSanPham`, `loaiGiamGia`, `giaTriGiam`, `ngayBatDau`, `ngayKetThuc`) VALUES
+INSERT INTO `giam_gia` (`maGiamGia`, `maSanPham`, `maLoai`, `giaTriGiam`, `ngayBatDau`, `ngayKetThuc`) VALUES
 ('GG0001', 'SP0002', b'01', 50000, '2023-10-24', '2023-11-15'),
 ('GG0002', 'SP0006', b'00', 5, '2023-11-09', '2023-11-12');
 
+
+CREATE TABLE loai_giam_gia (
+  maLoai bit(2) NOT NULL,
+  tenGiamGia varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+INSERT INTO loai_giam_gia (maLoai, tenGiamGia) VALUES
+(b'01', 'Theo giá'),
+(b'00', 'Theo phần trăm giá');
 -- --------------------------------------------------------
 
 --
@@ -286,21 +297,21 @@ INSERT INTO `huyen` (`maHuyen`, `tenHuyen`, `maTinh`) VALUES
 ('HUY119', 'Huyện Krông A Na', 'TINH14'),
 ('HUY120', 'Huyện Lắk', 'TINH14'),
 ('HUY121', 'Huyện Krông Búk', 'TINH14'),
-('HUY122', 'Huyện Cư M\'gar', 'TINH14'),
+('HUY122', 'Huyện Cư Mgar', 'TINH14'),
 ('HUY123', 'Huyện Buôn Đôn', 'TINH14'),
-('HUY124', 'Huyện Ea H\'leo', 'TINH14'),
+('HUY124', 'Huyện Ea Hleo', 'TINH14'),
 ('HUY125', 'Huyện Ea Kar', 'TINH14'),
 ('HUY126', 'Huyện Krông Bông', 'TINH14'),
 ('HUY127', 'Huyện Cư Kuin', 'TINH14'),
 ('HUY128', 'Thành phố Buôn Ma Thuột', 'TINH14'),
-('HUY129', 'Huyện M\'Đrắk', 'TINH14'),
+('HUY129', 'Huyện MĐrắk', 'TINH14'),
 ('HUY130', 'Huyện Ea Súp', 'TINH14'),
 ('HUY131', 'Huyện Krông Năng', 'TINH14'),
 ('HUY132', 'Huyện Krông Pắc', 'TINH14'),
 ('HUY133', 'Huyện Đắk Mil', 'TINH15'),
 ('HUY134', 'Huyện Krông Nô', 'TINH15'),
 ('HUY135', 'Huyện Cư Jút', 'TINH15'),
-('HUY136', 'Huyện Đắk R\'Lấp', 'TINH15'),
+('HUY136', 'Huyện Đắk RLấp', 'TINH15'),
 ('HUY137', 'Huyện Tuy Đức', 'TINH15'),
 ('HUY138', 'Huyện Đăk Glong', 'TINH15'),
 ('HUY139', 'Huyện Đắk Song', 'TINH15'),
@@ -446,7 +457,7 @@ INSERT INTO `huyen` (`maHuyen`, `tenHuyen`, `maTinh`) VALUES
 ('HUY279', 'Huyện Kon Rẫy', 'TINH28'),
 ('HUY280', 'Huyện Kon Plông', 'TINH28'),
 ('HUY281', 'Huyện Sa Thầy', 'TINH28'),
-('HUY282', 'Huyện Ia H\' Drai', 'TINH28'),
+('HUY282', "Huyện Ia Drai", 'TINH28'),
 ('HUY283', 'Huyện Khánh Sơn', 'TINH29'),
 ('HUY284', 'Thành phố Cam Ranh', 'TINH29'),
 ('HUY285', 'Huyện Diên Khánh', 'TINH29'),
@@ -950,10 +961,10 @@ CREATE TABLE `nhan_vien` (
 --
 
 INSERT INTO `nhan_vien` (`maNhanVien`, `ho`, `ten`, `ngaySinh`, `diaChiCuThe`, `dienThoai`, `maLoai`, `tenNguoiDung`, `matKhau`, `avatar`, `email`, `maXa`) VALUES
-('AD0001', 'Nguyễn Hữu', 'Lực', '2002-10-09', 'Khánh Hòa', '0856202788', 'LTK001', 'huuluc', 'qpalqpal', 'huuluc.png', 'huuluc@gmail.com', 'X00018'),
-('AD0002', 'Ngô Tuấn', 'Lam', '2002-10-22', 'Phú Yên', '0347693333', 'LTK002', 'tuanlam', 'qpalqpal', 'tuanlam.png', 'tuanlam@gmail.com', 'X00018'),
-('AD0003', 'Nguyễn Lê', 'Tâm', '2002-05-10', 'Khánh Hòa', '0924494119', 'LTK002', 'letam', 'qpalqpal', 'letam.png', 'letam@gmail.com', 'X00018'),
-('AD0004', 'Phạm Phương', 'Nam', '2000-10-11', 'Đăk Lăk', '0867566932', 'LTK003', 'nam5520', 'qpalqpal', 'nam5520.png', 'nam5520000@gmail.com', 'X00018');
+('AD0001', 'Nguyễn Hữu', 'Lực', '2002-10-09', 'Khánh Hòa', '0856202788', 'LTK001', 'huuluc', '25f9e794323b453885f5181f1b624d0b', 'huuluc.jpg', 'huuluc@gmail.com', 'X00018'),
+('AD0002', 'Ngô Tuấn', 'Lam', '2002-10-22', 'Phú Yên', '0347693333', 'LTK002', 'tuanlam', 'f5fca11490e764eed810f7e6c62b21cf', 'tuanlam.png', 'tuanlam@gmail.com', 'X00018'),
+('AD0003', 'Nguyễn Lê', 'Tâm', '2002-05-10', 'Khánh Hòa', '0924494119', 'LTK002', 'letam', 'f5fca11490e764eed810f7e6c62b21cf', 'letam.png', 'letam@gmail.com', 'X00018'),
+('AD0004', 'Phạm Phương', 'Nam', '2000-10-11', 'Đăk Lăk', '0867566932', 'LTK003', 'nam5520', 'f5fca11490e764eed810f7e6c62b21cf', 'nam5520.png', 'nam5520000@gmail.com', 'X00018');
 
 -- --------------------------------------------------------
 
@@ -2794,7 +2805,7 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X01663', 'Xã Cư A Mung', 'HUY124'),
 ('X01664', 'Xã Cư Bao', 'HUY118'),
 ('X01665', 'Xã Cư Bông', 'HUY125'),
-('X01666', 'Xã Cư Dliê M\'nông', 'HUY122'),
+('X01666', 'Xã Cư Dliê Mnông', 'HUY122'),
 ('X01667', 'Xã Cư Drăm', 'HUY126'),
 ('X01668', 'Xã Cư ELang', 'HUY125'),
 ('X01669', 'Xã Cư Ê Wi', 'HUY127'),
@@ -2805,9 +2816,9 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X01674', 'Xã Cư KBang', 'HUY130'),
 ('X01675', 'Xã Cư Klông', 'HUY131'),
 ('X01676', 'Xã Cư KTy', 'HUY126'),
-('X01677', 'Xã Cư M\'gar', 'HUY122'),
-('X01678', 'Xã Cư M\'Lan', 'HUY130'),
-('X01679', 'Xã Cư M\'ta', 'HUY129'),
+('X01677', 'Xã Cư Mgar', 'HUY122'),
+('X01678', 'Xã Cư MLan', 'HUY130'),
+('X01679', 'Xã Cư Mta', 'HUY129'),
 ('X01680', 'Xã Cư Mốt', 'HUY124'),
 ('X01681', 'Xã Cư Né', 'HUY121'),
 ('X01682', 'Xã Cư Ni', 'HUY125'),
@@ -2833,14 +2844,14 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X01702', 'Xã Ea Blang', 'HUY118'),
 ('X01703', 'Xã Ea Bông', 'HUY119'),
 ('X01704', 'Xã Ea Bung', 'HUY130'),
-('X01705', 'Xã Ea D\'Rơng', 'HUY122'),
+('X01705', 'Xã Ea DRơng', 'HUY122'),
 ('X01706', 'Xã Ea Dăh', 'HUY131'),
 ('X01707', 'Thị trấn Ea Drăng', 'HUY124'),
 ('X01708', 'Xã Ea Drông', 'HUY118'),
 ('X01709', 'Xã Ea Đar', 'HUY125'),
-('X01710', 'Xã Ea H\'đinh', 'HUY122'),
-('X01711', 'Xã Ea H\'leo', 'HUY124'),
-('X01712', 'Xã Ea H\'MLay', 'HUY129'),
+('X01710', 'Xã Ea Hđinh', 'HUY122'),
+('X01711', 'Xã Ea Hleo', 'HUY124'),
+('X01712', 'Xã Ea HMLay', 'HUY129'),
 ('X01713', 'Xã Ea Hiao', 'HUY124'),
 ('X01714', 'Xã Ea Hiu', 'HUY132'),
 ('X01715', 'Xã Ea Hồ', 'HUY131'),
@@ -2861,9 +2872,9 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X01730', 'Xã Ea Kuêh', 'HUY122'),
 ('X01731', 'Xã Ea Lai', 'HUY129'),
 ('X01732', 'Xã Ea Lê', 'HUY130'),
-('X01733', 'Xã Ea M\' Doal', 'HUY129'),
-('X01734', 'Xã Ea M\'DRóh', 'HUY122'),
-('X01735', 'Xã Ea M\'nang', 'HUY122'),
+('X01733', 'Xã Ea M Doal', 'HUY129'),
+('X01734', 'Xã Ea MDRóh', 'HUY122'),
+('X01735', 'Xã Ea Mnang', 'HUY122'),
 ('X01736', 'Xã Ea Na', 'HUY119'),
 ('X01737', 'Xã Ea Nam', 'HUY124'),
 ('X01738', 'Xã Ea Ngai', 'HUY121'),
@@ -2875,7 +2886,7 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X01744', 'Xã Ea Pil', 'HUY129'),
 ('X01745', 'Thị trấn Ea Pốk', 'HUY122'),
 ('X01746', 'Xã Ea Puk', 'HUY131'),
-('X01747', 'Xã Ea R\'Bin', 'HUY120'),
+('X01747', 'Xã Ea RBin', 'HUY120'),
 ('X01748', 'Xã Ea Ral', 'HUY124'),
 ('X01749', 'Xã Ea Riêng', 'HUY129'),
 ('X01750', 'Xã Ea Rốk', 'HUY130'),
@@ -2929,7 +2940,7 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X01798', 'Thị trấn Krông Năng', 'HUY131'),
 ('X01799', 'Xã Krông Nô', 'HUY120'),
 ('X01800', 'Thị trấn Liên Sơn', 'HUY120'),
-('X01801', 'Thị trấn M\'Đrắk', 'HUY129'),
+('X01801', 'Thị trấn MĐrắk', 'HUY129'),
 ('X01802', 'Xã Nam Ka', 'HUY120'),
 ('X01803', 'Xã Phú Lộc', 'HUY131'),
 ('X01804', 'Xã Phú Xuân', 'HUY131'),
@@ -2975,16 +2986,16 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X01844', 'Thị trấn Đắk Mâm', 'HUY134'),
 ('X01845', 'Thị trấn Đắk Mil', 'HUY133'),
 ('X01846', 'Xã Đắk Môl', 'HUY139'),
-('X01847', 'Xã Đắk N\'Drót', 'HUY133'),
-('X01848', 'Xã Đắk N\'Dung', 'HUY139'),
+('X01847', 'Xã Đắk NDrót', 'HUY133'),
+('X01848', 'Xã Đắk NDung', 'HUY139'),
 ('X01849', 'Xã Đắk Nang', 'HUY134'),
 ('X01850', 'Xã Đắk Ngo', 'HUY137'),
 ('X01851', 'Xã Đắk Nia', 'HUY140'),
 ('X01852', 'Xã Đắk Plao', 'HUY138'),
-('X01853', 'Xã Đắk R\'La', 'HUY133'),
-('X01854', 'Xã Đắk R\'Măng', 'HUY138'),
-('X01855', 'Xã Đăk R\'Moan', 'HUY140'),
-('X01856', 'Xã Đắk R\'Tíh', 'HUY137'),
+('X01853', 'Xã Đắk RLa', 'HUY133'),
+('X01854', 'Xã Đắk RMăng', 'HUY138'),
+('X01855', 'Xã Đăk RMoan', 'HUY140'),
+('X01856', 'Xã Đắk RTíh', 'HUY137'),
 ('X01857', 'Xã Đắk Ru', 'HUY136'),
 ('X01858', 'Xã Đắk Sắk', 'HUY133'),
 ('X01859', 'Xã Đắk Sin', 'HUY136'),
@@ -2997,7 +3008,7 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X01866', 'Xã Đức Minh', 'HUY133'),
 ('X01867', 'Xã Đức Xuyên', 'HUY134'),
 ('X01868', 'Xã Ea Pô', 'HUY135'),
-('X01869', 'Thị trấn Ea T\'Ling', 'HUY135'),
+('X01869', 'Thị trấn Ea TLing', 'HUY135'),
 ('X01870', 'Xã Hưng Bình', 'HUY136'),
 ('X01871', 'Thị trấn Kiến Đức', 'HUY136'),
 ('X01872', 'Xã Kiến Thành', 'HUY136'),
@@ -3006,8 +3017,8 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X01875', 'Xã Nam Dong', 'HUY135'),
 ('X01876', 'Xã Nam Đà', 'HUY134'),
 ('X01877', 'Xã Nam Xuân', 'HUY134'),
-('X01878', 'Xã Nâm N\'Đir', 'HUY134'),
-('X01879', 'Xã Nâm N\'Jang', 'HUY139'),
+('X01878', 'Xã Nâm NĐir', 'HUY134'),
+('X01879', 'Xã Nâm NJang', 'HUY139'),
 ('X01880', 'Xã Nâm Nung', 'HUY134'),
 ('X01881', 'Phường Nghĩa Đức', 'HUY140'),
 ('X01882', 'Phường Nghĩa Phú', 'HUY140'),
@@ -3543,7 +3554,7 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X02412', 'Xã Gào', 'HUY176'),
 ('X02413', 'Xã Glar', 'HUY173'),
 ('X02414', 'Xã H Bông', 'HUY174'),
-('X02415', 'Xã H\' Neng', 'HUY173'),
+('X02415', 'Xã H Neng', 'HUY173'),
 ('X02416', 'Xã Hà Bầu', 'HUY173'),
 ('X02417', 'Xã Hà Đông', 'HUY173'),
 ('X02418', 'Xã Hà Tam', 'HUY177'),
@@ -3637,7 +3648,7 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X02506', 'Xã Ia Vê', 'HUY181'),
 ('X02507', 'Xã Ia Yeng', 'HUY180'),
 ('X02508', 'Xã Ia Yok', 'HUY189'),
-('X02509', 'Xã K\' Dang', 'HUY173'),
+('X02509', 'Xã K Dang', 'HUY173'),
 ('X02510', 'Thị trấn KBang', 'HUY188'),
 ('X02511', 'Xã Kim Tân', 'HUY186'),
 ('X02512', 'Xã Kon Chiêng', 'HUY179'),
@@ -5695,22 +5706,22 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X04562', 'Phường 8', 'HUY321'),
 ('X04563', 'Phường 9', 'HUY321'),
 ('X04564', 'Xã An Nhơn', 'HUY322'),
-('X04565', 'Xã B\' Lá', 'HUY117'),
-('X04566', 'Phường B\'lao', 'HUY320'),
+('X04565', 'Xã B Lá', 'HUY117'),
+('X04566', 'Phường Blao', 'HUY320'),
 ('X04567', 'Xã Bảo Thuận', 'HUY323'),
 ('X04568', 'Xã Bình Thạnh', 'HUY324'),
 ('X04569', 'Thị trấn Cát Tiên', 'HUY325'),
-('X04570', 'Thị trấn D\'Ran', 'HUY326'),
+('X04570', 'Thị trấn DRan', 'HUY326'),
 ('X04571', 'Thị trấn Di Linh', 'HUY323'),
 ('X04572', 'Xã Đạ Chais', 'HUY327'),
 ('X04573', 'Xã Đạ Đờn', 'HUY328'),
-('X04574', 'Xã Đạ K\' Nàng', 'HUY329'),
+('X04574', 'Xã Đạ K Nàng', 'HUY329'),
 ('X04575', 'Xã Đạ Kho', 'HUY322'),
 ('X04576', 'Xã Đạ Lây', 'HUY322'),
 ('X04577', 'Xã Đà Loan', 'HUY324'),
 ('X04578', 'Xã Đạ Long', 'HUY329'),
-('X04579', 'Xã Đạ M\' Rong', 'HUY329'),
-('X04580', 'Thị trấn Đạ M\'ri', 'HUY330'),
+('X04579', 'Xã Đạ M Rong', 'HUY329'),
+('X04580', 'Thị trấn Đạ Mri', 'HUY330'),
 ('X04581', 'Xã Đạ Nhim', 'HUY327'),
 ('X04582', 'Xã Đạ Oai', 'HUY330'),
 ('X04583', 'Xã Đạ Pal', 'HUY322'),
@@ -5780,7 +5791,7 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X04647', 'Xã Ma Đa Guôi', 'HUY330'),
 ('X04648', 'Xã Mê Linh', 'HUY328'),
 ('X04649', 'Xã Mỹ Đức', 'HUY322'),
-('X04650', 'Xã N\'Thol Hạ', 'HUY324'),
+('X04650', 'Xã Thol Hạ', 'HUY324'),
 ('X04651', 'Thị trấn Nam Ban', 'HUY328'),
 ('X04652', 'Xã Nam Hà', 'HUY328'),
 ('X04653', 'Xã Nam Ninh', 'HUY325'),
@@ -7436,7 +7447,7 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X06302', 'Phường Cẩm Nam', 'HUY427'),
 ('X06303', 'Phường Cẩm Phô', 'HUY427'),
 ('X06304', 'Xã Cẩm Thanh', 'HUY427'),
-('X06305', 'Xã Ch\'ơm', 'HUY421'),
+('X06305', 'Xã Chơm', 'HUY421'),
 ('X06306', 'Xã Chà Vàl', 'HUY426'),
 ('X06307', 'Xã Chơ Chun', 'HUY426'),
 ('X06308', 'Phường Cửa Đại', 'HUY427'),
@@ -7604,7 +7615,7 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X06470', 'Xã Tiên Phong', 'HUY435'),
 ('X06471', 'Xã Tiên Sơn', 'HUY435'),
 ('X06472', 'Xã Tiên Thọ', 'HUY435'),
-('X06473', 'Xã Tr\'Hy', 'HUY421'),
+('X06473', 'Xã Tr Hy', 'HUY421'),
 ('X06474', 'Xã Trà Bui', 'HUY436'),
 ('X06475', 'Xã Trà Cang', 'HUY437'),
 ('X06476', 'Xã Trà Don', 'HUY437'),
@@ -11843,6 +11854,9 @@ ALTER TABLE `xa`
   ADD PRIMARY KEY (`maXa`),
   ADD KEY `maHuyen` (`maHuyen`);
 
+  ALTER TABLE loai_giam_gia
+  ADD PRIMARY KEY (maLoai);
+
 --
 -- Constraints for dumped tables
 --
@@ -11880,6 +11894,9 @@ ALTER TABLE `giam_gia`
 ALTER TABLE `gio_hang`
   ADD CONSTRAINT `gio_hang_ibfk_1` FOREIGN KEY (`maKhachHang`) REFERENCES `khach_hang` (`maKhachHang`),
   ADD CONSTRAINT `gio_hang_ibfk_2` FOREIGN KEY (`maSanPham`) REFERENCES `san_pham` (`maSanPham`);
+
+ALTER TABLE giam_gia
+ADD CONSTRAINT loai_giam_gia_fk FOREIGN KEY (maLoai) REFERENCES loai_giam_gia (maLoai);
 
 --
 -- Constraints for table `huyen`
@@ -11919,7 +11936,3 @@ ALTER TABLE `san_pham`
 ALTER TABLE `xa`
   ADD CONSTRAINT `xa_ibfk_1` FOREIGN KEY (`maHuyen`) REFERENCES `huyen` (`maHuyen`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

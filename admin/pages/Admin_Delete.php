@@ -1,37 +1,78 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php include '../templates/nav_admin1.php';
+$nhanVien_id = $_GET['maNhanVien'];
+$sql = "SELECT *, tenLoai FROM nhan_vien JOIN loai_tai_khoan ON nhan_vien.maLoai = loai_tai_khoan.maLoai WHERE maNhanVien ='$nhanVien_id'";
+$statement = $dbh->prepare($sql);
+$statement->execute();
+$statement->setFetchMode(PDO::FETCH_OBJ);
+$result = $statement->fetch();
+if (isset($_POST["delete"])) {
+    $maNhanVienXoa = $_POST["delete"];
+    $checkQuery = "SELECT COUNT(*) FROM don_dat_hang WHERE maNhanVien = '$maNhanVienXoa'";
+    $checkStatement = $dbh->prepare($checkQuery);
+    $checkStatement->execute();
+    $count = $checkStatement->fetchColumn();
+
+    if ($count == 0) {
+        $updateQuery = "DELETE FROM nhan_vien WHERE maNhanVien = '$maNhanVienXoa'";
+        $updateStatement = $dbh->prepare($updateQuery);
+        $updateStatement->execute();
+        echo "Xóa nhân viên thành công!";
+        echo '<script>window.location.href = "Admin_DsAdmin.php";</script>';
+    } else {
+        echo "Không thể xóa nhân viên vì có đơn đặt hàng liên quan.";
+    }
+
+}
+$query_tenloai = "SELECT maLoai, tenLoai FROM loai_tai_khoan";
+$statement = $dbh->prepare($query_tenloai);
+$statement->execute();
+$loaitaikhoan = $statement->fetchAll(PDO::FETCH_OBJ);
+?>
 
 <div class="detail_admin">
     <h1 class="Title_Admin_create_form">Bạn có muốn xóa tài khoản này ?</h1>
     <form action="" Method="POST">
         <div class="detai_admin_form">
             <div class="detail_admin_left">
-                <img src="~/assest/img/ad_user/@Model.AVATAR" alt="">
+                <img src="../../assets/img/ad_user/<?php echo $result->avatar ?>" alt="">
             </div>
             <div class="detail_admin_right">
                 <table class="Table_Details_Admin">
                     <tr>
                         <td>Mã Admin: </td>
-                        <td>@Model.MAADMIN</td>
+                        <td>
+                            <?php echo $result->maNhanVien; ?>
+                        </td>
                     </tr>
                     <tr>
                         <td>Họ tên Admin:</td>
-                        <td>@Model.HOTEN</td>
+                        <td>
+                            <?php echo $result->ho . " " . $result->ten; ?>
+                        </td>
                     </tr>
                     <tr>
                         <td>Địa chỉ:</td>
-                        <td>@Model.DIACHI</td>
+                        <td>
+                            <?php echo $result->diaChiCuThe; ?>
+                        </td>
                     </tr>
                     <tr>
                         <td>Số điện thoại :</td>
-                        <td>@Model.DIENTHOAI</td>
+                        <td>
+                            <?php echo $result->dienThoai; ?>
+                        </td>
                     </tr>
                     <tr>
                         <td>Email :</td>
-                        <td>@Model.EMAIL</td>
+                        <td>
+                            <?php echo $result->email; ?>
+                        </td>
                     </tr>
                     <tr>
                         <td>Loại tài khoản :</td>
-                        <td>@Model.LOAITKADMIN.TENLOAI</td>
+                        <td>
+                            <?php echo $result->tenLoai; ?>
+                        </td>
                     </tr>
                 </table>
 
@@ -40,19 +81,21 @@
         </div>
         <div class="button">
             <input type="button" value="Xóa" class="button_add_admin delete_display_alert" />
-            <a href="@Url.Action(" DSAdmin","Admin")"><input type="button" value="Quay lại"
-                    class="button_add_admin" /></a>
+            <a href="javascript:history.go(-1);"><input type="button" value="Quay lại" class="button_add_admin" /></a>
         </div>
         <div class="alert_delete">
-            <div class="notification">
-                <h1 class="notification_title">Xác nhận xóa tài khoản!</h1>
-                <input type="submit" value="Xóa" class="alert_delete_btn delete_conform" />
-                <input type="button" value="Không" class="alert_delete_btn delete_cancel" />
-            </div>
+            <form action="" method="POST">
+                <div class="notification" style="width:20%">
+                    <h1 class="notification_title">Xác nhận xóa sản phẩm này!</h1>
+                    <button type="submit" value="<?php echo $result->maNhanVien ?>"
+                        class="alert_delete_btn delete_conform" name="delete">Xóa</button>
+                    <button type="button" value="Không" class="alert_delete_btn delete_cancel">Không</button>
+                </div>
+            </form>
         </div>
     </form>
 </div>
-<!-- <script>
+<script>
     const load = document.querySelector.bind(document);
     const alert_delete_btn = load(".delete_display_alert");
     const alert_delete_conform_btn = load(".delete_conform");
@@ -64,5 +107,6 @@
     alert_delete_cancel_btn.onclick = () => {
         alert_delete.style.display = "none";
     };
-</script> -->
+
+</script>
 <?php include '../templates/nav_admin2.php' ?>
