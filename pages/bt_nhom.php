@@ -15,7 +15,7 @@
         <div align="center">
             <img src=" <?php echo $rootPath . "/assets/img/thanh_vien/letam.png" ?>" width="80%">
 
-            <p style="color:blue;">Nguyễn Lê Tâm - 62133960</p>
+            <p style="color:blue;">Nguyễn Lê Tâm - 62134195</p>
         </div>
     </a>
 
