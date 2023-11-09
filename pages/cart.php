@@ -145,11 +145,11 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
 
         // Cập nhật tổng tiền lên giao diện
         const totalPriceElement = document.getElementById('totalPrice');
-        totalPriceElement.textContent = totalPrice.toLocaleString();
+        totalPriceElement.textContent = totalPrice ;
 
         // Tìm thẻ span bằng ID
         var thanhTienInput = document.getElementById("thanhTienInput");
-        thanhTienInput.value = totalPrice.toLocaleString();
+        thanhTienInput.value = totalPrice ;
     }
 </script>
 
