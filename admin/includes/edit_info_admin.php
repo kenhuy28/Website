@@ -28,10 +28,12 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
   }
 
   $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '$ho', ten = '$ten', ngaySinh = '$ngaySinh', diaChiCuThe = '$diaChiCuThe', dienThoai = '$dienThoai', email = '$email', maXa = '$maXa', avatar = '$file_name' WHERE nhan_vien.maNhanVien = '$maNhanVien'");
+  echo "UPDATE nhan_vien SET ho = '$ho', ten = '$ten', ngaySinh = '$ngaySinh', diaChiCuThe = '$diaChiCuThe', dienThoai = '$dienThoai', email = '$email', maXa = '$maXa', avatar = '$file_name' WHERE nhan_vien.maNhanVien = '$maNhanVien'";
   $statement->execute();
 
 } else {
   $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '$ho', ten = '$ten', ngaySinh = '$ngaySinh', diaChiCuThe = '$diaChiCuThe', dienThoai = '$dienThoai', email = '$email', maXa = '$maXa' WHERE nhan_vien.maNhanVien = '$maNhanVien'");
+  echo "UPDATE nhan_vien SET ho = '$ho', ten = '$ten', ngaySinh = '$ngaySinh', diaChiCuThe = '$diaChiCuThe', dienThoai = '$dienThoai', email = '$email', maXa = '$maXa' WHERE nhan_vien.maNhanVien = '$maNhanVien'";
   $statement->execute();
 }
 
@@ -41,6 +43,6 @@ $result = $stmt->fetch(PDO::FETCH_OBJ);
 $_SESSION['admin'] = $result;
 
 // edit xong về trang index
-// header("Location: ../");
+header("Location: ../");
 
 ?>
