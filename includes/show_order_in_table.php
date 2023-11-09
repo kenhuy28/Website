@@ -53,7 +53,7 @@ if ($result) {
                             <td><p>" . number_format($row->tongTien) . "Đ</p></td>
                             <td>" . $tinhTrang . "</td>
                             <td>
-                                <a style='color: black;' href=\"detai_buy_history_page.php?id=" . $row->maDonHang . "&tinhTrang=".$row->tinhTrang."\" ><i class=\"fa-solid fa-circle-info detail\"></i></a>
+                                <a style='color: black;' href=\"detail_buy_history_page.php?id=" . $row->maDonHang . "&tinhTrang=".$row->tinhTrang."\" ><i class=\"fa-solid fa-circle-info detail\"></i></a>
                             </td>
                         </tr>";
     }

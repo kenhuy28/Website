@@ -10,7 +10,7 @@ $statement = $dbh->prepare(
         san_pham.donGiaBan, 
         san_pham.hinhAnh, 
         thuong_hieu.tenThuongHieu, 
-        IFNULL(giam_gia.loaiGiamGia, 0) AS loaiGiamGia, 
+        IFNULL(giam_gia.maLoai, 0) AS maLoai, 
         IFNULL(
             CASE 
                 WHEN giam_gia.ngayBatDau <= CURDATE() AND giam_gia.ngayKetThuc >= CURDATE() THEN giam_gia.giaTriGiam 
@@ -31,6 +31,7 @@ $get_dia_chi = $dbh->prepare(
     FROM xa JOIN huyen ON xa.maHuyen = huyen.maHuyen JOIN	tinh ON huyen.maTinh = tinh.maTinh 
     WHERE xa.maXa= '$maXa'"
 );
+
 $get_dia_chi->execute();
 $get_dia_chi->setFetchMode(PDO::FETCH_OBJ);
 
@@ -101,7 +102,7 @@ $get_dia_chi->setFetchMode(PDO::FETCH_OBJ);
                             ' . $row->soLuong . '
                         </div>
                         <div class="thanhToan_cart_list_item_gia' . $row->maSanPham . '" style="min-width: 100px;width: 20%"">'
-                . (($row->loaiGiamGia == 1) ? (($row->donGiaBan - $row->giaTriGiam) * $row->soLuong) : (($row->donGiaBan - $row->donGiaBan * $row->giaTriGiam / 100) * $row->soLuong)) .
+                . (($row->maLoai == 1) ? (($row->donGiaBan - $row->giaTriGiam) * $row->soLuong) : (($row->donGiaBan - $row->donGiaBan * $row->giaTriGiam / 100) * $row->soLuong)) .
                 ' VNĐ</div>
                     </div>';
         } ?>

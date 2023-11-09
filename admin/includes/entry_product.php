@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 try {
-    $maNV = "AD0001";
+    $maNV = $_SESSION['admin']->maNhanVien;
     // Get the data from AJAX
     $maPhieuNK = $_POST["maPhieuNK"];
     $ngayNK = $_POST["ngayNK"];

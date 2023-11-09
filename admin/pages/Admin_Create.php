@@ -112,8 +112,8 @@ $statement1->setFetchMode(PDO::FETCH_OBJ);
             <span class="error_message" id="userName_message"></span>
         </div>
         <div class="form_field">
-            <label for="" class="name_form_field">Mật khẩu: </label>
-            <input type="password" class="textfile" id="password" name="matKhau" style="width: 400px;" required>
+            <label for="" class="name_form_field">Mật khẩu mặc định admin159 </label>
+            <input hidden type="password" id="password" name="matKhau" value="admin159" style="width: 400px;">
             <span class="error_message"></span>
         </div>
         <div class="form_field">
