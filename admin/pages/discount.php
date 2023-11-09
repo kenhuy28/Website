@@ -1,6 +1,6 @@
 <?php include '../templates/nav_admin1.php';
 include '../includes/check_permisson.php';
-check($nv->maLoai,'GG'); 
+check($nv->maLoai, 'GG');
 ?>
 
 <div class="table_header">
@@ -16,7 +16,7 @@ check($nv->maLoai,'GG');
 <table class="table_dsadmin">
     <thead>
         <tr>
-            <th style="width: 65px;">Mã sản phẩm</th>
+            <th style="width: 65px;">Tên sản phẩm</th>
             <th style="width: 120px;">Loại giảm giá</th>
             <th style="width: 80px;">Giá trị giảm</th>
             <th style="width: 80px;">Ngày bắt đầu</th>
@@ -24,7 +24,7 @@ check($nv->maLoai,'GG');
         </tr>
     </thead>
     <tbody>
-        <?php include '../includes/show_type_table.php' ?>
+        <?php include '../includes/show_discount_table.php' ?>
     </tbody>
 </table>
 <div align="center" style="margin-top:10px" class="menu-wrapper">
