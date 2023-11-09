@@ -145,8 +145,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
             <label for="" class="name_form_field">Ảnh đại diện : </label>
             <div class="custom-file">
                 <div class="form_field">
-                    <input type="file" class="custom-file-input" id="img_profile_admin" name="image"
-                        accept=".png, .jpg, .jpeg">
+                    <input type="file" class="custom-file-input" id="" name="image" accept=".png, .jpg, .jpeg">
                     <span class="error_message"></span>
                 </div>
             </div>
@@ -155,6 +154,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
             <input type="submit" value="Cập nhật" class="button_add_admin" />
         </div>
     </form>
+
 </div>
 
 <?php include '../templates/nav_admin2.php' ?>

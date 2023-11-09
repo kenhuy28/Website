@@ -1,4 +1,3 @@
-<!-- UPDATE `nhan_vien` SET `ho` = 'Nguyễn Lêw', `ten` = 'Tâmw', `ngaySinh` = '2002-05-15', `diaChiCuThe` = 'Khánh Hòas', `dienThoai` = '0924494111', `matKhau` = '0a352f19e8f486d5ada12f4d8e065abb', `avatar` = 'letama.png', `email` = 'letama@gmail.com', `maXa` = 'X00048' WHERE `nhan_vien`.`maNhanVien` = 'AD0003';
 <?php
 include("config.php");
 $maNhanVien = $_SESSION['admin']->maNhanVien;
@@ -23,7 +22,7 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     $errors[] = 'File size should be 2MB';
   }
   if (empty($errors) == true) {
-    move_uploaded_file($file_tmp, $_SESSION['rootPath'] . "/../assets/img/ad_user/" . $file_name);
+    move_uploaded_file($file_tmp, $_SESSION['rootPath'] . "/../assets/img/sanpham/" . $file_name);
   } else {
     print_r($errors);
   }
