@@ -14,7 +14,7 @@ $statement = $dbh->prepare(
         san_pham.donGiaBan, 
         san_pham.hinhAnh, 
         thuong_hieu.tenThuongHieu, 
-        IFNULL(giam_gia.loaiGiamGia, 0) AS loaiGiamGia, 
+        IFNULL(giam_gia.maLoai, 0) AS maLoai, 
         IFNULL(
             CASE 
                 WHEN giam_gia.ngayBatDau <= CURDATE() AND giam_gia.ngayKetThuc >= CURDATE() THEN giam_gia.giaTriGiam 
@@ -204,7 +204,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
                                 </div>
                             </div>
                         </div>
-                        <div class="body_table_title giamGia' . $row->maSanPham . '" style="width: 15%">' . $row->giaTriGiam . (($row->loaiGiamGia == 0) ? (" %") : (" VNĐ")) . '</div>
+                        <div class="body_table_title giamGia' . $row->maSanPham . '" style="width: 15%">' . $row->giaTriGiam . (($row->maLoai == 0) ? (" %") : (" VNĐ")) . '</div>
                         <div class="body_table_title thanhTien' . $row->maSanPham . '" style="width: 10%; font-weight: 700; "> </div>
                         <div class="body_table_title" style="min-width: 5%;">
                             <i class="fa-solid fa-x" maSanPham=' . $row->maSanPham . ' onclick="deleteProduct(this)"></i>
