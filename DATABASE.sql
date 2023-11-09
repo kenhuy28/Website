@@ -931,7 +931,7 @@ CREATE TABLE `loai_tai_khoan` (
 --
 
 INSERT INTO `loai_tai_khoan` (`maLoai`, `tenLoai`) VALUES
-('LTK001', 'Quản Lý'),
+('LTK001', 'Quản trị viên'),
 ('LTK002', 'Nhân viên marketing'),
 ('LTK003', 'Nhân viên sale');
 
