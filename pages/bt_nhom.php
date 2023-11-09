@@ -11,8 +11,28 @@
         </div>
     </a>
 
-    <div style="width: 25%" align="center">Nguyễn Lê Tâm</div>
-    <div style="width: 25%" align="center">Phạm Phương Nam</div>
-    <div style="width: 25%" align="center">Ngô Tuấn Lam</div>
+    <a href="<?php echo $rootPath . "/PhamPhuongNam/" ?>" style="width: 25%;">
+        <div align="center">
+            <img src=" <?php echo $rootPath . "/assets/img/thanh_vien/huuluc.jpg" ?>" width="80%">
+
+            <p style="color:blue;">Nguyễn Lê Tâm - 62133960</p>
+        </div>
+    </a>
+
+    <a href="<?php echo $rootPath . "/PhamPhuongNam/" ?>" style="width: 25%;">
+        <div align="center">
+            <img src=" <?php echo $rootPath . "/assets/img/thanh_vien/huuluc.jpg" ?>" width="80%">
+
+            <p style="color:blue;">Phạm Phương Nam - 62133960</p>
+        </div>
+    </a>
+
+    <a href="<?php echo $rootPath . "/PhamPhuongNam/" ?>" style="width: 25%;">
+        <div align="center">
+            <img src=" <?php echo $rootPath . "/assets/img/thanh_vien/huuluc.jpg" ?>" width="80%">
+
+            <p style="color:blue;">Ngô Tuân Lam - 62133960</p>
+        </div>
+    </a>
 </div>
 <?php include '../templates/footer.php' ?>

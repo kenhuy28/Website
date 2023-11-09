@@ -166,7 +166,7 @@ if (empty($_SESSION["taiKhoan"])) {
 
       <?php foreach ($result2 as $row) {
           $productId = $row['maSanPham'];
-        echo "<div class=\"product_item\">
+        echo "<div class=\"product_item\" style='height: 490px'>
          <img src='assets/img/sanpham/" . $row['hinhAnh'] . "' alt=\"\" height=\"350px\">
          <div class=\"product_thuonghieu\">
            <h5>" . $row['tenThuongHieu'] . "</h5>
@@ -181,7 +181,7 @@ if (empty($_SESSION["taiKhoan"])) {
 </div>";
         } else {
           echo "<div class='product_price'>
-      <h5>" . number_format($$row['donGiaBan']) . "đ</h5>
+      <h5>" .  number_format($row['donGiaBan']) . "đ</h5>
   </div>";
         }
         echo ($row['soLuong'] == 0)

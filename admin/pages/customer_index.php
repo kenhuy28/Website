@@ -1,4 +1,7 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php include '../templates/nav_admin1.php';
+include '../includes/check_permisson.php';
+check($nv->maLoai,'KH');
+?>
 <!-- SELECT concat(khach_hang.hoKhachHang,' ',khach_hang.tenKhachHang) AS hoTenKhachHang, khach_hang.dienThoai, khach_hang.ngaySinh,khach_hang.email, concat(khach_hang.diaChiCuThe,", ",xa.tenXa,", ",huyen.tenHuyen,", ",tinh.tenTinh) AS diaChi FROM khach_hang JOIN xa on khach_hang.maXa=xa.maXa JOIN huyen on huyen.maHuyen=xa.maHuyen JOIN tinh on tinh.maTinh=huyen.maTinh -->
 
 <?php
