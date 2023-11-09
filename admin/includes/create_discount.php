@@ -18,7 +18,16 @@ $giaTriGiam = $_POST['giaTriGiam'];
 $ngayBatDau = $_POST['ngayBatDau'];
 $ngayKetThuc = $_POST['ngayKetThuc'];
 
-$query = "INSERT INTO `giam_gia` (`maGiamGia`, `maSanPham`, `maLoai`, `giaTriGiam`, `ngayBatDau`, `ngayKetThuc`) VALUES ('$maGiamGia', '$maSanPham', b'$maLoai', '$giaTriGiam', '$ngayBatDau', '$ngayKetThuc');";
+// SELECT giam_gia.maSanPham FROM giam_gia WHERE giam_gia.maSanPham = 'SP0004'
+$query_check = "SELECT COUNT(*) AS tonTai FROM giam_gia WHERE giam_gia.maSanPham = '$maSanPham'";
+$statement_check = $dbh->query($query_check);
+$result = $statement_check->fetch(PDO::FETCH_ASSOC);
+
+
+if ($result["tonTai"] == "1")
+  $query = "UPDATE `giam_gia` SET `maLoai` = b'$maLoai', `giaTriGiam` = '$giaTriGiam', `ngayBatDau` = '$ngayBatDau', `ngayKetThuc` = '$ngayKetThuc' WHERE `giam_gia`.`maSanPham` = '$maSanPham'";
+else
+  $query = "INSERT INTO `giam_gia` (`maGiamGia`, `maSanPham`, `maLoai`, `giaTriGiam`, `ngayBatDau`, `ngayKetThuc`) VALUES ('$maGiamGia', '$maSanPham', b'$maLoai', '$giaTriGiam', '$ngayBatDau', '$ngayKetThuc');";
 $statement_add = $dbh->prepare($query);
 $statement_add->execute();
 
