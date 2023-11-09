@@ -53,13 +53,13 @@ Back
 
 for ($i = 1; $i <= $maxPage; $i++) {
     if ($i == $_GET['page']) {
-        echo '<b style="color=black">Trang' . $i . '</b> '; //trang hiện tại sẽ được bôi đậm
+        echo '<b >Trang' . $i . '</b> '; //trang hiện tại sẽ được bôi đậm
     } else
-        echo "<a  style='color=black' href=" . $_SERVER['PHP_SELF'] . "?page="
-            . $i . ">Trang" . $i . "</a> ";
+        echo "<a   href=" . $_SERVER['PHP_SELF'] . "?page="
+            . $i . " >Trang" . $i . "</a> ";
 }
 if ($_GET['page'] < $maxPage) {
-    echo "<a href = " . $_SERVER['PHP_SELF'] . "?page=" . ($_GET['page'] + 1) . ">
+    echo "<a  href = " . $_SERVER['PHP_SELF'] . "?page=" . ($_GET['page'] + 1) . ">
 Next
 </a>";
 }

@@ -27,11 +27,11 @@
         </div>
     </a>
 
-    <a href="<?php echo $rootPath . "/PhamPhuongNam/" ?>" style="width: 25%;">
+    <a href="<?php echo $rootPath . "/NgoTuanLam/" ?>" style="width: 25%;">
         <div align="center">
-            <img src=" <?php echo $rootPath . "/assets/img/thanh_vien/huuluc.jpg" ?>" width="80%">
+            <img src=" <?php echo $rootPath . "/assets/img/thanh_vien/tuanlam.jpg" ?>" width="80%">
 
-            <p style="color:blue;">Ngô Tuân Lam - 62133960</p>
+            <p style="color:blue;">Ngô Tuấn Lam - 62133853</p>
         </div>
     </a>
 </div>
