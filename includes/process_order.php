@@ -43,8 +43,8 @@ while ($row = $get_giohang->fetch()) {
   // đưa từng sản phẩm trong giỏ vào chi tiết đơn đặt hàng
   $maSanPham = $row->maSanPham;
   $soLuong = $row->soLuong;
-  $donGia = $row->donGiaBan;
-  $thanhTien = (($row->loaiGiamGia == 1) ? (($row->donGiaBan - $row->giaTriGiam) * $row->soLuong) : (($row->donGiaBan - $row->donGiaBan * $row->giaTriGiam / 100) * $row->soLuong));
+  $donGia = (($row->loaiGiamGia == 1) ? (($row->donGiaBan - $row->giaTriGiam)) : (($row->donGiaBan - $row->donGiaBan * $row->giaTriGiam / 100)));
+  $thanhTien = $donGia * $row->soLuong;
   $insert_chddh = "INSERT INTO `chi_tiet_don_dat_hang` VALUES ('$maDonHang', '$maSanPham', '$soLuong', '$donGia', '$thanhTien')";
   $insert = $dbh->prepare($insert_chddh);
   $insert->execute();
