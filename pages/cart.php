@@ -117,6 +117,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
                 var productElement = document.querySelector('.soLuong' + maSanPham).closest('.body_table_item');
                 productElement.remove();
                 updateTotalPrice();// Cập nhật tổng tiền sau khi xóa sản phẩm
+                updateCountCart();
             }
         });
     }

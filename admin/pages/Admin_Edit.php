@@ -3,6 +3,11 @@ $get_tinh = "SELECT `maTinh`, `tenTinh` FROM `tinh`";
 $statement = $dbh->prepare($get_tinh);
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_OBJ);
+
+$get_address = "SELECT xa.maXa, xa.tenXa, huyen.maHuyen,huyen.tenHuyen, tinh.maTinh, tinh.tenTinh FROM nhan_vien JOIN xa ON nhan_vien.maXa=xa.maXa JOIN huyen ON xa.maHuyen=huyen.maHuyen JOIN tinh ON huyen.maTinh=tinh.maTinh WHERE nhan_vien.maNhanVien='{$_SESSION['admin']->maNhanVien}'";
+$statement1 = $dbh->prepare($get_address);
+$statement1->execute();
+$address_input = $statement1->fetch(PDO::FETCH_OBJ);
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -107,7 +112,9 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         <div class="form_field">
             <label for="" class="name_form_field">Tỉnh: </label>
             <select id='provinces' class="textfield" name="provinces" style="width: 195px;">
-                <option value="" disabled selected>Chọn tỉnh/Thành phố</option>
+                <option value="<?php echo $address_input->maTinh; ?>" disabled selected>
+                    <?php echo $address_input->tenTinh; ?>
+                </option>
                 <?php
                 while ($row = $statement->fetch())
                     echo "<option value='{$row->maTinh}'>{$row->tenTinh}</option>";
@@ -118,16 +125,20 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         <div class="form_field">
             <label for="" class="name_form_field">Huyện: </label>
             <select id='districts' class="textfield" name="districts" style="width: 195px;">
-                <option disabled selected value="">Chọn Huyện</option>
+                <option value="<?php echo $address_input->maHuyen; ?>" disabled selected>
+                    <?php echo $address_input->tenHuyen; ?>
+                </option>
             </select>
             <span class="error_message"></span>
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Xã: </label>
             <select required id="wards" class="textfield" style="width: 195px;">
-                <option value="">Chọn Xã</option>
+                <option value="<?php echo $address_input->maXa; ?>" disabled selected>
+                    <?php echo $address_input->tenXa; ?>
+                </option>
             </select>
-            <input hidden type="text" name="maXa" id="maXaInput">
+            <input hidden type="text" name="maXa" id="maXaInput" value="<?php echo $address_input->maXa; ?>">
             <span class="error_message"></span>
         </div>
         <div class="form_field">
@@ -139,7 +150,8 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
             <label for="" class="name_form_field">Ảnh đại diện : </label>
             <div class="custom-file">
                 <div class="form_field">
-                    <input type="file" class="custom-file-input" id="img_profile_admin" name="image" accept=".png, .jpg, .jpeg">
+                    <input type="file" class="custom-file-input" id="img_profile_admin" name="image"
+                        accept=".png, .jpg, .jpeg">
                     <span class="error_message"></span>
                 </div>
             </div>
