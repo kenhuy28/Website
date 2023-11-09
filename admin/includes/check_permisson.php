@@ -1,9 +1,15 @@
 <?php
 function check($loai, $trang) {
-    $mk_pan = ['TK','KH'];
-    $sale_pan = ['TK','NK'];
+    $kho_pan = ['TH','LSP','SP','NK'];
+    $sale_pan = ['DDH','KH'];
     if ($loai == 'LTK002') {
-        if (in_array($trang, $mk_pan)) { 
+        if (!in_array($trang, $sale_pan)) { 
+            header('Location: ../pages/access_permisson.php');
+            exit();
+        } 
+    }
+    if ($loai == 'LTK003') {
+        if (!in_array($trang, $kho_pan)) { 
             header('Location: ../pages/access_permisson.php');
             exit();
         } 
@@ -15,7 +21,7 @@ if (empty($_SESSION['admin'])) {
 } else {
     $sql = "SELECT * FROM nhan_vien JOIN loai_tai_khoan ON nhan_vien.maLoai = loai_tai_khoan.maLoai WHERE nhan_vien.maNhanVien = '{$_SESSION['admin']->maNhanVien}' ";
     $stmt = $dbh->query($sql);
-    $result = $stmt->fetch(PDO::FETCH_OBJ);
+    $nv = $stmt->fetch(PDO::FETCH_OBJ);
 }
 
 ?>

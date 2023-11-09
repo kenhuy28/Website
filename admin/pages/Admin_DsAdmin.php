@@ -1,5 +1,6 @@
 <?php include '../templates/nav_admin1.php';
-
+include '../includes/check_permisson.php';
+check($nv->maLoai,'NV');
 $query = "SELECT maNhanVien, ho,ten,diaChiCuThe,dienThoai,tenLoai, tenNguoiDung, avatar, email FROM nhan_vien JOIN loai_tai_khoan ON nhan_vien.maLoai = loai_tai_khoan.maLoai;";
 $stmt = $dbh->prepare($query);
 $stmt->execute();
@@ -81,13 +82,9 @@ $loaitaikhoan = $statement->fetchAll(PDO::FETCH_OBJ);
                 ' . $row->email . '
                 </td>
                 <td>
-                    
-                    <form  method="POST">
                         <a href="./Admin_editPQ.php?maNhanVien=' . $row->maNhanVien . '" ><i class="fa-solid fa-pen-to-square edit"></i></a>
-                        <button class="fa-solid fa-xmark remove" name ="remove" value="' . $row->maNhanVien . '"></button>
+                        <a href="./Admin_deleteAD.php?maNhanVien=' . $row->maNhanVien . '"><i class="fa-solid fa-xmark remove"></i></a>
                         <a href="./Admin_DetailsDs.php?maNhanVien=' . $row->maNhanVien . '"><i class="fa-solid fa-circle-info detail"></i></a>
-                    </form>
-
                 </td>
             </tr>
             ';

@@ -1,6 +1,8 @@
 <?php
 // session_start();
 include '../templates/nav_admin1.php';
+include '../includes/check_permisson.php';
+check($nv->maLoai,'TH');
 ?>
 
 <div class="body" style="margin-top: 15px">
