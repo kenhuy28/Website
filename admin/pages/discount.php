@@ -5,7 +5,7 @@ check($nv->maLoai, 'GG');
 
 <div class="table_header">
     <div class="add_admin">
-        <a href="type_create.php">
+        <a href="discount_add.php">
             <i class="fa-solid fa-user-plus"></i>
             <div class="add_title">
                 Thêm Giảm giá
@@ -16,11 +16,11 @@ check($nv->maLoai, 'GG');
 <table class="table_dsadmin">
     <thead>
         <tr>
-            <th style="width: 65px;">Tên sản phẩm</th>
-            <th style="width: 120px;">Loại giảm giá</th>
-            <th style="width: 80px;">Giá trị giảm</th>
-            <th style="width: 80px;">Ngày bắt đầu</th>
-            <th style="width: 80px;">Ngày kết thúc</th>
+            <th style="width: 35%;">Tên sản phẩm</th>
+            <th style="width: 20%;">Loại giảm giá</th>
+            <th style="width: 15%;">Giá trị giảm</th>
+            <th style="width: 15%;">Ngày bắt đầu</th>
+            <th style="width: 15%;">Ngày kết thúc</th>
         </tr>
     </thead>
     <tbody>
