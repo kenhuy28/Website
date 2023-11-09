@@ -1,7 +1,7 @@
 <?php
 include '../templates/nav_admin1.php';
 include '../includes/check_permisson.php';
-check($nv->maLoai,'TK');
+check($nv->maLoai, 'TK');
 $thangBatDau;
 $thangBatDau;
 $thangKetThuc;
