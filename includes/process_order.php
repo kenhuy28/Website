@@ -15,7 +15,11 @@ date_default_timezone_set("Asia/Ho_Chi_Minh");
 $ngayDat = date("Y-m-d H:i:s");
 $tongTien = str_replace(".", "", $_POST["tongTien"]);
 // thực hiện tạo đơn hàng
+<<<<<<< HEAD
 $query = "INSERT INTO `don_dat_hang` (`maDonHang`, `maKhachHang`, `ngayDat`, `ngayGiao`, `tinhTrang`, `daThanhToan`, `tongTien`, `maNhanVien`) VALUES ('$maDonHang', '$maKhachHang', '$ngayDat', NULL, b'11', b'0', '$tongTien', NULL)";
+=======
+$query = "INSERT INTO `don_dat_hang` (`maDonHang`, `maKhachHang`, `ngayDat`, `ngayGiao`, `tinhTrang`, `tongTien`, `maNhanVien`) VALUES ('$maDonHang', '$maKhachHang', '$ngayDat', NULL, b'11', '$tongTien', NULL)";
+>>>>>>> 384ce405bf4133c816a96fd6c02eedf019a777ea
 $statement = $dbh->prepare($query);
 $statement->execute();
 // lấy thông tin giỏ hàng hiện tại
@@ -24,7 +28,7 @@ $get_giohang = $dbh->prepare(
         gio_hang.soLuong, 
         san_pham.maSanPham, 
         san_pham.donGiaBan, 
-        IFNULL(giam_gia.loaiGiamGia, 0) AS loaiGiamGia, 
+        IFNULL(giam_gia.maLoai, 0) AS maLoai, 
         IFNULL(
             CASE 
                 WHEN giam_gia.ngayBatDau <= CURDATE() AND giam_gia.ngayKetThuc >= CURDATE() THEN giam_gia.giaTriGiam 
@@ -43,8 +47,8 @@ while ($row = $get_giohang->fetch()) {
   // đưa từng sản phẩm trong giỏ vào chi tiết đơn đặt hàng
   $maSanPham = $row->maSanPham;
   $soLuong = $row->soLuong;
-  $donGia = $row->donGiaBan;
-  $thanhTien = (($row->loaiGiamGia == 1) ? (($row->donGiaBan - $row->giaTriGiam) * $row->soLuong) : (($row->donGiaBan - $row->donGiaBan * $row->giaTriGiam / 100) * $row->soLuong));
+  $donGia = (($row->maLoai == 1) ? (($row->donGiaBan - $row->giaTriGiam)) : (($row->donGiaBan - $row->donGiaBan * $row->giaTriGiam / 100)));
+  $thanhTien = $donGia * $row->soLuong;
   $insert_chddh = "INSERT INTO `chi_tiet_don_dat_hang` VALUES ('$maDonHang', '$maSanPham', '$soLuong', '$donGia', '$thanhTien')";
   $insert = $dbh->prepare($insert_chddh);
   $insert->execute();
