@@ -228,7 +228,6 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
             <button type="submit">Đặt Hàng</button>
         </form>
         <a href="<?php echo $rootPath . "/pages/product_page.php"; ?> "><button>Tiếp Tục Mua Sắm</button></a>
-        <button onclick="xoaTatCaSanPham()">Xóa Tất Cả Sản Phẩm</button>
     </div>
 </div>
 <?php include '../templates/footer.php' ?>
