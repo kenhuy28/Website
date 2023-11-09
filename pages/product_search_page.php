@@ -4,24 +4,25 @@ require_once('../includes/config.php');
 require_once('../includes/check_giam_gia.php');
 
 
-if (isset($_POST['LSP'])) {
-    $LSP = $_POST['LSP'];
+if (isset($_GET['LSP'])) {
+    $LSP = $_GET['LSP'];
 } else {
     $LSP = array(); // Mảng rỗng nếu không có checkbox nào được chọn
 }
-if (isset($_POST['TH'])) {
-    $TH = $_POST['TH'];
+if (isset($_GET['TH'])) {
+    $TH = $_GET['TH'];
+    //echo $TH;
 } else {
     $TH = array(); // Mảng rỗng nếu không có checkbox nào được chọn
 }
-if (isset($_POST['giaDau'])) {
-    $giaDau = $_POST['giaDau'];
+if (isset($_GET['giaDau'])) {
+    $giaDau = $_GET['giaDau'];
 } else {
     $giaDau = 0; // Mảng rỗng nếu không có checkbox nào được chọn
 }
 
-if (isset($_POST['giaCuoi'])) {
-    $giaCuoi = $_POST['giaCuoi'];
+if (isset($_GET['giaCuoi'])) {
+    $giaCuoi = $_GET['giaCuoi'];
 } else {
     $giaCuoi = 0; // Mảng rỗng nếu không có checkbox nào được chọn
 }
@@ -88,7 +89,7 @@ if (empty($_SESSION["taiKhoan"])) {
 
 <h6>Trang chủ > Sản phẩm </h6>
 <h4>Tất cả sản phẩm</h4>
-<form class="product_search" action="product_search_page.php" method="POST" enctype="multipart/form-data">
+<form class="product_search" action="product_search_page.php" method="GET" enctype="multipart/form-data">
     <button class="icon_search" type="submit" style="width: 40px; height: 40px;">
         <i class="fa-solid fa-filter"></i>
     </button>
