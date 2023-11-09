@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ngaySinh = $_POST["ngaySinh"];
         $maXa = $_POST["maXa"];
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-            //lấy file hình
+
             $errors = array();
             $file_name = $_FILES['image']['name'];
             $file_size = $_FILES['image']['size'];
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $errors[] = 'File size should be 2MB';
             }
             if (empty($errors) == true) {
-                move_uploaded_file($file_tmp, $_SESSION['rootPath'] . "/../assets/img/sanpham/" . $file_name);
+                move_uploaded_file($file_tmp, "../../assets/img/ad_user/" . $file_name);
             } else {
                 print_r($errors);
             }

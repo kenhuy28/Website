@@ -1,14 +1,14 @@
 <?php include '../templates/nav_admin1.php';
 include '../includes/check_permisson.php';
-check($nv->maLoai,'LSP'); 
+check($nv->maLoai, 'GG');
 ?>
 
 <div class="table_header">
     <div class="add_admin">
-        <a href="type_create.php">
+        <a href="discount_add.php">
             <i class="fa-solid fa-user-plus"></i>
             <div class="add_title">
-                Thêm loại
+                Thêm Giảm giá
             </div>
         </a>
     </div>
@@ -16,13 +16,15 @@ check($nv->maLoai,'LSP');
 <table class="table_dsadmin">
     <thead>
         <tr>
-            <th style="width: 65px;">Mã loại</th>
-            <th style="width: 120px;">Tên Loại</th>
-            <th style="width: 80px;">Chức năng</th>
+            <th style="width: 35%;">Tên sản phẩm</th>
+            <th style="width: 20%;">Loại giảm giá</th>
+            <th style="width: 15%;">Giá trị giảm</th>
+            <th style="width: 15%;">Ngày bắt đầu</th>
+            <th style="width: 15%;">Ngày kết thúc</th>
         </tr>
     </thead>
     <tbody>
-        <?php include '../includes/show_type_table.php' ?>
+        <?php include '../includes/show_discount_table.php' ?>
     </tbody>
 </table>
 <div align="center" style="margin-top:10px" class="menu-wrapper">

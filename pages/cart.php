@@ -117,6 +117,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
                 var productElement = document.querySelector('.soLuong' + maSanPham).closest('.body_table_item');
                 productElement.remove();
                 updateTotalPrice();// Cập nhật tổng tiền sau khi xóa sản phẩm
+                updateCountCart();
             }
         });
     }
@@ -144,11 +145,11 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
 
         // Cập nhật tổng tiền lên giao diện
         const totalPriceElement = document.getElementById('totalPrice');
-        totalPriceElement.textContent = totalPrice.toLocaleString();
+        totalPriceElement.textContent = totalPrice ;
 
         // Tìm thẻ span bằng ID
         var thanhTienInput = document.getElementById("thanhTienInput");
-        thanhTienInput.value = totalPrice.toLocaleString();
+        thanhTienInput.value = totalPrice ;
     }
 </script>
 

@@ -931,7 +931,7 @@ CREATE TABLE `loai_tai_khoan` (
 --
 
 INSERT INTO `loai_tai_khoan` (`maLoai`, `tenLoai`) VALUES
-('LTK001', 'Quản Lý'),
+('LTK001', 'Quản trị viên'),
 ('LTK002', 'Nhân viên marketing'),
 ('LTK003', 'Nhân viên sale');
 
@@ -11936,7 +11936,3 @@ ALTER TABLE `san_pham`
 ALTER TABLE `xa`
   ADD CONSTRAINT `xa_ibfk_1` FOREIGN KEY (`maHuyen`) REFERENCES `huyen` (`maHuyen`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

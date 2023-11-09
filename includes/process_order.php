@@ -13,7 +13,7 @@ $maDonHang = $maDonHang . $temp[4 - strlen($index)] . $index;
 $maKhachHang = $_SESSION["taiKhoan"]["maKhachHang"];
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 $ngayDat = date("Y-m-d H:i:s");
-$tongTien = str_replace(".", "", $_POST["tongTien"]);
+$tongTien = $_POST["tongTien"];
 // thực hiện tạo đơn hàng
 $query = "INSERT INTO `don_dat_hang` (`maDonHang`, `maKhachHang`, `ngayDat`, `ngayGiao`, `tinhTrang`, `tongTien`, `maNhanVien`) VALUES ('$maDonHang', '$maKhachHang', '$ngayDat', NULL, b'11', '$tongTien', NULL)";
 $statement = $dbh->prepare($query);
