@@ -30,6 +30,45 @@ $tinhTrang = $_GET['tinhTrang'];
     .my-table tbody tr:hover {
         background-color: #e6e6e6;
     }
+    .menu-wrapper {
+
+height: auto;
+width: 100%;
+}
+
+.menu {
+margin: 0;
+padding: 0 0 0 20px;
+}
+
+.pagination a {
+color: black;
+float: left;
+padding: 8px 16px;
+text-decoration: none;
+transition: background-color .3s;
+border: 1px solid #ddd;
+font-size: 22px;
+}
+
+.pagination a.active {
+background-color: #244cbb;
+color: white;
+border: 1px solid #244cbb;
+}
+
+.menu li {
+display: inline-block;
+margin: 5px;
+}
+
+.pagination a:hover:not(.active) {
+background-color: #ddd;
+}
+
+ul {
+list-style-type: none;
+}
 </style>
 <h4>Chi tiết đơn hàng</h4>
 <div class="divider">
@@ -64,7 +103,27 @@ $tinhTrang = $_GET['tinhTrang'];
         <?php include '../includes/show_order_details_table.php' ?>
         </tbody>
     </table>
-    <?php include '../includes/product_pagination.php' ?>
+    <div align="center" style="margin-top:10px" class="menu-wrapper">
+    <ul class="pagination menu">
+        <li>
+            <a href="?page=1">&laquo;</a>
+        </li>
+        <?php
+        for ($i = 1; $i <= $totalPages; $i++) {
+            if ($i != $currentPage) {
+                echo "<li><a href=\"?id=" . $id. "&tinhTrang=".$tinhTrang."&page=" . $i . "\">" . $i . "</a></li>";
+            } else {
+                echo "<li><a class=\"active\" href=\"?id=" . $id . "&tinhTrang=".$tinhTrang."&page=" . $i . "\">" . $i . "</a></li>";
+            }
+
+        }
+        echo "<li>
+            <a href=\"?id=" . $id . "&tinhTrang=".$tinhTrang."&page=$totalPages\">&raquo;</a>
+        </li>";
+        ?>
+
+    </ul>
+</div>
 </div>
 
 <?php include '../templates/footer.php' ?>

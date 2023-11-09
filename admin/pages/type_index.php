@@ -1,4 +1,8 @@
-<?php include '../templates/nav_admin1.php' ?>
+<?php include '../templates/nav_admin1.php';
+include '../includes/check_permisson.php';
+check($nv->maLoai,'L'); 
+?>
+
 <div class="table_header">
     <div class="add_admin">
         <a href="type_create.php">

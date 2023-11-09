@@ -10,7 +10,7 @@ if (isset($_POST['tendn'])) {
     $username = "";
 }
 if (isset($_POST['tendn'])) {
-    $password = trim($_POST['matkhau']);
+    $password = md5(trim($_POST['matkhau']));
 } else {
     $password = "";
 }
@@ -40,8 +40,7 @@ ob_end_flush();
     </div>
     <div class="form_field">
         <label for="matkhau" class="name_form_field">Mật khẩu : </label>
-        <input type="password" class="textfile" id="matkhau" name="matkhau" value="<?php if ($password != "")
-            echo $password; ?>">
+        <input type="password" class="textfile" id="matkhau" name="matkhau">
         <span class="error_message">
         </span>
     </div>
