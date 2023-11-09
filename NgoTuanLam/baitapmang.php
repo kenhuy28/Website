@@ -18,6 +18,7 @@ $SinhVien = array(
 </head>
 
 <body>
+    <h1>THÔNG TIN SINH VIÊN</h1>
     <table>
 
         <form action="" method="POST">

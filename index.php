@@ -222,7 +222,7 @@ if (empty($_SESSION["taiKhoan"])) {
     <div class='thuongHieu'>
       <?php foreach ($result1 as $row) {
         echo "
-      <a href='' style='margin-left: 50px'>
+      <a href='pages/product_search_page.php?TH[]=".$row['maThuongHieu']."'  method='GET' style='margin-left: 50px'>
         <img src='assets/img/thuong_hieu/" . $row['logo'] . "' alt='' style='width: 100%; height: 80px;'>
         <h6>
           " . $row['tenThuongHieu'] . "

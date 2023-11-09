@@ -5,7 +5,7 @@ $conn = mysqli_connect('localhost', 'root', '', 'qlbansua')
 $sql = 'SELECT * FROM Khach_hang';
 $result = mysqli_query($conn, $sql);
 // 4.Xu ly du lieu tra ve\
-echo "LẤY THÔNG TIN KHÁCH HÀNG CỦA qlbansua<br>";
+echo "LẤY THÔNG TIN KHÁCH HÀNG CỦA qlbansua<br><br>";
 if (mysqli_num_rows($result) != 0) {
     while ($row = mysqli_fetch_array($result)) {
         for ($i = 0; $i < mysqli_num_fields($result); $i++) {
