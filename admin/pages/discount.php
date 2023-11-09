@@ -1,6 +1,6 @@
 <?php include '../templates/nav_admin1.php';
 include '../includes/check_permisson.php';
-check($nv->maLoai,'LSP'); 
+check($nv->maLoai,'GG'); 
 ?>
 
 <div class="table_header">
@@ -8,7 +8,7 @@ check($nv->maLoai,'LSP');
         <a href="type_create.php">
             <i class="fa-solid fa-user-plus"></i>
             <div class="add_title">
-                Thêm loại
+                Thêm Giảm giá
             </div>
         </a>
     </div>
@@ -16,9 +16,11 @@ check($nv->maLoai,'LSP');
 <table class="table_dsadmin">
     <thead>
         <tr>
-            <th style="width: 65px;">Mã loại</th>
-            <th style="width: 120px;">Tên Loại</th>
-            <th style="width: 80px;">Chức năng</th>
+            <th style="width: 65px;">Mã sản phẩm</th>
+            <th style="width: 120px;">Loại giảm giá</th>
+            <th style="width: 80px;">Giá trị giảm</th>
+            <th style="width: 80px;">Ngày bắt đầu</th>
+            <th style="width: 80px;">Ngày kết thúc</th>
         </tr>
     </thead>
     <tbody>
