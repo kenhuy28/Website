@@ -158,7 +158,7 @@ include '../includes/get_new_id_entry.php';
                         // Do something with the response
                         console.log(response);
                         alert("Nhập sản phẩm thành công");
-                        window.location.href = "../pages/warehouse_index.php";
+                        window.location.href = "../pages/entry_index.php";
                     },
                     error: function (error) {
                         // Handle the error

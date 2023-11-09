@@ -111,7 +111,6 @@ if (isset($_POST["baoCao"])) {
             // Kiểm tra tính hợp lệ của các giá trị
             if (startYear > endYear || (startYear === endYear && startMonth > endMonth)) {
                 document.getElementById("error").innerHTML = "Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc!";
-                window.stop();
                 return false;
             }
 
