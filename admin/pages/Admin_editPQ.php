@@ -1,69 +1,160 @@
 <?php include '../templates/nav_admin1.php';
-$nhanVien_id = $_GET['maNhanVien'];
-$query = "SELECT maNhanVien, ho,ten,diaChiCuThe,dienThoai,tenLoai, tenNguoiDung, avatar, email FROM nhan_vien JOIN loai_tai_khoan ON nhan_vien.maLoai = loai_tai_khoan.maLoai WHERE maNhanVien = '$nhanVien_id';";
-$stmt = $dbh->prepare($query);
+$get_tinh = "SELECT `maTinh`, `tenTinh` FROM `tinh`";
+$statement = $dbh->prepare($get_tinh);
+$statement->execute();
+$statement->setFetchMode(PDO::FETCH_OBJ);
+$IDNV = $_GET['maNhanVien'];
+$sql = "SELECT *,tenXa, tenHuyen,tenTinh FROM nhan_vien JOIN xa ON nhan_vien.maXa = xa.maXa JOIN huyen ON xa.maHuyen = huyen.maHuyen JOIN tinh ON huyen.maTinh = tinh.maTinh WHERE maNhanVien = '$IDNV';";
+$stmt = $dbh->prepare($sql);
 $stmt->execute();
 $nhanVien = $stmt->fetch(PDO::FETCH_OBJ);
-$query_loaiTK = "SELECT maLoai,tenLoai FROM loai_tai_khoan;";
-$statement = $dbh->prepare($query_loaiTK);
+$get_tinh = "SELECT `maTinh`, `tenTinh` FROM `tinh`";
+$statement = $dbh->prepare($get_tinh);
 $statement->execute();
-$loaiTK = $statement->fetchAll(PDO::FETCH_OBJ);
-
-if (isset($_POST["save"])) {
-    $newLoaiTK = $_POST["loaitaikhoan"];
-    $updateQuery = "UPDATE nhan_vien SET maLoai = '$newLoaiTK' WHERE maNhanVien = '$nhanVien_id'";
-    $updateStatement = $dbh->prepare($updateQuery);
-    if ($updateStatement->execute()) {
-        echo "Đã sửa thành công";
-    } else {
-        echo "Không sửa được";
-    }
-
-}
+$statement->setFetchMode(PDO::FETCH_OBJ);
 ?>
-<h3>CHỈNH SỬA QUYỀN CHO TÀI KHOẢN</h3>
-<script type="text/javascript">
-    function reloadPage() {
-        location.reload();
-    }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function getDistricts(selectedProvince) {
+            jQuery.ajax({
+                url: '../../includes/get_register.php',
+                type: 'POST',
+                data: { province_id: selectedProvince },
+                success: function (data) {
+                    $('#districts').html(data);
+                    $('#wards').html('<option value="">Chọn Xã</option>');
+                    $('#maXaInput').val('');
+                }
+            });
+        }
+        function getWards(selectedDistrict) {
+            jQuery.ajax({
+                url: '../../includes/get_register.php',
+                type: 'POST',
+                data: { district_id: selectedDistrict },
+                success: function (data) {
+                    $('#wards').html(data);
+                    // var selectedWard = $('#wards').val();
+                    // $('#maXaInput').val(selectedWard);
+                }
+            });
+        }
+        $('#provinces').change(function () {
+            var selectedProvince = $(this).val();
+            getDistricts(selectedProvince);
+        });
+        $('#districts').change(function () {
+            var selectedDistrict = $(this).val();
+            getWards(selectedDistrict);
+        });
+        $('#wards').change(function () {
+            // Cập nhật giá trị của #maXaInput khi bạn thay đổi xã.
+            var selectedWard = $(this).val();
+            $('#maXaInput').val(selectedWard);
+        });
+    });
 </script>
-<table class="table_dsadmin">
-    <thead>
-        <tr>
-            <th style="width: 120px;">Họ tên</th>
-            <th style="width: 90px;">Loại tài khoản</th>
-            <th style="width: 80px;">Chức năng</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <?php echo $nhanVien->ho . ' ' . $nhanVien->ten;
+
+<style>
+    .textfield {
+        display: block;
+        min-width: 450px;
+        height: 34px;
+        margin-bottom: 6px;
+        border-radius: 10px;
+        border: 1px solid rgb(0, 0, 0, 0.3);
+        text-indent: 5px;
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form_field {
+        padding: 3px;
+        min-height: 50px;
+        font-size: 150%;
+    }
+</style>
+<div class="create_admin">
+    <h1 class="Title_Admin_create_form">Sửa thông tin tài khoản quản trị viên</h1>
+    <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
+    <form action="../includes/edit_info_adminDS.php" method="post" enctype="multipart/form-data">
+        <div class="form_field">
+            <label for="" class="name_form_field">Mã Admin: </label>
+            <input type="text" class="textfield" name="maNhanVien" value="<?php echo $nhanVien->maNhanVien ?>">
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Họ: </label>
+            <input required type="text" class="textfield" id="fullname" name="ho" value="<?php echo $nhanVien->ho ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Tên: </label>
+            <input required type="text" class="textfield" id="fullname" name="ten" value="<?php echo $nhanVien->ten ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Ngày sinh: </label>
+            <input type="date" class="textfile" id="birthDay" name="ngaySinh" style="width: 400px;" required
+                value="<?php echo $nhanVien->ngaySinh ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Số điện thoại : </label>
+            <input required type="text" class="textfield" id="phoneNumber" name="dienThoai"
+                value="<?php echo $nhanVien->dienThoai ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Email : </label>
+            <input type="text" class="textfield" id="email" name="email" value="<?php echo $nhanVien->email ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Tỉnh: </label>
+            <select id='provinces' class="textfield" name="provinces" style="width: 195px;">
+                <option value="" disabled selected>Chọn tỉnh/Thành phố</option>
+                <?php
+                while ($row = $statement->fetch())
+                    echo "<option value='{$row->maTinh}'>{$row->tenTinh}</option>";
                 ?>
-            </td>
-            <form method="POST">
-                <td>
-                    <select name="loaitaikhoan">
-                        <?php
-                        foreach ($loaiTK as $row) {
-                            echo '<option value="' . $row->maLoai . '">' . $row->tenLoai . '</option>';
-                        }
-                        ?>
-                    </select>
-                </td>
-                <td>
-                    <form method="POST">
-                        <button name="save" value="<?php echo $nhanVien->maLoai; ?>" onclick="reloadPage()">Lưu</button>
-                    </form>
+            </select>
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Huyện: </label>
+            <select id='districts' class="textfield" name="districts" style="width: 195px;">
+                <option disabled selected value="">Chọn Huyện</option>
+            </select>
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Xã: </label>
+            <select required id="wards" class="textfield" style="width: 195px;">
+                <option value="">Chọn Xã</option>
+            </select>
+            <input hidden type="text" name="maXa" id="maXaInput">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Địa chỉ cụ thể: </label>
+            <input type="diaChi" class="textfield" id="diaChi" name="diaChiCuThe" style="width: 195px;" required
+                value="<?php echo $nhanVien->diaChiCuThe ?>">
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Ảnh đại diện : </label>
+            <div class="custom-file">
+                <div class="form_field">
+                    <input type="file" class="custom-file-input" id="img_profile_admin" name="image"
+                        accept=".png, .jpg, .jpeg">
+                    <span class="error_message"></span>
+                </div>
+            </div>
+        </div>
+        <div class="button">
+            <input type="submit" value="Cập nhật" class="button_add_admin" />
+        </div>
+    </form>
+</div>
 
-                </td>
-            </form>
-        </tr>
-    </tbody>
-
-</table>
-
-
-<br>
-<a href="./Admin_DsAdmin.php"><button type="button" class="btn-success">Quay Lại</button></a>
 <?php include '../templates/nav_admin2.php' ?>

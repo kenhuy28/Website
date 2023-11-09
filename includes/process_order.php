@@ -15,7 +15,7 @@ date_default_timezone_set("Asia/Ho_Chi_Minh");
 $ngayDat = date("Y-m-d H:i:s");
 $tongTien = str_replace(".", "", $_POST["tongTien"]);
 // thực hiện tạo đơn hàng
-$query = "INSERT INTO `don_dat_hang` (`maDonHang`, `maKhachHang`, `ngayDat`, `ngayGiao`, `tinhTrang`, `daThanhToan`, `tongTien`, `maNhanVien`) VALUES ('$maDonHang', '$maKhachHang', '$ngayDat', NULL, b'01', b'0', '$tongTien', NULL)";
+$query = "INSERT INTO `don_dat_hang` (`maDonHang`, `maKhachHang`, `ngayDat`, `ngayGiao`, `tinhTrang`, `daThanhToan`, `tongTien`, `maNhanVien`) VALUES ('$maDonHang', '$maKhachHang', '$ngayDat', NULL, b'11', b'0', '$tongTien', NULL)";
 $statement = $dbh->prepare($query);
 $statement->execute();
 // lấy thông tin giỏ hàng hiện tại

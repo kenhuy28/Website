@@ -1,26 +1,13 @@
 <?php include '../templates/nav_admin1.php';
+
 include '../includes/check_permisson.php';
 check($nv->maLoai,'NV');
+
 $query = "SELECT maNhanVien, ho,ten,diaChiCuThe,dienThoai,tenLoai, tenNguoiDung, avatar, email FROM nhan_vien JOIN loai_tai_khoan ON nhan_vien.maLoai = loai_tai_khoan.maLoai;";
 $stmt = $dbh->prepare($query);
 $stmt->execute();
 $nhanVien = $stmt->fetchAll(PDO::FETCH_OBJ);
-if (isset($_POST["remove"])) {
-    $maNhanVienXoa = $_POST["remove"];
-    $checkQuery = "SELECT COUNT(*) FROM don_dat_hang WHERE maNhanVien = '$maNhanVienXoa'";
-    $checkStatement = $dbh->prepare($checkQuery);
-    $checkStatement->execute();
-    $count = $checkStatement->fetchColumn();
 
-    if ($count == 0) {
-        $updateQuery = "DELETE FROM nhan_vien WHERE maNhanVien = '$maNhanVienXoa'";
-        $updateStatement = $dbh->prepare($updateQuery);
-        $updateStatement->execute();
-        echo "Xóa nhân viên thành công!";
-    } else {
-        echo "Không thể xóa nhân viên vì có đơn đặt hàng liên quan.";
-    }
-}
 $query_tenloai = "SELECT maLoai, tenLoai FROM loai_tai_khoan";
 $statement = $dbh->prepare($query_tenloai);
 $statement->execute();
@@ -84,6 +71,7 @@ $loaitaikhoan = $statement->fetchAll(PDO::FETCH_OBJ);
                 <td>
                         <a href="./Admin_editPQ.php?maNhanVien=' . $row->maNhanVien . '" ><i class="fa-solid fa-pen-to-square edit"></i></a>
                         <a href="./Admin_deleteAD.php?maNhanVien=' . $row->maNhanVien . '"><i class="fa-solid fa-xmark remove"></i></a>
+                        <a href="./Admin_delete.php?maNhanVien=' . $row->maNhanVien . '" ><i class="fa-solid fa-xmark remove"></i></a>
                         <a href="./Admin_DetailsDs.php?maNhanVien=' . $row->maNhanVien . '"><i class="fa-solid fa-circle-info detail"></i></a>
                 </td>
             </tr>
