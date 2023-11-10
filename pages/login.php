@@ -9,7 +9,7 @@ if (isset($_POST['tendn'])) {
 } else {
     $username = "";
 }
-if (isset($_POST['tendn'])) {
+if (isset($_POST['matkhau'])) {
     $password = md5(trim($_POST['matkhau']));
 } else {
     $password = "";
@@ -52,7 +52,7 @@ ob_end_flush();
     </div>
     <button type="submit" class="button_add_admin" class="form-submit" style="width: 150px">Đăng nhập</button>
     <!-- <input  value="Đăng Nhập"  style="width: 150px" /> -->
-    <a href="" class="qmk" style="display: block; margin-left: 10px; color: black">Quên
+    <a href="forgot_password.php" class="qmk" style="display: block; margin-left: 10px; color: black">Quên
         mật khẩu?</a>
     <a href="register.php" style="text-decoration: none; color:black">
         <input type="button" value="Tạo Tài Khoản" class="button_add_admin" style="width: 150px; margin-bottom: 50px" />

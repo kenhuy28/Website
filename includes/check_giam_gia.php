@@ -9,7 +9,7 @@ function giamGia($maSanPham, $giamGia, $giaBan)
     foreach ($giamGia as $row) {
         if ($maSanPham == $row->maSanPham) {
             if (isWithinRange($row->ngayBatDau, $row->ngayKetThuc)) {
-                if ($row->maLoai == 1) {
+                if ($row->loaiGiamGia == 1) {
                     return $giaBan - $row->giaTriGiam;
                 } else {
                     return $giaBan - round($giaBan * $row->giaTriGiam / 100);

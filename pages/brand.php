@@ -11,7 +11,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class='row'>
             <?php foreach ($result as $row) {
                 echo "<div class='thuongHieu' style='margin: 10px;'>
-                <a href=''>
+                <a href='product_search_page.php?TH[]=".$row['maThuongHieu']."'  method='GET'>
                     <img src='../assets/img/thuong_hieu/".$row['logo']."' alt='' style='width: 100%; height: 80px;'>
                     <h6>
                     ".$row['tenThuongHieu']."

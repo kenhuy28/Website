@@ -89,6 +89,9 @@ $tinhTrang = $_GET['tinhTrang'];
         echo "<span>Chưa xác nhận</span>";
     } ?>
 </h2>
+<a href="javascript:history.go(-1);">
+    <button class="button_add_admin" class="form-submit" style="width: 150px">Quay lại</button>
+</a>
 <div class="product_list" style="min-width: 700px;">
     <table class="my-table">
         <thead>

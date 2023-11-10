@@ -127,7 +127,7 @@ if (empty($_SESSION["taiKhoan"])) {
       <h6>Pate Cho Miu</h6>
     </a>
     <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
         style="width: 200px; height: 200px;">
       <h6>Pate Cho Miu</h6>
     </a>
@@ -169,10 +169,14 @@ if (empty($_SESSION["taiKhoan"])) {
         echo "<div class=\"product_item\" style='height: 490px'>
          <img src='assets/img/sanpham/" . $row['hinhAnh'] . "' alt=\"\" height=\"350px\">
          <div class=\"product_thuonghieu\">
+         
            <h5>" . $row['tenThuongHieu'] . "</h5>
+           
          </div>
          <div class=\"product_name\">
+         <a href='pages/product_detail_page.php?maSanPham=" . $row['maSanPham'] . "' style = 'color: black; text-align: left; '>
            <h5>" . $row['tenSanPham'] . "</h5>
+           </a>
          </div>";
         if (giamGia($row['maSanPham'], $giamGia, $row['donGiaBan']) != null) {
           echo "<div class='product_price' style='display: flex'>
@@ -222,7 +226,7 @@ if (empty($_SESSION["taiKhoan"])) {
     <div class='thuongHieu'>
       <?php foreach ($result1 as $row) {
         echo "
-      <a href='' style='margin-left: 50px'>
+      <a href='pages/product_search_page.php?TH[]=".$row['maThuongHieu']."'  method='GET' style='margin-left: 50px'>
         <img src='assets/img/thuong_hieu/" . $row['logo'] . "' alt='' style='width: 100%; height: 80px;'>
         <h6>
           " . $row['tenThuongHieu'] . "
