@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Gửi email để thay đổi mật khẩu
         $email = new PHPMailer(true);
         $resetCode = generateRandomString();
-        SendVerificationLinkEmail($email, 'nam.pp.62cntt@ntu.edu.vn', $resetCode);
+        SendVerificationLinkEmail($email,$quenMK , $resetCode);
         $account['khoiPhucMatKhau'] = $resetCode;
         $sql = "UPDATE khach_hang SET khoiPhucMatKhau = '$resetCode' WHERE email = '$quenMK'";
         $stmt = $dbh->query($sql);
