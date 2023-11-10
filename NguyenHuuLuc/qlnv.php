@@ -72,7 +72,7 @@ class NhanVienVanPhong extends NhanVien
 
     public function tinhTroCap()
     {
-        if ($this->gioiTinh == 'nữ') {
+        if ($this->gioiTinh == 'Nu') {
             return 200000 * $this->soCon * 1.5;
         }
 
@@ -143,15 +143,17 @@ if (
 
     $nv;
     if ($radLNV == "vanPhong") {
-        $nv = new NhanVienVanPhong($hot, $gioiTinh, $ngayLam, $heSo, $soCon, $soNgayVang);
-        $luong = $nv->tinhTienLuong();
-        $troCap = $nv->tinhTroCap();
-        $thuong = $nv->tinhLuongThuong();
+        $nv = new NhanVienVanPhong($hoTen, $gioiTinh, $ngayLam, $heSo, $soCon, $soNgayVang);
         $phat = $nv->tinhTienPhat();
-        $thucLinh = $luong + $troCap + $thuong - $phat;
     } else {
         $nv = new NhanVienSanXuat($hoTen, $gioiTinh, $ngayLam, $heSo, $soCon, $soSanPham);
+        $phat = 0;
     }
+    $luong = $nv->tinhTienLuong();
+    $troCap = $nv->tinhTroCap();
+    $thuong = $nv->tinhLuongThuong();
+
+    $thucLinh = $luong + $troCap + $thuong - $phat;
 }
 
 ?>
@@ -248,4 +250,5 @@ if (
     </table>
 
 </form>
+<button type="button" onclick="window.history.go(-1);">Quay lại</button>
 <?php include '../templates/footer.php' ?>

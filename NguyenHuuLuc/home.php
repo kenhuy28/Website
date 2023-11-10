@@ -100,13 +100,27 @@ include '../templates/header.php';
         </a>
     </li>
     <li>
-        <a href="phepTinh.php">
-            <p class="bt">Thực hiện phép tính</p>
+        <a href="tinhPhanSo.php">
+            <p class="bt">Tính phân số</p>
+        </a>
+    </li>
+</ul>
+<br>
+<h2>Bài tập hướng đối tượng</h2>
+<ul>
+    <li>
+        <a href="oop_co_ban.php">
+            <p class="bt">Tạo các lớp đơn giản</p>
         </a>
     </li>
     <li>
-        <a href="nhapThongtin.php">
-            <p class="bt">Nhập thông tin</p>
+        <a href="qlnv.php">
+            <p class="bt">Quản lý nhân viên</p>
+        </a>
+    </li>
+    <li>
+        <a href="tinhPhanSo.php">
+            <p class="bt">Tính phân số</p>
         </a>
     </li>
 </ul>
