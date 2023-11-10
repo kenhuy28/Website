@@ -88,12 +88,8 @@ $loaiTK = $stmt_loaitk->fetchAll(PDO::FETCH_OBJ);
     <h1 class="Title_Admin_create_form">Sửa thông tin tài khoản quản trị viên</h1>
     <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
     <form action="../includes/edit_info_adminDS.php" method="post" enctype="multipart/form-data">
-        <div class="form_field">
-            <label for="" class="name_form_field">Mã nhân viên: </label>
-            <input required type="text" class="textfield" id="maNhanVien" name="maNhanVien"
-                value="<?php echo $nhanVien->maNhanVien ?>">
-            <span class="error_message"></span>
-        </div>
+        <input style="display:none;" type="text" class="textfield" id="maNhanVien" name="maNhanVien"
+            value="<?php echo $nhanVien->maNhanVien ?>">
         <div class="form_field">
             <label for="" class="name_form_field">Họ: </label>
             <input required type="text" class="textfield" id="fullname" name="ho" value="<?php echo $nhanVien->ho ?>">
@@ -135,6 +131,12 @@ $loaiTK = $stmt_loaitk->fetchAll(PDO::FETCH_OBJ);
         <div class="form_field">
             <label for="" class="name_form_field">Email : </label>
             <input type="text" class="textfield" id="email" name="email" value="<?php echo $nhanVien->email ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Mật Khẩu : </label>
+            <input type="password" class="textfield" id="matKhau" name="matKhau"
+                value="<?php echo $nhanVien->matKhau ?>">
             <span class="error_message"></span>
         </div>
         <div class="form_field">

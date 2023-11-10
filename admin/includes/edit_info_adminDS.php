@@ -3,12 +3,14 @@ include 'config.php';
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
+        $maNhanVien = $_POST["maNhanVien"];
         $ho = $_POST["ho"];
         $ten = $_POST["ten"];
         $dienThoai = $_POST["dienThoai"];
         $loaiTK_ID = $_POST["loaiTaiKhoan"];
         $diaChiCuThe = $_POST["diaChiCuThe"];
         $email = $_POST["email"];
+        $matKhau = $_POST["matKhau"];
         $ngaySinh = $_POST["ngaySinh"];
         $maXa = $_POST["maXa"];
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
@@ -26,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 print_r($errors);
             }
-            $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '" . $ho . "', ten = '" . $ten . "', ngaySinh = '" . $ngaySinh . "', diaChiCuThe = '" . $diaChiCuThe . "', dienThoai = '" . $dienThoai . "', maLoai = '" . $loaiTK_ID . "',email = '" . $email . "', maXa = '" . $maXa . "', avatar = '" . $file_name . "', email = '" . $email . "' WHERE maNhanVien = '" . $maNhanVien . "'");
+            $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '" . $ho . "', ten = '" . $ten . "', ngaySinh = '" . $ngaySinh . "', diaChiCuThe = '" . $diaChiCuThe . "', dienThoai = '" . $dienThoai . "', maLoai = '" . $loaiTK_ID . "',email = '" . $email . "', maXa = '" . $maXa . "', avatar = '" . $file_name . "' WHERE maNhanVien = '" . $maNhanVien . "'");
             $statement->execute();
 
         } else {
