@@ -108,7 +108,7 @@ $loaiTK = $stmt_loaitk->fetchAll(PDO::FETCH_OBJ);
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Số điện thoại : </label>
-            <input required type="text" class="textfield" id="phoneNumber" name="dienThoai"
+            <input required type="number" class="textfield" id="phoneNumber" name="dienThoai"
                 value="<?php echo $nhanVien->dienThoai ?>">
             <span class="error_message"></span>
         </div>
@@ -135,9 +135,8 @@ $loaiTK = $stmt_loaitk->fetchAll(PDO::FETCH_OBJ);
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Mật Khẩu : </label>
-            <input type="password" class="textfield" id="matKhau" name="matKhau"
-                value="<?php echo $nhanVien->matKhau ?>">
-            <span class="error_message"></span>
+            <input type="password" class="textfield" id="matKhau" name="matKhau" >
+            <span class="error_message">(Không sửa hãy để trống!!)</span>
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Tỉnh: </label>
