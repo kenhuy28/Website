@@ -2,19 +2,29 @@
 <?php include '../templates/header.php';
 require_once('../includes/config.php');
 
-$warning = "";
+$warning = 0;
 if (isset($_POST['NewPassword'])) {
     $password = md5(trim($_POST['NewPassword']));
 } else {
     $password = "";
 }
 $ma = $_GET['ma'];
+$sql = "SELECT * FROM khach_hang WHERE khoiPhucMatKhau = '$ma'";
+$stmt = $dbh->query($sql);
+if ($stmt->rowCount() <= 0) {
+    $warning = 3;
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $sql = "UPDATE khach_hang SET matKhau = '$password' WHERE khoiPhucMatKhau = '$ma'";
-    $stmt = $dbh->query($sql);
-    $sql = "UPDATE khach_hang SET khoiPhucMatKhau = '' WHERE khoiPhucMatKhau = '$ma'";
-    $stmt = $dbh->query($sql);
-    $warning = "Đổi mật khẩu thành công";
+    if ($stmt->rowCount() > 0) { 
+        $sql = "UPDATE khach_hang SET matKhau = '$password' WHERE khoiPhucMatKhau = '$ma'";
+        $stmt = $dbh->query($sql);
+        $sql = "UPDATE khach_hang SET khoiPhucMatKhau = '' WHERE khoiPhucMatKhau = '$ma'";
+        $stmt = $dbh->query($sql);
+        $warning = 1;
+    } else {
+        $warning = 2;
+    }
+   
 }
 ?>
 
@@ -35,7 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 style="width: 400px;">
             <span class="error_message"></span>
         </div>
-        <h6 style="color: forestgreen"><?php echo $warning;?></h6>
+        <?php 
+        if ($warning == 1) {
+          echo   " <h6 style='color: forestgreen'>Đổi mật khẩu thành công</h6>";
+        } else if ($warning == 2) {
+            echo   " <h6 style='color: red'>Đổi mật khẩu không thành công</h6>";
+        }else if ($warning == 3) {
+            echo   "<h6 style='color: red'>Không có bất kỳ tài khoản nào yêu cầu quên mật khẩu</h6>";
+        }
+         else {
+            echo   "<h6 style='color: red'></h6>";
+        }
+        ?>
+       
         <div class="button">
             <input id="datLaiPass" type="submit" value="Đổi mật khẩu" class="button_add_admin" style="width: 150px" />
         </div>

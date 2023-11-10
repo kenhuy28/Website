@@ -9,7 +9,7 @@ if (isset($_POST['tendn'])) {
 } else {
     $username = "";
 }
-if (isset($_POST['tendn'])) {
+if (isset($_POST['matkhau'])) {
     $password = md5(trim($_POST['matkhau']));
 } else {
     $password = "";

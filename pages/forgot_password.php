@@ -25,7 +25,7 @@ function SendVerificationLinkEmail($mail, $emailId, $activationCode)
 {
     try {
         //Server settings
-        $link = "http://" . $_SERVER['HTTP_HOST'] . "/WebLinkKienThuCung/pages/change_password_page.php?ma=" . $activationCode;
+        $link = "http://" . $_SERVER['HTTP_HOST'] . "/php/WebLinkKienThuCung/pages/change_password_page.php?ma=" . $activationCode;
         $mail->isSMTP(); //Send using SMTP
         $mail->CharSet = 'UTF-8'; // Đặt bộ mã hóa cho email là UTF-8
         $mail->Encoding = 'base64'; // Đặt phương thức mã hóa là base64

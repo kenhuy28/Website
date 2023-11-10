@@ -153,7 +153,9 @@ if (empty($_SESSION["taiKhoan"])) {
                   <h5>" . $row->tenThuongHieu . "</h5>
               </div>
               <div class='product_name'>
+              <a href='./product_detail_page.php?maSanPham=" . $row->maSanPham . "' style = 'color: black'>
                   <h5>" . $row->tenSanPham . "</h5>
+                  </a>
               </div>";
                 if (giamGia($row->maSanPham, $giamGia, $row->donGiaBan) != null) {
                     echo "<div class='product_price' style='display: flex'>

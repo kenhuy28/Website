@@ -169,10 +169,14 @@ if (empty($_SESSION["taiKhoan"])) {
         echo "<div class=\"product_item\" style='height: 490px'>
          <img src='assets/img/sanpham/" . $row['hinhAnh'] . "' alt=\"\" height=\"350px\">
          <div class=\"product_thuonghieu\">
+         
            <h5>" . $row['tenThuongHieu'] . "</h5>
+           
          </div>
          <div class=\"product_name\">
+         <a href='pages/product_detail_page.php?maSanPham=" . $row['maSanPham'] . "' style = 'color: black; text-align: left; '>
            <h5>" . $row['tenSanPham'] . "</h5>
+           </a>
          </div>";
         if (giamGia($row['maSanPham'], $giamGia, $row['donGiaBan']) != null) {
           echo "<div class='product_price' style='display: flex'>
