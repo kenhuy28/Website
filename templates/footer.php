@@ -169,7 +169,7 @@
             <input type="submit" value="Chỉnh sửa thông tin" class="button_add_admin" />
         </form>
 
-        <a href="<?php echo $rootPath . "/pages/change_password_page.php" ?>">
+        <a href="<?php echo $rootPath . "/pages/change_password.php" ?>">
             <input type="button" value="Đổi mật khẩu" class="button_add_admin" /></a>
         <a href="<?php echo $rootPath . "/pages/buy_history_page.php" ?>">
             <input type="button" value="Lịch sử mua hàng" class="button_add_admin" /></a>
