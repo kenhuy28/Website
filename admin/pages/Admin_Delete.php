@@ -86,7 +86,7 @@ $loaitaikhoan = $statement->fetchAll(PDO::FETCH_OBJ);
         <div class="alert_delete">
             <form action="" method="POST">
                 <div class="notification" style="width:20%">
-                    <h1 class="notification_title">Xác nhận xóa sản phẩm này!</h1>
+                    <h1 class="notification_title">Xác nhận xóa nhân viên này!</h1>
                     <button type="submit" value="<?php echo $result->maNhanVien ?>"
                         class="alert_delete_btn delete_conform" name="delete">Xóa</button>
                     <button type="button" value="Không" class="alert_delete_btn delete_cancel">Không</button>

@@ -1,6 +1,7 @@
+<?php include '../templates/header.php'; ?>
 <?php
 $r = rand(1, 1000);
-echo "Số n là $r";
+echo "Số N là $r";
 echo "<br>";
 if ($r < 2) {
     echo "Không phải";
@@ -18,3 +19,4 @@ if ($count == 0) {
 }
 
 ?>
+<?php include '../templates/footer.php' ?>
