@@ -127,7 +127,7 @@ if (empty($_SESSION["taiKhoan"])) {
       <h6>Pate Cho Miu</h6>
     </a>
     <a href="#">
-      <img src="assest/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
         style="width: 200px; height: 200px;">
       <h6>Pate Cho Miu</h6>
     </a>
