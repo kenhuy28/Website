@@ -6,18 +6,31 @@ $thangBatDau;
 $thangBatDau;
 $thangKetThuc;
 $namKetThuc;
+$flag = false;
 
 if (isset($_POST["baoCao"])) {
-    $thangBatDau = $_POST["thangBatDau"];
-    $namBatDau = $_POST["namBatDau"];
-    $thangKetThuc = $_POST["thangKetThuc"];
-    $namKetThuc = $_POST["namKetThuc"];
+    if (empty($_POST["thangBatDau"]) || empty($_POST["namBatDau"]) || empty($_POST["thangKetThuc"]) || empty($_POST["namKetThuc"])) {
+        $error = "Chưa nhập thông tin đủ";
+
+    } else {
+        $thangBatDau = $_POST["thangBatDau"];
+        $namBatDau = $_POST["namBatDau"];
+        $thangKetThuc = $_POST["thangKetThuc"];
+        $namKetThuc = $_POST["namKetThuc"];
+
+        if (($namBatDau > $namKetThuc) || ($namBatDau <= $namKetThuc && $thangBatDau > $thangKetThuc)) {
+            $error = "Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc";
+        } else {
+            $flag = true;
+        }
+    }
+
 }
 ?>
 <div class="body" style="margin-top: 15px">
     <div class="search_admin">
         <h1 class="Title_Admin_create_form">Thống kế doanh thu</h1>
-        <div class="search_admin_header">
+        <div class="search_admin_header" style="margin-bottom:80px;">
             <form action="" method="post">
                 <table class="Table_Details_Admin" style="margin-left:330px; margin-bottom:20px">
                     <tr style="display:flex; justify-content:center; align-items:center">
@@ -48,7 +61,10 @@ if (isset($_POST["baoCao"])) {
                     </tr>
 
                 </table>
-                <h6 id="error" style="font-size: 16px; color: red"></h6>
+                <h6 id="error" style="font-size: 16px; color: red">
+                    <?php if (!empty($error))
+                        echo $error; ?>
+                </h6>
                 <div class="search_button" style="">
                     <input type="submit" value="Báo cáo" name="baoCao" class="search_button_btn"
                         onclick="validateForm()" />
@@ -103,22 +119,6 @@ if (isset($_POST["baoCao"])) {
         </div>
 
     </div>
-    <script>
-        function validateForm() {
-            var startMonth = document.getElementById("thangBatDau").value;
-            var startYear = document.getElementById("namBatDau").value;
-            var endMonth = document.getElementById("thangKetThuc").value;
-            var endYear = document.getElementById("namKetThuc").value;
-
-            // Kiểm tra tính hợp lệ của các giá trị
-            if (startYear > endYear || (startYear === endYear && startMonth > endMonth)) {
-                document.getElementById("error").innerHTML = "Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc!";
-                return false;
-            }
-
-            return true;
-        }
-    </script>
 </div>
 
 <?php include '../templates/nav_admin2.php' ?>

@@ -1,5 +1,5 @@
 <?php
-if (empty($_POST["baoCao"])) {
+if (empty($_POST["baoCao"]) || $flag == false) {
     echo "<tr>
                 <td colspan=\"7\">Không có dữ liệu</td>
                 </tr>";
@@ -8,7 +8,7 @@ if (empty($_POST["baoCao"])) {
     $query = "SELECT don_dat_hang.maDonHang, ngayDat, tenSanPham, chi_tiet_don_dat_hang.soLuong, chi_tiet_don_dat_hang.donGia, chi_tiet_don_dat_hang.thanhTien FROM don_dat_hang
     JOIN chi_tiet_don_dat_hang on chi_tiet_don_dat_hang.maDonHang = don_dat_hang.maDonHang
     JOIN san_pham ON san_pham.maSanPham = chi_tiet_don_dat_hang.maSanPham
-    WHERE tinhTrang = b'01' AND MONTH(ngayDat) <= " . $thangKetThuc . " AND YEAR(ngayDat) <= " . $namKetThuc . " AND MONTH(ngayDat) >= " . $thangBatDau . " AND YEAR(ngayDat) >= " . $namBatDau . "
+    WHERE tinhTrang = b'01' AND ngayDat <= DATE(CONCAT(" . $namKetThuc . ", '-', " . $thangKetThuc . ", '-', 1)) AND ngayDat >= DATE(CONCAT(" . $namBatDau . ", '-', " . $thangBatDau . ", '-' ,1))
     GROUP BY don_dat_hang.maDonHang
     ORDER BY tenSanPham";
     $statement = $dbh->prepare($query);

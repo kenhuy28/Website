@@ -95,8 +95,8 @@ include '../templates/header.php';
         </a>
     </li>
     <li>
-        <a href="tinhTienDien.php">
-            <p class="bt">Tính tiền điện</p>
+        <a href="qlnv.php">
+            <p class="bt">Quản lý nhân viên</p>
         </a>
     </li>
     <li>
