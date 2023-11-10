@@ -57,7 +57,7 @@ $result = $statement->fetch();
         </ul>
     </div>
     <div class="button">
-        <a href="<?php echo "warehouse_index.php"; ?> "><input type="button" value="Quay lại"
+        <a href="<?php echo "entry_index.php"; ?> "><input type="button" value="Quay lại"
                 class="button_add_admin" /></a>
     </div>
 
