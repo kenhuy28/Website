@@ -4,7 +4,7 @@ require_once('../includes/config.php');
 
 $warning = "";
 if (isset($_POST['NewPassword'])) {
-    $password = trim($_POST['NewPassword']);
+    $password = md5(trim($_POST['NewPassword']));
 } else {
     $password = "";
 }
