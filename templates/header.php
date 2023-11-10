@@ -7,6 +7,7 @@ if ($fileName != "index.php") {
 }
 echo $rootPath;
 include $rootPath . '/includes/config.php';
+include $rootPath . '/includes/update_cart_first.php';
 ?>
 
 <head>
