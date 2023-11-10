@@ -49,36 +49,30 @@ $statement1->setFetchMode(PDO::FETCH_OBJ);
             var selectedWard = $(this).val();
             $('#maXaInput').val(selectedWard);
         });
-        function getUsername(userName) {
+        function getUsername(userNameAdmin) {
             jQuery.ajax({
                 url: '../../includes/get_register.php',
                 type: 'POST',
-                data: { userNameAdmin: userName },
+                data: { userNameAdmin: userNameAdmin },
                 success: function (data) {
                     $('#userName_message').html(data);
+                    updateRegisterButtonState();
                 }
             });
         }
-        $('#userName').change(function () {
-            // cập nhật giá trị của #maXaInput khi thay đổi xã để gửi đi
-            var userName = $(this).val();
-            getUsername(userName);
-        });
-
-        // Lắng nghe sự kiện khi người dùng nhập vào trường "Tên đăng nhập".
-        $('#userName').change(function () {
+        function updateRegisterButtonState() {
             var userNameMessage = $('#userName_message').text();
-            // kiểm tra nếu tên đăng nhập đã tồn tại thì không cho bấm đăng ký  
-            if (userNameMessage == "Tên người dùng dã được sử dụng")
-                $('#registerButton').prop('disabled', false);
-            else
-                $('#registerButton').prop('disabled', true);
-        });
-        // xử lý khi nhập tiếng việt có dấu
+            // Kiểm tra nếu tên đăng nhập đã tồn tại thì không cho bấm đăng ký
+            $('#registerButton').prop('disabled', userNameMessage != "");
+        }
+
         $('#userName').on('input', function () {
-            var userNameValue = $('#userName').val();
+            var userNameValue = $(this).val();
             userNameValue = userNameValue.replace(/[^A-Za-z0-9_]/g, '');
-            $('#userName').val(userNameValue);
+            $(this).val(userNameValue);
+
+            // Cập nhật thông tin từ server khi người dùng nhập liệu
+            getUsername(userNameValue);
         });
     });
 </script>
