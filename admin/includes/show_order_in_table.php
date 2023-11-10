@@ -42,7 +42,6 @@ if ($result) {
         } else if ($row->tinhTrang == 2) {
             $tinhTrang = "<p style=\"color:green;\">Đã xác nhận (Đang giao)</p>";
             $btn = $btnGiao;
-
         } else {
             $tinhTrang = "<p>Chưa xác nhận</p>";
             $btn = $btnXacNhan . $btnHuy;
