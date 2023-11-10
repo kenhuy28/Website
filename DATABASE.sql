@@ -885,11 +885,11 @@ CREATE TABLE `khach_hang` (
 --
 -- Dumping data for table `khach_hang`
 --
-
+-- pass: 123123123
 INSERT INTO `khach_hang` (`maKhachHang`, `hoKhachHang`, `tenKhachHang`, `dienThoai`, `diaChiCuThe`, `tenNguoiDung`, `matKhau`, `email`, `ngaySinh`, `avatar`, `khoiPhucMatKhau`, `maXa`) VALUES
-('KH0001', 'Võ Thanh', 'Hào', '0358932774', '171/Nguyễn Văn Chiểu', 'thanhhao', 'qpalqpal', 'hao@gmail.com', '2002-01-01', 'thanhhao.png', NULL, 'X01861'),
-('KH0002', 'Trần Cao', 'Phong', '0514684932', '171/Nguyễn Văn Chiểu', 'caophong', 'qpalqpal', 'phong@gmail.com', '2002-01-01', 'caophong.png', NULL, 'X00012'),
-('KH0003', 'Lê Bảo', 'Khoa', '0867984654', '171/Nguyễn Văn Chiểu', 'baokhoa', 'qpalqpal', 'khoa@gmail.com', '2003-01-30', 'baokhoa.png', NULL, 'X00008');
+('KH0001', 'Võ Thanh', 'Hào', '0358932774', '171/Nguyễn Văn Chiểu', 'thanhhao', 'f5bb0c8de146c67b44babbf4e6584cc0', 'hao@gmail.com', '2002-01-01', 'thanhhao.png', NULL, 'X01861'),
+('KH0002', 'Trần Cao', 'Phong', '0514684932', '171/Nguyễn Văn Chiểu', 'caophong', 'f5bb0c8de146c67b44babbf4e6584cc0', 'phong@gmail.com', '2002-01-01', 'caophong.png', NULL, 'X00012'),
+('KH0003', 'Lê Bảo', 'Khoa', '0867984654', '171/Nguyễn Văn Chiểu', 'baokhoa', 'f5bb0c8de146c67b44babbf4e6584cc0', 'khoa@gmail.com', '2003-01-30', 'baokhoa.png', NULL, 'X00008');
 
 -- --------------------------------------------------------
 
@@ -959,12 +959,12 @@ CREATE TABLE `nhan_vien` (
 --
 -- Dumping data for table `nhan_vien`
 --
-
+-- pass: 1234512345
 INSERT INTO `nhan_vien` (`maNhanVien`, `ho`, `ten`, `ngaySinh`, `diaChiCuThe`, `dienThoai`, `maLoai`, `tenNguoiDung`, `matKhau`, `avatar`, `email`, `maXa`) VALUES
-('AD0001', 'Nguyễn Hữu', 'Lực', '2002-10-09', 'Khánh Hòa', '0856202788', 'LTK001', 'huuluc', '25f9e794323b453885f5181f1b624d0b', 'huuluc.jpg', 'huuluc@gmail.com', 'X00018'),
-('AD0002', 'Ngô Tuấn', 'Lam', '2002-10-22', 'Phú Yên', '0347693333', 'LTK002', 'tuanlam', 'f5fca11490e764eed810f7e6c62b21cf', 'tuanlam.png', 'tuanlam@gmail.com', 'X00018'),
-('AD0003', 'Nguyễn Lê', 'Tâm', '2002-05-10', 'Khánh Hòa', '0924494119', 'LTK002', 'letam', 'f5fca11490e764eed810f7e6c62b21cf', 'letam.png', 'letam@gmail.com', 'X00018'),
-('AD0004', 'Phạm Phương', 'Nam', '2000-10-11', 'Đăk Lăk', '0867566932', 'LTK003', 'nam5520', 'f5fca11490e764eed810f7e6c62b21cf', 'nam5520.png', 'nam5520000@gmail.com', 'X00018');
+('AD0001', 'Nguyễn Hữu', 'Lực', '2002-10-09', 'Khánh Hòa', '0856202788', 'LTK001', 'huuluc', '8cfa2282b17de0a598c010f5f0109e7d', 'huuluc.jpg', 'huuluc@gmail.com', 'X00018'),
+('AD0002', 'Ngô Tuấn', 'Lam', '2002-10-22', 'Phú Yên', '0347693333', 'LTK002', 'tuanlam', '8cfa2282b17de0a598c010f5f0109e7d', 'tuanlam.png', 'tuanlam@gmail.com', 'X00018'),
+('AD0003', 'Nguyễn Lê', 'Tâm', '2002-05-10', 'Khánh Hòa', '0924494119', 'LTK002', 'letam', '8cfa2282b17de0a598c010f5f0109e7d', 'letam.png', 'letam@gmail.com', 'X00018'),
+('AD0004', 'Phạm Phương', 'Nam', '2000-10-11', 'Đăk Lăk', '0867566932', 'LTK003', 'nam5520', '8cfa2282b17de0a598c010f5f0109e7d', 'nam5520.png', 'nam5520000@gmail.com', 'X00018');
 
 -- --------------------------------------------------------
 
