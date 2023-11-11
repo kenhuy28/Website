@@ -1,8 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<?php
+include '../templates/header.php';
+?>
 
-<html>
-
-<head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -50,7 +49,6 @@
         }
     </style>
 
-</head>
 
 
 
@@ -143,5 +141,4 @@
 </body>
 
 
-
-</html>
+<?php include '../templates/footer.php' ?>
