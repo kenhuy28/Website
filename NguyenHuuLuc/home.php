@@ -128,6 +128,11 @@ include '../templates/header.php';
                     <p class="bt">Thông tin sữa</p>
                 </a>
             </li>
+            <li>
+                <a href="listSPCot.php">
+                    <p class="bt">Thông tin sản phẩm dạng cột</p>
+                </a>
+            </li>
         </ul>
         <br>
     </div>
