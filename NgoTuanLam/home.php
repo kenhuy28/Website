@@ -32,11 +32,7 @@ include '../templates/header.php';
             <p class="bt">Bài tập tạo và in ra đối tượng.</p>
         </a>
     </li>
-    <li>
-        <a href="laythongtinkhachhangqlbansua.php">
-            <p class="bt">Thông tin khách từ cơ sở dữ liệu qlbansua thành mảng.</p>
-        </a>
-    </li>
+
     <li>
         <a href="OOPhinh.php">
             <p class="bt">Tính chu vi và diện tích của các hình(Hướng đối tượng).</p>
@@ -57,21 +53,9 @@ include '../templates/header.php';
             <p class="bt">Thêm sinh viên</p>
         </a>
     </li>
-    <li>
-        <a href="themsua.php">
-            <p class="bt">Thêm sữa vào cơ sở dữ liệu qlbansua.</p>
-        </a>
-    </li>
-    <li>
-        <a href="thongtinkhachhang.php">
-            <p class="bt">Bảng thông tin khách hàng từ CSDL.</p>
-        </a>
-    </li>
-    <li>
-        <a href="thongtinsua.php">
-            <p class="bt">Bảng thông tin sữa từ CSDL có phân trang.</p>
-        </a>
-    </li>
+
+
+
     <li>
         <a href="tinhluongnhanvien.php">
             <p class="bt">Tính lương nhân viên.</p>
@@ -129,6 +113,29 @@ include '../templates/header.php';
     <li>
         <a href="tong1dayso.php">
             <p class="bt">Thiết kế Form nhập và tính trên dãy số.</p>
+        </a>
+    </li>
+</ul>
+<h2>CHỦ ĐỀ 5</h2>
+<ul>
+    <li>
+        <a href="thongtinkhachhang.php">
+            <p class="bt">Bảng thông tin khách hàng từ CSDL.</p>
+        </a>
+    </li>
+    <li>
+        <a href="laythongtinkhachhangqlbansua.php">
+            <p class="bt">Thông tin khách từ cơ sở dữ liệu qlbansua thành mảng.</p>
+        </a>
+    </li>
+    <li>
+        <a href="themsua.php">
+            <p class="bt">Thêm sữa vào cơ sở dữ liệu qlbansua.</p>
+        </a>
+    </li>
+    <li>
+        <a href="thongtinsua.php">
+            <p class="bt">Bảng thông tin sữa từ CSDL có phân trang.</p>
         </a>
     </li>
 </ul>
