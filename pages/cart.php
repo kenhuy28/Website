@@ -94,9 +94,11 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
                 if (response == 1) {
                         quantityElement.textContent = currentQuantity + 1;  // Cập nhật trên giao diện
                         updateThanhTien(maSanPham); // Cập nhật tổng tiền
-                } else 
+                } else if (response == 2) {
+                        updateThanhTien(maSanPham);
+                } else {
                     alert('Sản phẩm chỉ còn'+ currentQuantity );
-                
+                }
             },
         });
     }

@@ -1,24 +1,27 @@
-<div align="center" style="margin-top:10px" class="menu-wrapper">
-    <ul class="pagination menu">
+
+<?php 
+if ($result) {
+    echo "<div align='center' style='margin-top:10px' class='menu-wrapper'>
+    <ul class='pagination menu'>
         <li>
-            <a href="?page=1">&laquo;</a>
-        </li>
-        <?php
+            <a href='?page=1'>&laquo;</a>
+        </li>";
+
         for ($i = 1; $i <= $totalPages; $i++) {
             if ($i != $currentPage) {
                 echo "<li><a href=\"?page=" . $i . "\">" . $i . "</a></li>";
             } else {
                 echo "<li><a class=\"active\" href=\"?page=" . $i . "\">" . $i . "</a></li>";
             }
-
         }
         echo "<li>
             <a href=\"?page=$totalPages\">&raquo;</a>
-        </li>";
-        ?>
-
+        </li>
     </ul>
-</div>
+</div>";
+    }
+?>
+
 
 <style>
     .menu-wrapper {
