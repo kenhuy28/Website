@@ -1,3 +1,5 @@
+<?php include("../templates/header.php") ?>
+
 <head>
     <style>
         td {
@@ -44,7 +46,6 @@ function showBXH()
         $strBXH .= $key . " - " . $value . "." . "\n";
     return trim($strBXH);
 }
-
 if (isset($_POST['themBaiHat']))
     if (isset($_POST['tenBaiHat']) && isset($_POST['thuHang'])) {
         $tenBaiHat = trim($_POST['tenBaiHat']);
@@ -73,11 +74,11 @@ if (isset($_POST['hienThiBXH'])) {
         <tbody>
             <tr>
                 <td>Nhập tên bài hát:</td>
-                <td><input type="text" name="tenBaiHat"></td>
+                <td><input  type="text" name="tenBaiHat"></td>
             </tr>
             <tr>
                 <td>Nhập thứ hạng bài hát:</td>
-                <td><input type="number" name="thuHang"></td>
+                <td><input  type="number" name="thuHang"></td>
             </tr>
             <tr>
                 <td id="xuly" colspan="2"><button type="submit" name="themBaiHat">Thêm bài hát</button></td>
@@ -105,5 +106,6 @@ if (isset($_POST['hienThiBXH'])) {
             </tr>
         </tbody>
     </table>
-
 </form>
+<?php include("back.php") ?>
+<?php include("../templates/footer.php") ?>

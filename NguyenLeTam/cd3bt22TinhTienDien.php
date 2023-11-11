@@ -1,8 +1,8 @@
-<html>
+<?php include("../templates/header.php") ?>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>tinh dien tich HCN</title>
+    <title>Tính diện tích HCN</title>
     <style type="text/css">
         table {
             background: #fff4d4;
@@ -58,7 +58,7 @@
         <table>
             <thead>
                 <th colspan="3" style="text-align: center;">
-                    <h3>Thanh toán tiền điện</h3>
+                    <h3 style="padding-top: 10px; margin-bottom: 5px; font-size: 22px;">THANH TOÁN TIỀN ĐIỆN</h3>
                 </th>
             </thead>
             <tr>
@@ -67,30 +67,30 @@
             </tr>
             <tr>
                 <td> Chỉ số cũ: </td>
-                <td><input type="text" name="chiSoCu" value="<?php echo $chiSoCu; ?>" /></td>
+                <td><input type="number" min="0" name="chiSoCu" value="<?php echo $chiSoCu; ?>" /></td>
                 <td>(kW)</td>
             </tr>
             <tr>
                 <td> Chỉ số mới: </td>
-                <td><input type="text" name="chiSoMoi" value="<?php echo $chiSoMoi; ?>" /></td>
+                <td><input type="number" min="0" name="chiSoMoi" value="<?php echo $chiSoMoi; ?>" /></td>
                 <td>(kW)</td>
             </tr>
             <tr>
                 <td> Đơn giá: </td>
-                <td><input type="text" name="donGia" value="20000" /></td>
+                <td><input type="number" min="0" name="donGia" value="20000" /></td>
                 <td>(VNĐ)</td>
             </tr>
             <tr>
                 <td> Số tiền thanh toán:</td>
-                <td><input type="text" name="soTien" disabled value="<?php echo $soTien; ?>"></td>
+                <td><input type="text" name="soTien" readonly value="<?php echo $soTien; ?>"></td>
                 <td>(VNĐ)</td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="tinh" value="Tính" /></td>
+                <td><button type="submit">Tính</button></td>
             </tr>
         </table>
     </form>
 </body>
-
-</html>
+<?php include("back.php") ?>
+<?php include("../templates/footer.php") ?>
