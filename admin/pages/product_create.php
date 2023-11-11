@@ -17,7 +17,7 @@ include '../includes/get_new_product_id.php'
     <div class="create_admin">
         <h1 class="Title_Admin_create_form">Thêm sản phẩm</h1>
         <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
-        <form action="" method="post">
+        <form action="../includes/create_product.php" method="post" id="form" enctype="multipart/form-data">
             <div class="form_field">
                 <label for="" class="name_form_field">Mã sản phẩm : </label>
                 <input type="text" class="textfile" readonly value="<?php echo $maSanPham ?>" name="MASP">
@@ -25,11 +25,6 @@ include '../includes/get_new_product_id.php'
             <div class="form_field">
                 <label for="" class="name_form_field">Tên sản phẩm : </label>
                 <input type="text" class="textfile" id="fullname" name="TENSP">
-                <span class="error_message"></span>
-            </div>
-            <div class="form_field">
-                <label for="" class="name_form_field">Đơn giá mua : </label>
-                <input type="number" class="textfile" id="giamua" name="DONGIAMUA">
                 <span class="error_message"></span>
             </div>
             <div class="form_field">
@@ -53,27 +48,16 @@ include '../includes/get_new_product_id.php'
                 </select>
                 <span class="error_message"></span>
             </div>
-            <div class="form_field" style="display:none">
-                <label for="" class="name_form_field">Màu sắc : </label>
-                <select class="textfile" name="MAMAUSAC" id="mausac">
-                    <option value="">Chọn màu sắc</option>
-                    @foreach (var item in ViewBag.MauSac)
-                    {
-                    <option value="@item.MAMAUSAC">@item.TENMAUSAC</option>
-                    }
-                </select>
-                <span class="error_message"></span>
-            </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Mô tả : </label>
-                <textarea class="textfile_address" cols="2" id="address" name="MOTA"></textarea>
+                <textarea class="textfile_address" form="form" cols="2" id="address" name="MOTA"></textarea>
                 <span class="error_message"></span>
             </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Ảnh đại diện : </label>
                 <div class="custom-file">
                     <div>
-                        <input type="file" class="custom-file-input" id="img_profile_admin" name="fileUpload" value="">
+                        <input type="file" class="custom-file-input" id="img_product" name="image" accept="image/*">
                         <span class="error_message"></span>
                     </div>
                     <div class="custom-file-img">
@@ -111,6 +95,16 @@ include '../includes/get_new_product_id.php'
                 }
             });
         });
+        const img_thuonghieu = document.querySelector("#img_product");
+        const custom_file_img_display = document.querySelector("#custom-file-img-display");
+        img_thuonghieu.onchange = function (e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                custom_file_img_display.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        };
     </script>
 </div>
 <?php include '../templates/nav_admin2.php' ?>
