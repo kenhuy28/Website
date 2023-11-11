@@ -57,68 +57,88 @@
 <body>
 
     <?php
-    $sum = 0;
-    if (isset($_POST['name'])) {
-        $name = trim($_POST['name']);
+    if (isset($_POST['a'])) {
+        $a = trim($_POST['a']);
     } else {
-        $name = "";
+        $a = 0;
     }
-    function Sum(&$sum, $string){
-        if($string == "") {
-            $sum =0;
-        } else {
-            $arr = [];
-            $arr = explode(",",$string);
-            foreach ($arr as $number) {
-                $sum += (int)$number;
-            }
-        }
+    function convertToLunarYear($nam, &$hinh, &$b)
+    {
+        $nam_chi = array(
+            'Hợi',
+            'Tý',
+            'Sửu',
+            'Dần',
+            'Mão',
+            'Thìn',
+            'Tỵ',
+            'Ngọ',
+            'Mùi',
+            'Thân',
+            'Dậu',
+            'Tuất',
+            
+        );
+        $nam_hinh = array(
+            "hoi.jpg",
+            "chuot.jpg",
+            "suu.jpg",
+            "dan.jpg",
+            "meo.jpg",
+            "thin.jpg",
+            "ty.jpg",
+            "ngo.jpg",
+            "mui.jpg",
+            "than.jpg",
+            "dau.jpg",
+            "tuat.jpg"
+            
+        );
+        $nam_can = array('Quý', 'Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ', 'Canh', 'Tân', 'Nhâm');
+        $nam = $nam - 3;
+        //echo $nam;
+        $can = $nam % 10;
+        $chi = $nam % 12;
+        $b = $nam_can[$can];
+        $b .= $nam_chi[$chi];
+        $hinh = "<img src='images/".$nam_hinh[$chi]."'>";
     }
-
-    Sum($sum,$name);
+    if($a!=0) {
+        $hinh ="";
+        convertToLunarYear($a,$hinh,$b);
+        //echo $b;
+    } else {
+        $b="";
+        $hinh ="";
+    }
     ?>
 
-    <form align='center' action="3.php" method="post">
 
+
+    <form align='center' action="" method="post">
         <table>
             <thead>
-
-                <th colspan="3" align="center">
-                    <h3>NHẬP VÀ TÍNH TRÊN DÃY SỐ</h3>
-                </th>
+                <td colspan="3" align="center">Tính năm âm lịch</td>
             </thead>
             <tr>
-                <td>Nhập dãy số:</td>
-
-                <td><input colspan="2" type="text" name="name" value="<?php echo $name; ?>" /></td>
-                <td>(*)</td>
-
-
+                <td align="center">Năm dương lịch</td>
+                <td align="center"></td>
+                <td align="center">Năm âm lịch</td>
             </tr>
             <tr>
-                <td></td>
-                <td colspan="2"><input type="submit" value="Tính tổng dãy số" name="tinh" /></td>
-            </tr>
-            
-            <tr>
-                <td>Tổng dãy số dãy số:</td>
-
-                <td><input colspan="2" type="text" value="<?php echo $sum;  ?>" disabled /></td>
-
+                <td align="center">
+                    <input type="number" name="a"  value="<?php echo $a; ?>" />
+                </td>
+                <td align="center"><input type="submit" value="=>" name="tinh" /></td>
+                <td align="center">
+                    <input type="text" value="<?php echo $b;?>"/>
+                </td>
             </tr>
             <tr>
-                <td colspan="3" align="center">Các dãy số cách nhau bằng dấu ,</td>
+                <td colspan="3" align="center"><?php echo $hinh;?> </td>
             </tr>
-
-
         </table>
-
-
-
     </form>
-
-
-
 
 </body>
 
