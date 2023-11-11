@@ -101,24 +101,6 @@
     </a>
 
 </div>
-<div class="hotline-phone-ring-wrap" style="margin-bottom:50px">
-    <div class="hotline-phone-ring">
-        <div class="hotline-phone-ring-circle"></div>
-        <div class="hotline-phone-ring-circle-fill"></div>
-        <div class="hotline-phone-ring-img-circle">
-            <a href="tel:0347693333" class="pps-btn-img">
-                <img src="https://nguyenhung.net/wp-content/uploads/2019/05/icon-call-nh.png" alt="Gọi điện thoại"
-                    width="50">
-            </a>
-        </div>
-    </div>
-    <div class="hotline-bar">
-        <a href="tel:0347693333">
-            <span class="text-hotline">0347 69 33 33</span>
-        </a>
-    </div>
-</div>
-</div>
 <!-- nếu đã login -->
 <div class="login_flex" id="login_flex">
     <div class="login_flex_right" id="login_flex_right">
@@ -130,7 +112,7 @@
         </div>
         <div style="display: flex; justify-content: center;align-items: center; border-radius: 50%;">
 
-            <img src="<?php 
+            <img src="<?php
             if (empty($_SESSION["taiKhoan"]["avatar"]) || $_SESSION["taiKhoan"]["avatar"] == null)
                 echo $rootPath . '/assets/img/banner/Default_pfp.svg.png';
             else
@@ -169,7 +151,7 @@
             <input type="submit" value="Chỉnh sửa thông tin" class="button_add_admin" />
         </form>
 
-        <a href="<?php echo $rootPath . "/pages/change_password_page.php" ?>">
+        <a href="<?php echo $rootPath . "/pages/change_password.php" ?>">
             <input type="button" value="Đổi mật khẩu" class="button_add_admin" /></a>
         <a href="<?php echo $rootPath . "/pages/buy_history_page.php" ?>">
             <input type="button" value="Lịch sử mua hàng" class="button_add_admin" /></a>

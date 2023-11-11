@@ -6,11 +6,14 @@ $query = "SELECT  maSanPham,tenSanPham, donGiaBan, maLoai, soLuong, hinhAnh, moT
 $stmt = $dbh->prepare($query);
 $stmt->execute();
 $sanPham = $stmt->fetch(PDO::FETCH_OBJ);
-require_once('../includes/ajax_add_product.php');
-
 $sql = "SELECT * FROM giam_gia";
 $stmt = $dbh->query($sql);
 $giamGia = $stmt->fetchAll(PDO::FETCH_OBJ);
+if (empty($_SESSION["taiKhoan"])) {
+    require_once('../includes/login_required.php');
+} else {
+    require_once('../includes/ajax_add_product.php');
+}
 ?>
 
 <div class="chiTietSanPham">
