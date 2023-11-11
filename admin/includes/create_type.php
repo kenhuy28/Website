@@ -13,6 +13,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     echo '<script>window.location.href = "javascript:history.go(-2);";</script>';
 } else {
-    echo 'qweqwewqe';
 }
 ?>
