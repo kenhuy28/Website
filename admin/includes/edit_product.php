@@ -6,6 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $product_id = $_POST["MASP"];
         $product_name = $_POST["TENSP"];
         $price_buy = $_POST["DONGIABAN"];
+        if (empty($price_buy))
+            $price_buy = 0;
         $brand_id = $_POST["MATH"];
         $type_id = $_POST["MALOAI"];
         $desciption = $_POST["MOTA"];
