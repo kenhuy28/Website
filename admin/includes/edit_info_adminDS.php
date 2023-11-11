@@ -28,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 print_r($errors);
             }
-            $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '" . $ho . "', ten = '" . $ten . "', ngaySinh = '" . $ngaySinh . "', diaChiCuThe = '" . $diaChiCuThe . "', dienThoai = '" . $dienThoai . "', maLoai = '" . $loaiTK_ID . "',email = '" . $email . "', maXa = '" . $maXa . "', avatar = '" . $file_name . "' WHERE maNhanVien = '" . $maNhanVien . "'");
+            $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '" . $ho . "', ten = '" . $ten . "', ngaySinh = '" . $ngaySinh . "', diaChiCuThe = '" . $diaChiCuThe . "', dienThoai = '" . $dienThoai . "', maLoai = '" . $loaiTK_ID . "',email = '" . $email . "', matKhau = '" . $matKhau . "', maXa = '" . $maXa . "', avatar = '" . $file_name . "' WHERE maNhanVien = '" . $maNhanVien . "'");
             $statement->execute();
 
         } else {
 
-            $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '" . $ho . "', ten = '" . $ten . "', ngaySinh = '" . $ngaySinh . "', diaChiCuThe = '" . $diaChiCuThe . "', dienThoai = '" . $dienThoai . "', maLoai = '" . $loaiTK_ID . "', email = '" . $email . "', maXa = '" . $maXa . "'  WHERE maNhanVien = '" . $maNhanVien . "'");
+            $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '" . $ho . "', ten = '" . $ten . "', ngaySinh = '" . $ngaySinh . "', diaChiCuThe = '" . $diaChiCuThe . "', dienThoai = '" . $dienThoai . "', maLoai = '" . $loaiTK_ID . "', email = '" . $email . "', matKhau = '" . $matKhau . "', maXa = '" . $maXa . "'  WHERE maNhanVien = '" . $maNhanVien . "'");
             $statement->execute();
         }
         echo '<script>
