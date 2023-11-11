@@ -18,14 +18,27 @@
             data: { maSanPham: maSanPham, nguoiDung: nguoiDung }, // Gửi ID sản phẩm lên máy chủ
             dataType: 'json',
             success: function (response) {
-                var TB = document.querySelector('#notifacation_all');
-                TB.style.bottom = "30px";
-                TB.querySelector('h6').innerText = "Đã thêm vào giỏ";
-                setTimeout(function () {
-                    TB.style.bottom = "-50px";
-                }, 2000);
                 console.log(response);
-                updateGioHang(maSanPham, nguoiDung);
+                if (response == 1) {
+                    updateGioHang(maSanPham, nguoiDung);
+                    var TB = document.querySelector('#notifacation_all');
+                    TB.style.bottom = "30px";
+                    TB.querySelector('h6').style.color = "green";
+                    TB.querySelector('h6').innerText = "Đã thêm vào giỏ";
+                    setTimeout(function () {
+                        TB.style.bottom = "-50px";
+                    }, 2000);
+                    console.log(response);
+                    
+                } else {
+                    var TB = document.querySelector('#notifacation_all');
+                    TB.style.bottom = "30px";
+                    TB.querySelector('h6').innerText = "Sản phẩm đã hết.";
+                    TB.querySelector('h6').style.color = "red";
+                    setTimeout(function () {
+                        TB.style.bottom = "-50px";
+                    }, 2000);
+                }
             },
             error: function (xhr, status, error) {
                 // Xử lý lỗi (nếu có)

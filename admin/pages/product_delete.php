@@ -55,7 +55,7 @@ include '../includes/delete_product_from_id.php';
                         class="button_add_admin" /></a>
             </div>
             <div class="alert_delete">
-                <div class="notification" style="width:20%">
+                <div class="notification" style="width:25%">
                     <h1 class="notification_title">Xác nhận xóa sản phẩm này!</h1>
                     <input type="submit" value="Xóa" class="alert_delete_btn delete_conform" name="delete" />
                     <input type="button" value="Không" class="alert_delete_btn delete_cancel" />
