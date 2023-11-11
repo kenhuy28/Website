@@ -13,17 +13,18 @@ function taoMang($m, $n)
     return $matrix;
 }
 
-function hienThiDongChanCotLe($matrix, $m ,$n) {
+function hienThiDongChanCotLe($matrix, $m, $n)
+{
     $temp = "";
-    for ($i = 0; $i <$m; $i += 2) {
+    for ($i = 0; $i < $m; $i += 2) {
         for ($j = 1; $j < $n; $j += 2) {
-          $temp .= $matrix[$i][$j] . " ";
+            $temp .= $matrix[$i][$j] . " ";
         }
-      }
-      return $temp;
+    }
+    return $temp;
 }
 
-function inMang($matrix, $m,)
+function inMang($matrix, $m, )
 {
     $temp = "";
     for ($i = 0; $i < $m; $i++) {
@@ -32,17 +33,18 @@ function inMang($matrix, $m,)
     return $temp;
 }
 
-function tongPhanTuLaBoiSoCua10($matrix, $m, $n) {
+function tongPhanTuLaBoiSoCua10($matrix, $m, $n)
+{
     $sum = 0;
     for ($i = 0; $i < $m; $i++) {
-      for ($j = 0; $j < $n; $j++) {
-        if ($matrix[$i][$j] % 10 == 0) {
-          $sum += $matrix[$i][$j];
+        for ($j = 0; $j < $n; $j++) {
+            if ($matrix[$i][$j] % 10 == 0) {
+                $sum += $matrix[$i][$j];
+            }
         }
-      }
     }
     return $sum;
-  }
+}
 
 if (isset($_POST["submit"]) && isset($_POST["m"]) && isset($_POST["n"])) {
     $m = $_POST["m"];
@@ -50,7 +52,7 @@ if (isset($_POST["submit"]) && isset($_POST["m"]) && isset($_POST["n"])) {
     $matrix = taoMang($m, $n);
     $kq = inMang($matrix, $m);
     $kq .= "\nCác phần tử thuộc dòng chẵn cột lẻ: " . hienThiDongChanCotLe($matrix, $m, $n);
-    $kq .= "\nTổng các phần tử là bội số của 10: " . tongPhanTuLaBoiSoCua10($matrix, $m ,$n);
+    $kq .= "\nTổng các phần tử là bội số của 10: " . tongPhanTuLaBoiSoCua10($matrix, $m, $n);
 }
 ?>
 
@@ -81,9 +83,6 @@ if (isset($_POST["submit"]) && isset($_POST["m"]) && isset($_POST["n"])) {
             </tr>
         </tbody>
     </table>
-
-
-
 </form>
-
+<button type="button" onclick="window.history.go(-1);">Quay lại</button>
 <?php include '../templates/footer.php' ?>
