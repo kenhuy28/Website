@@ -1348,7 +1348,7 @@ input:focus {
 }
 
 .thonTinKhac {
-    height: 60px;
+    height: 50px;
     border-bottom: 1px solid var(--catalog--color);
     display: flex;
     justify-content: start;

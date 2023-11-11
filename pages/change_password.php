@@ -37,7 +37,6 @@
 </script>
 
 
-<h6 style="margin-bottom: 40px">Trang chủ > Thay đổi mật khẩu </h6>
 <div class="create_admin" style="margin-bottom: 300px">
     <!-- <h1 class="Title_Admin_create_form">Mật khẩu mới</h1> -->
     <!-- <p class="Notification_create_form">Vui lòng điền email để reset mật khẩu</p> -->
