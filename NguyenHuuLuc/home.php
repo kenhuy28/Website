@@ -89,8 +89,6 @@ include '../templates/header.php';
             </li>
         </ul>
         <br>
-    </div>
-    <div style="float: left; width:50%">
         <h2>Bài tập hướng đối tượng</h2>
         <ul>
             <li>
@@ -110,6 +108,10 @@ include '../templates/header.php';
             </li>
         </ul>
         <br>
+
+    </div>
+    <div style="float: left; width:50%">
+
         <h2>Bài tập kết nối PHP và MySQL</h2>
         <ul>
             <li>
@@ -135,6 +137,55 @@ include '../templates/header.php';
             </li>
         </ul>
         <br>
+        <h2>Bài tập mẫu</h2>
+        <ul>
+            <li>
+                <a href="form_mau.php">
+                    <p class="bt">Form mẫu</p>
+                </a>
+            </li>
+            <li>
+                <a href="form_textfield.php">
+                    <p class="bt">Form nhập liệu với text field (dạng 1)</p>
+                </a>
+            </li>
+            <li>
+                <a href="form_textfield2.php">
+                    <p class="bt">Form nhập liệu với text field (dạng 2)</p>
+                </a>
+            </li>
+            <li>
+                <a href="form_multiplelinetext.php">
+                    <p class="bt">Form nhập liệu với textarea</p>
+                </a>
+            </li>
+            <li>
+                <a href="form_multiplelinetext.php">
+                    <p class="bt">Form nhập liệu với checkbox</p>
+                </a>
+            </li>
+            <li>
+                
+                <a href="form_radiobutton.php">
+                    <p class="bt">Form nhập liệu với radio button</p>
+                </a>
+            </li>
+            <li>
+                <a href="form_combobox.php">
+                    <p class="bt">Form nhập liệu với combobox</p>
+                </a>
+            </li>
+            <li>
+                <a href="form_listbox.php">
+                    <p class="bt">Form nhập liệu với listbox</p>
+                </a>
+            </li>
+            <li>
+                <a href="mau_mang.php">
+                    <p class="bt">Mảng</p>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 
