@@ -12,8 +12,6 @@ $address_input = $statement1->fetch(PDO::FETCH_OBJ);
 
 ?>
 
-<h6>Trang chủ > Chỉnh sửa tài khoản </h6>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function () {

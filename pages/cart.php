@@ -97,7 +97,7 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
                 } else if (response == 2) {
                         updateThanhTien(maSanPham);
                 } else {
-                    alert('Sản phẩm chỉ còn'+ currentQuantity );
+                    alert('Số lượng tối đa cho sản phẩm này là '+ currentQuantity );
                 }
             },
         });
@@ -158,13 +158,12 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
     }
 </script>
 
-<h6>Trang Chủ > Giỏ Hàng Của Bạn</h6>
 <div class="cart_title">GIỎ HÀNG CỦA BẠN</div>
-<div class="yellow_space"></div>
+<br> 
 <div class="cart">
     <div class="cart_table">
         <div class="header_table">
-            <div class="header_table_title" style="width: 40%;">
+            <div class="header_table_title" style="width: 40%; padding-left: 20px;">
                 SẢN PHẨM
             </div>
             <div class="header_table_title" style="width: 15%">

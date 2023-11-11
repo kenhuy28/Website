@@ -33,7 +33,7 @@
                 } else {
                     var TB = document.querySelector('#notifacation_all');
                     TB.style.bottom = "30px";
-                    TB.querySelector('h6').innerText = "Sản phẩm đã hết.";
+                    TB.querySelector('h6').innerText = "Đã đạt số lượng tối đa";
                     TB.querySelector('h6').style.color = "red";
                     setTimeout(function () {
                         TB.style.bottom = "-50px";

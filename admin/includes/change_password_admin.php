@@ -8,7 +8,10 @@ $sql_change_pass = "UPDATE `nhan_vien` SET `matKhau` = '$newpassword' WHERE `nha
 $statement = $dbh->prepare($sql_change_pass);
 $statement->execute();
 
+echo "<script>
+alert('Đổi mật khẩu thành công');
+</script>";
 // đổi xong về trang chủ
-header("Location: ../");
+echo '<script>window.location.href = "../";</script>';
 
 ?>

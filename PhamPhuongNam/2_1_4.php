@@ -1,90 +1,127 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+
 <html>
 
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Mang tim kiem va thay the</title>
+
+    <title>tinh dien tich HCN</title>
+
     <style type="text/css">
-        table {
+        body {
 
-
-            background-color: wheat;
+            background-color: #d24dff;
 
         }
 
-        th {
+        table {
 
-            background-color: white;
+            background: #ffd94d;
 
-            font-style: vni-times;
+            border: 0 solid yellow;
 
-            color: blue;
+        }
+
+        thead {
+
+            background: #fff14d;
+
         }
 
         td {
+
+            color: blue;
+
+        }
+
+        h3 {
+
+            font-family: verdana;
+
             text-align: center;
-            width: 33%;
+
+            /* text-anchor: middle; */
+
+            color: #ff8100;
+
+            font-size: medium;
+
         }
     </style>
+
 </head>
 
+
+
 <body>
+
     <?php
-     $ketqua=0;
-     $ds='';
-    if (isset($_POST['dayso']))
-    {
-        $ds = trim($_POST['dayso']);
-        $dsSo = explode(',', $ds);
-        $tong = (int) 0;
-        for ($i = 0; $i < sizeof($dsSo); $i++)
-            $tong += (int) $dsSo[$i];
-
-            $ketqua= $tong;
+    $sum = 0;
+    if (isset($_POST['name'])) {
+        $name = trim($_POST['name']);
+    } else {
+        $name = "";
     }
-    else
-        $dayso = "0";
+    function Sum(&$sum, $string){
+        if($string == "") {
+            $sum =0;
+        } else {
+            $arr = [];
+            $arr = explode(",",$string);
+            foreach ($arr as $number) {
+                $sum += (int)$number;
+            }
+        }
+    }
 
+    Sum($sum,$name);
     ?>
-    <form action="" method="post">
-        <table>
-            <th colspan="3">
-                <h3 style="margin-top: 5px;margin-bottom: 5px;">NHẬP VÀ TÍNH TRÊN DÃY SỐ</h3>
-            </th>
 
+    <form align='center' action="2_1_4.php" method="post">
+
+        <table>
+            <thead>
+
+                <th colspan="3" align="center">
+                    <h3>NHẬP VÀ TÍNH TRÊN DÃY SỐ</h3>
+                </th>
+            </thead>
             <tr>
                 <td>Nhập dãy số:</td>
-                <td>
-                    <input type="text" name="dayso" value="<?php
-                        echo $ds; ?>">
-                </td>
-                <td style="color:red; text-align: left;">(*)</td>
+
+                <td><input colspan="2" type="text" name="name" value="<?php echo $name; ?>" /></td>
+                <td>(*)</td>
+
 
             </tr>
             <tr>
-                <td> </td>
-                <td>
-                    <button type="submit">Tổng dãy số</button>
-                </td>
-                <td> </td>
-            </tr>
-            <tr>
-                <td>Tổng dãy số:</td>
-                <td><input type="text" value="<?php
-                echo $ketqua; ?>" disabled></td>
                 <td></td>
+                <td colspan="2"><input type="submit" value="Tính tổng dãy số" name="tinh" /></td>
+            </tr>
+            
+            <tr>
+                <td>Tổng dãy số dãy số:</td>
+
+                <td><input colspan="2" type="text" value="<?php echo $sum;  ?>" disabled /></td>
 
             </tr>
             <tr>
-                <td colspan='3'>
-                    <span style="color:red;">(*)</span> Các số được nhập cách nhau bởi dấu ","
-                </td>
+                <td colspan="3" align="center">Các dãy số cách nhau bằng dấu ,</td>
             </tr>
+
 
         </table>
+
+
+
     </form>
 
 
+
+
 </body>
+
+
 
 </html>
