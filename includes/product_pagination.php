@@ -1,6 +1,6 @@
 
 <?php 
-if ($result) {
+if ($totalRows>=1) {
     echo "<div align='center' style='margin-top:10px' class='menu-wrapper'>
     <ul class='pagination menu'>
         <li>
