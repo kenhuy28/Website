@@ -87,7 +87,6 @@ if (empty($_SESSION["taiKhoan"])) {
 }
 ?>
 
-<h6>Trang chủ > Sản phẩm </h6>
 <h4>Tất cả sản phẩm</h4>
 <form class="product_search" action="product_search_page.php" method="GET" enctype="multipart/form-data">
     <button class="icon_search" type="submit" style="width: 40px; height: 40px;">
@@ -153,7 +152,9 @@ if (empty($_SESSION["taiKhoan"])) {
                   <h5>" . $row->tenThuongHieu . "</h5>
               </div>
               <div class='product_name'>
+              <a href='./product_detail_page.php?maSanPham=" . $row->maSanPham . "' style = 'color: black'>
                   <h5>" . $row->tenSanPham . "</h5>
+                  </a>
               </div>";
                 if (giamGia($row->maSanPham, $giamGia, $row->donGiaBan) != null) {
                     echo "<div class='product_price' style='display: flex'>

@@ -15,17 +15,17 @@ check($nv->maLoai,'SP');
     </div>
     <table class="table_dsadmin">
         <thead>
-            <tr>
-                <th style="width: 65px;">Mã Sản Phẩm </th>
-                <th style="width: 180px;">Tên Sản Phẩm</th>
-                <th style="width: 84px;">Giá mua</th>
-                <th style="width: 84px;">Giá bán</th>
-                <th style="width: 170px;">Thương hiệu</th>
-                <th style="width: 100px;">Loại</th>
-                <th style="width: 70px;">Số lượng Tồn</th>
-                <th style="width: 250px;">Mô tả</th>
-                <th style="width: 70px;">Hình ảnh</th>
-                <th style="width: 90px;">Chức năng</th>
+            <tr style="font-size: 15px;">
+                <th style="width: 7%;">Mã Sản Phẩm </th>
+                <th style="width: 10%;">Tên Sản Phẩm</th>
+                <th style="width: 5%;">Giá mua</th>
+                <th style="width: 5%;">Giá bán</th>
+                <th style="width: 7%;">Thương hiệu</th>
+                <th style="width: 9%;">Loại</th>
+                <th style="width: 5%;">Số lượng</th>
+                <th style="width: 15%;">Mô tả</th>
+                <th style="width: 6%;">Hình ảnh</th>
+                <th style="width: 7%;">Chức năng</th>
             </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@ check($nv->maLoai,'SP');
     </table>
     <style>
         p {
-            font-size: 17px;
+            font-size: 15px;
             padding: 5px;
         }
     </style>

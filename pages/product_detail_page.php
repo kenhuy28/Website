@@ -6,17 +6,20 @@ $query = "SELECT  maSanPham,tenSanPham, donGiaBan, maLoai, soLuong, hinhAnh, moT
 $stmt = $dbh->prepare($query);
 $stmt->execute();
 $sanPham = $stmt->fetch(PDO::FETCH_OBJ);
-require_once('../includes/ajax_add_product.php');
-
 $sql = "SELECT * FROM giam_gia";
 $stmt = $dbh->query($sql);
 $giamGia = $stmt->fetchAll(PDO::FETCH_OBJ);
+if (empty($_SESSION["taiKhoan"])) {
+    require_once('../includes/login_required.php');
+} else {
+    require_once('../includes/ajax_add_product.php');
+}
 ?>
 
 <div class="chiTietSanPham">
     <?php
     if ($sanPham->soLuong != 0) {
-        $button = '<button name="submit" style="font-size:20px; color:red; font-weight:bold;" productid="' . $sanPham->maSanPham . '"  onclick="addToCart(this)">Thêm vào giỏ hàng</button>';
+        $button = '<button name="submit" style="font-size:20px; color:red; font-weight:bold;" class="button_add_admin" productid="' . $sanPham->maSanPham . '"  onclick="addToCart(this)">Thêm vào giỏ hàng</button>';
     } else {
         $button = '<button name="submit" style="font-size:20px; color:red; font-weight:bold;" value="HẾT HÀNG" disabled>HẾT HÀNG</button>';
     }

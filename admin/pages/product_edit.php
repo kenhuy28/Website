@@ -26,28 +26,27 @@ include '../includes/get_product_data_from_id.php';
             </div>
             <div>
                 <label for="" class="name_form_field">Tên sản phẩm: </label>
-                <input type="text" class="textfile" id="fullname" name="TENSP"
+                <input required type="text" class="textfile" id="fullname" name="TENSP"
                     value="<?php echo $result->tenSanPham ?>">
                 <span class="error_message"></span>
             </div>
             <div>
                 <label for="" class="name_form_field">Đơn giá bán: </label>
-                <input type="number" class="textfile" id="giaban" name="DONGIABAN"
+                <input required type="number" class="textfile" id="giaban" name="DONGIABAN"
                     value="<?php echo $result->donGiaBan; ?>" name="donGiaBan">
                 <span class="error_message"></span>
             </div>
 
             <div>
                 <label for="" class="name_form_field">Thương hiệu: </label>
-                <select class="textfile" name="MATH" id="thuonghieu">
-
+                <select required class="textfile" name="MATH" id="thuonghieu">
                     <?php include '../includes/show_brand_in_option.php' ?>
                 </select>
                 <span class="error_message"></span>
             </div>
             <div>
                 <label for="" class="name_form_field">Loại: </label>
-                <select class="textfile" name="MALOAI">
+                <select required class="textfile" name="MALOAI">
                     <?php include '../includes/show_type_in_option.php' ?>
 
                 </select>

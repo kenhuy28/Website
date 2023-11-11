@@ -55,13 +55,6 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
     function themSanPham(element) {
         var maSanPham = element.getAttribute("maSanPham");
         updateProductQuantity(maSanPham, 1); // Tăng số lượng sản phẩm dùng ajax
-        var quantityElement = document.querySelector('.soLuong' + maSanPham);
-        var currentQuantity = parseInt(quantityElement.textContent);
-
-        if (!isNaN(currentQuantity)) {
-            quantityElement.textContent = currentQuantity + 1;  // Cập nhật trên giao diện
-            updateThanhTien(maSanPham); // Cập nhật tổng tiền
-        }
     }
 
 
@@ -94,7 +87,19 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         jQuery.ajax({
             type: 'POST',
             url: '<?php echo $rootPath . "/includes/update_product_quantity.php"; ?>', // Đường dẫn đến file xử lý cập nhật số lượng sản phẩm
-            data: { maSanPham: maSanPham, maKhachHang: '<?php echo $maKhachHang; ?>', quantityChange: quantityChange }
+            data: { maSanPham: maSanPham, maKhachHang: '<?php echo $maKhachHang; ?>', quantityChange: quantityChange },
+            success: function (response) {
+                var quantityElement = document.querySelector('.soLuong' + maSanPham);
+                var currentQuantity = parseInt(quantityElement.textContent);
+                if (response == 1) {
+                        quantityElement.textContent = currentQuantity + 1;  // Cập nhật trên giao diện
+                        updateThanhTien(maSanPham); // Cập nhật tổng tiền
+                } else if (response == 2) {
+                        updateThanhTien(maSanPham);
+                } else {
+                    alert('Số lượng tối đa cho sản phẩm này là '+ currentQuantity );
+                }
+            },
         });
     }
 
@@ -145,21 +150,20 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
 
         // Cập nhật tổng tiền lên giao diện
         const totalPriceElement = document.getElementById('totalPrice');
-        totalPriceElement.textContent = totalPrice ;
+        totalPriceElement.textContent = totalPrice;
 
         // Tìm thẻ span bằng ID
         var thanhTienInput = document.getElementById("thanhTienInput");
-        thanhTienInput.value = totalPrice ;
+        thanhTienInput.value = totalPrice;
     }
 </script>
 
-<h6>Trang Chủ > Giỏ Hàng Của Bạn</h6>
 <div class="cart_title">GIỎ HÀNG CỦA BẠN</div>
-<div class="yellow_space"></div>
+<br> 
 <div class="cart">
     <div class="cart_table">
         <div class="header_table">
-            <div class="header_table_title" style="width: 40%;">
+            <div class="header_table_title" style="width: 40%; padding-left: 20px;">
                 SẢN PHẨM
             </div>
             <div class="header_table_title" style="width: 15%">

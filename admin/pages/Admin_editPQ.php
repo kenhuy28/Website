@@ -12,12 +12,15 @@ $get_tinh = "SELECT `maTinh`, `tenTinh` FROM `tinh`";
 $statement = $dbh->prepare($get_tinh);
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_OBJ);
-
 $get_address = "SELECT xa.maXa, xa.tenXa, huyen.maHuyen,huyen.tenHuyen, tinh.maTinh, tinh.tenTinh FROM nhan_vien JOIN xa ON nhan_vien.maXa=xa.maXa JOIN huyen ON xa.maHuyen=huyen.maHuyen JOIN tinh ON huyen.maTinh=tinh.maTinh WHERE nhan_vien.maNhanVien='{$_SESSION['admin']->maNhanVien}'";
 $statement1 = $dbh->prepare($get_address);
 $statement1->execute();
 $address_input = $statement1->fetch(PDO::FETCH_OBJ);
 
+$sql_LTK = "SELECT * FROM loai_tai_khoan";
+$stmt_loaitk = $dbh->prepare($sql_LTK);
+$stmt_loaitk->execute();
+$loaiTK = $stmt_loaitk->fetchAll(PDO::FETCH_OBJ);
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -85,10 +88,8 @@ $address_input = $statement1->fetch(PDO::FETCH_OBJ);
     <h1 class="Title_Admin_create_form">Sửa thông tin tài khoản quản trị viên</h1>
     <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
     <form action="../includes/edit_info_adminDS.php" method="post" enctype="multipart/form-data">
-        <div class="form_field">
-            <label for="" class="name_form_field">Mã Admin: </label>
-            <input type="text" class="textfield" name="maNhanVien" value="<?php echo $nhanVien->maNhanVien ?>">
-        </div>
+        <input style="display:none;" type="text" class="textfield" id="maNhanVien" name="maNhanVien"
+            value="<?php echo $nhanVien->maNhanVien ?>">
         <div class="form_field">
             <label for="" class="name_form_field">Họ: </label>
             <input required type="text" class="textfield" id="fullname" name="ho" value="<?php echo $nhanVien->ho ?>">
@@ -107,14 +108,35 @@ $address_input = $statement1->fetch(PDO::FETCH_OBJ);
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Số điện thoại : </label>
-            <input required type="text" class="textfield" id="phoneNumber" name="dienThoai"
+            <input required type="number" class="textfield" id="phoneNumber" name="dienThoai"
                 value="<?php echo $nhanVien->dienThoai ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Loại tài khoản : </label>
+            <select class="textfile" name="loaiTaiKhoan" id="loaiTaiKhoan">
+                <?php
+                foreach ($loaiTK as $row) {
+                    if ($nhanVien->maLoai == $row->maLoai) {
+                        echo '<option value="' . $row->maLoai . '" selected>' . $row->tenLoai . '</option>';
+                    } else {
+                        echo '<option value="' . $row->maLoai . '">' . $row->tenLoai . '
+                        </option>';
+                    }
+                }
+                ?>
+            </select>
             <span class="error_message"></span>
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Email : </label>
             <input type="text" class="textfield" id="email" name="email" value="<?php echo $nhanVien->email ?>">
             <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Mật Khẩu : </label>
+            <input type="password" class="textfield" id="matKhau" name="matKhau" >
+            <span class="error_message">(Không sửa hãy để trống!!)</span>
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Tỉnh: </label>

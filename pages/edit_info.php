@@ -12,8 +12,6 @@ $address_input = $statement1->fetch(PDO::FETCH_OBJ);
 
 ?>
 
-<h6>Trang chủ > Đăng ký </h6>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function () {
@@ -77,7 +75,7 @@ $address_input = $statement1->fetch(PDO::FETCH_OBJ);
 </script>
 
 <div class="create_admin">
-  <h1 class="Title_Admin_create_form">Tạo tài khoản </h1>
+  <h1 class="Title_Admin_create_form">Chỉnh sửa tài khoản </h1>
   <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
   <form class="create_admin_form" action="<?php echo $rootPath . '/includes/edit_info.php' ?>" method="POST">
     <div class="form_field">

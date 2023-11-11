@@ -16,7 +16,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Họ tên Admin:</td>
+                    <td>Họ tên:</td>
                     <td>
                         <?php echo $_SESSION['admin']->ho . ' ' . $_SESSION['admin']->ten ?>
                     </td>
@@ -35,19 +35,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Số điện thoại :</td>
+                    <td>Số điện thoại:</td>
                     <td>
                         <?php echo $_SESSION['admin']->dienThoai ?>
                     </td>
                 </tr>
                 <tr>
-                    <td>Email :</td>
+                    <td>Email:</td>
                     <td>
                         <?php echo $_SESSION['admin']->email ?>
                     </td>
                 </tr>
                 <tr>
-                    <td>Loại tài khoản :</td>
+                    <td>Loại tài khoản:</td>
                     <td>
                         <!-- SELECT tenLoai FROM loai_tai_khoan WHERE maLoai='LTK001' -->
                         <?php

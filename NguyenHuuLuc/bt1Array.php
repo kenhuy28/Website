@@ -133,7 +133,7 @@
             </tr>
         </table>
     </form>
-
+    <button type="button" onclick="window.history.go(-1);">Quay lại</button>
 
 </body>
 

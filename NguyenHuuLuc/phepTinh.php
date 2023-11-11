@@ -42,7 +42,7 @@
         </tbody>
     </table>
 </form>
-
+<button type="button" onclick="window.history.go(-1);">Quay lại</button>
 <?php if (isset($_POST["tinh"])) {
     if (!isset($_POST["so1"], $_POST["so2"])) {
         echo "<script>alert(\"Nhập thiếu số\");</script>";

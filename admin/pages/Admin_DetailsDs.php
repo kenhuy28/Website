@@ -12,7 +12,7 @@ $nhanVien = $statement->fetch(PDO::FETCH_OBJ);
         <div class="detail_admin_left">
             <img src="../../assets/img/ad_user/<?php echo $nhanVien->avatar; ?>">
         </div>
-        <div class=" detail_admin_right">
+        <div class="detail_admin_right">
             <table class="Table_Details_Admin">
                 <tr>
                     <td>Mã nhân viên: </td>
@@ -67,8 +67,9 @@ $nhanVien = $statement->fetch(PDO::FETCH_OBJ);
     </div>
 
     <br>
-    <a href="./Admin_DsAdmin.php"><button type="button" class="btn-success">Quay Lại</button></a>
-
+    <div class="button">
+        <a href="./Admin_DsAdmin.php"><input type="button" class="button_add_admin" value="Quay Lại"></a>
+    </div>
 </div>
 
 <?php include '../templates/nav_admin2.php' ?>

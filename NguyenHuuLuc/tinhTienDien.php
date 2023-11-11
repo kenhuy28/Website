@@ -75,6 +75,7 @@ if (isset($_POST["tinh"])) {
                 </tr>
             </tbody>
         </table>
+        <button type="button" onclick="window.history.go(-1);">Quay lại</button>
 </body>
 
 </html>

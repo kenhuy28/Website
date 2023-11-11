@@ -20,9 +20,8 @@ $matKhau = md5($_POST['matKhau']);
 $email = $_POST['email'];
 $ngaySinh = $_POST['ngaySinh'];
 $maXa = ((isset($_POST["maXa"])) ? $_POST["maXa"] : "X00001");
-$fileUpLoad = $tendn . ".jpg";
 
-$sql_themKhachHang = "INSERT INTO khach_hang VALUES ('$maKhachHang','$hoKhachHang','$tenKhachHang','$dienThoai','$diaChi','$tendn','$matKhau','$email','$ngaySinh','$fileUpLoad',NULL,'$maXa');";
+$sql_themKhachHang = "INSERT INTO khach_hang VALUES ('$maKhachHang','$hoKhachHang','$tenKhachHang','$dienThoai','$diaChi','$tendn','$matKhau','$email','$ngaySinh',NULL,NULL,'$maXa');";
 $statement = $dbh->prepare($sql_themKhachHang);
 $statement->execute();
 

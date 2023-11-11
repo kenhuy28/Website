@@ -36,9 +36,8 @@ if (empty($_SESSION["taiKhoan"])) {
 }
 ?>
 
-<h6>Trang chủ > Sản phẩm </h6>
 <h4>Tất cả sản phẩm</h4>
-<form class="product_search" action="product_search_page.php" method="POST" enctype="multipart/form-data">
+<form class="product_search" action="product_search_page.php" method="GET" enctype="multipart/form-data">
     <button class="icon_search" type="submit" style="width: 40px; height: 40px;">
         <i class="fa-solid fa-filter"></i>
     </button>

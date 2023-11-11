@@ -60,4 +60,5 @@ if ($phepTinh == "+") {
         </tr>
     </tbody>
 </table>
+<button type="button" onclick="window.history.go(-1);">Quay lại</button>
 <?php include '../templates/footer.php' ?>

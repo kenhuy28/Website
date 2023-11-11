@@ -1,12 +1,9 @@
-CREATE Database qlpkthucung;
-use qlpkthucung;
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2023 at 12:20 PM
+-- Generation Time: Nov 11, 2023 at 05:33 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -14,7 +11,8 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
+CREATE DATABASE IF NOT EXISTS `qlpkthucung` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+use qlpkthucung;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -45,12 +43,7 @@ CREATE TABLE `chi_tiet_don_dat_hang` (
 INSERT INTO `chi_tiet_don_dat_hang` (`maDonHang`, `maSanPham`, `soLuong`, `donGia`, `thanhTien`) VALUES
 ('DH0001', 'SP0001', 2, 140000, 280000),
 ('DH0002', 'SP0001', 2, 140000, 280000),
-('DH0003', 'SP0001', 1, 140000, 140000),
-('DH0004', 'SP0001', 1, 140000, 133000),
-('DH0005', 'SP0001', 2, 140000, 266000),
-('DH0006', 'SP0001', 1, 140000, 133000),
-('DH0006', 'SP0002', 2, 80000, 160000),
-('DH0007', 'SP0004', 1, 38000, 38000);
+('DH0003', 'SP0001', 1, 140000, 140000);
 
 -- --------------------------------------------------------
 
@@ -70,7 +63,7 @@ CREATE TABLE `chi_tiet_phieu_nhap` (
 --
 
 INSERT INTO `chi_tiet_phieu_nhap` (`maPhieuNhap`, `maSanPham`, `soLuong`, `donGia`) VALUES
-('PN0001', 'SP0002', 9, 10000),
+('PN0001', 'SP0002', 9, 70000),
 ('PN0001', 'SP0004', 6, 30000),
 ('PN0002', 'SP0005', 3, 20000),
 ('PN0002', 'SP0006', 11, 10000);
@@ -96,20 +89,15 @@ CREATE TABLE `don_dat_hang` (
 --
 
 INSERT INTO `don_dat_hang` (`maDonHang`, `maKhachHang`, `ngayDat`, `ngayGiao`, `tinhTrang`, `tongTien`, `maNhanVien`) VALUES
-('DH0002', 'KH0001', '2023-06-07 00:33:12', NULL, b'01', 280000, 'AD0001'),
 ('DH0001', 'KH0001', '2023-06-06 23:27:49', NULL, b'01', 280000, 'AD0001'),
-('DH0003', 'KH0002', '2023-06-07 00:54:50', NULL, b'01', 140000, 'AD0002'),
-('DH0004', 'KH0002', '2023-06-07 02:13:41', NULL, b'01', 133000, 'AD0002'),
-('DH0005', 'KH0002', '2023-06-07 13:35:53', NULL, b'01', 280000, 'AD0003'),
-('DH0006', 'KH0002', '2023-06-07 13:56:40', NULL, b'01', 293000, 'AD0003'),
-('DH0007', 'KH0002', '2023-06-13 08:03:54', NULL, b'00', 38000, 'AD0004');
+('DH0002', 'KH0001', '2023-06-07 00:33:12', NULL, b'01', 280000, 'AD0001'),
+('DH0003', 'KH0002', '2023-06-07 00:54:50', NULL, b'01', 140000, 'AD0002');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `giam_gia`
 --
-
 
 CREATE TABLE `giam_gia` (
   `maGiamGia` varchar(6) NOT NULL,
@@ -128,16 +116,6 @@ INSERT INTO `giam_gia` (`maGiamGia`, `maSanPham`, `maLoai`, `giaTriGiam`, `ngayB
 ('GG0001', 'SP0002', b'01', 50000, '2023-10-24', '2023-11-15'),
 ('GG0002', 'SP0006', b'00', 5, '2023-11-09', '2023-11-12');
 
-
-CREATE TABLE loai_giam_gia (
-  maLoai bit(2) NOT NULL,
-  tenGiamGia varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
-INSERT INTO loai_giam_gia (maLoai, tenGiamGia) VALUES
-(b'01', 'Theo giá'),
-(b'00', 'Theo phần trăm giá');
 -- --------------------------------------------------------
 
 --
@@ -457,7 +435,7 @@ INSERT INTO `huyen` (`maHuyen`, `tenHuyen`, `maTinh`) VALUES
 ('HUY279', 'Huyện Kon Rẫy', 'TINH28'),
 ('HUY280', 'Huyện Kon Plông', 'TINH28'),
 ('HUY281', 'Huyện Sa Thầy', 'TINH28'),
-('HUY282', "Huyện Ia Drai", 'TINH28'),
+('HUY282', 'Huyện Ia Drai', 'TINH28'),
 ('HUY283', 'Huyện Khánh Sơn', 'TINH29'),
 ('HUY284', 'Thành phố Cam Ranh', 'TINH29'),
 ('HUY285', 'Huyện Diên Khánh', 'TINH29'),
@@ -887,9 +865,28 @@ CREATE TABLE `khach_hang` (
 --
 
 INSERT INTO `khach_hang` (`maKhachHang`, `hoKhachHang`, `tenKhachHang`, `dienThoai`, `diaChiCuThe`, `tenNguoiDung`, `matKhau`, `email`, `ngaySinh`, `avatar`, `khoiPhucMatKhau`, `maXa`) VALUES
-('KH0001', 'Võ Thanh', 'Hào', '0358932774', '171/Nguyễn Văn Chiểu', 'thanhhao', 'qpalqpal', 'hao@gmail.com', '2002-01-01', 'thanhhao.png', NULL, 'X01861'),
-('KH0002', 'Trần Cao', 'Phong', '0514684932', '171/Nguyễn Văn Chiểu', 'caophong', 'qpalqpal', 'phong@gmail.com', '2002-01-01', 'caophong.png', NULL, 'X00012'),
-('KH0003', 'Lê Bảo', 'Khoa', '0867984654', '171/Nguyễn Văn Chiểu', 'baokhoa', 'qpalqpal', 'khoa@gmail.com', '2003-01-30', 'baokhoa.png', NULL, 'X00008');
+('KH0001', 'Võ Thanh', 'Hào', '0358932774', 'Ký túc xá K7', 'thanhhao', 'f5bb0c8de146c67b44babbf4e6584cc0', 'hao@gmail.com', '2002-01-01', 'thanhhao.png', NULL, 'X01861'),
+('KH0002', 'Trần Cao', 'Phong', '0514684932', 'Ký túc xá K7', 'caophong', 'f5bb0c8de146c67b44babbf4e6584cc0', 'phong@gmail.com', '2002-01-01', 'caophong.png', NULL, 'X00012'),
+('KH0003', 'Lê Bảo', 'Khoa', '0867984654', 'Ký túc xá K5', 'baokhoa', 'f5bb0c8de146c67b44babbf4e6584cc0', 'khoa@gmail.com', '2003-01-30', 'baokhoa.png', NULL, 'X00008');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loai_giam_gia`
+--
+
+CREATE TABLE `loai_giam_gia` (
+  `maLoai` bit(2) NOT NULL,
+  `tenGiamGia` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `loai_giam_gia`
+--
+
+INSERT INTO `loai_giam_gia` (`maLoai`, `tenGiamGia`) VALUES
+(b'00', 'Theo phần trăm giá'),
+(b'01', 'Theo giá');
 
 -- --------------------------------------------------------
 
@@ -931,9 +928,9 @@ CREATE TABLE `loai_tai_khoan` (
 --
 
 INSERT INTO `loai_tai_khoan` (`maLoai`, `tenLoai`) VALUES
-('LTK001', 'Quản trị viên'),
-('LTK002', 'Nhân viên marketing'),
-('LTK003', 'Nhân viên sale');
+('LTK001', 'Quản Lý'),
+('LTK002', 'Nhân viên bán hàng'),
+('LTK003', 'Nhân viên kho');
 
 -- --------------------------------------------------------
 
@@ -961,10 +958,10 @@ CREATE TABLE `nhan_vien` (
 --
 
 INSERT INTO `nhan_vien` (`maNhanVien`, `ho`, `ten`, `ngaySinh`, `diaChiCuThe`, `dienThoai`, `maLoai`, `tenNguoiDung`, `matKhau`, `avatar`, `email`, `maXa`) VALUES
-('AD0001', 'Nguyễn Hữu', 'Lực', '2002-10-09', 'Khánh Hòa', '0856202788', 'LTK001', 'huuluc', '25f9e794323b453885f5181f1b624d0b', 'huuluc.jpg', 'huuluc@gmail.com', 'X00018'),
-('AD0002', 'Ngô Tuấn', 'Lam', '2002-10-22', 'Phú Yên', '0347693333', 'LTK002', 'tuanlam', 'f5fca11490e764eed810f7e6c62b21cf', 'tuanlam.png', 'tuanlam@gmail.com', 'X00018'),
-('AD0003', 'Nguyễn Lê', 'Tâm', '2002-05-10', 'Khánh Hòa', '0924494119', 'LTK002', 'letam', 'f5fca11490e764eed810f7e6c62b21cf', 'letam.png', 'letam@gmail.com', 'X00018'),
-('AD0004', 'Phạm Phương', 'Nam', '2000-10-11', 'Đăk Lăk', '0867566932', 'LTK003', 'nam5520', 'f5fca11490e764eed810f7e6c62b21cf', 'nam5520.png', 'nam5520000@gmail.com', 'X00018');
+('AD0001', 'Nguyễn Hữu', 'Lực', '2002-10-09', 'Khánh Hòa', '0856202788', 'LTK001', 'huuluc', '8cfa2282b17de0a598c010f5f0109e7d', 'huuluc.jpg', 'huuluc@gmail.com', 'X00018'),
+('AD0002', 'Ngô Tuấn', 'Lam', '2002-10-22', 'Phú Yên', '0347693333', 'LTK002', 'tuanlam', '8cfa2282b17de0a598c010f5f0109e7d', 'tuanlam.png', 'tuanlam@gmail.com', 'X00018'),
+('AD0003', 'Nguyễn Lê', 'Tâm', '2002-05-10', 'Khánh Hòa', '0924494119', 'LTK002', 'letam', '8cfa2282b17de0a598c010f5f0109e7d', 'letam.png', 'letam@gmail.com', 'X00018'),
+('AD0004', 'Phạm Phương', 'Nam', '2000-10-11', 'Đăk Lăk', '0867566932', 'LTK003', 'nam5520', '8cfa2282b17de0a598c010f5f0109e7d', 'nam5520.png', 'nam5520000@gmail.com', 'X00018');
 
 -- --------------------------------------------------------
 
@@ -1011,11 +1008,11 @@ CREATE TABLE `san_pham` (
 INSERT INTO `san_pham` (`maSanPham`, `tenSanPham`, `donGiaMua`, `donGiaBan`, `maThuongHieu`, `maLoai`, `soLuong`, `hinhAnh`, `moTa`) VALUES
 ('SP0001', 'Pate Cho Mèo Con Dạng Kem Nekko Kitten Mousse 70g', 100000, 140000, 'THH002', 'LSP002', 92, 'pate_cho_meo_con_dang_kem_nekko_kitten_mousse_70g.png', 'Pate Tươi Cho Mèo Hỗn Hợp cho Chó Mèo Biếng Ăn được làm từ hỗn hợp cá biển và gan gà tươi nguyên chất.'),
 ('SP0002', 'Hạt Chó Trên 6 Tháng ANF 6Free Hữu Cơ', 70000, 80000, 'THH004', 'LSP001', 76, 'hat-cho-anf-6free.png', 'Dùng cho mèo trưởng thành từ 1 năm tuổi trở lên.'),
-('SP0003', 'Thịt Tươi Hi Raw CAT Food Cho MÈO Ăn Sống (Ship Now 2h Tp.HCM)', 60000, 75000, 'THH006', 'LSP006', 0, 'thit_tuoi_hi_raw_cat_food_cho_meo_an_song.png', ' THÔNG TIN SẢN PHẨM\r\n- Là một chế độ ăn sống, đảm bảo dinh dưỡng và hấp thụ tốt hơn.\r\n- Raw hoàn chỉnh cho Mèo bao gồm 86% thịt cơ, 6% xương sống, 3% gan và 5% các cơ quan khác để đạt được sự cân bằng dinh dưỡng tối ưu.'),
+('SP0003', 'Thịt Tươi Hi Raw CAT Food Cho MÈO Ăn Sống (Ship Now 2h Tp.HCM)', 60000, 75000, 'THH006', 'LSP006', 22, 'thit_tuoi_hi_raw_cat_food_cho_meo_an_song.png', ' THÔNG TIN SẢN PHẨM\r\n- Là một chế độ ăn sống, đảm bảo dinh dưỡng và hấp thụ tốt hơn.\r\n- Raw hoàn chỉnh cho Mèo bao gồm 86% thịt cơ, 6% xương sống, 3% gan và 5% các cơ quan khác để đạt được sự cân bằng dinh dưỡng tối ưu.'),
 ('SP0004', 'Pate Lon Whiskas Cho Mèo Trưởng Thành 400g', 30000, 38000, 'THH003', 'LSP007', 9, 'pate-lon-whiskas-cho-meo-truong-thanh-400g-paddy-1.png', ' Đảm bảo khẩu vị thơm ngon mỗi bữa ăn.\r\nCung cấp đủ vitamin và taurine, giúp đôi mắt của mèo luôn sáng tinh anh và khỏe mạnh.\r\n- Bổ sung dưỡng chất đạm, Vitamin và khoáng chất từ cá tươi tốt cho hệ phát triển tối ưu, giúp mèo có cơ thể năng động và tràn đ'),
-('SP0005', 'Pate Kit Cat Sữa Dê Bổ Sung Canxi Cho Mèo (Lon 85g)', 20000, 26500, 'THH002', 'LSP007', 0, 'hat-pedigree-cho-truong-thanh-vi-bo-rau-cu-paddy-1.png', '1. Đặc điểm nổi bật:\r\n- Hoàn toàn từ thịt trắng, thịt được xé nhỏ\r\n- 12 công thức là 12 hương vị'),
-('SP0006', 'Pate Mèo Ciao 6 Vị Thơm Ngon 60g', 10000, 14000, 'THH006', 'LSP007', 18, 'pate-meo-ciao-60g.png', 'Thức Ăn Dinh Dưỡng Cho Mèo Pate Gà Mực Cua Cá Ngừ Cá Cơm Cá Hồi Ciao Gói 60g'),
-('SP0007', 'Hạt Cho Chó Nutrience Subzero Fraser Valley Dog', 100000, 150000, 'THH005', 'LSP001', 0, 'hat-nutrience-infusion-small-adult-cho-lon-giong-nho-paddy-1_1066x.png', 'Nutrience Subzero Fraser Valley cho Chó có hạt thịt tươi thơm ngon, sử dụng các nguồn nguyên liệu tự nhiên tươi sống của Canada như thịt gà Canada thả vườn, gà tây, cá hồi, cá trích, cá tuyết, gan gà, tim gà, gan gà tây, tim gà tây, gan cá tuyết và hạt th');
+('SP0005', 'Pate Kit Cat Sữa Dê Bổ Sung Canxi Cho Mèo (Lon 85g)', 20000, 26500, 'THH002', 'LSP007', 42, 'hat-pedigree-cho-truong-thanh-vi-bo-rau-cu-paddy-1.png', '1. Đặc điểm nổi bật:\r\n- Hoàn toàn từ thịt trắng, thịt được xé nhỏ\r\n- 12 công thức là 12 hương vị'),
+('SP0006', 'Pate Mèo Ciao 6 Vị Thơm Ngon 60g', 10000, 14000, 'THH006', 'LSP006', 18, 'pate-meo-ciao-60g.png', 'Thức Ăn Dinh Dưỡng Cho Mèo Pate Gà Mực Cua Cá Ngừ Cá Cơm Cá Hồi Ciao Gói 60g'),
+('SP0007', 'Hạt Cho Chó Nutrience Subzero Fraser Valley Dog', 100000, 150000, 'THH005', 'LSP001', 24, 'hat-nutrience-infusion-small-adult-cho-lon-giong-nho-paddy-1_1066x.png', 'Nutrience Subzero Fraser Valley cho Chó có hạt thịt tươi thơm ngon, sử dụng các nguồn nguyên liệu tự nhiên tươi sống của Canada như thịt gà Canada thả vườn, gà tây, cá hồi, cá trích, cá tuyết, gan gà, tim gà, gan gà tây, tim gà tây, gan cá tuyết và hạt th');
 
 -- --------------------------------------------------------
 
@@ -3898,9 +3895,9 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X02756', 'Thị trấn Yên Minh', 'HUY190'),
 ('X02757', 'Xã Yên Phong', 'HUY199'),
 ('X02758', 'Thị trấn Yên Phú', 'HUY199'),
-('X02759', 'Xã Yên Thành', 'HUY194');
+('X02759', 'Xã Yên Thành', 'HUY194'),
+('X02760', 'Xã An Đổ', 'HUY201');
 INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
-('X02760', 'Xã An Đổ', 'HUY201'),
 ('X02761', 'Xã An Lão', 'HUY201'),
 ('X02762', 'Xã An Ninh', 'HUY201'),
 ('X02763', 'Xã An Nội', 'HUY201'),
@@ -5271,9 +5268,9 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X04128', 'Xã Mường Kim', 'HUY299'),
 ('X04129', 'Xã Mường Mít', 'HUY299'),
 ('X04130', 'Xã Mường Mô', 'HUY298'),
-('X04131', 'Xã Mường So', 'HUY293');
+('X04131', 'Xã Mường So', 'HUY293'),
+('X04132', 'Thị trấn Mường Tè', 'HUY294');
 INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
-('X04132', 'Thị trấn Mường Tè', 'HUY294'),
 ('X04133', 'Xã Mường Tè', 'HUY294'),
 ('X04134', 'Xã Mường Than', 'HUY299'),
 ('X04135', 'Xã Nà Tăm', 'HUY292'),
@@ -6653,10 +6650,10 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X05509', 'Xã Mường Lống', 'HUY373'),
 ('X05510', 'Xã Mường Nọc', 'HUY379'),
 ('X05511', 'Xã Mường Típ', 'HUY373'),
-('X05512', 'Thị trấn Mường Xén', 'HUY373');
-INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
+('X05512', 'Thị trấn Mường Xén', 'HUY373'),
 ('X05513', 'Xã Mỹ Lý', 'HUY373'),
-('X05514', 'Xã Mỹ Sơn', 'HUY372'),
+('X05514', 'Xã Mỹ Sơn', 'HUY372');
+INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X05515', 'Xã Mỹ Thành', 'HUY374'),
 ('X05516', 'Xã Na Loi', 'HUY373'),
 ('X05517', 'Xã Na Ngoi', 'HUY373'),
@@ -8031,10 +8028,10 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X06886', 'Xã Gio Hải', 'HUY470'),
 ('X06887', 'Thị trấn Gio Linh', 'HUY470'),
 ('X06888', 'Xã Gio Mai', 'HUY470'),
-('X06889', 'Xã Gio Mỹ', 'HUY470');
-INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
+('X06889', 'Xã Gio Mỹ', 'HUY470'),
 ('X06890', 'Xã Gio Quang', 'HUY470'),
-('X06891', 'Xã Gio Sơn', 'HUY470'),
+('X06891', 'Xã Gio Sơn', 'HUY470');
+INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X06892', 'Xã Gio Việt', 'HUY470'),
 ('X06893', 'Xã Hải An', 'HUY471'),
 ('X06894', 'Xã Hải Ba', 'HUY471'),
@@ -9417,10 +9414,10 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X08271', 'Xã Hoằng Châu', 'HUY547'),
 ('X08272', 'Xã Hoằng Đại', 'HUY537'),
 ('X08273', 'Xã Hoằng Đạo', 'HUY547'),
-('X08274', 'Xã Hoằng Đạt', 'HUY547');
-INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
+('X08274', 'Xã Hoằng Đạt', 'HUY547'),
 ('X08275', 'Xã Hoằng Đông', 'HUY547'),
-('X08276', 'Xã Hoằng Đồng', 'HUY547'),
+('X08276', 'Xã Hoằng Đồng', 'HUY547');
+INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X08277', 'Xã Hoằng Đức', 'HUY547'),
 ('X08278', 'Xã Hoằng Giang', 'HUY547'),
 ('X08279', 'Xã Hoằng Hà', 'HUY547'),
@@ -10780,10 +10777,10 @@ INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X09633', 'Phường Hàng Bài', 'HUY639'),
 ('X09634', 'Phường Hàng Bồ', 'HUY639'),
 ('X09635', 'Phường Hàng Bông', 'HUY639'),
-('X09636', 'Phường Hàng Bột', 'HUY634');
-INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
+('X09636', 'Phường Hàng Bột', 'HUY634'),
 ('X09637', 'Phường Hàng Buồm', 'HUY639'),
-('X09638', 'Phường Hàng Đào', 'HUY639'),
+('X09638', 'Phường Hàng Đào', 'HUY639');
+INSERT INTO `xa` (`maXa`, `tenXa`, `maHuyen`) VALUES
 ('X09639', 'Phường Hàng Gai', 'HUY639'),
 ('X09640', 'Phường Hàng Mã', 'HUY639'),
 ('X09641', 'Phường Hàng Trống', 'HUY639'),
@@ -11777,7 +11774,8 @@ ALTER TABLE `don_dat_hang`
 --
 ALTER TABLE `giam_gia`
   ADD PRIMARY KEY (`maGiamGia`),
-  ADD KEY `maSanPham` (`maSanPham`);
+  ADD KEY `maSanPham` (`maSanPham`),
+  ADD KEY `loai_giam_gia_fk` (`maLoai`);
 
 --
 -- Indexes for table `gio_hang`
@@ -11799,6 +11797,12 @@ ALTER TABLE `huyen`
 ALTER TABLE `khach_hang`
   ADD PRIMARY KEY (`maKhachHang`),
   ADD KEY `maXa` (`maXa`);
+
+--
+-- Indexes for table `loai_giam_gia`
+--
+ALTER TABLE `loai_giam_gia`
+  ADD PRIMARY KEY (`maLoai`);
 
 --
 -- Indexes for table `loai_san_pham`
@@ -11854,9 +11858,6 @@ ALTER TABLE `xa`
   ADD PRIMARY KEY (`maXa`),
   ADD KEY `maHuyen` (`maHuyen`);
 
-  ALTER TABLE loai_giam_gia
-  ADD PRIMARY KEY (maLoai);
-
 --
 -- Constraints for dumped tables
 --
@@ -11886,7 +11887,8 @@ ALTER TABLE `don_dat_hang`
 -- Constraints for table `giam_gia`
 --
 ALTER TABLE `giam_gia`
-  ADD CONSTRAINT `giam_gia_ibfk_1` FOREIGN KEY (`maSanPham`) REFERENCES `san_pham` (`maSanPham`);
+  ADD CONSTRAINT `giam_gia_ibfk_1` FOREIGN KEY (`maSanPham`) REFERENCES `san_pham` (`maSanPham`),
+  ADD CONSTRAINT `loai_giam_gia_fk` FOREIGN KEY (`maLoai`) REFERENCES `loai_giam_gia` (`maLoai`);
 
 --
 -- Constraints for table `gio_hang`
@@ -11894,9 +11896,6 @@ ALTER TABLE `giam_gia`
 ALTER TABLE `gio_hang`
   ADD CONSTRAINT `gio_hang_ibfk_1` FOREIGN KEY (`maKhachHang`) REFERENCES `khach_hang` (`maKhachHang`),
   ADD CONSTRAINT `gio_hang_ibfk_2` FOREIGN KEY (`maSanPham`) REFERENCES `san_pham` (`maSanPham`);
-
-ALTER TABLE giam_gia
-ADD CONSTRAINT loai_giam_gia_fk FOREIGN KEY (maLoai) REFERENCES loai_giam_gia (maLoai);
 
 --
 -- Constraints for table `huyen`
@@ -11936,3 +11935,7 @@ ALTER TABLE `san_pham`
 ALTER TABLE `xa`
   ADD CONSTRAINT `xa_ibfk_1` FOREIGN KEY (`maHuyen`) REFERENCES `huyen` (`maHuyen`);
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
