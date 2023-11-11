@@ -1,5 +1,11 @@
 <?php include '../templates/header.php' ?>
 <?php
+if ($_SESSION['gioHang']==0) {
+    echo "<script>
+    alert('Giỏ hàng trống, vui lòng chọn sản phẩm!!');
+    window.location.href = '$rootPath/pages/product_page.php';
+</script>";
+}
 $maKhachHang = $_SESSION['taiKhoan']['maKhachHang'];
 $maXa = $_SESSION['taiKhoan']['maXa'];
 $statement = $dbh->prepare(
