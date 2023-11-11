@@ -24,26 +24,26 @@ include '../includes/get_new_product_id.php'
             </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Tên sản phẩm : </label>
-                <input type="text" class="textfile" id="fullname" name="TENSP">
+                <input required type="text" class="textfile" id="fullname" name="TENSP">
                 <span class="error_message"></span>
             </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Đơn giá bán : </label>
-                <input type="number" class="textfile" id="giaban" name="DONGIABAN">
+                <input required type="number" class="textfile" id="giaban" name="DONGIABAN">
                 <span class="error_message"></span>
             </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Thương hiệu : </label>
-                <select class="textfile" name="MATH" id="thuonghieu">
-                    <option value="">Chọn thương hiệu</option>
+                <select required class="textfile" name="MATH" id="thuonghieu">
+                    <option disabled selected value="">Chọn thương hiệu</option>
                     <?php include '../includes/show_brand_in_option.php' ?>
                 </select>
                 <span class="error_message"></span>
             </div>
             <div class="form_field">
                 <label for="" class="name_form_field">Loại : </label>
-                <select class="textfile" name="MALOAI" id="loai">
-                    <option value="">Chọn loại</option>
+                <select required class="textfile" name="MALOAI" id="loai">
+                    <option disabled selected value="">Chọn loại</option>
                     <?php include '../includes/show_type_in_option.php' ?>
                 </select>
                 <span class="error_message"></span>
@@ -54,7 +54,7 @@ include '../includes/get_new_product_id.php'
                 <span class="error_message"></span>
             </div>
             <div class="form_field">
-                <label for="" class="name_form_field">Ảnh đại diện : </label>
+                <label for="" class="name_form_field">Ảnh sản phẩm : </label>
                 <div class="custom-file">
                     <div>
                         <input type="file" class="custom-file-input" id="img_product" name="image" accept="image/*">
@@ -66,7 +66,7 @@ include '../includes/get_new_product_id.php'
                 </div>
                 <div class="button">
                     <input type="submit" value="Thêm" class="button_add_admin" />
-                    <a href="product_admin_index.php"><input type="button" value="Quay lại"
+                    <a href="product_index.php"><input type="button" value="Quay lại"
                             class="button_add_admin" /></a>
                 </div>
         </form>
