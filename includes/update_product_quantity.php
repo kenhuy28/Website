@@ -11,11 +11,16 @@ if ($quantityChange != 0) {
     $statement = $dbh->prepare($query);
     $success = $statement->execute();
     $result = $statement->fetch(PDO::FETCH_ASSOC);
-    if ($result["SLGH"] + $quantityChange <= $result["SLSP"]) {
+    if ($result["SLGH"] + $quantityChange <= $result["SLSP"] && $quantityChange == 1) {
         $query = "UPDATE gio_hang SET soLuong = soLuong + $quantityChange WHERE maSanPham ='$maSanPham' and maKhachHang = '$maKhachHang'";
         $statement = $dbh->prepare($query);
         $success = $statement->execute();
         echo json_encode(1);
+    } else if ($quantityChange == -1){
+        $query = "UPDATE gio_hang SET soLuong = soLuong + $quantityChange WHERE maSanPham ='$maSanPham' and maKhachHang = '$maKhachHang'";
+        $statement = $dbh->prepare($query);
+        $success = $statement->execute();
+        echo json_encode(2);
     } else {
         echo json_encode(0);
     }

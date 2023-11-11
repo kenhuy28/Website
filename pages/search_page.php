@@ -123,10 +123,14 @@ if (empty($_SESSION["taiKhoan"])) {
                         echo "<div class='product_item product_item_timkiem'>
                     <img src='../assets/img/sanpham/" . $row['hinhAnh'] . "' alt=''>
                     <div class='product_thuonghieu'>
+                   
                         <h5>" . $row['tenThuongHieu'] . "</h5>
+                        
                     </div>
                     <div class='product_name'>
+                    <a href='./product_detail_page.php?maSanPham=" . $row['maSanPham'] . "' style = 'color: black'>
                         <h5>" . $row['tenSanPham'] . "</h5>
+                        </a>
                     </div>";
                         if (giamGia($row['maSanPham'], $giamGia, $row['donGiaBan']) != null) {
                             echo "<div class='product_price' style='display: flex'>
@@ -153,7 +157,7 @@ if (empty($_SESSION["taiKhoan"])) {
         <div align="center" style="margin-top:10px" class="menu-wrapper">
             <ul class="pagination menu">
                 <li>
-                    <a href="&page=1">&laquo;</a>
+                   <?php echo "<a href='search_page.php?SearchString=" . $SearchString . "&page=1'>&laquo;</a>";?> 
                 </li>
                 <?php
                 for ($i = 1; $i <= $totalPages; $i++) {
