@@ -42,7 +42,9 @@ $stmt = $dbh->query($sql);
 $result = $stmt->fetch(PDO::FETCH_OBJ);
 $_SESSION['admin'] = $result;
 
+echo "<script>
+alert('Cập nhật thông tin thành công');
+</script>";
 // edit xong về trang index
-header("Location: ../");
-
+echo '<script>window.location.href = "../";</script>';
 ?>

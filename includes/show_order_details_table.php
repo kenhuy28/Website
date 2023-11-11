@@ -10,7 +10,7 @@ $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
 // Get the rows for the current page.
 
-$query = "SELECT san_pham.tenSanPham, chi_tiet_don_dat_hang.soLuong, chi_tiet_don_dat_hang.donGia, chi_tiet_don_dat_hang.thanhTien,san_pham.hinhAnh
+$query = "SELECT san_pham.tenSanPham, san_pham.maSanPham, chi_tiet_don_dat_hang.soLuong, chi_tiet_don_dat_hang.donGia, chi_tiet_don_dat_hang.thanhTien,san_pham.hinhAnh
 FROM chi_tiet_don_dat_hang 
 JOIN san_pham ON chi_tiet_don_dat_hang.maSanPham = san_pham.maSanPham 
 JOIN don_dat_hang ON chi_tiet_don_dat_hang.maDonHang = don_dat_hang.maDonHang 
@@ -24,7 +24,11 @@ $result = $statement->fetchAll();
 if ($result) {
     foreach ($result as $row) {
         echo "<tr style=\"height: 50px\">
-                            <td><p>" . $row->tenSanPham . "</p></td>
+                            <td class='product_name'>
+                            <a href='./product_detail_page.php?maSanPham=" . $row->maSanPham . "' style = 'color: black'>
+                                <h5>" . $row->tenSanPham . "</h5>
+                                </a>
+                            </td>
                             <td><img style = 'width: 100px;' src='../assets/img/sanpham/" . $row->hinhAnh . "' alt=''></td>
                             <td><p>" . $row->soLuong . "</p></td>
                             <td><p>" .  number_format($row->donGia) . "Đ</p></td>

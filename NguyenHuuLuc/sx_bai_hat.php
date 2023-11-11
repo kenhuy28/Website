@@ -113,6 +113,6 @@ if (isset($_POST['hienThiBXH'])) {
             </tr>
         </tbody>
     </table>
-
+    <button type="button" onclick="window.history.go(-1);">Quay lại</button>
 </form>
 <?php include '../templates/footer.php' ?>

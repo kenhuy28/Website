@@ -92,7 +92,7 @@ if (empty($_SESSION["taiKhoan"])) {
             <ul>
                 <?php foreach ($loaiSanPham as $row) {
                     echo " <li>
-                <a href=''>
+                    <a href='product_search_page.php?LSP[]=".$row['maLoai']."'  method='GET''>
                     " . $row['tenLoai'] . "
                 </a>
             </li>";
@@ -106,7 +106,7 @@ if (empty($_SESSION["taiKhoan"])) {
             <ul>
                 <?php foreach ($thuongHieu as $row) {
                     echo " <li>
-                <a href='search_page.php?'>
+                <a href='product_search_page.php?TH[]=".$row['maThuongHieu']."'  method='GET''>
                 " . $row['tenThuongHieu'] . "
                 </a>
             </li>";
@@ -123,10 +123,14 @@ if (empty($_SESSION["taiKhoan"])) {
                         echo "<div class='product_item product_item_timkiem'>
                     <img src='../assets/img/sanpham/" . $row['hinhAnh'] . "' alt=''>
                     <div class='product_thuonghieu'>
+                   
                         <h5>" . $row['tenThuongHieu'] . "</h5>
+                        
                     </div>
                     <div class='product_name'>
+                    <a href='./product_detail_page.php?maSanPham=" . $row['maSanPham'] . "' style = 'color: black'>
                         <h5>" . $row['tenSanPham'] . "</h5>
+                        </a>
                     </div>";
                         if (giamGia($row['maSanPham'], $giamGia, $row['donGiaBan']) != null) {
                             echo "<div class='product_price' style='display: flex'>
@@ -150,26 +154,28 @@ if (empty($_SESSION["taiKhoan"])) {
                 </div>
             </div>
         </div>
+
         <div align="center" style="margin-top:10px" class="menu-wrapper">
-            <ul class="pagination menu">
-                <li>
-                    <a href="&page=1">&laquo;</a>
-                </li>
-                <?php
-                for ($i = 1; $i <= $totalPages; $i++) {
-                    if ($i != $currentPage) {
-                        echo "<li><a href='search_page.php?SearchString=" . $SearchString . "&page=" . $i . "' method='POST'>" . $i . "</a></li>";
-                    } else {
-                        echo "<li><a class='active' href='search_page.php?SearchString=" . $SearchString . "&page=" . $i . "' method='POST'>" . $i . "</a></li>";
-                    }
-
+        <?php 
+         if ($stmt->rowCount() > 0) { 
+            echo "<ul class='pagination menu'>
+            <li>
+               <a href='search_page.php?SearchString=" . $SearchString . "&page=1'>&laquo;</a> 
+            </li>";
+            for ($i = 1; $i <= $totalPages; $i++) {
+                if ($i != $currentPage) {
+                    echo "<li><a href='search_page.php?SearchString=" . $SearchString . "&page=" . $i . "' method='POST'>" . $i . "</a></li>";
+                } else {
+                    echo "<li><a class='active' href='search_page.php?SearchString=" . $SearchString . "&page=" . $i . "' method='POST'>" . $i . "</a></li>";
                 }
-                echo "<li>
-            <a href=\"?SearchString=" . $SearchString . "&page=$totalPages\">&raquo;</a>
-        </li>";
-                ?>
 
-            </ul>
+            }
+            echo "<li>
+            <a href=\"?SearchString=" . $SearchString . "&page=$totalPages\">&raquo;</a>
+        </li> 
+        </ul>";
+         }
+        ?>  
         </div>
     </div>
 </div>

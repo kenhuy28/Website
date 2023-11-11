@@ -32,7 +32,7 @@ include '../includes/delete_type_from_id.php';
             <a href="javascript:history.go(-1);"><input type="button" value="Quay lại" class="button_add_admin" /></a>
         </div>
         <div class="alert_delete">
-            <div class="notification" style="width:20%  ">
+            <div class="notification" style="width:25%">
                 <h1 class="notification_title">Xác nhận xóa loại sản phẩm!</h1>
                 <input type="submit" name="delete" value="Xóa" class="alert_delete_btn delete_conform" />
                 <input type="button" value="Không" class="alert_delete_btn delete_cancel" />

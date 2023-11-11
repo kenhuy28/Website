@@ -7,6 +7,7 @@ if ($fileName != "index.php") {
 }
 echo $rootPath;
 include $rootPath . '/includes/config.php';
+include $rootPath . '/includes/update_cart_first.php';
 ?>
 
 <head>
@@ -69,7 +70,9 @@ include $rootPath . '/includes/config.php';
             <div class="header_row1">
                 <div class="header_row1_left">
                     <div class="logo">
-                        <img src="<?php echo $rootPath . "/assets/img/logo/logopaddy.png"; ?>" alt="">
+                        <a href="<?php echo $rootPath ?>">
+                            <img src="<?php echo $rootPath . "/assets/img/logo/logopaddy.png"; ?>" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="header_row_right">
