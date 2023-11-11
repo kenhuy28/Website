@@ -70,7 +70,9 @@ include $rootPath . '/includes/update_cart_first.php';
             <div class="header_row1">
                 <div class="header_row1_left">
                     <div class="logo">
-                        <img src="<?php echo $rootPath . "/assets/img/logo/logopaddy.png"; ?>" alt="">
+                        <a href="<?php echo $rootPath ?>">
+                            <img src="<?php echo $rootPath . "/assets/img/logo/logopaddy.png"; ?>" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="header_row_right">
