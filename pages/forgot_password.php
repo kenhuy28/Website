@@ -25,7 +25,7 @@ function SendVerificationLinkEmail($mail, $emailId, $activationCode)
 {
     try {
         //Server settings
-        $link = "http://" . $_SERVER['HTTP_HOST'] . "/WebLinkKienThuCung/pages/change_password_page.php?ma=" . $activationCode;
+        $link = "http://" . $_SERVER['HTTP_HOST'] . "/WebPhuKienThuCung/pages/change_password_page.php?ma=" . $activationCode;
         $mail->isSMTP(); //Send using SMTP
         $mail->CharSet = 'UTF-8'; // Đặt bộ mã hóa cho email là UTF-8
         $mail->Encoding = 'base64'; // Đặt phương thức mã hóa là base64
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Gửi email để thay đổi mật khẩu
         $email = new PHPMailer(true);
         $resetCode = generateRandomString();
-        SendVerificationLinkEmail($email,$quenMK , $resetCode);
+        SendVerificationLinkEmail($email, $quenMK, $resetCode);
         $account['khoiPhucMatKhau'] = $resetCode;
         $sql = "UPDATE khach_hang SET khoiPhucMatKhau = '$resetCode' WHERE email = '$quenMK'";
         $stmt = $dbh->query($sql);

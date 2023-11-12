@@ -15,7 +15,7 @@ if ($stmt->rowCount() <= 0) {
     $warning = 3;
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if ($stmt->rowCount() > 0) { 
+    if ($stmt->rowCount() > 0) {
         $sql = "UPDATE khach_hang SET matKhau = '$password' WHERE khoiPhucMatKhau = '$ma'";
         $stmt = $dbh->query($sql);
         $sql = "UPDATE khach_hang SET khoiPhucMatKhau = '' WHERE khoiPhucMatKhau = '$ma'";
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $warning = 2;
     }
-   
+
 }
 ?>
 
@@ -32,8 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="create_admin" style="margin-bottom: 300px">
     <!-- <h1 class="Title_Admin_create_form">Mật khẩu mới</h1> -->
     <!-- <p class="Notification_create_form">Vui lòng điền email để reset mật khẩu</p> -->
-    <form action="" class="create_admin_form" method="post"
-        id='form-6'>
+    <form action="" class="create_admin_form" method="post" id='form-6'>
         <div class="form_field">
             <label for="" class="name_form_field">Nhập mật khẩu mới: </label>
             <input type="password" class="textfile" id="password" name="NewPassword" style="width: 400px;">
@@ -45,19 +44,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 style="width: 400px;">
             <span class="error_message"></span>
         </div>
-        <?php 
+        <?php
         if ($warning == 1) {
-          echo   " <h6 style='color: forestgreen'>Đổi mật khẩu thành công</h6>";
+            echo "<script>
+            alert(\"Đổi mật khẩu thành công\");
+            window.location.href = 'login.php';
+          </script>";
         } else if ($warning == 2) {
-            echo   " <h6 style='color: red'>Đổi mật khẩu không thành công</h6>";
-        }else if ($warning == 3) {
-            echo   "<h6 style='color: red'>Không có bất kỳ tài khoản nào yêu cầu quên mật khẩu</h6>";
-        }
-         else {
-            echo   "<h6 style='color: red'></h6>";
+            echo " <h6 style='color: red'>Đổi mật khẩu không thành công</h6>";
+        } else if ($warning == 3) {
+            echo "<h6 style='color: red'>Không có bất kỳ tài khoản nào yêu cầu quên mật khẩu</h6>";
+        } else {
+            echo "<h6 style='color: red'></h6>";
         }
         ?>
-       
+
         <div class="button">
             <input id="datLaiPass" type="submit" value="Đổi mật khẩu" class="button_add_admin" style="width: 150px" />
         </div>
