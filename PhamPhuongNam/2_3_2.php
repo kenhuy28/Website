@@ -1,12 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
-
-<html>
-
-<head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-    <title>tinh dien tich HCN</title>
+<?php
+include '../templates/header.php';
+?>
 
     <style type="text/css">
         body {
@@ -51,7 +45,6 @@
         }
     </style>
 
-</head>
 
 
 
@@ -226,7 +219,7 @@
    
     ?>
 
-    <form align='center' action="2.php" method="post">
+    <form align='center' action="" method="post">
 
         <table style="width: 700px;">
             <thead>
@@ -314,4 +307,4 @@
 
 
 
-</html>
+<?php include '../templates/footer.php' ?>
