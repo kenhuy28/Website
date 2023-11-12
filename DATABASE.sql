@@ -113,7 +113,7 @@ CREATE TABLE `giam_gia` (
 --
 
 INSERT INTO `giam_gia` (`maGiamGia`, `maSanPham`, `maLoai`, `giaTriGiam`, `ngayBatDau`, `ngayKetThuc`) VALUES
-('GG0001', 'SP0002', b'01', 50000, '2023-10-24', '2023-11-15'),
+('GG0001', 'SP0002', b'01', 15000, '2023-10-24', '2023-11-15'),
 ('GG0002', 'SP0006', b'00', 5, '2023-11-09', '2023-11-12');
 
 -- --------------------------------------------------------
@@ -865,9 +865,9 @@ CREATE TABLE `khach_hang` (
 --
 
 INSERT INTO `khach_hang` (`maKhachHang`, `hoKhachHang`, `tenKhachHang`, `dienThoai`, `diaChiCuThe`, `tenNguoiDung`, `matKhau`, `email`, `ngaySinh`, `avatar`, `khoiPhucMatKhau`, `maXa`) VALUES
-('KH0001', 'Võ Thanh', 'Hào', '0358932774', 'Ký túc xá K7', 'thanhhao', 'f5bb0c8de146c67b44babbf4e6584cc0', 'hao@gmail.com', '2002-01-01', 'thanhhao.png', NULL, 'X01861'),
-('KH0002', 'Trần Cao', 'Phong', '0514684932', 'Ký túc xá K7', 'caophong', 'f5bb0c8de146c67b44babbf4e6584cc0', 'phong@gmail.com', '2002-01-01', 'caophong.png', NULL, 'X00012'),
-('KH0003', 'Lê Bảo', 'Khoa', '0867984654', 'Ký túc xá K5', 'baokhoa', 'f5bb0c8de146c67b44babbf4e6584cc0', 'khoa@gmail.com', '2003-01-30', 'baokhoa.png', NULL, 'X00008');
+('KH0001', 'Võ Thanh', 'Hào', '0358932774', 'Ký túc xá K7', 'thanhhao', 'f5bb0c8de146c67b44babbf4e6584cc0', 'hao@gmail.com', '2002-01-01', NULL, NULL, 'X01861'),
+('KH0002', 'Trần Cao', 'Phong', '0514684932', 'Ký túc xá K7', 'caophong', 'f5bb0c8de146c67b44babbf4e6584cc0', 'phong@gmail.com', '2002-01-01', NULL, NULL, 'X00012'),
+('KH0003', 'Lê Bảo', 'Khoa', '0867984654', 'Ký túc xá K5', 'baokhoa', 'f5bb0c8de146c67b44babbf4e6584cc0', 'khoa@gmail.com', '2003-01-30', NULL, NULL, 'X00008');
 
 -- --------------------------------------------------------
 

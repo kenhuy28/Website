@@ -136,7 +136,7 @@ $loaiTK = $stmt_loaitk->fetchAll(PDO::FETCH_OBJ);
         <div class="form_field">
             <label for="" class="name_form_field">Mật Khẩu : </label>
             <input type="password" class="textfield" id="matKhau" name="matKhau" >
-            <span class="error_message">(Không sửa hãy để trống!!)</span>
+            <span class="error_message">(Để trống nếu không thay đổi!!)</span>
         </div>
         <div class="form_field">
             <label for="" class="name_form_field">Tỉnh: </label>
