@@ -42,6 +42,7 @@ include '../templates/header.php';
         </li>
     </ul>
     <h2>Bài tập Chủ đề 4: Phần mảng, chuỗi, hàm, hướng đối tượng</h2>
+    <h3>Phần mảng và chuỗi</h3>
     <ul>
         <li class="line">
             <a href="./cd4bt1ThaoTacSoNguyen.php">
@@ -94,27 +95,53 @@ include '../templates/header.php';
             </a>
         </li>
     </ul>
-    <br>
-    <h2>Bài tập mảng</h2>
+    <h3>Phần mảng hai chiều</h3>
     <ul>
         <li class="line">
-            <a href="bt1Array.php">
-                <span class="bt">Một số thao tác trên mảng số nguyên</span>
+            <a href="cd4bt11MaTranSoNguyen.php">
+                <span class="bt">Bài tập 1 - Tạo và hiển thị ma trận số nguyên</span>
+            </a>
+        </li>
+    </ul>
+    <h3>Phần hướng đối tượng</h3>
+    <ul>
+        <li class="line">
+            <a href="cd4bt12ClassDonGian.php">
+                <span class="bt">Bài 1 - Tạo các lớp đơn giản</span>
             </a>
         </li>
         <li class="line">
-            <a href="tinhTienDien.php">
-                <span class="bt">Tính tiền điện</span>
+            <a href="cd4bt13QLNV.php">
+                <span class="bt">Bài 2 - Quản lý thông tin nhân viên</span>
             </a>
         </li>
         <li class="line">
-            <a href="phepTinh.php">
-                <span class="bt">Thực hiện phép tính</span>
+            <a href="cd4bt14PhanSo.php">
+                <span class="bt">Bài 3 - Phép tính trên phân số</span>
+            </a>
+        </li>
+    </ul>
+    <h2>Chủ đề 5: hệ quản trị CSDL MYSQL</h2>
+    <h3>Quản lý bán sữa</h3>
+    <ul>
+        <li class="line">
+            <a href="./cd3bt21DienTichChuNhat.php">
+                <span class="bt">2.1. Bài 1: Thiết kế form tính diện tích hình chữ nhật</span>
             </a>
         </li>
         <li class="line">
-            <a href="nhapThongtin.php">
-                <span class="bt">Nhập thông tin</span>
+            <a href="./cd3bt22tinhTienDien.php">
+                <span class="bt">2.2. Bài 2: Thiết kế form tính tiền điện</span>
+            </a>
+        </li>
+        <li class="line">
+            <a href="./cd3bt23phepTinh.php">
+                <span class="bt">2.3. Bài 3: Tạo trang web thực hiện phép tính trên 2 số</span>
+            </a>
+        </li>
+        <li class="line">
+            <a href="./cd3bt24nhapThongtin.php">
+                <span class="bt">2.4. Bài 4: Tạo trang web nhận và xử lý thông tin người dùng</span>
             </a>
         </li>
     </ul>

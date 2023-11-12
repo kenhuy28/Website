@@ -1,3 +1,5 @@
+<?php include("../templates/header.php") ?>
+
 <head>
   <style>
     td {
@@ -23,10 +25,11 @@
 
     input {
       width: 200px;
+      border-radius: 4px;
     }
   </style>
 </head>
-<?php include "oopBT2.php" ?>
+<?php include "cd4bt13QLNV.inc.php" ?>
 <?php
 if (isset($_POST['tinhLuong'])) {
   $hoTen = trim($_POST['hoTen']);
@@ -52,9 +55,7 @@ if (isset($_POST['tinhLuong'])) {
     $tienThuong = $NVSX->tinhTienThuong();
     $thucLinh = $tienLuong + $troCap + $tienThuong;
   }
-
 }
-
 
 ?>
 <form action="" method="post">
@@ -71,7 +72,7 @@ if (isset($_POST['tinhLuong'])) {
     <tbody>
       <tr>
         <td>Họ tên:</td>
-        <td><input type="text" name="hoTen" value="<?php if (isset($_POST['hoTen']))
+        <td><input required type="text" name="hoTen" value="<?php if (isset($_POST['hoTen']))
           echo $_POST['hoTen']; ?>"></td>
 
         <td>Số con:</td>
@@ -81,11 +82,11 @@ if (isset($_POST['tinhLuong'])) {
       </tr>
       <tr>
         <td>Ngày sinh:</td>
-        <td><input type="date" name="ngaySinh" value="<?php if (isset($_POST['ngaySinh']))
+        <td><input required  type="date" name="ngaySinh" value="<?php if (isset($_POST['ngaySinh']))
           echo $_POST['ngaySinh']; ?>"></td>
 
         <td>Ngày vào làm:</td>
-        <td><input type="date" name="ngayVaoLam" value="<?php if (isset($_POST['ngayVaoLam']))
+        <td><input required  type="date" name="ngayVaoLam" value="<?php if (isset($_POST['ngayVaoLam']))
           echo $_POST['ngayVaoLam']; ?>"></td>
       </tr>
       <tr>
@@ -96,9 +97,8 @@ if (isset($_POST['tinhLuong'])) {
           <input style="width: unset;" type="radio" name="gioiTinh" value="Nu" <?php if (isset($_POST['gioiTinh']) && $_POST['gioiTinh'] == 'Nu')
             echo 'checked="checked"'; ?> />Nữ
         </td>
-
         <td>Hệ số lương:</td>
-        <td><input type="number" name="heSoLuong" value="<?php if (isset($_POST['heSoLuong']))
+        <td><input required  type="number" name="heSoLuong" value="<?php if (isset($_POST['heSoLuong']))
           echo $_POST['heSoLuong']; ?>"></td>
       </tr>
       <tr>
@@ -112,41 +112,41 @@ if (isset($_POST['tinhLuong'])) {
       </tr>
       <tr>
         <td style="border: none;"></td>
-        <td>Số ngày vắng: <input style="width: 100px;" type="number" name="soNgayVang" value="<?php if (isset($_POST['soNgayVang']))
+        <td>Số ngày vắng: <input  required style="width: 100px;" type="number" name="soNgayVang" value="<?php if (isset($_POST['soNgayVang']))
           echo $_POST['soNgayVang']; ?>"></td>
-        <td colspan="2">Số sản phẩm<input style="width: 100px;" type="number" name="soSanPham" value="<?php if (isset($_POST['soSanPham']))
+        <td colspan="2">Số sản phẩm: <input style="width: 100px;" type="number" name="soSanPham" value="<?php if (isset($_POST['soSanPham']))
           echo $_POST['soSanPham']; ?>"></td>
-
       </tr>
       <tr>
         <td colspan="4" style="text-align: center;"><button type="submit" name="tinhLuong">Tính lương</button>
         </td>
       </tr>
-
       <tr>
         <td>Tiền lương:</td>
-        <td><input disabled style="width: 150px;" type="text" name="tienLuong" value="<?php if (isset($tienLuong))
+        <td><input readonly style="width: 150px;" type="text" name="tienLuong" value="<?php if (isset($tienLuong))
           echo $tienLuong; ?>"> VNĐ</td>
 
         <td>Trợ cấp:</td>
-        <td><input disabled style="width: 150px;" type="number" name="troCap" value="<?php if (isset($troCap))
+        <td><input readonly style="width: 150px;" type="number" name="troCap" value="<?php if (isset($troCap))
           echo $troCap; ?>"> VNĐ</td>
       </tr>
       <tr>
         <td>Tiền thưởng:</td>
-        <td><input disabled style="width: 150px;" type="text" name="tienThuong" value="<?php if (isset($tienThuong))
+        <td><input readonly style="width: 150px;" type="text" name="tienThuong" value="<?php if (isset($tienThuong))
           echo $tienThuong; ?>"> VNĐ</td>
 
         <td>Tiền phạt:</td>
-        <td><input disabled style="width: 150px;" type="text" name="tienPhat" value="<?php if (isset($tienPhat))
+        <td><input readonly style="width: 150px;" type="text" name="tienPhat" value="<?php if (isset($tienPhat))
           echo $tienPhat; ?>"> VNĐ</td>
       </tr>
       <tr>
-        <td colspan="4" style="text-align: center;">Thực lĩnh: <input disabled style="width: 200px;" type="text"
+        <td colspan="4" style="text-align: center;">Thực lĩnh: <input readonly style="width: 200px;" type="text"
             name="thucLinh" value="<?php if (isset($thucLinh))
               echo $thucLinh; ?>"> VNĐ</td>
       </tr>
     </tbody>
   </table>
-
 </form>
+<br>
+<?php include("back.php") ?>
+<?php include("../templates/footer.php") ?>
