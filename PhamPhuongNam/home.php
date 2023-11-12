@@ -127,11 +127,6 @@ include '../templates/header.php';
                     <p class="bt"> Bài tập 9 - Thiết kế Form Đếm phần tử, ghép mảng và sắp xếp</p>
                 </a>
             </li>
-            <li>
-                <a href="2_1_10.php">
-                    <p class="bt"> Bài tập 10 - Tạo form xếp hạng bài hát</p>
-                </a>
-            </li>
         </ul>
     </li>
     <li>
