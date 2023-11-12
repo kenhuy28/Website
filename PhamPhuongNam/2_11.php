@@ -139,7 +139,7 @@ include '../templates/header.php';
         }
         if (empty($errors) == true) {
             if (isset($_POST['Them'])) {
-                move_uploaded_file($file_tmp, "C:\\xampp\\htdocs\\php\\excercive\\topic_five\\Hinh_sua\\" . $file_name);
+                move_uploaded_file($file_tmp, "C:\\xampp\\htdocs\\php\\WebLinkKienThuCung\\PhamPhuongNam\\Hinh_sua\\" . $file_name);
                 $sql = "INSERT INTO sua (Ma_sua, Ten_sua, Ma_hang_sua, Ma_loai_sua, Trong_luong, Don_gia, TP_Dinh_Duong, Loi_ich, Hinh)
                 VALUES ('$maSua', '$tenSua', '$hangSua', '$loaiSua', '$trongLuong', '$donGia', '$thanhPhanDinhDuong', '$loiIch', '$file_name')";
                 mysqli_query($conn, $sql);
