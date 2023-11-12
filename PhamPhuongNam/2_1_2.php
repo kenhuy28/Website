@@ -3,13 +3,10 @@ include '../templates/header.php';
 ?>
 
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-    <title>tinh dien tich HCN</title>
 
     <style type="text/css">
         div{
-            background-color: blue;
+        
             padding-top: 4px;
         }
         body {
