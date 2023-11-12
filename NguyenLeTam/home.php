@@ -121,27 +121,37 @@ include '../templates/header.php';
             </a>
         </li>
     </ul>
-    <h2>Chủ đề 5: hệ quản trị CSDL MYSQL</h2>
+    <h2>Chủ đề 5: Hệ quản trị CSDL MYSQL</h2>
     <h3>Quản lý bán sữa</h3>
     <ul>
-        <li class="line">
-            <a href="./cd3bt21DienTichChuNhat.php">
-                <span class="bt">2.1. Bài 1: Thiết kế form tính diện tích hình chữ nhật</span>
+    <li class="line">
+            <a href="./cd5_2_1_Hien_thi_ds_hang_sua.php">
+                <span class="bt">2.1. Hiển thị lưới</span>
             </a>
         </li>
         <li class="line">
-            <a href="./cd3bt22tinhTienDien.php">
-                <span class="bt">2.2. Bài 2: Thiết kế form tính tiền điện</span>
+            <a href="./cd5_2_2_3_Hien_thi_ds_khach_hang.php">
+                <span class="bt">2.2. Lưới định dạng + 2.3. Lưới tùy biến</span>
             </a>
         </li>
         <li class="line">
-            <a href="./cd3bt23phepTinh.php">
-                <span class="bt">2.3. Bài 3: Tạo trang web thực hiện phép tính trên 2 số</span>
+            <a href="./cd5_2_4_Hien_thi_ds_phan_trang.php">
+                <span class="bt">2.4. Lưới phân trang</span>
             </a>
         </li>
         <li class="line">
-            <a href="./cd3bt24nhapThongtin.php">
-                <span class="bt">2.4. Bài 4: Tạo trang web nhận và xử lý thông tin người dùng</span>
+            <a href="./cd5_2_6_7_List_dang_cot_co_link.php">
+                <span class="bt">2.6 + 2.7 List dạng cột có link</span>
+            </a>
+        </li>
+        <li class="line">
+            <a href="./cd5_2_8_List_chi_tiet_phan_trang.php">
+                <span class="bt">2.8. List chi tiết có phân trang</span>
+            </a>
+        </li>
+        <li class="line">
+            <a href="./cd5_2_9_Tim_kiem.php">
+                <span class="bt">2.9. Tìm kiếm đơn giản </span>
             </a>
         </li>
     </ul>

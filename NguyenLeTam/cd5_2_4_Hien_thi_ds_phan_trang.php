@@ -1,3 +1,4 @@
+<?php include("../templates/header.php") ?>
 <style>
   a {
     text-decoration: none;
@@ -8,7 +9,6 @@ $conn = mysqli_connect('localhost', 'root', '', 'qlbansua');
 mysqli_set_charset($conn, 'UTF8');
 // $sql = "select Ma_sua,ten_sua,Trong_luong,Don_gia from sua";
 // $result = mysqli_query($conn, $sql);
-
 $rowsPerPage = 5; //số mẩu tin trên mỗi trang 
 if (!isset($_GET['page'])) {
   $_GET['page'] = 1;
@@ -45,23 +45,23 @@ $re = mysqli_query($conn, 'select * from sua');
 $numRows = mysqli_num_rows($re);
 //tổng số trang
 $maxPage = floor($numRows / $rowsPerPage) + 1;
-echo '<div style="text-align: center; margin-top:15px;">';
-echo "<a href=" . $_SERVER['PHP_SELF'] . "?page=1><<&nbsp;&nbsp;&nbsp;</a> ";
-
+echo '<div style="text-align: center; margin-top:15px; color: black;">';
+echo "<a  style='color: black; text-decoration: none;' href=" . $_SERVER['PHP_SELF'] . "?page=1><<&nbsp;&nbsp;&nbsp;</a> ";
 if ($_GET['page'] > 1)
-  echo "<a href=" . $_SERVER['PHP_SELF'] . "?page=" . ($_GET['page'] - 1) . "><&nbsp;&nbsp;</a> ";
-
+  echo "<a  style='color: black; text-decoration: none;' href=" . $_SERVER['PHP_SELF'] . "?page=" . ($_GET['page'] - 1) . "><&nbsp;&nbsp;</a> ";
 for ($i = 1; $i <= $maxPage; $i++) {
   if ($i == $_GET['page'])
     echo '<b> ' . $i . '</b> '; //trang hiện tại sẽ được bôi đậm
   else
-    echo "<a href=" . $_SERVER['PHP_SELF'] . "?page=" . $i . "> " . $i . "</a> ";
+    echo "<a  style='color: black; text-decoration: none;' href=" . $_SERVER['PHP_SELF'] . "?page=" . $i . "> " . $i . "</a> ";
 }
 if ($_GET['page'] < $maxPage)
-  echo "<a href=" . $_SERVER['PHP_SELF'] . "?page=" . ($_GET['page'] + 1) . ">&nbsp;&nbsp;></a>";
-echo "<a href=" . $_SERVER['PHP_SELF'] . "?page=" . ($maxPage) . ">&nbsp;&nbsp;&nbsp;>></a> ";
-
+  echo "<a style='color: black; text-decoration: none;'  href=" . $_SERVER['PHP_SELF'] . "?page=" . ($_GET['page'] + 1) . ">&nbsp;&nbsp;></a>";
+echo "<a style='color: black; text-decoration: none;'  href=" . $_SERVER['PHP_SELF'] . "?page=" . ($maxPage) . ">&nbsp;&nbsp;&nbsp;>></a> ";
 // echo "<br>  Tong so trang la: $maxPage ";
 echo '</div>';
-
 ?>
+<br>
+<a href="" ></a>
+<?php include("back.php") ?>
+<?php include("../templates/footer.php") ?>
