@@ -17,10 +17,10 @@
     + Tài khoản khách hàng:
         Tài khoản 1: Tên đăng nhập thanhhao, mật khẩu 123123123
         Tài khoản 2: Tên đăng nhập caophong, mật khẩu 123123123
-        Tài khoản 1: Tên đăng nhập baokhoa, mật khẩu 123123123
+        Tài khoản 3: Tên đăng nhập baokhoa, mật khẩu 123123123
     + Tài khoản nhân viên/quản trị viên
         Tài khoản 1: Tên đăng nhập huuluc, mật khẩu 1234512345
-        Tài khoản 1: Tên đăng nhập tuanlam, mật khẩu 1234512345
-        Tài khoản 1: Tên đăng nhập letam, mật khẩu 1234512345
-        Tài khoản 1: Tên đăng nhập nam5520, mật khẩu 1234512345
-- Lưu ý khi chạy trang web: Thêm :<port> vào giữa localhost và /WebPhuKienThuCung nếu đã tinh chỉnh cổng port
+        Tài khoản 2: Tên đăng nhập tuanlam, mật khẩu 1234512345
+        Tài khoản 3: Tên đăng nhập letam, mật khẩu 1234512345
+        Tài khoản 4: Tên đăng nhập nam5520, mật khẩu 1234512345
+- Lưu ý khi chạy trang web: Thêm :<port> vào giữa localhost và /WebPhuKienThuCung nếu đã tinh chỉnh port
