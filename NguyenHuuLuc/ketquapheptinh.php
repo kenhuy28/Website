@@ -4,14 +4,14 @@ $phepTinh = $_GET['phepTinh'];
 $so1 = (int) $_GET['so1'];
 $so2 = (int) $_GET['so2'];
 $ketQua;
-if ($phepTinh == "+") {
-    $ketQua = $so1 + $so2;
+if ($phepTinh == "/") {
+    $ketQua = $so1 / $so2;
 } else if ($phepTinh == "-") {
     $ketQua = $so1 - $so2;
 } else if ($phepTinh == "*") {
     $ketQua = $so1 * $so2;
 } else {
-    $ketQua = $so1 / $so2;
+    $ketQua = $so1 + $so2;
 }
 ?>
 
@@ -25,14 +25,15 @@ if ($phepTinh == "+") {
         <tr>
             <td style="color: red;">Phép tính: </td>
             <td style="color:red;">
-                <?php if ($phepTinh == "+") {
-                    echo "Cộng";
+                <?php
+                if ($phepTinh == "/") {
+                    echo "Chia";
                 } else if ($phepTinh == "-") {
                     echo "Trừ";
                 } else if ($phepTinh == "*") {
                     echo "Nhân";
                 } else {
-                    echo "Chia";
+                    echo "Cộng";
                 } ?>
             </td>
         </tr>
