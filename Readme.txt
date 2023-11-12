@@ -6,10 +6,10 @@
     + Yêu cầu: Server Apache và MySQL đã được khởi động hoàn tất
     + Chạy giao điện khách hàng
         Cách 1: Mở trình duyệt và dán đường dẫn http://localhost/WebPhuKienThuCung vào thanh địa chỉ
-        Cách 2: Vào C:\xampp\htdocs\WebPhuKienThuCung chạy file index.php
+        Cách 2: Dùng trình quản lý tệp của hệ thống (Windows Explorer đối với windows) vào C:\xampp\htdocs\WebPhuKienThuCung chạy file index.php
     + Chạy với giao diện nhân viên/quản trị viên
         Cách 1: Mở trình duyệt và dán đường dẫn http://localhost/WebPhuKienThuCung/admin vào thanh địa chỉ
-        Cách 2: Vào C:\xampp\htdocs\WebPhuKienThuCung\admin chạy file index.php
+        Cách 2: Dùng trình quản lý tệp của hệ thống (Windows Explorer đối với windows) vào C:\xampp\htdocs\WebPhuKienThuCung\admin chạy file index.php
     + Danh sách bài tập cá nhân của nhóm
         Cách 1: Mở trình duyệt và dán đường dẫn http://localhost/WebPhuKienThuCung/pages/bt_nhom.php vào thanh địa chỉ
         Cách 2: Ở giao diện người dùng, bấm vào  "Bài tập nhóm" trên header của trang web
@@ -23,3 +23,4 @@
         Tài khoản 1: Tên đăng nhập tuanlam, mật khẩu 1234512345
         Tài khoản 1: Tên đăng nhập letam, mật khẩu 1234512345
         Tài khoản 1: Tên đăng nhập nam5520, mật khẩu 1234512345
+- Lưu ý khi chạy trang web: Thêm :<port> vào giữa localhost và /WebPhuKienThuCung nếu đã tinh chỉnh cổng port
