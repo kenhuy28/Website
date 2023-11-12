@@ -28,20 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 print_r($errors);
             }
-<<<<<<< HEAD
-            $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '" . $ho . "', ten = '" . $ten . "', ngaySinh = '" . $ngaySinh . "', diaChiCuThe = '" . $diaChiCuThe . "', dienThoai = '" . $dienThoai . "', maLoai = '" . $loaiTK_ID . "',email = '" . $email . "', matKhau = '" . $matKhau . "', maXa = '" . $maXa . "', avatar = '" . $file_name . "' WHERE maNhanVien = '" . $maNhanVien . "'");
-=======
             $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '" . $ho . "', ten = '" . $ten . "', matKhau = '" . $matKhau . "', ngaySinh = '" . $ngaySinh . "', diaChiCuThe = '" . $diaChiCuThe . "', dienThoai = '" . $dienThoai . "', maLoai = '" . $loaiTK_ID . "',email = '" . $email . "', maXa = '" . $maXa . "', avatar = '" . $file_name . "' WHERE maNhanVien = '" . $maNhanVien . "'");
->>>>>>> 5c2f5f971426eca6c615e2cfb3b8e3d6726660e0
             $statement->execute();
 
         } else {
 
-<<<<<<< HEAD
-            $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '" . $ho . "', ten = '" . $ten . "', ngaySinh = '" . $ngaySinh . "', diaChiCuThe = '" . $diaChiCuThe . "', dienThoai = '" . $dienThoai . "', maLoai = '" . $loaiTK_ID . "', email = '" . $email . "', matKhau = '" . $matKhau . "', maXa = '" . $maXa . "'  WHERE maNhanVien = '" . $maNhanVien . "'");
-=======
             $statement = $dbh->prepare("UPDATE nhan_vien SET ho = '" . $ho . "', ten = '" . $ten . "', matKhau = '" . $matKhau . "', ngaySinh = '" . $ngaySinh . "', diaChiCuThe = '" . $diaChiCuThe . "', dienThoai = '" . $dienThoai . "', maLoai = '" . $loaiTK_ID . "', email = '" . $email . "', maXa = '" . $maXa . "'  WHERE maNhanVien = '" . $maNhanVien . "'");
->>>>>>> 5c2f5f971426eca6c615e2cfb3b8e3d6726660e0
             $statement->execute();
         }
         echo '<script>
