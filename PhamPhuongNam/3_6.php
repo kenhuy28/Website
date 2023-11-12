@@ -1,3 +1,8 @@
+
+<?php
+include '../templates/header.php';
+?>
+
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'qlbansua');
 mysqli_set_charset($conn, 'UTF8');
@@ -24,7 +29,7 @@ if (mysqli_num_rows($result) <> 0) {
         if($dem == 5) {
             echo "<tr>";
         }
-        echo "<td width='200'><a href='2_7.php?id=$rows[0]'><h4 style = 'margin: 0;' align='center' >$rows[1]</h4></a><br> <p align='center'> $rows[2]gr - $rows[3]VND</p> <br> <div align='center'> <img align='center' src='../../16-10/Hinh_sua/$rows[4]' width='100' height='100'></div></td>";
+        echo "<td width='200'><a href='3_7.php?id=$rows[0]'><h4 style = 'margin: 0;' align='center' >$rows[1]</h4></a><br> <p align='center'> $rows[2]gr - $rows[3]VND</p> <br> <div align='center'> <img align='center' src='../../16-10/Hinh_sua/$rows[4]' width='100' height='100'></div></td>";
         if($dem == 10) {
             echo "</tr>";
         }
@@ -56,3 +61,4 @@ if ($_GET['page'] < $maxPage) {
 
 echo "</h3>";
 ?>
+<?php include '../templates/footer.php' ?>

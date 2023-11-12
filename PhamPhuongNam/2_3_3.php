@@ -1,12 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<?php
+include '../templates/header.php';
+?>
 
-<html>
-
-<head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-    <title>tinh dien tich HCN</title>
 
     <style type="text/css">
         body {
@@ -221,19 +216,35 @@
     switch ($GT)  {
         case "+":
             $tinh = new Cong($a, $b, $c, $d);
-            $result = $tinh->tinh();
+            if ($b == 0 || $d == 0) {
+                $result = "Không thể chưa";
+            } else {
+                $result =$a."/".$b. " / ".$c."/".$d." = ". $tinh->tinh();
+            }
             break;
         case "-":
             $tinh = new Tru($a, $b, $c, $d);
-            $result = $tinh->tinh();
+            if ($b == 0 || $d == 0) {
+                $result = "Không thể chưa";
+            } else {
+                $result =$a."/".$b. " / ".$c."/".$d." = ". $tinh->tinh();
+            }
             break;
         case "x":
             $tinh = new Nhan($a, $b, $c, $d);
-            $result = $tinh->tinh();
+            if ($b == 0 || $d == 0) {
+                $result = "Không thể chưa";
+            } else {
+                $result =$a."/".$b. " / ".$c."/".$d." = ". $tinh->tinh();
+            }
             break;
         case "/":
             $tinh = new Chia($a, $b, $c, $d);
-            $result = $tinh->tinh();
+            if ($b == 0 || $d == 0) {
+                $result = "Không thể chưa";
+            } else {
+                $result =$a."/".$b. " / ".$c."/".$d." = ". $tinh->tinh();
+            }
             break;
         default:
             $result = "";
@@ -241,7 +252,7 @@
     
     ?>
 
-    <form align='center' action="3.php" method="post">
+    <form align='center' action="" method="post">
         <table>
             <tr>
                 <td>
@@ -287,4 +298,4 @@
         </table>
     </form>
 </body>
-</html>
+<?php include '../templates/footer.php' ?>

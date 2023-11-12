@@ -1,8 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<?php
+include '../templates/header.php';
+?>
 
-<html>
-
-<head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -178,7 +177,7 @@
     }
     ?>
 
-    <form align='center' action="1.php" method="post">
+    <form align='center' action="" method="post">
 
         <table>
             <thead>
@@ -269,4 +268,4 @@
 </script>
 
 
-</html>
+<?php include '../templates/footer.php' ?>

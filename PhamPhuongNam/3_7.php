@@ -1,3 +1,8 @@
+<?php
+include '../templates/header.php';
+?>
+
+
 <style>
     th{
         font-size:50px;
@@ -27,16 +32,16 @@ if (isset($_GET['id'])) {
             
         </tr>
         <tr>
-            <td width=30><img src='../img/{$row['Hinh']}' /></td>
+            <td width=30><img style='width: 100px; height: 100px;' src='Hinh_sua/{$row['Hinh']}' /></td>
             <td>
                 <b style='display:block'><i>Thành phần dinh dưỡng</i></b>
                 <p>{$row['TP_Dinh_Duong']}</p>
                 <b style='display:block'><i>Lợi ích</i></b>
                 <p>{$row['Loi_ich']}</p>
-                <p align='right'><b><i>Trọng lượng: </i></b>{$row['Trong_luong']} - <b><i>Đơn giá: </i></b>{$row['Don_gia']} VND</p>
+                <p align='left'><b><i>Trọng lượng: </i></b>{$row['Trong_luong']} - <b><i>Đơn giá: </i></b>{$row['Don_gia']} VND</p>
             </td>
         </tr>
-        <tr> <td><a href='sql4.php'>Quay lại</a></td></tr>
+        <tr> <td><a href='javascript:history.go(-1)'>Quay lại</a></td></tr>
    </table>";
         // Thêm nút quay trở về danh sách sản phẩm
        
@@ -47,4 +52,5 @@ if (isset($_GET['id'])) {
     echo "Thiếu thông tin sản phẩm.";
 }
 ?>
+<?php include '../templates/footer.php' ?>
    
