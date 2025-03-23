@@ -53,9 +53,9 @@ $tinhTrang = $_GET['tinhTrang'];
     }
 
     .pagination a.active {
-        background-color: #244cbb;
+        background-color: #CC3333;
         color: white;
-        border: 1px solid #244cbb;
+        border: 1px solid #CC3333;
     }
 
     .menu li {
@@ -92,6 +92,16 @@ $tinhTrang = $_GET['tinhTrang'];
 <a href="javascript:history.go(-1);">
     <button class="button_add_admin" class="form-submit" style="width: 150px">Quay lại</button>
 </a>
+<?php
+// Xử lý trạng thái đơn hàng ở đây
+if ($tinhTrang == 3) { // 3 là trạng thái "Chưa xác nhận"
+    echo '<a href="../includes/customer_process_order.php?id=' . $id . '">
+    <button class="button_add_admin" style="width: 150px">Hủy Đơn Hàng</button>
+</a>';
+}
+?>
+
+
 <div class="product_list" style="min-width: 700px;">
     <table class="my-table">
         <thead>

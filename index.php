@@ -41,13 +41,13 @@ if (empty($_SESSION["taiKhoan"])) {
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="assets/img/banner/banner (1).png" alt="Hình ảnh 1">
+        <img src="assets/img/banner/banner.png" alt="Hình ảnh 1">
       </div>
       <div class="swiper-slide">
-        <img src="assets/img/banner/banner (2).png" alt="Hình ảnh 2">
+        <img src="assets/img/banner/banner2.png" alt="Hình ảnh 2">
       </div>
       <div class="swiper-slide">
-        <img src="assets/img/banner/banner (3).png" alt="Hình ảnh 3">
+        <img src="assets/img/banner/banner3.png" alt="Hình ảnh 3">
       </div>
       <div class="swiper-pagination">
         <div class="swiper-pagination_page">
@@ -74,29 +74,29 @@ if (empty($_SESSION["taiKhoan"])) {
   <div class="vanChuyen">
     <h6>Miễn Phí Vận Chuyển</h6>
     <p>Áp dụng cho đơn hàng từ 500K</p>
-    <p>Hoả tốc 4h trong nội thành HCM</p>
+    <p>Hoả tốc 4h trong nội thành Cần Thơ</p>
   </div>
   <div class="vanChuyen">
-    <h6>Miễn Phí Vận Chuyển</h6>
+    <h6>Giao Hàng Hoả Tốc</h6>
     <p>Áp dụng cho đơn hàng từ 500K</p>
-    <p>Hoả tốc 4h trong nội thành HCM</p>
+    <p>Giao ngay trong nội thành Cần Thơ chỉ trong 4 giờ</p>
   </div>
   <div class="vanChuyen">
-    <h6>Miễn Phí Vận Chuyển</h6>
-    <p>Áp dụng cho đơn hàng từ 500K</p>
-    <p>Hoả tốc 4h trong nội thành HCM</p>
+    <h6>Giảm Giá Cực Sốc</h6>
+    <p>Áp dụng cho đơn hàng từ 1000K</p>
+    <p>Tận hưởng ưu đãi giảm giá hấp dẫn </p>
   </div>
   <div class="vanChuyen">
-    <h6>Miễn Phí Vận Chuyển</h6>
-    <p>Áp dụng cho đơn hàng từ 500K</p>
-    <p>Hoả tốc 4h trong nội thành HCM</p>
+    <h6>Ưu đãi ngập tràng</h6>
+    <p>Áp dụng cho sinh viên</p>
+    <p>Hoả tốc 4h trong nội thành Cần Thơ</p>
   </div>
 </div>
 <div class="MuaThucCung">
-  <h6>Mua sắm theo giống thú cưng</h6>
+  <h6 >Đặt quyền ưu đãi</h6>
   <div class="img_thucung">
-    <img src="assets/img/banner/dog_banner_1370x.png" alt="">
-    <img src="assets/img/banner/cat_banner_1370x.png" alt="">
+    <img src="assets/img/banner/banner4.png" alt="">
+    <img src="assets/img/banner/banner5.png" alt="">
   </div>
 </div>
 <div class="boSuutap">
@@ -107,58 +107,58 @@ if (empty($_SESSION["taiKhoan"])) {
   </div>
   <div class="boSuuTap_body">
     <a href="#">
-      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/laptop.png" alt=""
         style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
+      <h6>Laptop</h6>
     </a>
     <a href="#">
-      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/dienthoai.png" alt=""
         style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
+      <h6>Điện thoại</h6>
     </a>
     <a href="#">
-      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/maytinhbang.png" alt=""
         style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
+      <h6>Máy tính bảng</h6>
     </a>
     <a href="#">
-      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/dongho.png" alt=""
         style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
+      <h6>Đồng hồ</h6>
     </a>
     <a href="#">
-      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/PC.png" alt=""
         style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
+      <h6>PC</h6>
     </a>
     <a href="#">
-      <img src="assets/img/banner/collection_banner_pate_rc_kitten_570x.png" alt=""
+      <img src="assets/img/banner/phukien.png" alt=""
         style="width: 200px; height: 200px;">
-      <h6>Pate Cho Miu</h6>
+      <h6>Phụ kiện</h6>
     </a>
   </div>
   <div class="boSuuTap_body">
     <a href="#">
-      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
-      <h6 style="color: #f6c518;">Pate Cho Miu</h6>
+      <img src="assets/img/banner/chuotmaytinh.jpg" alt="" style="width: 320px; height: 320px;">
+      <h6 style="color: #f6c518;">Chuột máy tính</h6>
     </a>
     <a href="#">
-      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
-      <h6 style="color: #f6c518;">Pate Cho Miu</h6>
+      <img src="assets/img/banner/donghothoitrang.jpg" alt="" style="width: 320px; height: 320px;">
+      <h6 style="color: #f6c518;">Đồng hồ thời trang</h6>
     </a>
     <a href="#">
-      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
-      <h6 style="color: #f6c518;">Pate Cho Miu</h6>
+      <img src="assets/img/banner/mayin.jpg" alt="" style="width: 320px; height: 320px;">
+      <h6 style="color: #f6c518;">Máy in</h6>
     </a>
     <a href="#">
-      <img src="assets/img/banner/hairball_510x.png" alt="" style="width: 320px; height: 320px;">
-      <h6 style="color: #f6c518;">Pate Cho Miu</h6>
+      <img src="assets/img/banner/oplung.jpg" alt="" style="width: 320px; height: 320px;">
+      <h6 style="color: #f6c518;">Ốp lưng điện thoại</h6>
     </a>
   </div>
   <div class="boSuutap">
     <div class="boSuuTap_header">
       <h6></h6>
-      <h6>Được boss yêu thích</h6>
+      <h6>bán chạy nhất !!</h6>
       <a href="">Xem tất cả</a>
     </div>
     <div class="boSuuTap_body">
@@ -180,8 +180,8 @@ if (empty($_SESSION["taiKhoan"])) {
          </div>";
         if (giamGia($row['maSanPham'], $giamGia, $row['donGiaBan']) != null) {
           echo "<div class='product_price' style='display: flex'>
-  <h5 style='text-decoration: line-through; width: 70px'>" . number_format($row['donGiaBan']) . "đ   </h5>     
-  <h5 style='color: red;'>   " . number_format(giamGia($row['maSanPham'], $giamGia, $row['donGiaBan'])) . "đ</h5>
+        <h5 style='text-decoration: line-through; width: 70px'>" . number_format($row['donGiaBan']) . "đ   </h5>     
+        <h5 style='color: red;'>   " . number_format(giamGia($row['maSanPham'], $giamGia, $row['donGiaBan'])) . "đ</h5>
 </div>";
         } else {
           echo "<div class='product_price'>
@@ -220,7 +220,7 @@ if (empty($_SESSION["taiKhoan"])) {
   </div>
   <div class="MuaThucCung">
     <div class="MuaThucCung_header">
-      <h6>1000+ Thương Hiệu Boss Thích</h6>
+      <h6>Thương Hiệu nổi bật</h6>
       <a href="">Xem tất cả</a>
     </div>
     <div class='thuongHieu'>
@@ -273,4 +273,4 @@ if (empty($_SESSION["taiKhoan"])) {
       }
     });
   });
-</script>
+</script>\

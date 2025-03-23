@@ -25,18 +25,18 @@ function SendVerificationLinkEmail($mail, $emailId, $activationCode)
 {
     try {
         //Server settings
-        $link = "http://" . $_SERVER['HTTP_HOST'] . "/WebPhuKienThuCung/pages/change_password_page.php?ma=" . $activationCode;
+        $link = "http://" . $_SERVER['HTTP_HOST'] . "/Website/pages/change_password_page.php?ma=" . $activationCode;
         $mail->isSMTP(); //Send using SMTP
         $mail->CharSet = 'UTF-8'; // Đặt bộ mã hóa cho email là UTF-8
         $mail->Encoding = 'base64'; // Đặt phương thức mã hóa là base64
         $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
         $mail->SMTPAuth = true; //Enable SMTP authentication
-        $mail->Username = 'nam5520000@gmail.com'; //SMTP username
-        $mail->Password = 'qjvi usyy swop tjta'; //SMTP password
+        $mail->Username = 'anhhuyy2802@gmail.com'; //SMTP username
+        $mail->Password = 'zofi ilrc gplu jjyp'; //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
         $mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
-        $mail->setFrom('nam5520000@gmail.com', 'paddyshop');
+        $mail->setFrom('anhhuyy2802@gmail.com', 'Cellphone S');
         $mail->addAddress($emailId); //Add a recipient
         $mail->SMTPSecure = 'tls';
 

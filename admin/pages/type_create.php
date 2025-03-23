@@ -16,7 +16,7 @@ include '../includes/get_new_type_id.php';
 </style>
 
 <div class="create_admin">
-    <h1 class="Title_Admin_create_form">Thêm màu sắc</h1>
+    <h1 class="Title_Admin_create_form">Thêm Loại</h1>
     <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
     <form action="../includes/create_type.php" method="post" id="form-3">
         <div class="form_field">

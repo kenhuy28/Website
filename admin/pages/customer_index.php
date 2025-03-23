@@ -2,7 +2,7 @@
 include '../includes/check_permisson.php';
 check($nv->maLoai, 'KH');
 ?>
-<!-- SELECT concat(khach_hang.hoKhachHang,' ',khach_hang.tenKhachHang) AS hoTenKhachHang, khach_hang.dienThoai, khach_hang.ngaySinh,khach_hang.email, concat(khach_hang.diaChiCuThe,", ",xa.tenXa,", ",huyen.tenHuyen,", ",tinh.tenTinh) AS diaChi FROM khach_hang JOIN xa on khach_hang.maXa=xa.maXa JOIN huyen on huyen.maHuyen=xa.maHuyen JOIN tinh on tinh.maTinh=huyen.maTinh -->
+
 
 <?php
 $rowOfPage = 10;
@@ -10,7 +10,24 @@ $totalRows = $dbh->query('SELECT COUNT(*) FROM khach_hang')->fetchColumn();
 $totalPages = ceil($totalRows / $rowOfPage);
 $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
-$query = 'SELECT concat(khach_hang.hoKhachHang," ",khach_hang.tenKhachHang) AS hoTenKhachHang, khach_hang.dienThoai, khach_hang.ngaySinh, khach_hang.email, concat(khach_hang.diaChiCuThe,", ",xa.tenXa,", ",huyen.tenHuyen,", ",tinh.tenTinh) AS diaChi FROM khach_hang JOIN xa on khach_hang.maXa=xa.maXa JOIN huyen on huyen.maHuyen=xa.maHuyen JOIN tinh on tinh.maTinh=huyen.maTinh';
+// Cập nhật truy vấn để thêm điểm tích lũy
+$query = '
+SELECT 
+    concat(khach_hang.hoKhachHang, " ", khach_hang.tenKhachHang) AS hoTenKhachHang, 
+    khach_hang.dienThoai, 
+    khach_hang.ngaySinh, 
+    khach_hang.email, 
+    concat(khach_hang.diaChiCuThe, ", ", xa.tenXa, ", ", huyen.tenHuyen, ", ", tinh.tenTinh) AS diaChi, 
+    khach_hang.diemTichLuy  -- Thêm trường điểm tích lũy
+FROM 
+    khach_hang 
+JOIN 
+    xa ON khach_hang.maXa = xa.maXa 
+JOIN 
+    huyen ON huyen.maHuyen = xa.maHuyen 
+JOIN 
+    tinh ON tinh.maTinh = huyen.maTinh';
+
 $query_extend = '';
 $where_conditions = [];
 if (!empty($_POST['tenKH']))
@@ -42,7 +59,6 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
         padding-left: 10px;
         padding-bottom: -15px;
         border-collapse: collapse;
-
     }
 
     .table_dskhadmin {
@@ -70,55 +86,47 @@ $statement->setFetchMode(PDO::FETCH_OBJ);
                 <td>
                     <input type="text" class="textfile" id="fullname" name="tenKH" value="<?php if (isset($_POST['tenKH']))
                         echo $_POST['tenKH'] ?>" style="width: 100%; min-width: 300px;">
-                    </td>
-                    <td>
-                        <input type="text" class="textfile" id="phoneNumber" value="<?php if (isset($_POST['dienthoai']))
+                </td>
+                <td>
+                    <input type="text" class="textfile" id="phoneNumber" value="<?php if (isset($_POST['dienthoai']))
                         echo $_POST['dienthoai'] ?>" name="dienthoai" style="width: 100%; min-width: 300px;">
-                    </td>
-                    <td>
-                        <input type="text" class="textfile" id="email" name="email" value="<?php if (isset($_POST['email']))
+                </td>
+                <td>
+                    <input type="text" class="textfile" id="email" name="email" value="<?php if (isset($_POST['email']))
                         echo $_POST['email'] ?>" style="width: 100%; min-width: 300px;">
-                    </td>
-                </tr>
-            </table>
-            <div class="search_button" style="position: absolute;top: 80px;">
-                <input type="submit" value="Tìm kiếm" class="search_button_btn" />
-            </div>
-        </form>
-    </div>
-    <br><br>
-    <table class="table_dskhadmin">
-        <thead>
-            <tr style="height: 40px;">
-                <th style="width: 15%;">Họ tên</th>
-                <th style="width: 10%;">Số điện thoại</th>
-                <th style="width: 10%;">Ngày sinh</th>
-                <th style="width: 20%;">Email</th>
-                <th style="width: 45%;">Địa chỉ</th>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <?php
-                    while ($row = $statement->fetch())
-                        echo '
-                            <tr style="height: 35px;">
-                            <td>'
-                            . $row->hoTenKhachHang . '
-                            </td>
-                            <td>'
-                            . $row->dienThoai . '
-                            </td>
-                            <td>'
-                            . $row->ngaySinh . '
-                            </td>
-                            <td>'
-                            . $row->email . '
-                            </td>
-                            <td>'
-                            . $row->diaChi . '
-                            </td>
-                        </tr>';
-                    ?>
+        </table>
+        <div class="search_button" style="position: absolute;top: 80px;">
+            <input type="submit" value="Tìm kiếm" class="search_button_btn" />
+        </div>
+    </form>
+</div>
+<br><br>
+<table class="table_dskhadmin">
+    <thead>
+        <tr style="height: 40px;">
+            <th style="width: 15%;">Họ tên</th>
+            <th style="width: 10%;">Số điện thoại</th>
+            <th style="width: 10%;">Ngày sinh</th>
+            <th style="width: 20%;">Email</th>
+            <th style="width: 45%;">Địa chỉ</th>
+            <th style="width: 10%;">Điểm tích lũy</th> <!-- Thêm cột điểm tích lũy -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+            while ($row = $statement->fetch())
+                echo '
+                    <tr style="height: 35px;">
+                        <td>' . $row->hoTenKhachHang . '</td>
+                        <td>' . $row->dienThoai . '</td>
+                        <td>' . $row->ngaySinh . '</td>
+                        <td>' . $row->email . '</td>
+                        <td>' . $row->diaChi . '</td>
+                        <td>' . $row->diemTichLuy . '</td> <!-- Hiển thị điểm tích lũy -->
+                    </tr>';
+        ?>
     </tbody>
 </table>
 <?php include '../includes/pagination.php' ?>

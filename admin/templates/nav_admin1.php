@@ -35,18 +35,39 @@ include $_SESSION['rootPath'] . '/includes/config.php';
     <style>
         .right {
             overflow-y: auto;
+            max-height: 100vh;
         }
+        .left {
+            width: var(--with--left);
+            background-color: #CC3333;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh; /* Sử dụng 100vh để đảm bảo chiều cao đầy đủ */
+            padding: 20px;
+            overflow-y: auto; /* Thêm thuộc tính này để cho phép cuộn dọc */
+}
+
     </style>
 </head>
 <div class="app">
     <div class="grid">
         <div class="left">
             <div class="nav">
-                <div class="nav_logo">
-                    <a href="#">
-                        <img src="<?php echo $_SESSION['rootPath'] . "/assets/img/logopaddy.png"; ?>" alt="logo"
-                            style="background: #244cbb;"></a>
-                </div>
+            <div class="nav_logo">
+        <a href="#">
+        <img src="<?php echo $_SESSION['rootPath'] . '/assets/img/logot1.png'; ?>" alt="logo" class="logo">
+        </a>
+    </div>
+        <style>
+        .nav_logo img.logo {
+        width: 190px;  /* Chiều rộng mong muốn */
+        height: 50px;  /* Chiều cao mong muốn */
+        background: #CC3333;  /* Màu nền nếu hình ảnh không hiển thị */
+        object-fit: cover; /* Giúp hình ảnh không bị méo */
+        }
+         </style>
+
             </div>
             <ul class="nav_ul">
                 <li class="nav_li">
@@ -112,6 +133,16 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
+                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/product_stock_status.php"; ?>">
+                        <div class="nav_li_icon">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <div class="nav_li_title">
+                            Kho hàng
+                        </div>
+                    </a>
+                </li>
+                <li class="nav_li">
                     <a href="<?php echo $_SESSION['rootPath'] . "/pages/entry_index.php"; ?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-store"></i>
@@ -144,12 +175,54 @@ include $_SESSION['rootPath'] . '/includes/config.php';
                     </a>
                 </li>
                 <li class="nav_li">
+                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/comments.php"; ?>">
+        <div class="nav_li_icon">
+            <i class="fa-solid fa-comments"></i> <!-- Thay đổi icon nếu cần -->
+                    </div>
+                        <div class="nav_li_title">
+            Bình luận
+            </div>
+                </a>
+                </li>
+
+                <li class="nav_li">
                     <a href="<?php echo $_SESSION['rootPath'] . "/pages/statistics_index.php"; ?>">
                         <div class="nav_li_icon">
                             <i class="fa-solid fa-bug"></i>
                         </div>
                         <div class="nav_li_title">
                             Thống kê
+                        </div>
+                    </a>
+                </li>
+
+                <li class="nav_li">
+                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/confirm_requests.php"; ?>">
+                        <div class="nav_li_icon">
+                            <i class="fa-solid fa-bug"></i>
+                        </div>
+                        <div class="nav_li_title">
+                            Xác nhận 
+                        </div>
+                    </a>
+                </li>
+                <li class="nav_li">
+                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/approve.php"; ?>">
+                        <div class="nav_li_icon">
+                            <i class="fa-solid fa-bug"></i>
+                        </div>
+                        <div class="nav_li_title">
+                            Phê duyệt 
+                        </div>
+                    </a>
+                </li>
+                <li class="nav_li">
+                    <a href="<?php echo $_SESSION['rootPath'] . "/pages/request_entry.php"; ?>">
+                        <div class="nav_li_icon">
+                            <i class="fa-solid fa-bug"></i>
+                        </div>
+                        <div class="nav_li_title">
+                            Yêu cầu 
                         </div>
                     </a>
                 </li>

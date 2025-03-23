@@ -10,7 +10,8 @@ $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
 // Get the rows for the current page.
 
-$query = "SELECT san_pham.tenSanPham, chi_tiet_don_dat_hang.soLuong, chi_tiet_don_dat_hang.donGia, chi_tiet_don_dat_hang.thanhTien 
+$query = "SELECT san_pham.tenSanPham, chi_tiet_don_dat_hang.soLuong, chi_tiet_don_dat_hang.donGia, chi_tiet_don_dat_hang.thanhTien,
+chi_tiet_don_dat_hang.hoTen, chi_tiet_don_dat_hang.sdt, chi_tiet_don_dat_hang.email, chi_tiet_don_dat_hang.diaChi, don_dat_hang.thanhtoan
 FROM chi_tiet_don_dat_hang 
 JOIN san_pham ON chi_tiet_don_dat_hang.maSanPham = san_pham.maSanPham 
 JOIN don_dat_hang ON chi_tiet_don_dat_hang.maDonHang = don_dat_hang.maDonHang 
@@ -28,6 +29,11 @@ if ($result) {
                             <td><p>" . $row->soLuong . "</p></td>
                             <td><p>" . $row->donGia . "</p></td>
                             <td><p>" . $row->thanhTien . "</p></td>
+                            <td><p>" . htmlspecialchars($row->hoTen) . "</p></td>
+                            <td><p>" . htmlspecialchars($row->sdt) . "</p></td>
+                            <td><p>" . htmlspecialchars($row->email) . "</p></td>
+                            <td><p>" . htmlspecialchars($row->diaChi) . "</p></td>
+                            <td><p>" . htmlspecialchars($row->thanhtoan) . "</p></td>
                         </tr>";
     }
 } else {

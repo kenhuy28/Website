@@ -4,6 +4,43 @@
 require_once('../includes/config.php');
 require_once('../includes/check_giam_gia.php');
 
+function removeVietnameseAccents($str) {
+    $accents = [
+        'à', 'á', 'ạ', 'ả', 'ã', 'â', 'ầ', 'ấ', 'ậ', 'ẩ', 'ẫ', 'ă', 'ằ', 'ắ', 'ặ', 'ẳ', 'ẵ',
+        'è', 'é', 'ẹ', 'ẻ', 'ẽ', 'ê', 'ề', 'ế', 'ệ', 'ể', 'ễ',
+        'ì', 'í', 'ị', 'ỉ', 'ĩ',
+        'ò', 'ó', 'ọ', 'ỏ', 'õ', 'ô', 'ồ', 'ố', 'ộ', 'ổ', 'ỗ', 'ơ', 'ờ', 'ớ', 'ợ', 'ở', 'ỡ',
+        'ù', 'ú', 'ụ', 'ủ', 'ũ', 'ư', 'ừ', 'ứ', 'ự', 'ử', 'ữ',
+        'ỳ', 'ý', 'ỵ', 'ỷ', 'ỹ',
+        'đ',
+        'À', 'Á', 'Ạ', 'Ả', 'Ã', 'Â', 'Ầ', 'Ấ', 'Ậ', 'Ẩ', 'Ẫ', 'Ă', 'Ằ', 'Ắ', 'Ặ', 'Ẳ', 'Ẵ',
+        'È', 'É', 'Ẹ', 'Ẻ', 'Ẽ', 'Ê', 'Ề', 'Ế', 'Ệ', 'Ể', 'Ễ',
+        'Ì', 'Í', 'Ị', 'Ỉ', 'Ĩ',
+        'Ò', 'Ó', 'Ọ', 'Ỏ', 'Õ', 'Ô', 'Ồ', 'Ố', 'Ộ', 'Ổ', 'Ỗ', 'Ơ', 'Ờ', 'Ớ', 'Ợ', 'Ở', 'Ỡ',
+        'Ù', 'Ú', 'Ụ', 'Ủ', 'Ũ', 'Ư', 'Ừ', 'Ứ', 'Ự', 'Ử', 'Ữ',
+        'Ỳ', 'Ý', 'Ỵ', 'Ỷ', 'Ỹ',
+        'Đ'
+    ];
+    $replacements = [
+        'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a',
+        'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e',
+        'i', 'i', 'i', 'i', 'i',
+        'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
+        'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u', 'u',
+        'y', 'y', 'y', 'y', 'y',
+        'd',
+        'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A',
+        'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E',
+        'I', 'I', 'I', 'I', 'I',
+        'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O',
+        'U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'U',
+        'Y', 'Y', 'Y', 'Y', 'Y',
+        'd'
+    ];
+    return str_replace($accents, $replacements, $str); // Không cần strtolower() vì bạn đã thay đổi hết sang dạng thường
+}
+$searchString = removeVietnameseAccents($_GET['SearchString']); // Áp dụng hàm removeVietnameseAccents
+$searchStringParam = '%' . $searchString . '%'; // Thêm % cho tìm kiếm kiểu LIKE
 
 
 $sql = "SELECT * FROM thuong_hieu";
@@ -16,7 +53,9 @@ $loaiSanPham = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $sql = "SELECT * FROM giam_gia";
 $stmt = $dbh->query($sql);
 $giamGia = $stmt->fetchAll(PDO::FETCH_OBJ);
-
+$sql = "SELECT moTa FROM san_pham";
+$stmt = $dbh->query($sql);
+$moTaSanPham = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $SearchString = $_GET['SearchString'];
 
 $rowOfPage = 9;
@@ -27,13 +66,29 @@ WHERE p.tenSanPham LIKE '%$SearchString%' OR b.tenThuongHieu LIKE '%$SearchStrin
 $totalPages = ceil($totalRows / $rowOfPage);
 $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
-
-// Lấy giá trị từ ô tìm kiếm
-$sql = "SELECT p.*,b.tenThuongHieu FROM san_pham p
-                 JOIN thuong_hieu b ON p.maThuongHieu = b.maThuongHieu
-                 JOIN loai_san_pham c ON c.maLoai = p.maLoai
-                 WHERE p.tenSanPham LIKE '%$SearchString%' OR b.tenThuongHieu LIKE '%$SearchString%' OR c.tenLoai LIKE '%$SearchString%'" . " LIMIT $rowOfPage  OFFSET " . (($currentPage - 1) * $rowOfPage);
-$stmt = $dbh->query($sql);
+$searchString = strtolower(removeVietnameseAccents($_GET['SearchString']));
+$searchStringParam = '%' . $searchString . '%';
+$sql = "SELECT DISTINCT p.tenSanPham, p.*, b.tenThuongHieu, c.tenLoai, p.moTa
+        FROM san_pham p
+        JOIN thuong_hieu b ON p.maThuongHieu = b.maThuongHieu
+        JOIN loai_san_pham c ON c.maLoai = p.maLoai
+        LEFT JOIN thong_so_ky_thuat ts ON p.maSanPham = ts.maSanPham
+        WHERE 
+            LOWER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(p.tenSanPham, 'à', 'a'), 'á', 'a'), 'ạ', 'a'), 'ả', 'a'), 'ã', 'a')) LIKE :searchString
+        OR LOWER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(b.tenThuongHieu, 'à', 'a'), 'á', 'a'), 'ạ', 'a'), 'ả', 'a'), 'ã', 'a')) LIKE :searchString
+        OR LOWER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(c.tenLoai, 'à', 'a'), 'á', 'a'), 'ạ', 'a'), 'ả', 'a'), 'ã', 'a')) LIKE :searchString
+        OR LOWER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(p.moTa, 'à', 'a'), 'á', 'a'), 'ạ', 'a'), 'ả', 'a'), 'ã', 'a')) LIKE :searchString
+        OR LOWER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ts.tenThongSo, 'à', 'a'), 'á', 'a'), 'ạ', 'a'), 'ả', 'a'), 'ã', 'a')) LIKE :searchString
+        OR LOWER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ts.giaTriThongSo, 'à', 'a'), 'á', 'a'), 'ạ', 'a'), 'ả', 'a'), 'ã', 'a')) LIKE :searchString
+        LIMIT :rowOfPage OFFSET :offset";
+$stmt = $dbh->prepare($sql);
+// Bind giá trị tham số tìm kiếm
+$stmt->bindValue(':searchString', $searchStringParam, PDO::PARAM_STR);
+// Bind phân trang
+$stmt->bindValue(':rowOfPage', $rowOfPage, PDO::PARAM_INT);
+$stmt->bindValue(':offset', ($currentPage - 1) * $rowOfPage, PDO::PARAM_INT);
+// Thực thi câu truy vấn
+$stmt->execute();
 $sanPham = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if (empty($_SESSION["taiKhoan"])) {
     require_once('../includes/login_required.php');
@@ -65,9 +120,9 @@ if (empty($_SESSION["taiKhoan"])) {
     }
 
     .pagination a.active {
-        background-color: #244cbb;
+        background-color: #CC3333;
         color: white;
-        border: 1px solid #244cbb;
+        border: 1px solid #CC3333;
     }
 
     .menu li {

@@ -1,7 +1,7 @@
 <?php
 function check($loai, $trang) {
-    $kho_pan = ['TH','LSP','SP','NK'];
-    $sale_pan = ['DDH','KH'];
+    $kho_pan = ['TH','LSP','SP','NK','XK','KHO','YES'];
+    $sale_pan = ['DDH','KH','SP','XNH','KHO'];
     if ($loai == 'LTK002') {
         if (!in_array($trang, $sale_pan)) { 
             header('Location: ../pages/access_permisson.php');

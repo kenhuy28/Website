@@ -28,18 +28,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ob_end_flush();
 ?>
+<div class="Smember"> 
+    <img src="../assets/img/logo/Smember.png" alt="Logo Smember" class="centered-image">
+</div>
 <div class="login_flex_right_title">
     <h6>Đăng Nhập</h6>
 </div>
 <form action="login.php" class="create_admin_form" id="form-2" method="POST">
     <div class="form_field">
-        <label for="taikhoan" class="name_form_field">Tài khoản : </label>
+        <label for="taikhoan" class="name_form_field">Tài khoản  </label>
         <input type="text" class="textfile" name="tendn" id="taikhoan" value="<?php if ($username != "")
             echo $username; ?>">
         <span class="error_message"></span>
     </div>
     <div class="form_field">
-        <label for="matkhau" class="name_form_field">Mật khẩu : </label>
+        <label for="matkhau" class="name_form_field">Mật khẩu  </label>
         <input type="password" class="textfile" id="matkhau" name="matkhau">
         <span class="error_message">
         </span>
@@ -79,3 +82,15 @@ ob_end_flush();
     });
 </script>
 <?php include '../templates/footer.php' ?>
+<style>
+.Smember {
+    display: flex;
+    justify-content: center; /* Căn giữa hình ảnh theo chiều ngang */
+    align-items: center; /* Căn giữa hình ảnh theo chiều dọc nếu cần */
+}
+
+.centered-image {
+    max-width: 10%; /* Giảm kích thước tối đa của hình ảnh (bạn có thể điều chỉnh theo ý muốn) */
+    height: auto; /* Giữ tỉ lệ khung hình cho hình ảnh */
+}
+</style>

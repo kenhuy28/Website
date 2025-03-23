@@ -13,10 +13,11 @@ include $rootPath . '/includes/update_cart_first.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phụ kiện thú cưng</title>
+    <title>T1 Store</title>
     <link rel="icon" href=<?php echo $rootPath . "/assets/img/logo/header_logo.png" ?> type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/base.css" ?> ">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/main2.css" ?>">
+    <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/main3.css" ?>">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/grid.css" ?>">
     <link rel="stylesheet" href="<?php echo $rootPath . "/assets/css/responsive.css" ?>">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,6 +28,12 @@ include $rootPath . '/includes/update_cart_first.php';
         rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
+    :root {
+    --with--left: 230px;
+    --main--color: #a12424;
+    --catalog--color: #f7c947;
+}
+
         /* Bỏ gạch chân */
         a {
             text-decoration: none;
@@ -36,6 +43,11 @@ include $rootPath . '/includes/update_cart_first.php';
         a:link,
         a:visited {
             color: #FFFFFF;
+        }
+        .search {
+    width: 450px;
+    height: 48px;
+    
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
@@ -65,15 +77,19 @@ include $rootPath . '/includes/update_cart_first.php';
         <h6>Thêm sản phẩm thành công</h6>
     </div>
     <div class="gird">
-
+        
         <div class="header">
             <div class="header_row1">
                 <div class="header_row1_left">
-                    <div class="logo">
-                        <a href="<?php echo $rootPath ?>">
-                            <img src="<?php echo $rootPath . "/assets/img/logo/logopaddy.png"; ?>" alt="">
-                        </a>
-                    </div>
+                <div class="logo">
+    <a href="<?php echo $rootPath ?>" style="display: flex; align-items: center;">
+        <img src="<?php echo $rootPath . '/assets/img/logo/t1.png'; ?>" alt="" style="width: 100px; height: auto; margin-right: 10px;">
+        <span style="font-family: 'Roboto', sans-serif; font-size: 36px; font-weight: bold; font-style: italic; color: #ffffff; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);">
+    T1 Store
+</span>
+
+    </a>
+</div>
                 </div>
                 <div class="header_row_right">
                     <form action="<?php echo $rootPath ?>/pages/search_page.php" class="search" method="GET"
@@ -84,8 +100,8 @@ include $rootPath . '/includes/update_cart_first.php';
                         </button>
                     </form>
                     <div class="hotline">
-                        <h5 class="name_icon">Hotline</h5>
-                        <h5 class="hotline_sdt" style="font-weight: 600;">0347 69 33 33</h5>
+                        <h5 class="name_icon">Gọi mua hàng</h5>
+                        <h5 class="hotline_sdt" style="font-weight: 600;">0703564981</h5>
                     </div>
                     <!-- <div class="h">
                         <div class="name_icon">
@@ -143,19 +159,24 @@ include $rootPath . '/includes/update_cart_first.php';
                     <li>
                         <a href="<?php echo $rootPath; ?>">Trang chủ</a>
                     </li>
-                    <li>
-                        <a href=" <?php echo $rootPath . "/pages/contact_to_shop_page.php"; ?>">Liên hệ</a>
-                    </li>
+
                     <li>
                         <a href=" <?php echo $rootPath . "/pages/product_page.php"; ?>">Sản phẩm</a>
                     </li>
                     <li>
+
                         <a href=" <?php echo $rootPath . "/pages/brand.php"; ?>">Thương hiệu</a>
                     </li>
 
                     <li>
-                        <a href=" <?php echo $rootPath . "/pages/bt_nhom.php"; ?>"> Bài tập nhóm</a>
+                        <a href=" <?php echo $rootPath . "/pages/contact_to_shop_page.php"; ?>">Liên hệ</a>
                     </li>
+                    <li>
+                        <a href=" <?php echo $rootPath . "/pages/intro.php"; ?>">Về chúng tôi</a>
+                    </li>
+                    
+
+                 
                 </ul>
             </div>
         </div>

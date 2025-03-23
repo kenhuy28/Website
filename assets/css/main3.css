@@ -1,0 +1,516 @@
+.related-products {
+    margin-top: 20px;
+}
+
+.related-products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.related-product {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 50px;
+    margin-right: 16px;
+    margin-bottom: 10px;
+    width: 300px; /* Đặt chiều rộng theo yêu cầu */
+    height: 420px; /* Đặt chiều cao theo yêu cầu */
+    cursor: pointer; /* Hiệu ứng con trỏ khi hover */
+    text-align: center; /* Căn giữa nội dung */
+    overflow: hidden; /* Ẩn phần nội dung vượt quá khung */
+    position: relative; /* Để sử dụng cho các phần tử con nếu cần */
+    transition: transform 0.2s; /* Hiệu ứng phóng to khi hover */
+}
+
+.related-product:hover {
+    transform: scale(1.05); /* Phóng to một chút khi hover */
+}
+
+.related-product img {
+    max-width: 100%; /* Đảm bảo hình ảnh không vượt quá khung */
+    height: auto; /* Giữ tỉ lệ hình ảnh */
+}
+
+/* Phần bình luận */
+.product-details {
+    display: flex; /* Sử dụng flexbox để bố trí */
+}
+
+.chiTietSanPham_comments {
+    padding: 20px; /* Thêm khoảng cách cho phần bình luận */
+    background-color: #f9f9f9; /* Màu nền cho phần bình luận */
+    border-right: 1px solid #ccc; /* Đường viền bên phải */
+    flex: 7; /* Chiếm 70% chiều rộng */
+}
+
+.specifications {
+    padding: 20px; /* Thêm khoảng cách cho phần thông số kỹ thuật */
+    background-color: #fff; /* Màu nền cho phần thông số kỹ thuật */
+    flex: 3; /* Chiếm 30% chiều rộng */
+}
+.specifications {
+    padding: 20px; /* Thêm khoảng cách cho phần thông số kỹ thuật */
+    background-color: #fff; /* Màu nền cho phần thông số kỹ thuật */
+    flex: 3; /* Chiếm 30% chiều rộng */
+    
+    /* Thêm viền và bóng đổ */
+    border: 1px solid #ccc; /* Viền xung quanh */
+    border-radius: 8px; /* Bo tròn các góc */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bóng đổ */
+    margin-left: 20px; /* Khoảng cách giữa phần bình luận và thông số kỹ thuật */
+}
+
+.specifications h3 {
+    margin-bottom: 15px; /* Khoảng cách dưới tiêu đề */
+}
+
+.specifications ul {
+    list-style: none; /* Xóa dấu đầu dòng */
+    padding: 0; /* Xóa khoảng cách bên trong */
+}
+
+.specifications li {
+    margin-bottom: 10px; /* Khoảng cách giữa các mục */
+    padding: 5px; /* Khoảng cách bên trong mục */
+    border-bottom: 1px solid #eaeaea; /* Đường viền dưới mỗi mục */
+}
+
+.specifications li:last-child {
+    border-bottom: none; /* Xóa đường viền dưới mục cuối */
+}
+
+.chiTietSanPham_comments h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.comment_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment_form textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.comment_form label {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.comment_form select {
+    width: 150px;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.comment_form button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.comment_form button:hover {
+    background-color: #218838;
+}
+
+.comments_list {
+    margin-top: 20px;
+}
+
+.comment {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Khoảng cách giữa các bình luận */
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.comment .user_name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.comment .user_name i {
+    margin-right: 20px; /* Khoảng cách giữa icon và tên người dùng */
+}
+
+.comment .comment_rating {
+    margin-bottom: 5px;
+}
+
+.comment .comment_rating i {
+    margin-right: 10px;
+    color: gold;
+}
+
+.comment .comment_text {
+    font-size: 16px;
+    margin: 0;
+    padding-left: 30px; /* Thụt vào phần bình luận */
+}
+.average_rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.average_rating span {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Hệ thống đánh giá sao */
+.star-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.star-rating span {
+    margin-right: 10px;
+    font-size: 16px;
+}
+/* Hệ thống đánh giá sao trong form bình luận */
+.star-rating .stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.star-rating .stars input {
+    display: none;
+}
+
+.star-rating .stars label {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-rating .stars label:hover,
+.star-rating .stars label:hover ~ label,
+.star-rating .stars input:checked ~ label {
+    color: gold;
+}
+
+/* Hover effect */
+.star-rating .stars label:hover,
+.star-rating .stars label:hover ~ label {
+    color: gold;
+}
+
+/* Đánh giá sao trong bình luận */
+.comment_rating i {
+    font-size: 18px;
+    color: gold;
+    margin-right: 2px;
+}
+#compare-container {
+    display: none; /* Ẩn khung so sánh ban đầu */
+    position: fixed; /* Đặt vị trí cố định */
+    bottom: 20px; /* Cách đáy màn hình 20px */
+    left: 50%; /* Canh giữa theo chiều ngang */
+    transform: translateX(-50%); /* Canh giữa */
+    background-color: white; /* Nền trắng */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Bóng đổ */
+    padding: 10px; /* Padding xung quanh */
+    border-radius: 10px; /* Bo tròn góc */
+    z-index: 1000; /* Đảm bảo khung xuất hiện trên các phần tử khác */
+    width: auto; /* Để tự động điều chỉnh kích thước khung */
+    max-width: none; /* Bỏ giới hạn chiều rộng tối đa */
+}
+
+#small-compare-container {
+    position: fixed; /* Đặt vị trí cố định */
+    bottom: 20px; /* Cách đáy màn hình 20px */
+    left: 20px; /* Cách trái màn hình 20px */
+    background-color: #ff4081; /* Màu nền nổi bật (màu hồng) */
+    color: white; /* Màu chữ */
+    border-radius: 10px; /* Bo tròn góc */
+    padding: 10px; /* Padding */
+    cursor: pointer; /* Con trỏ khi di chuột */
+    z-index: 1001; /* Đảm bảo ô xuất hiện trên các phần tử khác */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+    transition: transform 0.2s; /* Hiệu ứng khi hover */
+}
+
+#small-compare-container:hover {
+    transform: scale(1.05); /* Phóng to khi di chuột */
+}
+
+.compare-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Giữ khoảng cách giữa các ô */
+}
+
+.compare-item {
+    position: relative; /* Đặt vị trí tương đối để định vị nút "X" */
+    width: 260px; /* Đặt chiều rộng cố định cho mỗi ô */
+    height: 135px; /* Đặt chiều cao cố định cho mỗi ô */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+.compare-image {
+    width: 100px; /* Có thể điều chỉnh lại nếu cần */
+}
+.compare-button {
+    width: 130px; /* Đặt chiều rộng cho nút */
+    height: 50px; /* Đặt chiều cao cho nút */
+    font-size: 15px; /* Kích thước chữ */
+    border: 2px solid #ff0000; /* Viền đỏ cho nút */
+    background-color: #ffffff; /* Màu nền trắng cho nút */
+    color: #ff0000; /* Màu chữ đỏ */
+    border-radius: 3px; /* Bo tròn góc nút */
+    cursor: pointer; /* Con trỏ khi di chuột */
+    padding: 0; /* Xóa padding để nút gọn hơn */
+    display: flex; /* Sử dụng flexbox để căn giữa */
+    align-items: center; /* Canh giữa theo chiều dọc */
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    margin: 0 auto; /* Đặt margin tự động để căn giữa */
+    transition: background-color 0.2s, color 0.2s; /* Hiệu ứng khi hover */
+}
+
+.compare-button:hover {
+    background-color: #ffcccc; /* Màu nền khi hover (màu hồng nhạt) */
+    color: #ff0000; /* Màu chữ vẫn giữ nguyên */
+}
+
+.remove-button {
+    position: absolute; /* Đặt vị trí tuyệt đối cho nút "X" */
+    top: 0px; /* Cách mép trên 0px để đẩy lên trên cùng */
+    right: 5px; /* Cách mép phải 5px */
+    cursor: pointer; /* Con trỏ khi di chuột */
+    font-weight: bold; /* Làm cho chữ "X" đậm */
+    color: #ff4081; /* Màu sắc của nút "X" */
+    font-size: 18px; /* Kích thước chữ */
+}
+
+.remove-button:hover {
+    color: #ff0000; /* Đổi màu khi hover */
+}
+
+.product-details {
+    display: flex; /* Sử dụng flexbox để bố trí */
+}
+
+/* Có thể thêm media queries cho thiết bị nhỏ hơn */
+@media (max-width: 600px) {
+    #compare-container {
+        width: 90%; /* Độ rộng khung trên thiết bị nhỏ */
+    }
+}
+
+.compare-image {
+    width: 100px;
+}
+
+.remove-button {
+    margin-top: 10px;
+    /* Các kiểu khác nếu cần */
+    #small-compare-container {
+    position: fixed; /* Đặt vị trí cố định */
+    bottom: 20px; /* Cách đáy màn hình 20px */
+    left: 20px; /* Cách trái màn hình 20px */
+    background-color: #007bff; /* Màu nền */
+    color: white; /* Màu chữ */
+    border-radius: 10px; /* Bo tròn góc */
+    padding: 10px; /* Padding */
+    cursor: pointer; /* Con trỏ khi di chuột */
+    z-index: 1001; /* Đảm bảo ô xuất hiện trên các phần tử khác */
+    display: none; /* Bắt đầu với display: none */
+}
+}
+.product-details {
+    display: flex; /* Sử dụng flexbox để bố trí */
+}
+
+.chiTietSanPham_comments {
+    padding: 20px; /* Thêm khoảng cách cho phần bình luận */
+    background-color: #f9f9f9; /* Màu nền cho phần bình luận */
+    border-right: 1px solid #ccc; /* Đường viền bên phải */
+}
+
+.specifications {
+    padding: 20px; /* Thêm khoảng cách cho phần thông số kỹ thuật */
+    background-color: #fff; /* Màu nền cho phần thông số kỹ thuật */
+}
+#view-details {
+    font-size: 18px; /* Kích thước chữ */
+    padding: 10px 20px; /* Khoảng cách bên trong */
+    background-color: transparent; /* Màu nền trong suốt */
+    color: black; /* Màu chữ */
+    border: 2px solid black; /* Viền đen */
+    border-radius: 25px; /* Bo góc tròn (thay đổi giá trị theo ý muốn) */
+    cursor: pointer; /* Con trỏ tay khi hover */
+    transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng chuyển màu và phóng to */
+    display: block; /* Để áp dụng margin */
+    margin: 10px auto; /* Căn giữa */
+    width: fit-content; /* Kích thước tự động dựa vào nội dung */
+}
+
+#view-details:hover {
+    background-color: red; /* Màu nền khi hover */
+    transform: scale(1.05); /* Phóng to một chút khi hover */
+}
+/* Khung hiển thị thông số kỹ thuật */
+.modal {
+    display: none; /* Ẩn modal theo mặc định */
+    position: fixed; /* Đặt modal ở vị trí cố định */
+    z-index: 1000; /* Đưa modal lên trên cùng */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Căn giữa modal */
+    width: 500px; /* Chiều rộng của modal */
+    height: 700px; /* Chiều cao của modal */
+    max-width: 90%; /* Chiều rộng tối đa */
+    max-height: 90%; /* Chiều cao tối đa */
+    overflow-y: auto; /* Cuộn dọc nếu cần */
+    background-color: rgba(255, 255, 255, 0.95); /* Nền trắng với độ trong suốt */
+    border-radius: 10px; /* Bo tròn các góc */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Đổ bóng */
+    padding: 0; /* Xóa đệm của modal */
+    margin: 0; /* Xóa khoảng cách của modal */
+}
+
+.modal-header {
+    position: relative; /* Để cho nút 'X' có thể đặt ở góc trên bên phải */
+    background-color: #f5f5f5; /* Nền cho tiêu đề */
+    padding: 10px; /* Đệm cho tiêu đề */
+    border-bottom: 1px solid #ccc; /* Đường viền dưới tiêu đề */
+    text-align: center; /* Căn giữa tiêu đề */
+}
+.modal-header h3 {
+    font-weight: bold; /* In đậm tiêu đề */
+    margin: 0; /* Xóa khoảng cách trên và dưới của tiêu đề */
+}
+.modal-content {
+    padding: 20px; /* Đệm cho nội dung */
+    height: calc(100% - 40px); /* Chiều cao nội dung khung */
+    overflow-y: auto; /* Cuộn dọc nếu nội dung quá dài */
+}
+/* Danh sách thông số kỹ thuật */
+.modal-content ul {
+    list-style-type: none; /* Không có dấu chấm đầu dòng */
+    padding: 0; /* Xóa khoảng cách bên trong */
+}
+
+/* Mỗi thông số trong danh sách */
+.modal-content ul li {
+    background-color: #f9f9f9; /* Nền sáng cho mỗi mục */
+    margin: 10px 0; /* Khoảng cách giữa các mục */
+    padding: 10px; /* Khoảng cách bên trong */
+    border: 1px solid #ddd; /* Viền xám nhạt */
+    border-radius: 5px; /* Bo góc cho mục */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền */
+}
+
+/* Hiệu ứng hover cho mỗi mục */
+.modal-content ul li:hover {
+    background-color: #e0e0e0; /* Màu nền khi hover */
+}
+
+/* Nút đóng */
+.close {
+    color: #aaa; /* Màu chữ xám */
+    position: absolute; /* Đặt vị trí tuyệt đối cho nút 'X' */
+    right: 10px; /* Cách phải 10px */
+    top: 10px; /* Cách trên 10px */
+    font-size: 28px; /* Kích thước chữ */
+    font-weight: bold; /* Đậm */
+    cursor: pointer; /* Con trỏ tay khi hover */
+}
+
+.close:hover,
+.close:focus {
+    color: #333; /* Màu chữ khi hover */
+    text-decoration: none; /* Không có gạch chân */
+}
+
+.close-modal {
+    background-color: red; /* Màu nền đỏ */
+    color: white; /* Màu chữ trắng */
+    border: none; /* Không có viền */
+    border-radius: 5px; /* Bo góc cho nút */
+    padding: 10px 20px; /* Khoảng cách bên trong */
+    cursor: pointer; /* Con trỏ tay khi hover */
+    display: block; /* Để nó nằm trên một dòng */
+    margin: 20px auto; /* Căn giữa */
+    font-size: 16px; /* Kích thước chữ */
+    width: 100px; /* Độ rộng của nút đóng */
+}
+.thong-so-loai {
+    text-align: left; /* Căn phải cho các loại thông số */
+}
+
+.thong-so-loai h4 {
+    font-size: 14px; /* Kích thước chữ nhỏ hơn */
+    margin: 10px 0; /* Cách trên và dưới */
+    text-align: left;
+}
+
+.thong-so-loai ul {
+    list-style-type: none; /* Không hiển thị dấu chấm */
+    padding: 0; /* Xóa đệm */
+}
+
+.thong-so-loai li {
+    font-size: 12px; /* Kích thước chữ thông số */
+}
+
+/* Nút Xem cấu hình chi tiết */
+#view-details {
+    display: block; /* Hiển thị như khối */
+    margin: 20px auto; /* Căn giữa */
+    padding: 10px 20px; /* Khoảng cách bên trong */
+    background-color: #ffffff; /* Màu nền trắng */
+    color: #000000; /* Màu chữ đen */
+    border: 2px solid #000000; /* Viền đen */
+    border-radius: 5px; /* Bo góc cho nút */
+    cursor: pointer; /* Con trỏ tay khi hover */
+    transition: background-color 0.3s, color 0.3s, border 0.3s; /* Hiệu ứng chuyển màu nền, chữ và viền */
+}
+
+#view-details:active {
+    color: #d81b60; /* Màu chữ hồng nhạt khi nhấn */
+    border: 2px solid #d81b60; /* Viền hồng nhạt khi nhấn */
+    background-color: #f8bbd0; /* Màu nền hồng nhạt khi nhấn */
+}
+button[name="compare"] {
+    font-size: 20px; /* Kích thước chữ */
+    color: red; /* Màu chữ đỏ */
+    font-weight: bold; /* Chữ đậm */
+    background-color: transparent; /* Nền trong suốt */
+    border: none; /* Không có viền */
+    border-radius: 0; /* Không bo góc */
+    padding: 10px 30px; /* Thêm padding bên trong để nút dài hơn */
+    cursor: pointer; /* Con trỏ tay khi hover */
+    display: block; /* Để nút có thể căn giữa */
+    margin: 0 auto; /* Tự động căn giữa */
+    width: 200px; /* Đặt chiều rộng cho nút */
+    text-align: center; /* Căn giữa chữ */
+}

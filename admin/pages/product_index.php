@@ -12,6 +12,14 @@ check($nv->maLoai,'SP');
                 </div>
             </a>
         </div>
+        <div class="add_admin">
+            <a href="product_create2.php">
+                <i class="fa-solid fa-user-plus"></i>
+                <div class="add_title">
+                    Thêm sản phẩm
+                </div>
+            </a>
+        </div>
     </div>
     <table class="table_dsadmin">
         <thead>

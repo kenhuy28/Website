@@ -1,13 +1,13 @@
 </div>
 <div class="footer">
     <div class="footter_row">
-        <h1>Shop</h1>
+        <h1>Thông tin và chính sách</h1>
         <ul>
             <li>
-                Danh Cho Chó
+            Mua hàng và thanh toán Online
             </li>
             <li>
-                Danh Cho Mèo
+            Chính sách giao hàng
             </li>
             <li>
                 <a href=" <?php echo $rootPath . "/pages/brand.php"; ?>">Thương hiệu</a>
@@ -15,7 +15,7 @@
         </ul>
     </div>
     <div class="footter_row">
-        <h1>Paddy Pet Shop</h1>
+        <h1>T1 Store - Điện tử</h1>
         <ul>
             <li>
                 Điều Khoản Sử Dụng
@@ -49,23 +49,23 @@
         <h1>Liên Hệ</h1>
         <ul>
             <li>
-                CÔNG TY CỔ PHẦN THUƠNG MẠI & DỊCH VỤ PADDY
+                CÔNG TY THUƠNG MẠI ĐIỆN TỬ & DỊCH VỤ T1 Store
             </li>
             <li>
-                116 Nguyễn Văn Thủ, Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh, Việt Nam
+                T1 Store 131A - 133 Cách Mạng Tháng 8 , Ninh Kiều, Cần Thơ
             </li>
             <li>
-                <i class="fa-solid fa-phone"></i> Hotline: 0347693333
+                <i class="fa-solid fa-phone"></i> Hotline: 0703565981
             </li>
             <li>
-                <i class="fa-solid fa-envelope"></i> Email: marketing@paddy.vn
+                <i class="fa-solid fa-envelope"></i> Email: huyb2016967@student.ctu.edu.vn
             </li>
         </ul>
     </div>
 </div>
 </div>
-<div class="mangXaHoi">
-    <a href="https://www.facebook.com/nam.phamphuong.792/" target="_blank">
+<!-- <div class="mangXaHoi">
+    <a href="https://www.facebook.com/" target="_blank">
         <div class="mangXaHoi_item Facebook">
             <div>
                 <i class="fa-brands fa-facebook" style="color: #0b84ee;"></i>
@@ -73,7 +73,7 @@
             <span>Facebook</span>
         </div>
     </a>
-    <a href="https://www.messenger.com/t/100012184808640" target="_blank">
+    <a href="https://www.messenger.com/" target="_blank">
         <div class="mangXaHoi_item Messenger">
             <div>
                 <i class="fa-regular fa-message" style="color: #e34aaa;"></i>
@@ -82,7 +82,7 @@
             <span>Messenger</span>
         </div>
     </a>
-    <a href="https://www.youtube.com/channel/UCq3vEyjTLa69K0dVHVStWqQ" target="_blank">
+    <a href="https://www.youtube.com/" target="_blank">
         <div class="mangXaHoi_item Youtube">
             <div>
                 <i class="fa-brands fa-youtube" style="color: #FF0000;"></i>
@@ -100,7 +100,7 @@
         </div>
     </a>
 
-</div>
+</div> -->
 <!-- nếu đã login -->
 <div class="login_flex" id="login_flex">
     <div class="login_flex_right" id="login_flex_right">
@@ -129,17 +129,44 @@
                 <?php echo $_SESSION["taiKhoan"]["dienThoai"] ?>
             </h5>
         </div>
+       
         <div class="thonTinKhac">
-            <h5><span>Địa chỉ: </span>
-                <?php
-                // SELECT xa.tenXa, huyen.tenHuyen, tinh.tenTinh FROM xa JOIN huyen ON xa.maHuyen = huyen.maHuyen JOIN tinh ON huyen.maTinh=tinh.maTinh WHERE xa.maXa = "X04036"
-                $get_diachi = "SELECT xa.tenXa, huyen.tenHuyen, tinh.tenTinh FROM xa JOIN huyen ON xa.maHuyen = huyen.maHuyen JOIN tinh ON huyen.maTinh=tinh.maTinh WHERE xa.maXa = '{$_SESSION["taiKhoan"]["maXa"]}'";
-                $statement = $dbh->prepare($get_diachi);
-                $statement->execute();
-                $diachis = $statement->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($diachis as $diachi)
-                    echo $_SESSION["taiKhoan"]["diaChiCuThe"] . ', ' . $diachi['tenXa'] . ', ' . $diachi['tenHuyen'] . ', ' . $diachi['tenTinh']; ?>
-            </h5>
+    <h5><span>Điểm tích lũy: </span>
+        <?php 
+            $diemTichLuy = $_SESSION["taiKhoan"]["diemTichLuy"];
+            echo $diemTichLuy . " điểm"; 
+        ?>
+    </h5>
+    <div style="display: flex; align-items: center;">
+        <?php
+            if ($diemTichLuy >= 100) {
+                echo '<span style="font-size: 20px; margin-right: 5px;">🏆</span><span style="font-size: 16px;">Thách Đấu</span>';
+            } elseif ($diemTichLuy >= 80) {
+                echo '<span style="font-size: 20px; margin-right: 5px;">🌟</span><span style="font-size: 16px;">Cao Thủ</span>';
+            } elseif ($diemTichLuy >= 50) {
+                echo '<span style="font-size: 20px; margin-right: 5px;">💎</span><span style="font-size: 16px;">Kim Cương</span>';
+            } elseif ($diemTichLuy >= 30) {
+                echo '<span style="font-size: 20px; margin-right: 5px;">💍</span><span style="font-size: 16px;">Bạch Kim</span>';
+            } elseif ($diemTichLuy >= 20) {
+                echo '<span style="font-size: 20px; margin-right: 5px;">🥇</span><span style="font-size: 16px;">Vàng</span>';
+            } elseif ($diemTichLuy >= 10) {
+                echo '<span style="font-size: 20px; margin-right: 5px;">🥈</span><span style="font-size: 16px;">Bạc</span>';
+            } else {
+                echo '<span style="font-size: 20px; margin-right: 5px;">🥉</span><span style="font-size: 16px;">Đồng</span>';
+            }
+        ?>
+    </div>
+</div>
+        <div class="thonTinKhac" style="text-align: center;">
+        <h5><span>Địa chỉ: </span>
+        <?php
+        $get_diachi = "SELECT xa.tenXa, huyen.tenHuyen, tinh.tenTinh FROM xa JOIN huyen ON xa.maHuyen = huyen.maHuyen JOIN tinh ON huyen.maTinh=tinh.maTinh WHERE xa.maXa = '{$_SESSION["taiKhoan"]["maXa"]}'";
+        $statement = $dbh->prepare($get_diachi);
+        $statement->execute();
+        $diachis = $statement->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($diachis as $diachi)
+            echo $_SESSION["taiKhoan"]["diaChiCuThe"] . ', ' . $diachi['tenXa'] . ', ' . $diachi['tenHuyen'] . ', ' . $diachi['tenTinh']; ?>
+        </h5>
         </div>
         <div class="thonTinKhac" style="margin: 0 0 40px 0;">
             <h5><span>Email: </span>
@@ -184,5 +211,11 @@
 } ?>
 
 
-
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="T1Store_chatbot"
+  agent-id="27f9289c-df67-4e6c-8e07-da34473ecb87"
+  language-code="vi"
+></df-messenger>
 <script src="<?php echo $rootPath ?>/assets/js/app.js"></script>

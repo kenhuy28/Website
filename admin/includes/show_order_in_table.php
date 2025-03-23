@@ -1,15 +1,14 @@
 <?php
-// Calculate the total number of pages.
-$rowOfPage = 10;
+// Tính toán số trang.
+$rowOfPage = 15;
 
 $totalRows = $dbh->query('SELECT COUNT(*) FROM don_dat_hang')->fetchColumn();
 $totalPages = ceil($totalRows / $rowOfPage);
 
-// Determine the current page number.
+// Xác định số trang hiện tại.
 $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
-// Get the rows for the current page.
-
+// Lấy dữ liệu cho trang hiện tại.
 $query = "SELECT don_dat_hang.*, CONCAT(khach_hang.hoKhachHang, ' ', khach_hang.tenKhachHang) AS tenKhachHang, 
 CONCAT(nhan_vien.ho, ' ', nhan_vien.ten) AS tenNhanVien FROM don_dat_hang 
 JOIN khach_hang ON khach_hang.maKhachHang = don_dat_hang.maKhachHang
@@ -46,8 +45,8 @@ if ($result) {
             $tinhTrang = "<p>Chưa xác nhận</p>";
             $btn = $btnXacNhan . $btnHuy;
         }
-
-
+        // Thêm cột "Lý do hủy" và nút "Lý do hủy"
+        $btnLyDoHuy = "<a href='huy.php?maDonHang=" . $row->maDonHang . "'>Lý do hủy</a>"; 
         echo "<tr>
                             <td><p>" . $row->maDonHang . "</p></td>
                             <td><p>" . $row->tenKhachHang . "</p></td>
@@ -60,6 +59,7 @@ if ($result) {
                                 <a href=\"Order_Details.php?id=" . $row->maDonHang . "\" ><i class=\"fa-solid fa-circle-info detail\"></i></a>
                             </td>
                             <td>" . $btn . "</td>
+                            <td>" . $btnLyDoHuy . "</td>  <!-- Cột lý do hủy -->
                         </tr>";
     }
 } else {
@@ -68,3 +68,9 @@ if ($result) {
                 </tr>";
 }
 ?>
+<script>
+// Khi click vào nút "Lý do hủy" từ order_index, mở trang huy.php và truyền mã đơn hàng
+function openCancelForm(maDonHang) {
+    window.location.href = "huy.php?maDonHang=" + maDonHang; // Truyền mã đơn hàng qua URL
+}
+</script>

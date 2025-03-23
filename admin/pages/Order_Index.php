@@ -46,6 +46,7 @@ check($nv->maLoai,'DDH');
             <th>Nhân viên phụ trách</th>
             <th>Chi tiết đơn hàng</th>
             <th>Hành động</th>
+            <th>Lý do hủy</th>
         </tr>
     </thead>
     <tbody>

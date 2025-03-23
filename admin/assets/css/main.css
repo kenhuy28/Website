@@ -10,7 +10,7 @@
 /* left */
 .left {
     width: var(--with--left);
-    background-color: #244cbb;
+    background-color: #CC3333;
     position: fixed;
     left: 0;
     top: 0;
@@ -84,7 +84,7 @@
     border-radius: 10px;
     overflow: hidden;
     padding-top: 10px;
-    border: 1px solid #244cbb;
+    border: 1px solid #CC3333;
     display: none;
     z-index: 2;
 }
@@ -115,7 +115,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #244cbb;
+    background-color: #CC3333;
     color: #ffffff;
 }
 
@@ -136,7 +136,7 @@
     margin-top: 20px;
 }
 th {
-    background-color: #244cbb;
+    background-color: #CC3333;
     color: white;
 }
 
@@ -217,7 +217,7 @@ th, td {
 
 .page_button_active {
     color: #ffffff;
-    background-color: #244cbb;
+    background-color: #CC3333;
 }
 
 .page_previous_button, .page_behind_button {

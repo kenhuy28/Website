@@ -56,7 +56,7 @@
     <div class="app">
         <div class="loginadmin">
             <div class="backGround">
-                <img src="../assets/img/bacgroundloginadmin/backgroundLoginadmin.png" alt="">
+                <img src="../assets/img/bacgroundloginadmin/backgroundLoginadmin.jpg" alt="">
             </div>
             <div class="login">
                 <div class="login1">

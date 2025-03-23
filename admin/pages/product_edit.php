@@ -1,7 +1,7 @@
 <?php
 include '../templates/nav_admin1.php';
 include '../includes/get_product_data_from_id.php';
-
+include '../includes/get_technical_specs_from_product_id.php'; // Bao gồm để lấy thông số kỹ thuật cho sản phẩm
 ?>
 <style>
     input,
@@ -48,7 +48,7 @@ include '../includes/get_product_data_from_id.php';
                 <label for="" class="name_form_field">Loại: </label>
                 <select required class="textfile" name="MALOAI">
                     <?php include '../includes/show_type_in_option.php' ?>
-
+                    
                 </select>
                 <span class="error_message"></span>
             </div>
@@ -72,7 +72,57 @@ include '../includes/get_product_data_from_id.php';
                 </div>
             </div>
 
+            <!-- Thông số kỹ thuật -->
+            <div id="technical_specs">
+    <?php
+    // Kiểm tra xem có thông số kỹ thuật nào không
+    if ($technicalSpecs) {
+        foreach ($technicalSpecs as $spec) {
+            ?>
+            <div class="form_field">
+                <label for="" class="name_form_field">Loại thông số:</label>
+                <input required type="text" class="textfile" name="loaiThongSo[]"
+                       value="<?php echo htmlspecialchars($spec['loaiThongSo']); ?>">
+                <span class="error_message"></span>
+            </div>
+            <div class="form_field">
+                <label for="" class="name_form_field">Tên thông số (cách nhau bởi dấu phẩy):</label>
+                <input required type="text" class="textfile" name="tenThongSo[]"
+                       value="<?php echo htmlspecialchars($spec['tenThongSo']); ?>">
+                <span class="error_message"></span>
+            </div>
+            <div class="form_field">
+                <label for="" class="name_form_field">Giá trị thông số (cách nhau bởi dấu phẩy):</label>
+                <textarea required class="textfile_address" name="giaTriThongSo[]"><?php echo htmlspecialchars($spec['giaTriThongSo']); ?></textarea>
+                <span class="error_message"></span>
+            </div>
+            <?php
+        }
+    } else {
+        // Nếu không có thông số kỹ thuật nào, hiển thị trường trống
+        ?>
+        <div class="form_field">
+            <label for="" class="name_form_field">Loại thông số:</label>
+            <input required type="text" class="textfile" name="loaiThongSo[]">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Tên thông số (cách nhau bởi dấu phẩy):</label>
+            <input required type="text" class="textfile" name="tenThongSo[]">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Giá trị thông số (cách nhau bởi dấu phẩy):</label>
+            <textarea required class="textfile_address" name="giaTriThongSo[]"></textarea>
+            <span class="error_message"></span>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+<!-- <button type="button" onclick="addTechnicalSpec()">Thêm thông số kỹ thuật</button> -->
             <div class="button">
+            <input type="button" value="Thêm thông số kỹ thuật" class="button_add_admin" onclick="addTechnicalSpec()" />
                 <input type="submit" value="Cập nhật" class="button_add_admin" />
                 <a href="javascript:history.go(-1);"><input type="button" value="Quay lại"
                         class="button_add_admin" /></a>
@@ -90,6 +140,28 @@ include '../includes/get_product_data_from_id.php';
             };
             reader.readAsDataURL(file);
         };
+
+        function addTechnicalSpec() {
+    const technicalSpecDiv = document.createElement('div');
+    technicalSpecDiv.innerHTML = `
+        <div class="form_field">
+            <label for="" class="name_form_field">Loại thông số:</label>
+            <input required type="text" class="textfile" name="loaiThongSo[]">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Tên thông số (cách nhau bởi dấu phẩy):</label>
+            <input required type="text" class="textfile" name="tenThongSo[]">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Giá trị thông số (cách nhau bởi dấu phẩy):</label>
+            <textarea required class="textfile_address" name="giaTriThongSo[]"></textarea>
+            <span class="error_message"></span>
+        </div>
+    `;
+    document.getElementById('technical_specs').appendChild(technicalSpecDiv);
+}
     </script>
 </div>
 <?php include '../templates/nav_admin2.php' ?>

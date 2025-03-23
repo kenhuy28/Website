@@ -75,8 +75,9 @@ $address_input = $statement1->fetch(PDO::FETCH_OBJ);
 </script>
 
 <div class="create_admin">
-  <h1 class="Title_Admin_create_form">Chỉnh sửa tài khoản </h1>
-  <p class="Notification_create_form">Vui lòng điền thông tin bên dưới</p>
+<h1 class="Title_Admin_create_form" style="text-align: center;">Chỉnh sửa tài khoản</h1>
+<p class="Notification_create_form" style="text-align: center;">Vui lòng điền thông tin bên dưới</p>
+
   <form class="create_admin_form" action="<?php echo $rootPath . '/includes/edit_info.php' ?>" method="POST">
     <div class="form_field">
       <label for="" class="name_form_field">Họ: </label>
@@ -108,47 +109,50 @@ $address_input = $statement1->fetch(PDO::FETCH_OBJ);
         value="<?php echo $_SESSION['taiKhoan']['ngaySinh'] ?>">
       <span class="error_message"></span>
     </div>
+    <div style="display: flex; flex-direction: column; align-items: center; width: 100%; margin: 0 auto;">
     <div style="display: flex; justify-content: space-between; width: 400px;">
-      <div class="form_field">
-        <label for="" class="name_form_field">Tỉnh: </label>
-        <select id='provinces' class="textfile" name="provinces" style="width: 195px;">
-          <option value="<?php echo $address_input->maTinh; ?>" disabled selected>
-            <?php echo $address_input->tenTinh; ?>
-          </option>
-          <?php
-          while ($row = $statement->fetch())
-            echo "<option value='{$row->maTinh}'>{$row->tenTinh}</option>";
-          ?>
-        </select>
-        <span class="error_message"></span>
-      </div>
-      <div class="form_field">
-        <label for="" class="name_form_field">Huyện: </label>
-        <select id='districts' class="textfile" name="districts" style="width: 195px;">
-          <option value="<?php echo $address_input->maHuyen; ?>" disabled selected>
-            <?php echo $address_input->tenHuyen; ?>
-          </option>
-        </select>
-        <span class="error_message"></span>
-      </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Tỉnh: </label>
+            <select id='provinces' class="textfile" name="provinces" style="width: 195px;">
+                <option value="<?php echo $address_input->maTinh; ?>" disabled selected>
+                    <?php echo $address_input->tenTinh; ?>
+                </option>
+                <?php
+                while ($row = $statement->fetch())
+                    echo "<option value='{$row->maTinh}'>{$row->tenTinh}</option>";
+                ?>
+            </select>
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Huyện: </label>
+            <select id='districts' class="textfile" name="districts" style="width: 195px;">
+                <option value="<?php echo $address_input->maHuyen; ?>" disabled selected>
+                    <?php echo $address_input->tenHuyen; ?>
+                </option>
+            </select>
+            <span class="error_message"></span>
+        </div>
     </div>
-    <div style="display: flex; justify-content: space-between; width: 400px;">
-      <div class="form_field">
-        <label for="" class="name_form_field">Xã: </label>
-        <select required id="wards" class="textfile" style="width: 195px;">
-          <option value="<?php echo $address_input->maXa; ?>" disabled selected>
-            <?php echo $address_input->tenXa; ?>
-          </option>
-        </select>
-        <input hidden type="text" name="maXa" id="maXaInput" value="<?php echo $address_input->maXa; ?>">
-        <span class="error_message"></span>
-      </div>
-      <div class="form_field">
-        <label for="" class="name_form_field">Địa chỉ cụ thể: </label>
-        <input type="diaChi" class="textfile" id="diaChi" name="diaChi" style="width: 195px;" required
-          value="<?php echo $_SESSION['taiKhoan']['diaChiCuThe'] ?>">
-      </div>
+    <div style="display: flex; justify-content: space-between; width: 400px; margin-top: 15px;">
+        <div class="form_field">
+            <label for="" class="name_form_field">Xã: </label>
+            <select required id="wards" class="textfile" style="width: 195px;">
+                <option value="<?php echo $address_input->maXa; ?>" disabled selected>
+                    <?php echo $address_input->tenXa; ?>
+                </option>
+            </select>
+            <input hidden type="text" name="maXa" id="maXaInput" value="<?php echo $address_input->maXa; ?>">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Địa chỉ cụ thể: </label>
+            <input type="text" class="textfile" id="diaChi" name="diaChi" style="width: 195px;" required
+                   value="<?php echo $_SESSION['taiKhoan']['diaChiCuThe'] ?>">
+        </div>
     </div>
+</div>
+
 
     <!-- <div class="form_field" style="max-width: 400px">
             <label for="" class="name_form_field">Ảnh đại diện : </label>

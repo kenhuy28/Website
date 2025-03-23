@@ -507,6 +507,8 @@ input:focus {
 
 /* login form */
 
+
+
 .login_flex {
     position: fixed;
     top: 0;
@@ -527,54 +529,62 @@ input:focus {
     background-color: #f6f3f3;
     padding: 30px;
     z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
+
 
 .login_flex_right_title {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
     margin: 20px 0 50px 0;
+    width: 100%; /* Đảm bảo tiêu đề chiếm chiều rộng 100% */
 }
 
 .login_flex_right_title h6 {
     margin: 0;
     font-size: 28px;
-}
-
-.form_field,
-.name_form_field,
-.textfile,
-.error_message {
-    display: block;
+    text-align: center; /* Căn giữa chữ */
+    width: 100%; /* Đảm bảo chiếm chiều rộng 100% */
 }
 
 .form_field {
     padding-bottom: 16px;
     min-height: 90px;
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    display: flex; /* Sử dụng flexbox */
+    flex-direction: column; /* Căn giữa theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
 }
 
 .name_form_field {
     font-weight: 600;
     padding-bottom: 8px;
     font-size: 16px;
+    text-align: center; /* Căn giữa văn bản */
 }
 
 .textfile {
-    width: 300px;
+    width: 300px; /* Kích thước trường nhập */
     height: 40px;
     margin-bottom: 6px;
     border-radius: 20px;
-    border: 1px solid rgb(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
     text-indent: 5px;
     outline: none;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     font-size: 16px;
+    display: block; /* Đảm bảo trường hiển thị dưới dạng block */
 }
 
 .error_message {
     color: red;
     font-size: 1.4rem;
     display: block;
+    text-align: center; /* Căn giữa thông báo lỗi */
 }
 
 .button_add_admin {
@@ -582,11 +592,12 @@ input:focus {
     width: 300px;
     background-color: #ffffff;
     border-radius: 20px;
-    margin: 0 0 20px 0;
+    margin: 0 auto 20px auto; /* Căn giữa theo chiều ngang */
     border: 1px solid rgb(0, 0, 0, 0.3);
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
+    display: block; /* Thay đổi sang block để sử dụng margin auto */
 }
 
 .button_add_admin:hover {
@@ -595,15 +606,16 @@ input:focus {
 }
 
 .qmk {
-    width: 100%;
+    width: 100%; /* Giữ nguyên chiều rộng 100% */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
     height: 50px;
     font-size: 16px;
     line-height: 30px;
     font-weight: 600;
-    margin: 0 0 20px 0;
+    margin: 0 auto 20px auto; /* Căn giữa cho phần tử cha */
+    text-align: center; /* Đảm bảo nội dung cũng căn giữa */
 }
 
 .invalid {
@@ -881,16 +893,7 @@ input:focus {
     margin-top: 20px;
 }
 
-.thanhToan_cart_tong {
-    border-top: 1px solid black;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 26px;
-    font-weight: 600;
-    line-height: 100px;
-}
+
 
 /* index */
 .swiper-wrapper {
@@ -1154,7 +1157,10 @@ input:focus {
     position: relative;
     margin-right: 50px;
 }
-
+.chiTietSanPham_right {
+    display: block;
+    position: relative;
+}
 .chiTietSanPham_giamgia {
     position: absolute;
     top: 0;
@@ -1384,4 +1390,122 @@ input:focus {
     z-index: 1000;
     transition: linear 0.4s;
     box-shadow: 0 0 10px rgba(244, 244, 244, 0.5);
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.comment-form {
+  margin-top: 20px;
+}
+
+.comment-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.comment-form input[type="text"],
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+}
+
+.comment-form textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.comment-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.comment-form button:hover {
+  background-color: #3e8e41;
+}
+
+.rating {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.rating i {
+  font-size: 20px;
+  color: #ffc107;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.file-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.file-input input[type="file"] {
+  display: none;
+}
+
+.file-input label {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.file-input label:hover {
+  background-color: #3e8e41;
+}
+
+.file-input .file-name {
+  background-color: #ccc;
+  color: #333;
+  padding: 8px 15px;
+  border: none;
+  display: inline-block;
+  margin-left: 5px;
+  border-radius: 4px;
+  flex-grow: 1;
+  text-align: center;
+  font-size: 16px;
 }

@@ -75,6 +75,30 @@ $statement1->setFetchMode(PDO::FETCH_OBJ);
             getUsername(userNameValue);
         });
     });
+    $(document).ready(function () {
+    // Kiểm tra số điện thoại
+    $('#phoneNumber').on('input', function () {
+        var phoneNumber = $(this).val();
+        var phonePattern = /^0\d{8}$/; // Kiểm tra số điện thoại bắt đầu bằng 0 và có đúng 9 chữ số
+        if (!phonePattern.test(phoneNumber)) {
+            $('#phoneNumber').next('.error_message').text('Số điện thoại phải có 9 chữ số và bắt đầu bằng 0.');
+        } else {
+            $('#phoneNumber').next('.error_message').text('');
+        }
+    });
+
+    // Kiểm tra email
+    $('#email').on('input', function () {
+        var email = $(this).val();
+        var emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/; // Kiểm tra định dạng email phải có @gmail.com
+        if (!emailPattern.test(email)) {
+            $('#email').next('.error_message').text('Email phải có định dạng @gmail.com.');
+        } else {
+            $('#email').next('.error_message').text('');
+        }
+    });
+});
+
 </script>
 
 <style>

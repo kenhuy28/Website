@@ -15,6 +15,11 @@ $id = $_GET['id'];
             <th>Số lượng</th>
             <th>Đơn giá</th>
             <th>Thành tiền</th>
+            <th>Họ tên</th>
+            <th>SĐT</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+            <th>Hình thức thanh toán</th>
         </tr>
     </thead>
     <tbody>

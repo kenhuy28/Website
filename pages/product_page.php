@@ -15,8 +15,7 @@ $sql = "SELECT * FROM giam_gia";
 $stmt = $dbh->query($sql);
 $giamGia = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-
-$rowOfPage = 10;
+$rowOfPage = 16;
 $totalRows = $dbh->query("SELECT COUNT(*) FROM san_pham")->fetchColumn();
 $totalPages = ceil($totalRows / $rowOfPage);
 $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;

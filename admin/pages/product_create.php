@@ -1,7 +1,7 @@
 <?php
 include '../templates/nav_admin1.php';
-include '../includes/get_new_product_id.php'
-    ?>
+include '../includes/get_new_product_id.php';
+?>
 <style>
     input,
     select,
@@ -64,47 +64,110 @@ include '../includes/get_new_product_id.php'
                         <img src="https://webkit.org/demos/srcset/image-src.png" alt="" id="custom-file-img-display">
                     </div>
                 </div>
-                <div class="button">
-                    <input type="submit" value="Thêm" class="button_add_admin" />
-                    <a href="product_index.php"><input type="button" value="Quay lại"
-                            class="button_add_admin" /></a>
-                </div>
+            </div>
+
+<h2>Thông số kỹ thuật</h2>
+<div id="technical_specs">
+    <div class="form_field">
+        <label for="" class="name_form_field">Loại thông số : </label>
+        <input required type="text" class="textfile" id="loaiThongSo" name="loaiThongSo[]">
+        <span class="error_message"></span>
+    </div>
+    <div class="form_field">
+        <label for="" class="name_form_field">Tên thông số (phân cách bằng dấu phẩy): </label>
+        <input required type="text" class="textfile" id="tenThongSo" name="tenThongSo[]">
+        <span class="error_message"></span>
+    </div>
+    <div class="form_field">
+        <label for="" class="name_form_field">Giá trị thông số (phân cách bằng dấu phẩy): </label>
+        <textarea required class="textfile_address" id="giaTriThongSo" name="giaTriThongSo[]"></textarea>
+        <span class="error_message"></span>
+    </div>
+</div>
+<!-- <button type="button" onclick="addTechnicalSpec()">Thêm thông số kỹ thuật khác</button> -->
+            <div class="button">
+            <input type="button" value="Thêm thông số kỹ thuật" class="button_add_admin" onclick="addTechnicalSpec()" />
+                <input type="submit" value="Thêm" class="button_add_admin" />
+                <a href="product_index.php"><input type="button" value="Quay lại"
+                        class="button_add_admin" /></a>
+            </div>
         </form>
 
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mong muốn của chúng ta
-            Validator({
-                form: '#form-1',
-                formGroupSelector: '.form_field',
-                errorSelector: '.error_message',
-                rules: [
-                    Validator.isRequired('#fullname', 'Vui lòng nhập tên sản phẩm!'),
-                    Validator.isRequired('#giamua', 'Vui lòng nhập giá mua!'),
-                    Validator.isRequired('#giaban', 'Vui lòng nhập giá bán!'),
-                    Validator.isRequired('#img_profile_admin', 'Vui lòng chọn hình sản phẩm!'),
-                    Validator.isLessZero('#giamua', 'Vui lòng nhập giá mua lớn hơn hoặc bằng không'),
-                    Validator.isLessZero('#giaban', 'Vui lòng nhập giá bán lớn hơn hoặc bằng không'),
-                    Validator.isRong('#thuonghieu', 'Vui lòng chọn thương hiệu'),
-                    Validator.isRong('#loai', 'Vui lòng chọn loại sản phẩm'),
-                ],
-                onSubmit: function (data) {
-                    // Call API
-                    //console.log(data);
+document.addEventListener('DOMContentLoaded', function () {
+    // Mong muốn của chúng ta
+    Validator({
+        form: '#form-1',
+        formGroupSelector: '.form_field',
+        errorSelector: '.error_message',
+        rules: [
+            Validator.isRequired('#fullname', 'Vui lòng nhập tên sản phẩm!'),
+            Validator.isRequired('#giamua', 'Vui lòng nhập giá mua!'),
+            Validator.isRequired('#giaban', 'Vui lòng nhập giá bán!'),
+            Validator.isRequired('#img_profile_admin', 'Vui lòng chọn hình sản phẩm!'),
+            Validator.isLessZero('#giamua', 'Vui lòng nhập giá mua lớn hơn hoặc bằng không'),
+            Validator.isLessZero('#giaban', 'Vui lòng nhập giá bán lớn hơn hoặc bằng không'),
+            Validator.isRong('#thuonghieu', 'Vui lòng chọn thương hiệu'),
+            Validator.isRong('#loai', 'Vui lòng chọn loại sản phẩm'),
+            // Thêm quy tắc cho các thông số kỹ thuật
+            {
+                selector: 'input[name="loaiThongSo[]"]',
+                test: function (value) {
+                    return value.trim() !== '' || 'Vui lòng nhập loại thông số!';
                 }
-            });
-        });
-        const img_thuonghieu = document.querySelector("#img_product");
-        const custom_file_img_display = document.querySelector("#custom-file-img-display");
-        img_thuonghieu.onchange = function (e) {
-            const file = e.target.files[0];
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                custom_file_img_display.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        };
-    </script>
+            },
+            {
+                selector: 'input[name="tenThongSo[]"]',
+                test: function (value) {
+                    return value.trim() !== '' || 'Vui lòng nhập tên thông số!';
+                }
+            },
+            {
+                selector: 'textarea[name="giaTriThongSo[]"]',
+                test: function (value) {
+                    return value.trim() !== '' || 'Vui lòng nhập giá trị thông số!';
+                }
+            }
+        ],
+        onSubmit: function (data) {
+            // Call API
+        }
+    });
+});
+
+const img_thuonghieu = document.querySelector("#img_product");
+const custom_file_img_display = document.querySelector("#custom-file-img-display");
+img_thuonghieu.onchange = function (e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        custom_file_img_display.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+};
+
+function addTechnicalSpec() {
+    const technicalSpecDiv = document.createElement('div');
+    technicalSpecDiv.innerHTML = `
+        <div class="form_field">
+            <label for="" class="name_form_field">Loại thông số : </label>
+            <input required type="text" class="textfile" name="loaiThongSo[]">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Tên thông số : </label>
+            <input required type="text" class="textfile" name="tenThongSo[]">
+            <span class="error_message"></span>
+        </div>
+        <div class="form_field">
+            <label for="" class="name_form_field">Giá trị thông số : </label>
+            <textarea required class="textfile_address" name="giaTriThongSo[]"></textarea>
+            <span class="error_message"></span>
+        </div>
+    `;
+    document.getElementById('technical_specs').appendChild(technicalSpecDiv);
+}
+</script>
 </div>
-<?php include '../templates/nav_admin2.php' ?>
+<?php include '../templates/nav_admin2.php'; ?>
